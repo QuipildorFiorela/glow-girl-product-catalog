@@ -1,0 +1,196 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #fff6fb;
+    color: #48454a;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #000000, #ef7fcb);
+    padding: 1rem 2rem;
+    border-bottom: 3px solid #bddcff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 90px; /* Ajustá según prefieras (50–80px va bien) */
+    width: auto;
+    display: block;
+}
+
+.nombreAlumno p {
+    font-size: 0.9rem;
+    color: #d4c8de;
+}
+
+/* Search bar */
+.search-bar {
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    border: 1px solid #c6b7f5;
+    outline: none;
+    background-color: #ffffff;
+    color: #5a4a66;
+}
+
+/* Carrito */
+.cart {
+    font-size: 0.9rem;
+    color: #5a4a66;
+}
+
+/* Productos */
+.products-section {
+    padding: 2rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Categorías */
+.botones-categorias {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+}
+
+.botones-categorias button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(to right, #f3c8e0, #bddcff);
+    color: #5a4a66;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botones-categorias button:hover {
+    background: #f2d16b;
+    color: #fff;
+}
+
+/* Carrito */
+.cart-section {
+    background-color: #ffffff;
+    margin: 2rem;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(198, 183, 245, 0.2);
+}
+
+.cart-total {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #5a4a66;
+}
+
+/* Titulares */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+    background: linear-gradient(to right, #c29c4c, #e89fc7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Contenedor de las cards */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Estilo de cada card */
+.product-card {
+    background: linear-gradient(to bottom right, #f7d7fe, #cfe2ff);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(217, 179, 255, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(127, 105, 148, 0.4);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+/* Nombre del producto */
+.product-card h3 {
+    font-size: 1.2rem;
+    color: #6e4d8f;
+    margin: 0.5rem 0;
+}
+
+/* Precio */
+.product-card p {
+    font-size: 1rem;
+    color: #a36fbd;
+    margin-bottom: 1rem;
+}
+
+/* Estilo común para botones */
+.product-card button {
+    margin: 0.4rem auto;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 80%;
+}
+
+/* Botón Mostrar/Ocultar Detalles */
+.show-details {
+    background-color: #e8ca8d;
+    color: #a04c8a;
+}
+
+.show-details:hover {
+    background-color: #f1d293;
+    color: #a04c8a;
+}
+
+/* Botón Agregar al carrito */
+.add-to-cart {
+    background-color: #b890f0;
+    color: white;
+}
+
+.add-to-cart:hover {
+    background-color: #c4a4f1;
+}

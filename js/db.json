@@ -1,0 +1,49 @@
+{
+    "accesorios": [
+        {
+            "id": 0,
+            "nombre": "Cadena corta con dije corazón piedra",
+            "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra, con cierre de mosquetón.",
+            "precio": 8900,
+            "img": "img/accesorios/cadena_corazon_piedra.webp"
+        },
+        {
+            "id": 0,
+            "nombre": "Cadena corta con dije corazón piedra",
+            "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra, con cierre de mosquetón.",
+            "precio": 8900,
+            "img": "img/accesorios/cadena_corazon_piedra.webp"
+        },
+        {
+            "id": 0,
+            "nombre": "Cadena corta con dije corazón piedra",
+            "descripción": "Cadena corta de cadena torzada y dije de corazón en piedra, con cierre de mosquetón.",
+            "precio": 8900,
+            "img": "img/accesorios/cadena_corazon_piedra.webp"
+        },
+        {
+            "id": 0,
+            "nombre": "Cadena corta con dije corazón piedra",
+            "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra, con cierre de mosquetón.",
+            "precio": 8900,
+            "img": "img/accesorios/cadena_corazon_piedra.webp"
+        },
+        {
+            "id": 0,
+            "nombre": "Cadena corta con dije corazón piedra",
+            "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra, con cierre de mosquetón.",
+            "precio": 8900,
+            "img": "img/accesorios/cadena_corazon_piedra.webp"
+        },
+        {
+            "id": 0,
+            "nombre": "Cadena corta con dije corazón piedra",
+            "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra, con cierre de mosquetón.",
+            "precio": 8900,
+            "img": "img/accesorios/cadena_corazon_piedra.webp"
+        }
+    ],
+    "belleza": [
+        
+    ]
+}
