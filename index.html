@@ -1,13 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUESTRA TIENDA</title>
+    <title>Glow Girls</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Holaaaaaaaaaa</h1>
-    <h2>SIIIIIIIIIIII</h2>
-    <h2>Testing3</h2>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Glow Girls</div>
+    
+        <div class="nombreAlumno">
+            <p>Bianca Monteleone</p>
+            <p>Fiorela Quipildor</p>
+        </div>
+
+        <input type="text" placeholder="Buscar..." class="search-bar">
+
+        <div class="cart">
+            <span>Carito: <span id="cart-count">0</span> items</span>
+        </div>
+    </nav>
+
+    <h2>Sanrio Family Characters</h2>
+    <div class="botones-categorias">
+        <!-- aca van los botones de categorias -->
+    </div>
+
+    <!-- Contenedor principal -->
+    <main>
+    <section class="products-section">
+        <div class="product-grid">
+            <!-- aca van los productos -->
+        </div>
+    </section>
+
+
+    <!-- Sección carrito -->
+    <section class="cart-section">
+
+        <h2>Carrito</h2>
+
+        <div id="cart-items">
+            <p>No hay elementos en el carrito.</p>
+        </div>
+
+        <div class="cart-total">
+            <p>Total: <span id="total-price">$0.00</span></p>
+        </div>
+
+    </section>
+    <script src="js/main.js"></script>
+    </main>
 </body>
 </html>
