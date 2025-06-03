@@ -62,8 +62,15 @@ body {
 }
 
 .icono {
+  margin-top: 10px;
   width: 28px;
   height: 28px;
+  cursor: pointer;
+}
+
+.modo_icono {
+  /*width: 28px;*/
+  height: 50px;
   cursor: pointer;
 }
 
@@ -196,4 +203,59 @@ h2 {
   .product-card img {
     max-width: 100%;
   }
+}
+
+/*----------------------------------------  Dark Mode  ----------------------------------------*/
+body.modo-oscuro {
+  background-color: black;
+  color: #eaeaea;
+}
+
+body.modo-oscuro .navbar {
+  background-color: #2e2e2e;
+}
+
+body.modo-oscuro .search-bar {
+  border: 1px solid #a54d78;
+}
+
+body.modo-oscuro .product-card {
+  background-color: #2a2a2a;
+}
+
+body.modo-oscuro .product-card p {
+  color: #eaeaea;
+}
+
+body.modo-oscuro .add-to-cart {
+  background-color: #a54d78;
+  color: white;
+}
+
+body.modo-oscuro .add-to-cart:hover {
+  background-color: #caa4dd;
+}
+
+body.modo-oscuro .show-details {
+  border: 1px solid #caa4dd;
+  color: #caa4dd;
+}
+
+body.modo-oscuro .show-details:hover {
+  background-color: #caa4dd;
+  color: #1e1e1e;
+}
+
+body.modo-oscuro h2 {
+  color: #caa4dd;
+}
+
+body.modo-oscuro .botones-categorias button {
+  background-color: #593f4f;
+  color: #eaeaea;
+}
+
+body.modo-oscuro .botones-categorias button:hover {
+  background-color: #a54d78;
+  color: white;
 }

@@ -2,6 +2,17 @@ let productos = [];
 let accesorios = [];
 let carteras = [];
 
+const btnMode = document.getElementById("btn-mode");
+const icono = document.getElementById("icono");
+btnMode.addEventListener("click", () => {
+    document.body.classList.toggle("modo-oscuro"); //Agrega la clase modo-oscuro si no está. La quita si ya estaba.
+
+    // Cambiar imagen del botón
+    const modoOscuro = document.body.classList.contains("modo-oscuro");
+    btnMode.src = modoOscuro ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
+    icono.src = modoOscuro ? "./img/logo_tienda2.png" : "./img/logo_tienda3.png";
+});
+
 async function cargarProductos() {
     const respuesta = await fetch('./js/db.json');
     const data = await respuesta.json();
