@@ -1,16 +1,23 @@
 let productos = [];
 let accesorios = [];
 let carteras = [];
+let carrito = [];
 
-const btnMode = document.getElementById("btn-mode");
+// Modo oscuro
 const icono = document.getElementById("logo-tienda");
-btnMode.addEventListener("click", () => {
+const btnMode = document.getElementById("btn-mode").addEventListener("click", () => {
     document.body.classList.toggle("modo-oscuro"); //Agrega la clase modo-oscuro si no está. La quita si ya estaba.
 
     // Cambiar imagen del botón
     const modoOscuro = document.body.classList.contains("modo-oscuro");
     btnMode.src = modoOscuro ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
     icono.src = modoOscuro ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
+});
+
+// Carrito
+document.getElementById("carrito-icono").addEventListener("click", () => {
+    const sidebar = document.querySelector(".cart-section");
+    sidebar.classList.add("visible");
 });
 
 async function cargarProductos() {
@@ -34,7 +41,7 @@ function mostrarProductos(productos) {
         card.innerHTML = `
             <img src="${producto.img}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
-            <p>$${producto.precio}</p>
+            <p>$${producto.precio.toLocaleString('es-AR')}</p>
         `;
         contenedor.appendChild(card);
 
