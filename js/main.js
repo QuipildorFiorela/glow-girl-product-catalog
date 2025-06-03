@@ -3,14 +3,14 @@ let accesorios = [];
 let carteras = [];
 
 const btnMode = document.getElementById("btn-mode");
-const icono = document.getElementById("icono");
+const icono = document.getElementById("logo-tienda");
 btnMode.addEventListener("click", () => {
     document.body.classList.toggle("modo-oscuro"); //Agrega la clase modo-oscuro si no está. La quita si ya estaba.
 
     // Cambiar imagen del botón
     const modoOscuro = document.body.classList.contains("modo-oscuro");
     btnMode.src = modoOscuro ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
-    icono.src = modoOscuro ? "./img/logo_tienda2.png" : "./img/logo_tienda3.png";
+    icono.src = modoOscuro ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
 });
 
 async function cargarProductos() {
@@ -64,12 +64,26 @@ function mostrarProductos(productos) {
     })
 };
 
+function filtro() {
+    const searchBar = document.querySelector(".search-bar");
+    searchBar.addEventListener("keyup", () => {
+        const texto = quitarTildes(searchBar.value.toLowerCase());
+        const filtrados = productos.filter(producto => quitarTildes(producto.nombre.toLowerCase()).includes(texto));
+        document.querySelector('.product-grid').innerHTML = '';
+        mostrarProductos(filtrados);
+    });
+}
+
+function quitarTildes(texto) {
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 
 
 async function init() {
     await cargarProductos();
-    console.log(productos);
     mostrarProductos(productos);
+    filtro();
 }
 
 init();
