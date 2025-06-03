@@ -55,6 +55,90 @@
         "descripcion": "Set de 4 dijes con mosquetón y en forma de corazón para customizar los cordones de las zapatillas.",
         "precio": 9200,
         "img": "img/accesorios/set_dijes_cordones.webp"
+        },
+        {
+        "id": 9,
+        "nombre": "Collar premium multidijes",
+        "descripcion": "Collar corto premium con multidijes con strass.",
+        "precio": 10500,
+        "img": "img/accesorios/collar_multidijes.webp"
+        },
+        {
+        "id": 10,
+        "nombre": "Set de broches mixplating",
+        "descripcion": "Set que incluye 3 broches de flores en mixplating.",
+        "precio": 8900,
+        "img": "img/accesorios/set_broches.webp"
+        },
+        {
+        "id": 11,
+        "nombre": "Collar de perlas con corazón",
+        "descripcion": "Collar corto de perlas y dije de corazón con forma de candado.",
+        "precio": 8900,
+        "img": "img/accesorios/collar_perlas_corazon.webp"
+        },
+        {
+        "id": 12,
+        "nombre": "Aros colgantes con corazón",
+        "descripcion": "Aros colgantes cortos con corazones de glitter.",
+        "precio": 5200,
+        "img": "img/accesorios/aros_corazon.webp"
+        },
+        {
+        "id": 13,
+        "nombre": "Collar Bianca",
+        "descripcion": "Edición especial dedicada a Bianca Monteleone.",
+        "precio": 10000,
+        "img": "img/accesorios/collar_bianca.webp"
+        },
+        {
+        "id": 14,
+        "nombre": "Collar Fiore",
+        "descripcion": "Edición especial dedicada a Fiorela Quipildor.",
+        "precio": 10000,
+        "img": "img/accesorios/collar_fiore.webp"
+        },
+        {
+        "id": 15,
+        "nombre": "Set de collares zodiaco Tauro",
+        "descripcion": "Collar compuesto de cadena de eslabones con dije de zodiaco y otra de piedras naturales.",
+        "precio": 8900,
+        "img": "img/accesorios/set_collares_tauro.webp"
+        },
+        {
+        "id": 16,
+        "nombre": "Set de collares zodiaco Virgo",
+        "descripcion": "Collar compuesto de cadena de eslabones con dije de zodiaco y otra de piedras naturales.",
+        "precio": 8900,
+        "img": "img/accesorios/set_collares_virgo.webp"
+        },
+        {
+        "id": 17,
+        "nombre": "Choker rosa mariposa",
+        "descripcion": "Choker con doble cinta y dije de mariposa de metal con cierre de mosquetón.",
+        "precio": 6900,
+        "img": "img/accesorios/choker_mariposa.webp"
+        },
+        {
+        "id": 18,
+        "nombre": "Set pulseras BFF",
+        "descripcion": "Set por 2 pulseras de la amistad con dije de piedra en forma de corazón que cambia con el estado de ánimo.",
+        "precio": 6900,
+        "img": "img/accesorios/set_pulseras.webp"
+        },
+        {
+        "id": 19,
+        "nombre": "Llavero y charm de zorrito",
+        "descripcion": "Llavero y Charm en forma de zorrito que mueve la cola. Personalizá tus carteras, mochilas o bolsos con Bag Charms!",
+        "precio": 13000,
+        "img": "img/accesorios/charm_zorro.webp"
+        },
+        {
+        "id": 20,
+        "nombre": "Collar corazón amatista",
+        "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra amatista, con cierre de mosquetón.",
+        "precio": 8.900,
+        "img": "img/accesorios/collar_corazon_piedra.webp"
         }
     ],
     "carteras":[
@@ -185,6 +269,34 @@
             "categoria": "carteras",
             "descripcion": "Cartera shopper de cuerina con asa de hombro regulable y detalle lateral de arandelas. Cierre superior",
             "img": "img/carteras/cartera_shopper_wine.webp"
+        },
+        {
+        "id": 17,
+        "nombre": "Tote bag canvas ositos",
+        "descripcion": "Tote bag canvas en color crudo con estampa de ositos y doble asa de hombro",
+        "precio": 18000,
+        "img": "img/carteras/tote_ositos.webp"
+        },
+        {
+        "id": 18,
+        "nombre": "Carteras bowling con hebillas",
+        "descripcion": "Cartera bowling de cuerina con hebillas. Manijas superiores. Cierre superior. Bolsillos frontales con hebillas.",
+        "precio": 45000,
+        "img": "img/carteras/cartera_bowling_hebillas.webp"
+        },
+        {
+        "id": 19,
+        "nombre": "Bandolera multipocket",
+        "descripcion": "Bandolera de cuerina con bolsillo frontal con cierre y asa de hombro",
+        "precio": 45000,
+        "img": "img/carteras/bandolera_multipocket.webp"
+        },
+        {
+        "id": 20,
+        "nombre": "Tote cow lucky you",
+        "descripcion": "Tote bag mediana con estampa cow, forreria, vista y cierre",
+        "precio": 23000,
+        "img": "img/carteras/tote_cow.webp"
         }
     ]
 }
