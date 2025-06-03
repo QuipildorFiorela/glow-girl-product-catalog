@@ -1,15 +1,15 @@
 let productos = [];
 let accesorios = [];
-let belleza = [];
+let carteras = [];
 
 async function cargarProductos() {
     const respuesta = await fetch('./js/db.json');
     const data = await respuesta.json();
     accesorios = data.accesorios;
-    belleza = data.belleza;
+    carteras = data.carteras;
     productos = [
         ...accesorios,
-        ...belleza,
+        ...carteras,
     ];
 }
 
