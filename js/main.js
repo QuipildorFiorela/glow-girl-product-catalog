@@ -82,7 +82,6 @@ function quitarTildes(texto) {
 
 async function init() {
     await cargarProductos();
-    console.log(productos);
     mostrarProductos(productos);
     filtro();
 }
