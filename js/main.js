@@ -4,21 +4,32 @@ let carteras = [];
 let carrito = [];
 
 // Modo oscuro
-const icono = document.getElementById("logo-tienda");
-const btnMode = document.getElementById("btn-mode").addEventListener("click", () => {
-    document.body.classList.toggle("modo-oscuro"); //Agrega la clase modo-oscuro si no está. La quita si ya estaba.
+function darkMode(){
+    const logoTienda = document.getElementById("logo-tienda");
+    const btnColorMode = document.getElementById("btn-mode")
+    btnColorMode.addEventListener("click", () => {
+        document.body.classList.toggle("modo-oscuro"); //Toggle: interruptor, si no tiene la clase "modo-oscuro" la crea, sino la elimina. La primera vez q toco el boton se pasa a crear la clase
 
-    // Cambiar imagen del botón
-    const modoOscuro = document.body.classList.contains("modo-oscuro");
-    btnMode.src = modoOscuro ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
-    icono.src = modoOscuro ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
-});
+        // Cambiar imagen del botón
+        const modoOscuro = document.body.classList.contains("modo-oscuro"); //verifico si el body tiene la clase modo oscuro, guarda true o false
+        btnColorMode.src = modoOscuro ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png"; //si es true modo oscuro : sino modo light
+        logoTienda.src = modoOscuro ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
+    });
+}
 
-// Carrito
+// PENDIENTE
+/*// Carrito
 document.getElementById("carrito-icono").addEventListener("click", () => {
-    const sidebar = document.querySelector(".cart-section");
-    sidebar.classList.add("visible");
+    const sidebar = document.getElementById("carrito-sidebar");
+    sidebar.classList.remove("oculto"); // sacamos la clase oculto
+    sidebar.classList.add("visible");   // mostramos el sidebar
 });
+
+document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
+    const sidebar = document.getElementById("carrito-sidebar");
+    sidebar.classList.remove("visible");
+    sidebar.classList.add("oculto");
+});*/
 
 async function cargarProductos() {
     const respuesta = await fetch('./js/db.json');
@@ -91,6 +102,7 @@ async function init() {
     await cargarProductos();
     mostrarProductos(productos);
     filtro();
+    darkMode();
 }
 
 init();
