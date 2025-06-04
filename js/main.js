@@ -17,23 +17,15 @@ function darkMode() {
     });
 }
 
-function crearCategorias(categorias) {
-    const contenedorImg = document.querySelector(".img-categorias");
-    contenedorImg.innerHTML = "";
-
-    const imagen = document.createElement("img");
-    imagen.id = `img-cartera`;
-    imagen.classList.add("categoria-img");
-    imagen.src = `./img/acceso_carteras.jpg`;
-
-    //la configuracion va aparte
-    //     //le agrego un addEventListener para que al hacer click se redireccione a la pag de la categoria
-    imagen.addEventListener("click", () => {
-        window.location.href = `./carteras.html`
+function funcionalidadCategoriass() { 
+    document.getElementById("categoria-carteras").addEventListener("click", () => {
+    window.location.href = "./carteras.html";
     });
-    contenedorImg.appendChild(imagen);
-}
 
+    document.getElementById("categoria-accesorios").addEventListener("click", () => {
+    window.location.href = "./accesorios.html";
+    });
+}
 
 // PENDIENTE
 /*// Carrito
@@ -206,8 +198,8 @@ async function init() {
     mostrarProductos(productos);
     filtro();
     darkMode();
-    crearCategorias();
     abrirCarrito();
+    funcionalidadCategoriass();
 }
 
 init();
