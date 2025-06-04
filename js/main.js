@@ -4,7 +4,7 @@ let carteras = [];
 let accesorios = [];
 
 // Modo oscuro
-function darkMode(){
+function darkMode() {
     const logoTienda = document.getElementById("logo-tienda");
     const btnColorMode = document.getElementById("btn-mode")
     btnColorMode.addEventListener("click", () => {
@@ -21,17 +21,17 @@ function crearCategorias(categorias) {
     const contenedorImg = document.querySelector(".img-categorias");
     contenedorImg.innerHTML = "";
 
-        const imagen = document.createElement("img");
-        imagen.id = `img-cartera`;
-        imagen.classList.add("categoria-img");
-        imagen.src = `./img/acceso_carteras.jpg`;
+    const imagen = document.createElement("img");
+    imagen.id = `img-cartera`;
+    imagen.classList.add("categoria-img");
+    imagen.src = `./img/acceso_carteras.jpg`;
 
     //la configuracion va aparte
     //     //le agrego un addEventListener para que al hacer click se redireccione a la pag de la categoria
-        imagen.addEventListener("click", () => {
-            window.location.href = `./carteras.html`
-        });
-        contenedorImg.appendChild(imagen);
+    imagen.addEventListener("click", () => {
+        window.location.href = `./carteras.html`
+    });
+    contenedorImg.appendChild(imagen);
 }
 
 
@@ -115,43 +115,89 @@ function quitarTildes(texto) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function mostrarCarrito(){
+function abrirCarrito() {
     const carritoIcono = document.getElementById("cart-icon");
     const carritoSidebar = document.getElementById('carrito-sidebar');
     const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
 
     carritoIcono.addEventListener('click', () => {
         carritoSidebar.classList.add('mostrar');
-        const contenedor = document.getElementById("carrito-items");
-        contenedor.innerHTML = "";
+    })
 
-        carrito.forEach((producto, index) => {
-            const li = document.createElement("li");
-            li.classList.add("item-block");
-            li.innerHTML = `
-                <p class="item-name">${producto.nombre} x${producto.cantidad} - $${producto.precio * producto.cantidad}</p>
-                <button class="delete-button">Eliminar</button>
-            `;
-            contenedor.appendChild(li);
-            const boton = li.querySelector(".delete-button");
-            boton.addEventListener('click', () => eliminarDelCarrito(index));
-        });
-    });
+    btnCerrarCarrito.addEventListener("click", () => {
+        carritoSidebar.classList.remove("mostrar")
+    })
 
-    /*btnCerrarCarrito.addEventListener('click', () => {
-        carritoSidebar.classList.remove('mostrar');
-    });*/
-
+    mostrarCarrito();
 }
 
-function agregarAlCarrito(producto){
+function mostrarCarrito() {
+    const contenedor = document.getElementById("carrito-items");
+    contenedor.innerHTML = "";
+
+    carrito.forEach((producto, indice) => {
+        const divProducto = document.createElement("div");
+        divProducto.classList.add("item-block");
+
+        divProducto.innerHTML = `
+            <img src="${producto.img}" class="modo-icono">
+            <div class="item-info">
+                <h5>${producto.nombre}</h5> 
+                <h6>Cantidad: ${producto.cantidad}</h6>
+                <h4>$${(producto.precio * producto.cantidad).toLocaleString('es-AR')}</h4>
+            </div>
+            <div class="cantidad-control">
+                <button class="decrementar">-</button>
+                <span>${producto.cantidad}</span>
+                <button class="incrementar">+</button>
+            </div>
+            <img class="delete-button" src= "./img/icons/trash_icon.png" alt="Eliminar">
+            `;
+            
+            //<button class="delete-button">🗑️</button>
+        contenedor.appendChild(divProducto);
+
+        // Eventos
+        divProducto.querySelector(".delete-button").addEventListener('click', () => eliminarDelCarrito(indice));
+        divProducto.querySelector(".incrementar").addEventListener('click', () => {
+            producto.cantidad++;
+            mostrarCarrito();
+        });
+        divProducto.querySelector(".decrementar").addEventListener('click', () => {
+            if (producto.cantidad > 1) {
+                producto.cantidad--;
+            } else {
+                carrito.splice(indice, 1);
+            }
+            actualizarTotal();
+            mostrarCarrito();
+        });
+    });
+}
+
+function agregarAlCarrito(producto) {
     const productoExistente = carrito.find(item => item.nombre === producto.nombre);
     if (productoExistente) {
         productoExistente.cantidad++;
     } else {
         carrito.push({ ...producto, cantidad: 1 });
     }
+    actualizarTotal();
     mostrarCarrito();
+}
+
+function eliminarDelCarrito(indice){
+    carrito.splice(indice, 1);
+    actualizarTotal();
+    mostrarCarrito();
+}
+
+function actualizarTotal(){
+    let precioTotal = 0;
+    carrito.forEach(producto => {
+        precioTotal += (producto.precio * producto.cantidad);
+    });
+    document.getElementById("total-price").textContent = `$${precioTotal}`;
 }
 
 
@@ -161,7 +207,7 @@ async function init() {
     filtro();
     darkMode();
     crearCategorias();
-    mostrarCarrito();
+    abrirCarrito();
 }
 
 init();
