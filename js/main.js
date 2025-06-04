@@ -1,7 +1,7 @@
 let productos = [];
-let accesorios = [];
-let carteras = [];
 let carrito = [];
+let carteras = [];
+let accesorios = [];
 
 // Modo oscuro
 function darkMode(){
@@ -16,6 +16,24 @@ function darkMode(){
         logoTienda.src = modoOscuro ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
     });
 }
+
+function crearCategorias(categorias) {
+    const contenedorImg = document.querySelector(".img-categorias");
+    contenedorImg.innerHTML = "";
+
+        const imagen = document.createElement("img");
+        imagen.id = `img-cartera`;
+        imagen.classList.add("categoria-img");
+        imagen.src = `./img/acceso_carteras.jpg`;
+
+    //la configuracion va aparte
+    //     //le agrego un addEventListener para que al hacer click se redireccione a la pag de la categoria
+        imagen.addEventListener("click", () => {
+            window.location.href = `./carteras.html`
+        });
+        contenedorImg.appendChild(imagen);
+}
+
 
 // PENDIENTE
 /*// Carrito
@@ -103,6 +121,7 @@ async function init() {
     mostrarProductos(productos);
     filtro();
     darkMode();
+    crearCategorias();
 }
 
 init();
