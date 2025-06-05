@@ -4,51 +4,61 @@
   box-sizing: border-box;
 }
 
-body {
-  background-image: url('../img/inicio.jpg'); /* Ruta a tu imagen de fondo */
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.fondo {
+  background-image: url('../img/inicio.jpg'); /* asegurate de que la ruta sea correcta */
   background-size: cover;
   background-position: center;
   height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.inicio-container {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 40px;
+.formulario {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
   border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.inicio-container h1 {
+.titulo {
+  top: 15%;
   font-size: 3rem;
-  margin-bottom: 20px;
-  color: #333;
+  color: #222;
+  text-align: center;
+  margin-bottom: 16px;
 }
 
-.inicio-container input {
+input[type="text"] {
   padding: 12px;
   font-size: 1rem;
   width: 250px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  margin-bottom: 20px;
+  outline: none;
+  margin-bottom: 16px;
 }
 
-.inicio-container button {
-  padding: 12px 24px;
-  font-size: 1rem;
+.boton-ingresar {
   background-color: #f09ac2;
   color: white;
-  border: none;
+  font-size: 1rem;
+  padding: 12px;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
-.inicio-container button:hover {
+.boton-ingresar:hover {
   background-color: #e37aa9;
 }

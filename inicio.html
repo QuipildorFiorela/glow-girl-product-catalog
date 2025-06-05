@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Glow Girl - Inicio</title>
     <link rel="stylesheet" href="./css/inicio.css" />
-    </head>
-    <body>
-    <div class="inicio-container">
-        <h1>¡Bienvenido!</h1>
-        <input type="text" id="nombre" placeholder="Ingrese su nombre..." />
-        <br />
-        <button onclick="irATienda()">Entrar</button>
+</head>
+<body>
+    <div class="fondo">
+        <div class="formulario">
+            <h1 class="titulo">¡Bienvenida!</h1>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre..." required />
+            <div class="boton-ingresar" id="btn-ingresar">Ingresar</div>
+        </div>
     </div>
 
-    <script>
-        function irATienda() {
-        const nombre = document.getElementById("nombre").value.trim();
-        if (nombre) {
-            localStorage.setItem("usuario", nombre);
-            window.location.href = "./index.html";
-        } else {
-            alert("Por favor ingresá tu nombre.");
-        }
-        }
-    </script>
+    <script src="js/inicio.js"></script>
 </body>
 </html>
