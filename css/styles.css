@@ -56,7 +56,7 @@ body {
   cursor: pointer;
 }
 
-.iconos-usuario-carrito {
+.iconos {
   display: flex;
   gap: 16px;
 }
