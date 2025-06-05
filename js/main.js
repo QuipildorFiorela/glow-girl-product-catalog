@@ -110,7 +110,11 @@ function quitarTildes(texto) {
 
 function abrirCarrito() {
     const carritoIcono = document.getElementById("cart-icon");
-    const carritoSidebar = document.getElementById('carrito-sidebar');
+    carritoIcono.addEventListener('click', () => {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        window.location.href = "./carrito.html";
+    })
+    /*const carritoSidebar = document.getElementById('carrito-sidebar');
     const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
 
     carritoIcono.addEventListener('click', () => {
@@ -121,7 +125,7 @@ function abrirCarrito() {
         carritoSidebar.classList.remove("mostrar")
     })
 
-    mostrarCarrito();
+    mostrarCarrito();*/
 }
 
 function mostrarCarrito() {
