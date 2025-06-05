@@ -28,20 +28,6 @@ function funcionalidadCategoriass() {
     });
 }
 
-// PENDIENTE
-/*// Carrito
-document.getElementById("carrito-icono").addEventListener("click", () => {
-    const sidebar = document.getElementById("carrito-sidebar");
-    sidebar.classList.remove("oculto"); // sacamos la clase oculto
-    sidebar.classList.add("visible");   // mostramos el sidebar
-});
-
-document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
-    const sidebar = document.getElementById("carrito-sidebar");
-    sidebar.classList.remove("visible");
-    sidebar.classList.add("oculto");
-});*/
-
 async function cargarProductos() {
     const respuesta = await fetch('./js/db.json');
     const data = await respuesta.json();
@@ -114,18 +100,6 @@ function abrirCarrito() {
         localStorage.setItem('carrito', JSON.stringify(carrito));
         window.location.href = "./carrito.html";
     })
-    /*const carritoSidebar = document.getElementById('carrito-sidebar');
-    const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
-
-    carritoIcono.addEventListener('click', () => {
-        carritoSidebar.classList.add('mostrar');
-    })
-
-    btnCerrarCarrito.addEventListener("click", () => {
-        carritoSidebar.classList.remove("mostrar")
-    })
-
-    mostrarCarrito();*/
 }
 
 function mostrarCarrito() {
@@ -150,8 +124,6 @@ function mostrarCarrito() {
             </div>
             <img class="delete-button" src= "./img/icons/trash_icon.png" alt="Eliminar">
             `;
-            
-            //<button class="delete-button">🗑️</button>
         contenedor.appendChild(divProducto);
 
         // Eventos
@@ -196,6 +168,33 @@ function actualizarTotal(){
     });
     document.getElementById("total-price").textContent = `$${precioTotal}`;
 }
+
+//POSIBLE SLIDEBAR DE USUARIO
+
+// CREACIÓN
+/*document.getElementById("carrito-icono").addEventListener("click", () => {
+    const sidebar = document.getElementById("carrito-sidebar");
+    sidebar.classList.remove("oculto"); // sacamos la clase oculto
+    sidebar.classList.add("visible");   // mostramos el sidebar
+});
+
+document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
+    const sidebar = document.getElementById("carrito-sidebar");
+    sidebar.classList.remove("visible");
+    sidebar.classList.add("oculto");
+});*/
+
+// AL APRETAR EL ÍCONO
+/*const carritoSidebar = document.getElementById('carrito-sidebar');
+const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
+
+carritoIcono.addEventListener('click', () => {
+    carritoSidebar.classList.add('mostrar');
+})
+
+btnCerrarCarrito.addEventListener("click", () => {
+    carritoSidebar.classList.remove("mostrar")
+})*/
 
 
 async function init() {
