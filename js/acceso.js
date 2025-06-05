@@ -11,7 +11,7 @@ function funcionalidadBtnIngresar(){
         // Guardamos el nombre si querés usarlo en otra página
         localStorage.setItem("nombreUsuario", nombre);
         // Redirigimos a la página principal
-        window.location.href = "index.html";
+        window.location.href = "inicio.html";
         } else {
         alert("Por favor ingresá tu nombre.");
         }
