@@ -15,21 +15,6 @@ function darkMode() {
     });
 }
 
-
-// PENDIENTE
-/*// Carrito
-document.getElementById("carrito-icono").addEventListener("click", () => {
-    const sidebar = document.getElementById("carrito-sidebar");
-    sidebar.classList.remove("oculto"); // sacamos la clase oculto
-    sidebar.classList.add("visible");   // mostramos el sidebar
-});
-
-document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
-    const sidebar = document.getElementById("carrito-sidebar");
-    sidebar.classList.remove("visible");
-    sidebar.classList.add("oculto");
-});*/
-
 async function cargarProductos() {
     const respuesta = await fetch('./js/db.json');
     const data = await respuesta.json();
@@ -84,62 +69,10 @@ function quitarTildes(texto) {
 
 function abrirCarrito() {
     const carritoIcono = document.getElementById("cart-icon");
-    const carritoSidebar = document.getElementById('carrito-sidebar');
-    const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
-
     carritoIcono.addEventListener('click', () => {
-        carritoSidebar.classList.add('mostrar');
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        window.location.href = "./carrito.html";
     })
-
-    btnCerrarCarrito.addEventListener("click", () => {
-        carritoSidebar.classList.remove("mostrar")
-    })
-
-    mostrarCarrito();
-}
-
-function mostrarCarrito() {
-    const contenedor = document.getElementById("carrito-items");
-    contenedor.innerHTML = "";
-
-    carrito.forEach((producto, indice) => {
-        const divProducto = document.createElement("div");
-        divProducto.classList.add("item-block");
-
-        divProducto.innerHTML = `
-            <img src="${producto.img}" class="modo-icono">
-            <div class="item-info">
-                <h5>${producto.nombre}</h5> 
-                <h6>Cantidad: ${producto.cantidad}</h6>
-                <h4>$${(producto.precio * producto.cantidad).toLocaleString('es-AR')}</h4>
-            </div>
-            <div class="cantidad-control">
-                <button class="decrementar">-</button>
-                <span>${producto.cantidad}</span>
-                <button class="incrementar">+</button>
-            </div>
-            <img class="delete-button" src= "./img/icons/trash_icon.png" alt="Eliminar">
-            `;
-            
-            //<button class="delete-button">🗑️</button>
-        contenedor.appendChild(divProducto);
-
-        // Eventos
-        divProducto.querySelector(".delete-button").addEventListener('click', () => eliminarDelCarrito(indice));
-        divProducto.querySelector(".incrementar").addEventListener('click', () => {
-            producto.cantidad++;
-            mostrarCarrito();
-        });
-        divProducto.querySelector(".decrementar").addEventListener('click', () => {
-            if (producto.cantidad > 1) {
-                producto.cantidad--;
-            } else {
-                carrito.splice(indice, 1);
-            }
-            actualizarTotal();
-            mostrarCarrito();
-        });
-    });
 }
 
 function agregarAlCarrito(producto) {
@@ -149,22 +82,6 @@ function agregarAlCarrito(producto) {
     } else {
         carrito.push({ ...producto, cantidad: 1 });
     }
-    actualizarTotal();
-    mostrarCarrito();
-}
-
-function eliminarDelCarrito(indice){
-    carrito.splice(indice, 1);
-    actualizarTotal();
-    mostrarCarrito();
-}
-
-function actualizarTotal(){
-    let precioTotal = 0;
-    carrito.forEach(producto => {
-        precioTotal += (producto.precio * producto.cantidad);
-    });
-    document.getElementById("total-price").textContent = `$${precioTotal}`;
 }
 
 

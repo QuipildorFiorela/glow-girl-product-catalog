@@ -14,7 +14,6 @@ function darkMode() {
         const modoOscuro = document.body.classList.contains("modo-oscuro"); //verifico si el body tiene la clase modo oscuro, guarda true o false
         btnColorMode.src = modoOscuro ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png"; //si es true modo oscuro : sino modo light
         logoTienda.src = modoOscuro ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
-        
     });
 }
 
@@ -102,48 +101,6 @@ function abrirCarrito() {
     })
 }
 
-function mostrarCarrito() {
-    const contenedor = document.getElementById("carrito-items");
-    contenedor.innerHTML = "";
-
-    carrito.forEach((producto, indice) => {
-        const divProducto = document.createElement("div");
-        divProducto.classList.add("item-block");
-
-        divProducto.innerHTML = `
-            <img src="${producto.img}" class="modo-icono">
-            <div class="item-info">
-                <h5>${producto.nombre}</h5> 
-                <h6>Cantidad: ${producto.cantidad}</h6>
-                <h4>$${(producto.precio * producto.cantidad).toLocaleString('es-AR')}</h4>
-            </div>
-            <div class="cantidad-control">
-                <button class="decrementar">-</button>
-                <span>${producto.cantidad}</span>
-                <button class="incrementar">+</button>
-            </div>
-            <img class="delete-button" src= "./img/icons/trash_icon.png" alt="Eliminar">
-            `;
-        contenedor.appendChild(divProducto);
-
-        // Eventos
-        divProducto.querySelector(".delete-button").addEventListener('click', () => eliminarDelCarrito(indice));
-        divProducto.querySelector(".incrementar").addEventListener('click', () => {
-            producto.cantidad++;
-            mostrarCarrito();
-        });
-        divProducto.querySelector(".decrementar").addEventListener('click', () => {
-            if (producto.cantidad > 1) {
-                producto.cantidad--;
-            } else {
-                carrito.splice(indice, 1);
-            }
-            actualizarTotal();
-            mostrarCarrito();
-        });
-    });
-}
-
 function agregarAlCarrito(producto) {
     const productoExistente = carrito.find(item => item.nombre === producto.nombre);
     if (productoExistente) {
@@ -151,22 +108,6 @@ function agregarAlCarrito(producto) {
     } else {
         carrito.push({ ...producto, cantidad: 1 });
     }
-    actualizarTotal();
-    mostrarCarrito();
-}
-
-function eliminarDelCarrito(indice){
-    carrito.splice(indice, 1);
-    actualizarTotal();
-    mostrarCarrito();
-}
-
-function actualizarTotal(){
-    let precioTotal = 0;
-    carrito.forEach(producto => {
-        precioTotal += (producto.precio * producto.cantidad);
-    });
-    document.getElementById("total-price").textContent = `$${precioTotal}`;
 }
 
 //POSIBLE SLIDEBAR DE USUARIO
