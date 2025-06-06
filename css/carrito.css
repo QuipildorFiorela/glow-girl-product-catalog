@@ -36,6 +36,18 @@ body {
     text-align: center;
 }
 
+.iconos {
+    display: flex;
+    gap: 16px;
+}
+
+.icono {
+    margin-top: 10px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
 .modo-icono {
     /*width: 28px;*/
     height: 50px;
@@ -59,7 +71,7 @@ h2 {
     gap: 1.5rem;
 }
 
-.carrito-items p{
+.carrito-items p {
     text-align: center;
 }
 

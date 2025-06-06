@@ -67,6 +67,17 @@ function quitarTildes(texto) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
+function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function cargarCarrito() {
+    const carritoGuardado = localStorage.getItem("carrito");
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+    }
+}
+
 function abrirCarrito() {
     const carritoIcono = document.getElementById("cart-icon");
     carritoIcono.addEventListener('click', () => {
@@ -76,6 +87,7 @@ function abrirCarrito() {
 }
 
 function agregarAlCarrito(producto) {
+    guardarCarrito();
     const productoExistente = carrito.find(item => item.nombre === producto.nombre);
     if (productoExistente) {
         productoExistente.cantidad++;
@@ -87,6 +99,7 @@ function agregarAlCarrito(producto) {
 async function init() {
     await cargarProductos();
     mostrarProductos(productos);
+    cargarCarrito();
     darkMode();
     abrirCarrito();
 }
