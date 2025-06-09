@@ -42,6 +42,18 @@
 
     <!-- Contenedor principal -->
     <main>
+        <h2>Categorías</h2>
+        <div class="div-categorias">
+            <div class="categoria" id="categoria-carteras">
+                    <img src="./img/acceso_carteras.jpg" alt="Carteras" class="btn-categoria" data-value="cartera">
+                </a>
+            </div>
+            <div class="categoria" id="categoria-accesorios">
+                    <img src="./img/acceso_accesorios.jpg" alt="Accesorios" class="btn-categoria" data-value="accesorio">
+                </a>
+            </div>
+        </div>
+
         <section class="products-section">
             <h2>*ੈ✩‧₊˚EN TENDENCIA*ੈ✩‧₊˚</h2>
             <div class="product-grid">
@@ -49,36 +61,8 @@
             </div>
         </section>
 
-        <h2>Categorías</h2>
-        <div class="div-categorias">
-            <div class="categoria" id="categoria-carteras">
-                <a href="categoria.html?categoria=carteras">
-                    <img src="./img/acceso_carteras.jpg" alt="Carteras">
-                </a>
-            </div>
-            <div class="categoria" id="categoria-accesorios">
-                <a href="categoria.html?categoria=accesorios">
-                    <img src="./img/acceso_accesorios.jpg" alt="Accesorios">
-                </a>
-            </div>
-        </div>
 
     </main>
-    <!-- Sección carrito -->
-    <div id="carrito-sidebar" class="carrito-sidebar oculto">
-
-        <h2>Carrito</h2>
-
-        <div id="carrito-items">
-            <p>No hay elementos en el carrito.</p>
-        </div>
-        <button id="btn-cerrar-carrito">Cerrar</button>
-
-        <div class="cart-total">
-            <p>Total: <span id="total-price">$0.00</span></p>
-        </div>
-
-    </div>
     <script src="js/main.js"></script>
 </body>
 

@@ -1,302 +1,324 @@
 {
-    "accesorios": [
-        {
-        "id": 1,
-        "nombre": "Gorra bordada Hello Kitty",
-        "descripcion": "Gorra canvas con bordado de Hello Kitty y regulador metálico trasero.",
-        "precio": 20000,
-        "img": "img/accesorios/gorra_hello_kitty.webp"
-        },
-        {
-        "id": 2,
-        "nombre": "Llavero y charm Hello Kitty",
-        "descripcion": "Llavero y charm metálico de Hello Kitty con moño de perlas y mosquetón en forma de corazón.",
-        "precio": 15900,
-        "img": "img/accesorios/charm_hello_kitty.webp"
-        },
-        {
-        "id": 3,
-        "nombre": "Llavero y charm metálico de perrito",
-        "descripcion": "Llavero y charm metálico en forma de perrito, moño y frase, con mosquetón metálico para colgar.",
-        "precio": 8900,
-        "img": "img/accesorios/charm_perrito.webp"
-        },
-        {
-        "id": 4,
-        "nombre": "Collar dorado trébol",
-        "descripcion": "Collar corto multicadena premium con dije de trébol y strass.",
-        "precio": 13000,
-        "img": "img/accesorios/collar_trebol.webp"
-        },
-        {
-        "id": 5,
-        "nombre": "Collar relicario de manzana",
-        "descripcion": "Cadena corta con relicario de manzana esmaltado.",
-        "precio": 8900,
-        "img": "img/accesorios/collar_relicario.webp"
-        },
-        {
-        "id": 6,
-        "nombre": "Set de aros mixplating",
-        "descripcion": "Set de 6 pares de aros en metal mixplating con diferentes formatos.",
-        "precio": 8900,
-        "img": "img/accesorios/set_aros.webp"
-        },
-        {
-        "id": 7,
-        "nombre": "Aros cortos frutillas",
-        "descripcion": "Aros cortos con cabezal de strass y dije frutilla de vidrio.",
-        "precio": 9200,
-        "img": "img/accesorios/aros_frutilla.webp"
-        },
-        {
-        "id": 8,
-        "nombre": "Set de dijes para cordones",
-        "descripcion": "Set de 4 dijes con mosquetón y en forma de corazón para customizar los cordones de las zapatillas.",
-        "precio": 9200,
-        "img": "img/accesorios/set_dijes_cordones.webp"
-        },
-        {
-        "id": 9,
-        "nombre": "Collar premium multidijes",
-        "descripcion": "Collar corto premium con multidijes con strass.",
-        "precio": 10500,
-        "img": "img/accesorios/collar_multidijes.webp"
-        },
-        {
-        "id": 10,
-        "nombre": "Set de broches mixplating",
-        "descripcion": "Set que incluye 3 broches de flores en mixplating.",
-        "precio": 8900,
-        "img": "img/accesorios/set_broches.webp"
-        },
-        {
-        "id": 11,
-        "nombre": "Collar de perlas con corazón",
-        "descripcion": "Collar corto de perlas y dije de corazón con forma de candado.",
-        "precio": 8900,
-        "img": "img/accesorios/collar_perlas_corazon.webp"
-        },
-        {
-        "id": 12,
-        "nombre": "Aros colgantes con corazón",
-        "descripcion": "Aros colgantes cortos con corazones de glitter.",
-        "precio": 5200,
-        "img": "img/accesorios/aros_corazon.webp"
-        },
-        {
-        "id": 13,
-        "nombre": "Collar Bianca",
-        "descripcion": "Edición especial dedicada a Bianca Monteleone.",
-        "precio": 10000,
-        "img": "img/accesorios/collar_bianca.webp"
-        },
-        {
-        "id": 14,
-        "nombre": "Collar Fiore",
-        "descripcion": "Edición especial dedicada a Fiorela Quipildor.",
-        "precio": 10000,
-        "img": "img/accesorios/collar_fiore.webp"
-        },
-        {
-        "id": 15,
-        "nombre": "Set de collares zodiaco Tauro",
-        "descripcion": "Collar compuesto de cadena de eslabones con dije de zodiaco y otra de piedras naturales.",
-        "precio": 8900,
-        "img": "img/accesorios/set_collares_tauro.webp"
-        },
-        {
-        "id": 16,
-        "nombre": "Set de collares zodiaco Virgo",
-        "descripcion": "Collar compuesto de cadena de eslabones con dije de zodiaco y otra de piedras naturales.",
-        "precio": 8900,
-        "img": "img/accesorios/set_collares_virgo.webp"
-        },
-        {
-        "id": 17,
-        "nombre": "Choker rosa mariposa",
-        "descripcion": "Choker con doble cinta y dije de mariposa de metal con cierre de mosquetón.",
-        "precio": 6900,
-        "img": "img/accesorios/choker_mariposa.webp"
-        },
-        {
-        "id": 18,
-        "nombre": "Set pulseras BFF",
-        "descripcion": "Set por 2 pulseras de la amistad con dije de piedra en forma de corazón que cambia con el estado de ánimo.",
-        "precio": 6900,
-        "img": "img/accesorios/set_pulseras.webp"
-        },
-        {
-        "id": 19,
-        "nombre": "Llavero y charm de zorrito",
-        "descripcion": "Llavero y Charm en forma de zorrito que mueve la cola. Personalizá tus carteras, mochilas o bolsos con Bag Charms!",
-        "precio": 13000,
-        "img": "img/accesorios/charm_zorro.webp"
-        },
-        {
-        "id": 20,
-        "nombre": "Collar corazón amatista",
-        "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra amatista, con cierre de mosquetón.",
-        "precio": 8.900,
-        "img": "img/accesorios/collar_corazon_piedra.webp"
-        }
-    ],
-    "carteras":[
+    "productos": [
         {
             "id": 1,
-            "nombre": "Cartera city con broche",
-            "precio": 39000,
-            "categoria": "carteras",
-            "descripcion": "Cartera mini city de cuerina con broche metálico de corazón y doble asa corta de mano",
-            "img": "img/carteras/cartera_city.webp"
+            "nombre": "Gorra bordada Hello Kitty",
+            "descripcion": "Gorra canvas con bordado de Hello Kitty y regulador metálico trasero.",
+            "precio": 20000,
+            "img": "img/accesorios/gorra_hello_kitty.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 2,
-            "nombre": "Bandolera Rosa Floreada",
-            "precio": 35000,
-            "categoria": "carteras",
-            "descripcion": "Bandolera de cuerina con bolsillo frontal con cierre. Correa regulable. Cierre superior y puller de material principal. Tag de metal",
-            "img": "img/carteras/bandolera_flores.webp"
+            "nombre": "Llavero y charm Hello Kitty",
+            "descripcion": "Llavero y charm metálico de Hello Kitty con moño de perlas y mosquetón en forma de corazón.",
+            "precio": 15900,
+            "img": "img/accesorios/charm_hello_kitty.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 3,
-            "nombre": "Cartera bowling white",
-            "precio": 45000,
-            "categoria": "carteras",
-            "descripcion": "Cartera bowling de doble asa corta con bolsillos frontales y moño decorativo con charm colgante",
-            "img": "img/carteras/cartera_bowling_white.webp"
+            "nombre": "Llavero y charm metálico de perrito",
+            "descripcion": "Llavero y charm metálico en forma de perrito, moño y frase, con mosquetón metálico para colgar.",
+            "precio": 8900,
+            "img": "img/accesorios/charm_perrito.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 4,
-            "nombre": "Cartera bowling brown con arandelas",
-            "precio": 39000,
-            "categoria": "carteras",
-            "descripcion": "Cartera bowling de cuerina con doble asa corta de mano, cierre superior, asa larga regulable y desmontable",
-            "img": "img/carteras/cartera_bowling_brown.webp"
+            "nombre": "Collar dorado trébol",
+            "descripcion": "Collar corto multicadena premium con dije de trébol y strass.",
+            "precio": 13000,
+            "img": "img/accesorios/collar_trebol.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 5,
-            "nombre": "Tote Bag Red Croissant",
-            "precio": 18000,
-            "categoria": "carteras",
-            "descripcion": "Bolsa reutilizable 38x43 estampa croissant",
-            "img": "img/carteras/tote_croissant.webp"
+            "nombre": "Collar relicario de manzana",
+            "descripcion": "Cadena corta con relicario de manzana esmaltado.",
+            "precio": 8900,
+            "img": "img/accesorios/collar_relicario.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 6,
-            "nombre": "Bandolera Y2K white",
-            "precio": 45000,
-            "categoria": "carteras",
-            "descripcion": "Cartera baguette de cuerina con hebilla. Correa regulable. Cierre superior. Hebilla frontal con broche con botón para cerrado",
-            "img": "img/carteras/bandolera_y2k.webp"
+            "nombre": "Set de aros mixplating",
+            "descripcion": "Set de 6 pares de aros en metal mixplating con diferentes formatos.",
+            "precio": 8900,
+            "img": "img/accesorios/set_aros.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 7,
-            "nombre": "Mini bag baby blue",
-            "precio": 35000,
-            "categoria": "carteras",
-            "descripcion": "Bandolera tipo baguette con charm decorativo y doble asa corta de mano",
-            "img": "img/carteras/mini_bag_blue.webp"
+            "nombre": "Aros cortos frutillas",
+            "descripcion": "Aros cortos con cabezal de strass y dije frutilla de vidrio.",
+            "precio": 9200,
+            "img": "img/accesorios/aros_frutilla.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 8,
-            "nombre": "Cartera Bowling Aqua",
-            "precio": 39000,
-            "categoria": "carteras",
-            "descripcion": "Cartera bowling de cuerina. Correa regulable desmontable. Manijas superiores. Doble cierre superior y pullers de material principal. Tag de metal",
-            "img": "img/carteras/cartera_bowling_aqua.webp"
+            "nombre": "Set de dijes para cordones",
+            "descripcion": "Set de 4 dijes con mosquetón y en forma de corazón para customizar los cordones de las zapatillas.",
+            "precio": 9200,
+            "img": "img/accesorios/set_dijes_cordones.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 9,
-            "nombre": "Bandolera Hobo White",
-            "precio": 45000,
-            "categoria": "carteras",
-            "descripcion": "Bandolera formato hobo con monedero de corazón y asa de hombro regulable. Cierre y puller de material principal",
-            "img": "img/carteras/bandolera_hobo.webp"
+            "nombre": "Collar premium multidijes",
+            "descripcion": "Collar corto premium con multidijes con strass.",
+            "precio": 10500,
+            "img": "img/accesorios/collar_multidijes.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 10,
-            "nombre": "Cartera Bowling B&W",
-            "precio": 39000,
-            "categoria": "carteras",
-            "descripcion": "Cartera bowling de cuerina con doble asa corta de hombro y charms decorativos. Cierre superior",
-            "img": "img/carteras/cartera_bowling_b&w.webp"
+            "nombre": "Set de broches mixplating",
+            "descripcion": "Set que incluye 3 broches de flores en mixplating.",
+            "precio": 8900,
+            "img": "img/accesorios/set_broches.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 11,
-            "nombre": "Cartera bowling black",
-            "precio": 45000,
-            "categoria": "carteras",
-            "descripcion": "Cartera bowling de doble asa corta con bolsillos frontales y moño decorativo con charm colgante",
-            "img": "img/carteras/cartera_bowling_black.webp"
+            "nombre": "Collar de perlas con corazón",
+            "descripcion": "Collar corto de perlas y dije de corazón con forma de candado.",
+            "precio": 8900,
+            "img": "img/accesorios/collar_perlas_corazon.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 12,
-            "nombre": "Bandolera baguette denim",
-            "precio": 45000,
-            "categoria": "carteras",
-            "descripcion": "Bandolera baguette de denim con hebilla frontal para cerrado y asa de hombro regulable. Cierre superior. Tiras laterales decorativas",
-            "img": "img/carteras/bandolera_baguette.webp"
+            "nombre": "Aros colgantes con corazón",
+            "descripcion": "Aros colgantes cortos con corazones de glitter.",
+            "precio": 5200,
+            "img": "img/accesorios/aros_corazon.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 13,
-            "nombre": "Cartera bowling chocolate",
-            "precio": 39000,
-            "categoria": "carteras",
-            "descripcion": "Cartera bowling de cuerina con doble asa de hombro con hebillas regulables y charms decorativos. Cierre superior. Bolsillo frontal con cierre",
-            "img": "img/carteras/cartera_bowling_chocolate.webp"
+            "nombre": "Collar Bianca",
+            "descripcion": "Edición especial dedicada a Bianca Monteleone.",
+            "precio": 10000,
+            "img": "img/accesorios/collar_bianca.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 14,
-            "nombre": "Bandolera baguette coquette",
-            "precio": 32000,
-            "categoria": "carteras",
-            "descripcion": "Bandolera baguette de cuerina con asa de corta de hombro. Cierre superior y puller de material principal. Tag de metal",
-            "img": "img/carteras/bandolera_baguette_coquette.webp"
+            "nombre": "Collar Fiore",
+            "descripcion": "Edición especial dedicada a Fiorela Quipildor.",
+            "precio": 10000,
+            "img": "img/accesorios/collar_fiore.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 15,
-            "nombre": "Cartera Bowling Camel",
-            "precio": 39000,
-            "categoria": "carteras",
-            "descripcion": "Cartera bowling de cuerina con doble asa corta de mano con charms decorativos. Cierre superior. Correa regulable y desmontable. Forrería interior",
-            "img": "img/carteras/cartera_bowling_camel.webp"
+            "nombre": "Set de collares zodiaco Tauro",
+            "descripcion": "Collar compuesto de cadena de eslabones con dije de zodiaco y otra de piedras naturales.",
+            "precio": 8900,
+            "img": "img/accesorios/set_collares_tauro.webp",
+            "categoria": "accesorio"
         },
         {
             "id": 16,
+            "nombre": "Set de collares zodiaco Virgo",
+            "descripcion": "Collar compuesto de cadena de eslabones con dije de zodiaco y otra de piedras naturales.",
+            "precio": 8900,
+            "img": "img/accesorios/set_collares_virgo.webp",
+            "categoria": "accesorio"
+        },
+        {
+            "id": 17,
+            "nombre": "Choker rosa mariposa",
+            "descripcion": "Choker con doble cinta y dije de mariposa de metal con cierre de mosquetón.",
+            "precio": 6900,
+            "img": "img/accesorios/choker_mariposa.webp",
+            "categoria": "accesorio"
+        },
+        {
+            "id": 18,
+            "nombre": "Set pulseras BFF",
+            "descripcion": "Set por 2 pulseras de la amistad con dije de piedra en forma de corazón que cambia con el estado de ánimo.",
+            "precio": 6900,
+            "img": "img/accesorios/set_pulseras.webp",
+            "categoria": "accesorio"
+        },
+        {
+            "id": 19,
+            "nombre": "Llavero y charm de zorrito",
+            "descripcion": "Llavero y Charm en forma de zorrito que mueve la cola. Personalizá tus carteras, mochilas o bolsos con Bag Charms!",
+            "precio": 13000,
+            "img": "img/accesorios/charm_zorro.webp",
+            "categoria": "accesorio"
+        },
+        {
+            "id": 20,
+            "nombre": "Collar corazón amatista",
+            "descripcion": "Cadena corta de cadena torzada y dije de corazón en piedra amatista, con cierre de mosquetón.",
+            "precio": 8.900,
+            "img": "img/accesorios/collar_corazon_piedra.webp",
+            "categoria": "accesorio"
+        },
+        {
+            "id": 21,
+            "nombre": "Cartera city con broche",
+            "precio": 39000,
+            "descripcion": "Cartera mini city de cuerina con broche metálico de corazón y doble asa corta de mano",
+            "img": "img/carteras/cartera_city.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 22,
+            "nombre": "Bandolera Rosa Floreada",
+            "precio": 35000,
+            "descripcion": "Bandolera de cuerina con bolsillo frontal con cierre. Correa regulable. Cierre superior y puller de material principal. Tag de metal",
+            "img": "img/carteras/bandolera_flores.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 23,
+            "nombre": "Cartera bowling white",
+            "precio": 45000,
+            "descripcion": "Cartera bowling de doble asa corta con bolsillos frontales y moño decorativo con charm colgante",
+            "img": "img/carteras/cartera_bowling_white.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 24,
+            "nombre": "Cartera bowling brown con arandelas",
+            "precio": 39000,
+            "descripcion": "Cartera bowling de cuerina con doble asa corta de mano, cierre superior, asa larga regulable y desmontable",
+            "img": "img/carteras/cartera_bowling_brown.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 25,
+            "nombre": "Tote Bag Red Croissant",
+            "precio": 18000,
+            "descripcion": "Bolsa reutilizable 38x43 estampa croissant",
+            "img": "img/carteras/tote_croissant.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 26,
+            "nombre": "Bandolera Y2K white",
+            "precio": 45000,
+            "descripcion": "Cartera baguette de cuerina con hebilla. Correa regulable. Cierre superior. Hebilla frontal con broche con botón para cerrado",
+            "img": "img/carteras/bandolera_y2k.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 27,
+            "nombre": "Mini bag baby blue",
+            "precio": 35000,
+            "descripcion": "Bandolera tipo baguette con charm decorativo y doble asa corta de mano",
+            "img": "img/carteras/mini_bag_blue.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 28,
+            "nombre": "Cartera Bowling Aqua",
+            "precio": 39000,
+            "descripcion": "Cartera bowling de cuerina. Correa regulable desmontable. Manijas superiores. Doble cierre superior y pullers de material principal. Tag de metal",
+            "img": "img/carteras/cartera_bowling_aqua.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 29,
+            "nombre": "Bandolera Hobo White",
+            "precio": 45000,
+            "descripcion": "Bandolera formato hobo con monedero de corazón y asa de hombro regulable. Cierre y puller de material principal",
+            "img": "img/carteras/bandolera_hobo.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 30,
+            "nombre": "Cartera Bowling B&W",
+            "precio": 39000,
+            "descripcion": "Cartera bowling de cuerina con doble asa corta de mano. Cierre superior con pullers de material principal y tag metálico",
+            "img": "img/carteras/cartera_bowling_bw.webp",
+            "categoria": "cartera"
+        },
+        {
+            "id": 31,
+            "nombre": "Cartera bowling black",
+            "precio": 45000,
+            "descripcion": "Cartera bowling de doble asa corta con bolsillos frontales y moño decorativo con charm colgante",
+            "img": "img/carteras/cartera_bowling_black.webp",
+            "categoria": "cartera" 
+        },
+        {
+            "id": 32,
+            "nombre": "Bandolera baguette denim",
+            "precio": 45000,
+            "descripcion": "Bandolera baguette de denim con hebilla frontal para cerrado y asa de hombro regulable. Cierre superior. Tiras laterales decorativas",
+            "img": "img/carteras/bandolera_baguette.webp",
+            "categoria": "cartera" 
+        },
+        {
+            "id": 33,
+            "nombre": "Cartera bowling chocolate",
+            "precio": 39000,
+            "descripcion": "Cartera bowling de cuerina con doble asa de hombro con hebillas regulables y charms decorativos. Cierre superior. Bolsillo frontal con cierre",
+            "img": "img/carteras/cartera_bowling_chocolate.webp",
+            "categoria": "cartera" 
+        },
+        {
+            "id": 34,
+            "nombre": "Bandolera baguette coquette",
+            "precio": 32000,
+            "descripcion": "Bandolera baguette de cuerina con asa de corta de hombro. Cierre superior y puller de material principal. Tag de metal",
+            "img": "img/carteras/bandolera_baguette_coquette.webp",
+            "categoria": "cartera" 
+        },
+        {
+            "id": 35,
+            "nombre": "Cartera Bowling Camel",
+            "precio": 39000,
+            "descripcion": "Cartera bowling de cuerina con doble asa corta de mano con charms decorativos. Cierre superior. Correa regulable y desmontable. Forrería interior",
+            "img": "img/carteras/cartera_bowling_camel.webp",
+            "categoria": "cartera" 
+        },
+        {
+            "id": 36,
             "nombre": "Cartera shopper wine",
             "precio": 49000,
-            "categoria": "carteras",
             "descripcion": "Cartera shopper de cuerina con asa de hombro regulable y detalle lateral de arandelas. Cierre superior",
-            "img": "img/carteras/cartera_shopper_wine.webp"
+            "img": "img/carteras/cartera_shopper_wine.webp",
+            "categoria": "cartera" 
         },
         {
-        "id": 17,
-        "nombre": "Tote bag canvas ositos",
-        "descripcion": "Tote bag canvas en color crudo con estampa de ositos y doble asa de hombro",
-        "precio": 18000,
-        "img": "img/carteras/tote_ositos.webp"
+            "id": 37,
+            "nombre": "Tote bag canvas ositos",
+            "descripcion": "Tote bag canvas en color crudo con estampa de ositos y doble asa de hombro",
+            "precio": 18000,
+            "img": "img/carteras/tote_ositos.webp",
+            "categoria": "cartera" 
         },
         {
-        "id": 18,
-        "nombre": "Carteras bowling con hebillas",
-        "descripcion": "Cartera bowling de cuerina con hebillas. Manijas superiores. Cierre superior. Bolsillos frontales con hebillas.",
-        "precio": 45000,
-        "img": "img/carteras/cartera_bowling_hebillas.webp"
+            "id": 38,
+            "nombre": "Carteras bowling con hebillas",
+            "descripcion": "Cartera bowling de cuerina con hebillas. Manijas superiores. Cierre superior. Bolsillos frontales con hebillas.",
+            "precio": 45000,
+            "img": "img/carteras/cartera_bowling_hebillas.webp",
+            "categoria": "cartera" 
         },
         {
-        "id": 19,
-        "nombre": "Bandolera multipocket",
-        "descripcion": "Bandolera de cuerina con bolsillo frontal con cierre y asa de hombro",
-        "precio": 45000,
-        "img": "img/carteras/bandolera_multipocket.webp"
+            "id": 39,
+            "nombre": "Bandolera multipocket",
+            "descripcion": "Bandolera de cuerina con bolsillo frontal con cierre y asa de hombro",
+            "precio": 45000,
+            "img": "img/carteras/bandolera_multipocket.webp",
+            "categoria": "cartera" 
         },
         {
-        "id": 20,
-        "nombre": "Tote cow lucky you",
-        "descripcion": "Tote bag mediana con estampa cow, forreria, vista y cierre",
-        "precio": 23000,
-        "img": "img/carteras/tote_cow.webp"
+            "id": 40,
+            "nombre": "Tote cow lucky you",
+            "descripcion": "Tote bag mediana con estampa cow, forreria, vista y cierre",
+            "precio": 23000,
+            "img": "img/carteras/tote_cow.webp",
+            "categoria": "cartera" 
         }
     ]
 }

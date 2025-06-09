@@ -1,8 +1,6 @@
 let productos = [];
 let carrito = [];
-let carteras = [];
-let accesorios = [];
-
+let categoria = "";
 // Modo oscuro
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
@@ -27,31 +25,33 @@ function darkMode() {
     });
 }
 
-function funcionalidadCategoriass() {
-    document.getElementById("categoria-carteras").addEventListener("click", () => {
-        window.location.href = "./carteras.html";
-    });
-
-    document.getElementById("categoria-accesorios").addEventListener("click", () => {
-        window.location.href = "./accesorios.html";
-    });
+function funcionalidadCategorias() {
+    const botonesCat = document.getElementsByClassName("btn-categoria")
+    for (let boton of botonesCat) { //recorro los botones de botonesCat, let SIEMPRE, para manejar el boton como una instancia y no como un puntero/referencia
+        boton.addEventListener("click", () => {
+            if (categoria == boton.dataset.value){ //si ya estoy en la categoria y vuelvo a hacer click en la misma salgo
+                categoria = ""
+            } else {
+                categoria = boton.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
+            }
+            mostrarProductos(productos) //muestro los productos que coincidan con la categoria que estoy queriendo mostrar
+        })
+    }
 }
 
 async function cargarProductos() {
     const respuesta = await fetch('./js/db.json');
     const data = await respuesta.json();
-    accesorios = data.accesorios;
-    carteras = data.carteras;
-    productos = [
-        ...accesorios,
-        ...carteras,
-    ];
+    productos = data.productos; //me traigo todos los productos en una misma lista
 }
 
 function mostrarProductos(productos) {
     const contenedor = document.querySelector('.product-grid');
     contenedor.innerHTML = "";
     productos.forEach(producto => {
+        if(categoria != "" && producto.categoria != categoria){ //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
+            return; //continua con el siguiente y no muestra el producto cuya cat no coincide con la mostrada
+        }
         const card = document.createElement("div");
         card.classList.add("product-card");
 
@@ -195,7 +195,7 @@ async function init() {
     cargarCarrito();
     filtro();
     abrirCarrito();
-    funcionalidadCategoriass();
+    funcionalidadCategorias();
     ventanaUsuario();
 }
 
