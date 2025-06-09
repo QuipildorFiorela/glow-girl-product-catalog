@@ -2,11 +2,13 @@ let carrito = [];
 
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
+    const logoTienda = document.getElementById("logo-tienda");
 
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("modo") === "oscuro") {
         document.body.classList.add("modo-oscuro");
         btnMode.src = "./img/icons/dark_mode_icon.png";
+        logoTienda.src= "./img/icons/logo_tienda_dark_icon.png";
     }
 
     btnMode.addEventListener("click", () => {
@@ -14,11 +16,13 @@ function darkMode() {
         
         // Cambiar ícono
         btnMode.src = modoActivo ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
+        logoTienda.src = modoActivo ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
 
         // Guardar en localStorage
         localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
     });
 }
+
 
 function cargarCarrito() {
     const carritoGuardado = localStorage.getItem("carrito");

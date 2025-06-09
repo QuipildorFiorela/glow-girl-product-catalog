@@ -162,10 +162,10 @@ btnCerrarCarrito.addEventListener("click", () => {
 
 async function init() {
     await cargarProductos();
+    darkMode();
     mostrarProductos(productos);
     cargarCarrito();
     filtro();
-    darkMode();
     abrirCarrito();
     funcionalidadCategoriass();
 }
