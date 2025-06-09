@@ -1,21 +1,34 @@
+let accesorios = [];
+let carteras = [];
 let productos = [];
 let carrito = [];
+const categoria = new URLSearchParams(window.location.search).get('categoria');
+
+function btnLogo(){
+    const btnVolverInicio = document.getElementById("logo-tienda");
+    btnVolverInicio.addEventListener("click", () => {
+        window.location.href = "./inicio.html"
+    })
+}
 
 // Modo oscuro
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
+    const logoTienda = document.getElementById("logo-tienda");
 
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("modo") === "oscuro") {
         document.body.classList.add("modo-oscuro");
         btnMode.src = "./img/icons/dark_mode_icon.png";
+        logoTienda.src = "./img/icons/logo_tienda_dark_icon.png";
     }
 
     btnMode.addEventListener("click", () => {
         const modoActivo = document.body.classList.toggle("modo-oscuro");
-        
+
         // Cambiar ícono
         btnMode.src = modoActivo ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
+        logoTienda.src = modoActivo ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
 
         // Guardar en localStorage
         localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
@@ -25,9 +38,22 @@ function darkMode() {
 async function cargarProductos() {
     const respuesta = await fetch('./js/db.json');
     const data = await respuesta.json();
-    productos = data.carteras; // solo carteras
+    carteras = data.carteras;
+    accesorios = data.accesorios;
 }
 
+function determinarCategoria(){
+    const tituloCategoria = document.getElementById("titulo-categoria");
+    tituloCategoria.textContent = `*ੈ✩‧₊˚${categoria.toUpperCase()}*ੈ✩‧₊˚`;
+    switch (categoria) {
+        case 'carteras':
+            productos = carteras;
+            break
+        case 'accesorios':
+            productos = accesorios;
+            break;
+    }
+}
 
 function mostrarProductos(productos) {
     const contenedor = document.querySelector('.product-grid');
@@ -103,11 +129,14 @@ function agregarAlCarrito(producto) {
     }
 }
 
+
 async function init() {
     await cargarProductos();
+    determinarCategoria();
     mostrarProductos(productos);
     cargarCarrito();
     darkMode();
+    btnLogo();
     abrirCarrito();
 }
 
