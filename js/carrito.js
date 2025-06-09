@@ -112,10 +112,39 @@ function actualizarTotal() {
     document.getElementById("subtotal-precio").textContent = `$${precioTotal.toLocaleString('es-AR')}`;
 }
 
+function ventanaUsuario() {
+    const iconoUsuario = document.getElementById("icono-usuario");
+    const ventana = document.getElementById("ventana-usuario");
+    const nombreUsuario = document.getElementById("nombre-usuario");
+    const cerrarSesionBtn = document.getElementById("cerrar-sesion");
+
+    // Supongamos que guardaste el nombre en localStorage con la clave "nombreUsuario"
+    const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
+    nombreUsuario.textContent = nombreGuardado;
+
+    iconoUsuario.addEventListener("click", () => {
+        ventana.classList.toggle("oculto");
+    });
+
+    cerrarSesionBtn.addEventListener("click", () => {
+        localStorage.removeItem("nombreUsuario");
+        localStorage.removeItem("carrito");
+        window.location.href = "./acceso.html"; // Cambiar a la ruta de tu inicio
+    });
+
+    // Cerrar la ventana si se hace clic fuera
+    document.addEventListener("click", (e) => {
+        if (!document.querySelector(".usuario").contains(e.target)) {
+            ventana.classList.add("oculto");
+        }
+    });
+}
+
 function init() {
     darkMode();
     cargarCarrito();
     mostrarCarrito();
+    ventanaUsuario();
 }
 
 init();

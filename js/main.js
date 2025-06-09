@@ -12,12 +12,12 @@ function darkMode() {
     if (localStorage.getItem("modo") === "oscuro") {
         document.body.classList.add("modo-oscuro");
         btnMode.src = "./img/icons/dark_mode_icon.png";
-        logoTienda.src= "./img/icons/logo_tienda_dark_icon.png";
+        logoTienda.src = "./img/icons/logo_tienda_dark_icon.png";
     }
 
     btnMode.addEventListener("click", () => {
         const modoActivo = document.body.classList.toggle("modo-oscuro");
-        
+
         // Cambiar ícono
         btnMode.src = modoActivo ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
         logoTienda.src = modoActivo ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
@@ -27,13 +27,13 @@ function darkMode() {
     });
 }
 
-function funcionalidadCategoriass() { 
+function funcionalidadCategoriass() {
     document.getElementById("categoria-carteras").addEventListener("click", () => {
-    window.location.href = "./carteras.html";
+        window.location.href = "./carteras.html";
     });
 
     document.getElementById("categoria-accesorios").addEventListener("click", () => {
-    window.location.href = "./accesorios.html";
+        window.location.href = "./accesorios.html";
     });
 }
 
@@ -132,6 +132,34 @@ function agregarAlCarrito(producto) {
     }
 }
 
+function ventanaUsuario() {
+    const iconoUsuario = document.getElementById("icono-usuario");
+    const ventana = document.getElementById("ventana-usuario");
+    const nombreUsuario = document.getElementById("nombre-usuario");
+    const cerrarSesionBtn = document.getElementById("cerrar-sesion");
+
+    // Supongamos que guardaste el nombre en localStorage con la clave "nombreUsuario"
+    const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
+    nombreUsuario.textContent = nombreGuardado;
+
+    iconoUsuario.addEventListener("click", () => {
+        ventana.classList.toggle("oculto");
+    });
+
+    cerrarSesionBtn.addEventListener("click", () => {
+        localStorage.removeItem("nombreUsuario");
+        localStorage.removeItem("carrito");
+        window.location.href = "./acceso.html"; // Cambiar a la ruta de tu inicio
+    });
+
+    // Cerrar la ventana si se hace clic fuera
+    document.addEventListener("click", (e) => {
+        if (!document.querySelector(".usuario").contains(e.target)) {
+            ventana.classList.add("oculto");
+        }
+    });
+}
+
 //POSIBLE SLIDEBAR DE USUARIO
 
 // CREACIÓN
@@ -168,6 +196,7 @@ async function init() {
     filtro();
     abrirCarrito();
     funcionalidadCategoriass();
+    ventanaUsuario();
 }
 
 init();

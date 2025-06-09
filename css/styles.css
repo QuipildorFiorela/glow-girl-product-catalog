@@ -75,6 +75,44 @@ header{
   cursor: pointer;
 }
 
+.usuario {
+  position: relative;
+  display: inline-block;
+}
+
+.usuario img {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.ventana-usuario {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-width: 160px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.ventana-usuario button {
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 5px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.oculto {
+  display: none;
+}
+
 .modo-icono {
   /*width: 28px;*/
   height: 50px;
