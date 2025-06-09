@@ -1,5 +1,10 @@
 let carrito = [];
 
+const btnVolverInicio = document.getElementById("logo-tienda");
+btnVolverInicio.addEventListener("click", () => {
+    window.location.href = "./inicio.html"
+})
+
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
     const logoTienda = document.getElementById("logo-tienda");
