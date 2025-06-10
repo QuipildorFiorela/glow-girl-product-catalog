@@ -1,0 +1,20 @@
+{
+  "name": "tp_grupal_prograiii_div132",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Biancu12/tp_grupal_prograIII_div132.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Biancu12/tp_grupal_prograIII_div132/issues"
+  },
+  "homepage": "https://github.com/Biancu12/tp_grupal_prograIII_div132#readme"
+}

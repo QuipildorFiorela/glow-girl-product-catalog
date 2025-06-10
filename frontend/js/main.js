@@ -29,7 +29,7 @@ function funcionalidadCategorias() {
     const botonesCat = document.getElementsByClassName("btn-categoria")
     for (let boton of botonesCat) { //recorro los botones de botonesCat, let SIEMPRE, para manejar el boton como una instancia y no como un puntero/referencia
         boton.addEventListener("click", () => {
-            if (categoria == boton.dataset.value){ //si ya estoy en la categoria y vuelvo a hacer click en la misma salgo
+            if (categoria == boton.dataset.value){ //si ya estoy en la categoria y vuelvo a hacer click en la misma y salgo
                 categoria = ""
             } else {
                 categoria = boton.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
