@@ -29,7 +29,7 @@ function funcionalidadCategorias() {
     const botonesCat = document.getElementsByClassName("btn-categoria")
     for (let boton of botonesCat) { //recorro los botones de botonesCat, let SIEMPRE, para manejar el boton como una instancia y no como un puntero/referencia
         boton.addEventListener("click", () => {
-            if (categoria == boton.dataset.value){ //si ya estoy en la categoria y vuelvo a hacer click en la misma, salgo
+            if (categoria == boton.dataset.value) { //si ya estoy en la categoria y vuelvo a hacer click en la misma, salgo
                 categoria = ""
             } else {
                 categoria = boton.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
@@ -58,7 +58,7 @@ function mostrarProductos(productos) {
     const contenedor = document.querySelector('.product-grid');
     contenedor.innerHTML = "";
     productos.forEach(producto => {
-        if(categoria != "" && producto.categoria != categoria){ //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
+        if (categoria != "" && producto.categoria != categoria) { //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
             return; //continua con el siguiente y no muestra el producto cuya cat no coincide con la mostrada
         }
         const card = document.createElement("div");
@@ -90,11 +90,42 @@ function mostrarProductos(productos) {
         };
 
         // Botón agregar
-        const botonAgregar = document.createElement('button');
-        botonAgregar.className = "add-to-cart";
-        botonAgregar.innerHTML = `Agregar`
-        card.appendChild(botonAgregar);
-        botonAgregar.addEventListener("click", () => agregarAlCarrito(producto));
+        const productoEnCarrito = carrito.find(item => item.nombre === producto.nombre); //Busca el producto en el carrito
+        
+        if (productoEnCarrito) { //Si está en el carrito, crea los botones para incrementar y descrementar
+            const divCantidad = document.createElement("div");
+            divCantidad.innerHTML = `
+                <button class="decrementar">-</button>
+                <span>${productoEnCarrito.cantidad}</span>
+                <button class="incrementar">+</button>
+            `;
+            card.appendChild(divCantidad);
+
+            divCantidad.querySelector(".incrementar").addEventListener('click', () => { //Si toco +, aumento la cantidad
+                productoEnCarrito.cantidad++;
+                guardarCarrito();
+                mostrarProductos(productos);
+            });
+
+            divCantidad.querySelector(".decrementar").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
+                productoEnCarrito.cantidad--;
+                if (productoEnCarrito.cantidad <= 0) {
+                    carrito = carrito.filter(item => item.nombre !== producto.nombre);
+                }
+                guardarCarrito();
+                mostrarProductos(productos);
+            });
+
+        } else { //Si no está en el carrito, crea el botón de agregar
+            const botonAgregar = document.createElement('button');
+            botonAgregar.className = "add-to-cart";
+            botonAgregar.innerHTML = `Agregar`;
+            card.appendChild(botonAgregar);
+            botonAgregar.addEventListener("click", () => {
+                agregarAlCarrito(producto);
+                mostrarProductos(productos);
+            });
+        }
     })
 };
 
@@ -132,13 +163,14 @@ function abrirCarrito() {
 }
 
 function agregarAlCarrito(producto) {
-    guardarCarrito();
     const productoExistente = carrito.find(item => item.nombre === producto.nombre);
     if (productoExistente) {
         productoExistente.cantidad++;
     } else {
         carrito.push({ ...producto, cantidad: 1 });
     }
+    guardarCarrito();
+    mostrarProductos(productos);
 }
 
 function ventanaUsuario() {
@@ -177,7 +209,7 @@ function ventanaUsuario() {
     sidebar.classList.remove("oculto"); // sacamos la clase oculto
     sidebar.classList.add("visible");   // mostramos el sidebar
 });
-
+ 
 document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
     const sidebar = document.getElementById("carrito-sidebar");
     sidebar.classList.remove("visible");
@@ -187,11 +219,11 @@ document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
 // AL APRETAR EL ÍCONO
 /*const carritoSidebar = document.getElementById('carrito-sidebar');
 const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
-
+ 
 carritoIcono.addEventListener('click', () => {
     carritoSidebar.classList.add('mostrar');
 })
-
+ 
 btnCerrarCarrito.addEventListener("click", () => {
     carritoSidebar.classList.remove("mostrar")
 })*/
@@ -200,8 +232,8 @@ btnCerrarCarrito.addEventListener("click", () => {
 async function init() {
     await cargarProductos();
     darkMode();
-    mostrarProductos(productos);
     cargarCarrito();
+    mostrarProductos(productos);
     filtro();
     abrirCarrito();
     funcionalidadCategorias();
