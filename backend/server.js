@@ -3,7 +3,7 @@
 // IMPORTS
 const express = require("express");
 const cors = require("cors");
-const messageRouter = require("./routes/message")
+const messageRouter = require("./src/routes/message")
 
 // SETINGS
 const app = express();

@@ -1,6 +1,6 @@
 //COTROLLERS: CONTIENE EL CONJUNTO DE FUNCIONES QUE VAN A SER LLAMADOS LUEGO EN LAS RUTAS!
 
-const conexion = require('../dbMysql');
+const conexion = require('../../dbMysql');
 
 //CONTROLLERS
 const getTable = function(req, res) {

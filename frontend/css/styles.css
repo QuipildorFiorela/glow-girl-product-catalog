@@ -396,6 +396,7 @@ img.delete-button:hover {
   filter: grayscale(0%);
 }
 
+
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 body.modo-oscuro {
   background-color: black;

@@ -2,9 +2,10 @@
   "name": "tp_grupal_prograiii_div132",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "mysql2": "^3.14.1",
     "express": "^5.1.0",
     "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
