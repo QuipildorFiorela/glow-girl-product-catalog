@@ -1,18 +1,8 @@
-:root {
-    --rosa-suave: #f8d7e3;
-    --rosa-claro: #ffd4e4;
-    --rosa: #f0a6ca;
-    --morado-suave: #b58db6;
-    --gris-suave: #f5f5f5;
-    --gris-oscuro: #333;
-    --fuente: 'Segoe UI', sans-serif;
-}
-
 body {
-    font-family: var(--fuente);
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    background-color: var(--gris-suave);
-    color: var(--gris-oscuro);
+    background-color: #f5f5f5;
+    color: #333;
 }
 
 .navbar {
@@ -48,16 +38,11 @@ body {
     cursor: pointer;
 }
 
-.modo-icono {
-    /*width: 28px;*/
-    height: 50px;
-    cursor: pointer;
-}
-
 .usuario {
     position: relative;
     display: inline-block;
 }
+
 
 .usuario img {
     width: 32px;
@@ -92,14 +77,20 @@ body {
     display: none;
 }
 
+.modo-icono {
+    /*width: 28px;*/
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Main--------------------------------------------- */
 h2 {
     text-align: center;
     font-size: 1.8rem;
-    color: var(--morado-suave);
+    color: #b58db6;
     margin-top: 2rem;
 }
 
-/*CARRITO*/
 .carrito-items {
     max-height: 80vh;
     overflow-y: auto;
@@ -225,7 +216,7 @@ img.delete-button:hover {
 
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 body.modo-oscuro {
-    background-color: rgb(38, 38, 38);
+    background-color: rgb(20, 20, 20);
     color: #eaeaea;
 }
 
@@ -233,8 +224,23 @@ body.modo-oscuro .navbar {
     background-color: #2e2e2e;
 }
 
+body.modo-oscuro .ventana-usuario {
+    background-color: #141414;
+    border: 1px solid #999999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 body.modo-oscuro h2 {
-    color: #caa4dd;
+    color: #a580b6;
+}
+
+body.modo-oscuro .cantidad-control{
+    background-color: #0a0a0a;
+}
+
+body.modo-oscuro .incrementar, body.modo-oscuro .decrementar{
+    background-color: #a54d78;
+    color:#eaeaea
 }
 
 body.modo-oscuro .finalizar-compra {
@@ -243,5 +249,5 @@ body.modo-oscuro .finalizar-compra {
 }
 
 body.modo-oscuro .finalizar-compra:hover {
-    background-color: #caa4dd;
+    background-color: #aa6084;
 }

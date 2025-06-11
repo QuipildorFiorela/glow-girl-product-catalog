@@ -88,26 +88,27 @@ function mostrarProductos(productos) {
             card.appendChild(descripcion);
 
         };
-
+        
         // Botón agregar
         const productoEnCarrito = carrito.find(item => item.nombre === producto.nombre); //Busca el producto en el carrito
         
         if (productoEnCarrito) { //Si está en el carrito, crea los botones para incrementar y descrementar
-            const divCantidad = document.createElement("div");
-            divCantidad.innerHTML = `
+            const cantidadControl = document.createElement("div");
+            cantidadControl.className = "cantidad-control"
+            cantidadControl.innerHTML = `
                 <button class="decrementar">-</button>
                 <span>${productoEnCarrito.cantidad}</span>
                 <button class="incrementar">+</button>
             `;
-            card.appendChild(divCantidad);
+            card.appendChild(cantidadControl);
 
-            divCantidad.querySelector(".incrementar").addEventListener('click', () => { //Si toco +, aumento la cantidad
+            cantidadControl.querySelector(".incrementar").addEventListener('click', () => { //Si toco +, aumento la cantidad
                 productoEnCarrito.cantidad++;
                 guardarCarrito();
                 mostrarProductos(productos);
             });
 
-            divCantidad.querySelector(".decrementar").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
+            cantidadControl.querySelector(".decrementar").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
                 productoEnCarrito.cantidad--;
                 if (productoEnCarrito.cantidad <= 0) {
                     carrito = carrito.filter(item => item.nombre !== producto.nombre);
@@ -201,7 +202,7 @@ function ventanaUsuario() {
     });
 }
 
-//POSIBLE SLIDEBAR DE USUARIO
+//POSIBLE SLIDEBAR
 
 // CREACIÓN
 /*document.getElementById("carrito-icono").addEventListener("click", () => {
@@ -209,7 +210,7 @@ function ventanaUsuario() {
     sidebar.classList.remove("oculto"); // sacamos la clase oculto
     sidebar.classList.add("visible");   // mostramos el sidebar
 });
- 
+
 document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
     const sidebar = document.getElementById("carrito-sidebar");
     sidebar.classList.remove("visible");
@@ -219,11 +220,11 @@ document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
 // AL APRETAR EL ÍCONO
 /*const carritoSidebar = document.getElementById('carrito-sidebar');
 const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
- 
+
 carritoIcono.addEventListener('click', () => {
     carritoSidebar.classList.add('mostrar');
 })
- 
+
 btnCerrarCarrito.addEventListener("click", () => {
     carritoSidebar.classList.remove("mostrar")
 })*/
