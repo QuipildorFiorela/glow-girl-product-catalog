@@ -19,22 +19,6 @@ body, html {
   flex-wrap: wrap;
 }
 
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.navbar > #btn-mode {
-  margin-left: auto;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .logo img {
   height: 60px;
   cursor: pointer;
@@ -46,8 +30,13 @@ body, html {
   text-align: center;
 }
 
+.iconos {
+  display: flex;
+  gap: 16px;
+}
+
 .modo-icono {
-  height: 27px;
+  height: 50px;
   cursor: pointer;
 }
 
