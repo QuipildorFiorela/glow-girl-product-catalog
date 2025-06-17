@@ -1,15 +1,18 @@
-CREATE DATABASE tienda_accesorios;
+CREATE DATABASE IF NOT EXISTS tienda_accesorios;
 USE tienda_accesorios;
 
+DELETE FROM productos;
 
-CREATE TABLE productos (
-    id INT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
     img VARCHAR(255),
     categoria VARCHAR(50)
 );
+
+ALTER TABLE productos MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
 
 INSERT INTO productos (id, nombre, descripcion, precio, img, categoria) VALUES
 (1, 'Gorra bordada Hello Kitty', 'Gorra canvas con bordado de Hello Kitty y regulador metálico trasero.', 20000.00, 'img/accesorios/gorra_hello_kitty.webp', 'accesorio'),
@@ -21,7 +24,7 @@ INSERT INTO productos (id, nombre, descripcion, precio, img, categoria) VALUES
 (7, 'Aros cortos frutillas', 'Aros cortos con cabezal de strass y dije frutilla de vidrio.', 9200.00, 'img/accesorios/aros_frutilla.webp', 'accesorio'),
 (8, 'Set de dijes para cordones', 'Set de 4 dijes con mosquetón y en forma de corazón para customizar los cordones de las zapatillas.', 9200.00, 'img/accesorios/set_dijes_cordones.webp', 'accesorio'),
 (9, 'Collar premium multidijes', 'Collar corto premium con multidijes con strass.', 10500.00, 'img/accesorios/collar_multidijes.webp', 'accesorio'),
-(10, 'Set de broches mixplating', 'Set que incluye 3 broches de flores en mixplating.', 8900.00, 'img/accesorios/set_broches.webp', 'accesorio');
+(10, 'Set de broches mixplating', 'Set que incluye 3 broches de flores en mixplating.', 8900.00, 'img/accesorios/set_broches.webp', 'accesorio'),
 (11, 'Collar de perlas con corazón', 'Collar corto de perlas y dije de corazón con forma de candado.', 8900.00, 'img/accesorios/collar_perlas_corazon.webp', 'accesorio'),
 (12, 'Aros colgantes con corazón', 'Aros colgantes cortos con corazones de glitter.', 5200.00, 'img/accesorios/aros_corazon.webp', 'accesorio'),
 (13, 'Collar Bianca', 'Edición especial dedicada a Bianca Monteleone.', 10000.00, 'img/accesorios/collar_bianca.webp', 'accesorio'),
