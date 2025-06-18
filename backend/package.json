@@ -22,8 +22,10 @@
   "homepage": "https://github.com/Biancu12/tp_grupal_prograIII_div132#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "mysql2": "^3.14.1"
+    "mysql2": "^3.14.1",
+    "node": "^24.2.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
