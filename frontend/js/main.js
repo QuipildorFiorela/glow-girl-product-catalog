@@ -58,6 +58,7 @@ function mostrarProductos(productos) {
     const contenedor = document.querySelector('.product-grid');
     contenedor.innerHTML = "";
     productos.forEach(producto => {
+        if (!producto.activo) return; // si no está activo, no lo muestres
         if (categoria != "" && producto.categoria != categoria) { //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
             return; //continua con el siguiente y no muestra el producto cuya cat no coincide con la mostrada
         }
@@ -180,7 +181,6 @@ function ventanaUsuario() {
     const nombreUsuario = document.getElementById("nombre-usuario");
     const cerrarSesionBtn = document.getElementById("cerrar-sesion");
 
-    // Supongamos que guardaste el nombre en localStorage con la clave "nombreUsuario"
     const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
     nombreUsuario.textContent = nombreGuardado;
 
@@ -191,7 +191,7 @@ function ventanaUsuario() {
     cerrarSesionBtn.addEventListener("click", () => {
         localStorage.removeItem("nombreUsuario");
         localStorage.removeItem("carrito");
-        window.location.href = "./acceso.html"; // Cambiar a la ruta de tu inicio
+        window.location.href = "./acceso.html";
     });
 
     // Cerrar la ventana si se hace clic fuera

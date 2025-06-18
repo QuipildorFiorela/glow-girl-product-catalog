@@ -56,6 +56,12 @@ function mostrarCarrito() {
         return;
     }
 
+    renderizarCarrito(contenedor);
+    agregarFuncionalidadCarrito();
+    agregarBotonFinalizarCompra(contenedorBoton);
+}
+
+function renderizarCarrito(contenedor) {
     carrito.forEach((producto, indice) => {
         const divProducto = document.createElement("div");
         divProducto.classList.add("item-block");
@@ -73,11 +79,16 @@ function mostrarCarrito() {
                 </div>
                 <img class="delete-button" src= "./img/icons/trash_icon.png" alt="Eliminar">
                 `;
-
+        divProducto.dataset.index = indice; // Para identificar el producto luego
         contenedor.appendChild(divProducto);
-        contenedor.appendChild(divProducto);
+    });
+}
 
-        // Eventos
+function agregarFuncionalidadCarrito() {
+    document.querySelectorAll(".item-block").forEach(divProducto => {
+        const indice = parseInt(divProducto.dataset.index);
+        const producto = carrito[indice];
+
         divProducto.querySelector(".delete-button").addEventListener('click', () => eliminarDelCarrito(indice));
         divProducto.querySelector(".incrementar").addEventListener('click', () => {
             producto.cantidad++;
@@ -92,13 +103,88 @@ function mostrarCarrito() {
             actualizarCarrito();
         });
     });
+}
 
-    // Botón finalizar compra
+function mostrarModalConfirmacion() {
+    // Evita duplicados
+    if (document.getElementById("modal-confirmacion")) return;
+
+    const modalHTML = `
+        <div class="modal fade show" id="modal-confirmacion" tabindex="-1" style="display: block; background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title w-100">Confirmar Compra</h5>
+            </div>
+            <div class="modal-body">
+                <p>¿Deseás confirmar tu compra?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button id="btn-confirmar" class="btn btn-primary">Sí</button>
+                <button id="btn-cancelar" class="btn btn-secondary">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    `;
+
+    const contenedor = document.createElement("div");
+    contenedor.innerHTML = modalHTML;
+    document.body.appendChild(contenedor);
+
+    // Eventos
+    const modal = document.getElementById("modal-confirmacion");
+    const btnConfirmar = document.getElementById("btn-confirmar");
+    const btnCancelar = document.getElementById("btn-cancelar");
+
+    btnCancelar.addEventListener("click", () => {
+        modal.remove();
+    });
+
+    btnConfirmar.addEventListener("click", () => {
+        modal.remove();
+
+        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        const usuario = localStorage.getItem("nombreUsuario") || "Cliente";
+        const total = carrito.reduce((acc, p) => acc + p.precio, 0);
+
+        const venta = {
+        usuario,
+        productos: carrito,
+        total
+        };
+
+        fetch("/api/ventas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(venta)
+        })
+        .then(res => {
+            if (res.ok) {
+            window.location.href = "ticket.html";
+            } else {
+            alert("Error al registrar la venta");
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Error al contactar al servidor");
+        });
+    });
+}
+
+
+function agregarBotonFinalizarCompra(contenedorBoton) {
     const btnFinalizarCompra = document.createElement("button");
     btnFinalizarCompra.classList = "finalizar-compra";
     btnFinalizarCompra.textContent = "Finalizar Compra";
     contenedorBoton.appendChild(btnFinalizarCompra);
+
+    btnFinalizarCompra.addEventListener("click", () => {
+        mostrarModalConfirmacion();
+    });
 }
+
 
 function eliminarDelCarrito(indice) {
     carrito.splice(indice, 1);
