@@ -1,0 +1,21 @@
+<!-- src/views/products.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Lista de productos</title>
+</head>
+
+<body>
+    <h1>Productos</h1>
+    <ul>
+        <% for(let p of products) { %>
+            <li>
+                <%= p.nombre %> - $<%= p.precio %>
+            </li>
+            <% } %>
+    </ul>
+</body>
+
+</html>
