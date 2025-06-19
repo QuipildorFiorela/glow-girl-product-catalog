@@ -49,3 +49,25 @@ body {
   border-top: 3px solid #c79efb;
   margin: 1rem 0;
 }
+
+/* para imprimir el pdf */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .ticket-container, .ticket-container * {
+    visibility: visible;
+  }
+
+  .ticket-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  #btn-descargar, #btn-salir {
+    display: none;
+  }
+}

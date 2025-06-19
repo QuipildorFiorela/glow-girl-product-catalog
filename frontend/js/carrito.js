@@ -143,12 +143,13 @@ function mostrarModalConfirmacion() {
 
     btnConfirmar.addEventListener("click", () => {
         modal.remove();
-
+        
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
         const usuario = localStorage.getItem("nombreUsuario") || "Cliente";
         const total = carrito.reduce((acc, p) => acc + p.precio, 0);
 
-        const venta = {
+        window.location.href = "./ticket.html";
+        /* const venta = { //PENDIENTE: FALTA CONECTAR BIEN EL BACK PARA ESTA PARTE DEL TICKET
         usuario,
         productos: carrito,
         total
@@ -161,7 +162,7 @@ function mostrarModalConfirmacion() {
         })
         .then(res => {
             if (res.ok) {
-            window.location.href = "ticket.html";
+            window.location.href = "./ticket.html";
             } else {
             alert("Error al registrar la venta");
             }
@@ -169,7 +170,7 @@ function mostrarModalConfirmacion() {
         .catch(err => {
             console.error(err);
             alert("Error al contactar al servidor");
-        });
+        }); */
     });
 }
 
