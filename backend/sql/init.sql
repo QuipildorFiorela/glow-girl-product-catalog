@@ -1,10 +1,8 @@
-CREATE DATABASE IF NOT EXISTS tienda_accesorios;
 USE tienda_accesorios;
-
-DELETE FROM productos;
+DROP TABLE productos;
 
 CREATE TABLE IF NOT EXISTS productos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
@@ -12,8 +10,6 @@ CREATE TABLE IF NOT EXISTS productos (
     categoria VARCHAR(50),
     activo BOOLEAN NOT NULL DEFAULT TRUE
 );
-
-ALTER TABLE productos MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
 
 INSERT INTO productos (id, nombre, descripcion, precio, img, categoria, activo) VALUES
 (1, 'Gorra bordada Hello Kitty', 'Gorra canvas con bordado de Hello Kitty y regulador metálico trasero.', 20000.00, 'img/accesorios/gorra_hello_kitty.webp', 'accesorio', TRUE),
@@ -56,3 +52,5 @@ INSERT INTO productos (id, nombre, descripcion, precio, img, categoria, activo) 
 (38, 'Carteras bowling con hebillas', 'Cartera bowling de cuerina con hebillas. Manijas superiores. Cierre superior. Bolsillos frontales con hebillas.', 45000.00, 'img/carteras/cartera_bowling_hebillas.webp', 'cartera', TRUE),
 (39, 'Bandolera multipocket', 'Bandolera de cuerina con bolsillo frontal con cierre y asa de hombro', 45000.00, 'img/carteras/bandolera_multipocket.webp', 'cartera', TRUE),
 (40, 'Tote cow lucky you', 'Tote bag mediana con estampa cow, forreria, vista y cierre', 23000.00, 'img/carteras/tote_cow.webp', 'cartera', TRUE);
+
+
