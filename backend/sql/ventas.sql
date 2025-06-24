@@ -1,0 +1,9 @@
+USE tienda_accesorios;
+DROP TABLE ventas;
+
+CREATE TABLE ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total DOUBLE NOT NULL
+);
