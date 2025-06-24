@@ -5,6 +5,7 @@ import sequelize from "../config/db-sequalize.js";
 const Product = sequelize.define("Product", {
     //columna id
     id: {
+        // FALTA USAR crypto.randomUUID() PARA EL ID!!!!!!!!!!!!!!!!!!!!;
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -41,19 +42,6 @@ const Product = sequelize.define("Product", {
         allowNull: false,
         defaultValue: true
     }
-}, {
-    tableName: "productos", // 👈 ¡Agregá esta línea!
-    timestamps: false       // 👈 y esta también si tu tabla no tiene createdAt/updatedAt
 });
 
 export default Product;
-
-/*export default class Producto{
-    constructor(nombre, descripcion, precio, img, categoria){
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.img = img;
-        this.categoria = categoria;
-    }
-}*/

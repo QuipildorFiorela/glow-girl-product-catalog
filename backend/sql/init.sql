@@ -1,17 +1,19 @@
 USE tienda_accesorios;
-DROP TABLE productos;
+DROP TABLE products;
 
-CREATE TABLE IF NOT EXISTS productos (
+CREATE TABLE IF NOT EXISTS products (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
     img VARCHAR(255),
     categoria VARCHAR(50),
-    activo BOOLEAN NOT NULL DEFAULT TRUE
+    activo BOOLEAN NOT NULL DEFAULT TRUE,
+	createdAt DATETIME,
+	updatedAt DATETIME
 );
 
-INSERT INTO productos (id, nombre, descripcion, precio, img, categoria, activo) VALUES
+INSERT INTO products (id, nombre, descripcion, precio, img, categoria, activo) VALUES
 (1, 'Gorra bordada Hello Kitty', 'Gorra canvas con bordado de Hello Kitty y regulador metálico trasero.', 20000.00, 'img/accesorios/gorra_hello_kitty.webp', 'accesorio', TRUE),
 (2, 'Llavero y charm Hello Kitty', 'Llavero y charm metálico de Hello Kitty con moño de perlas y mosquetón en forma de corazón.', 15900.00, 'img/accesorios/charm_hello_kitty.webp', 'accesorio', TRUE),
 (3, 'Llavero y charm metálico de perrito', 'Llavero y charm metálico en forma de perrito, moño y frase, con mosquetón metálico para colgar.', 8900.00, 'img/accesorios/charm_perrito.webp', 'accesorio', TRUE),
@@ -52,5 +54,3 @@ INSERT INTO productos (id, nombre, descripcion, precio, img, categoria, activo) 
 (38, 'Carteras bowling con hebillas', 'Cartera bowling de cuerina con hebillas. Manijas superiores. Cierre superior. Bolsillos frontales con hebillas.', 45000.00, 'img/carteras/cartera_bowling_hebillas.webp', 'cartera', TRUE),
 (39, 'Bandolera multipocket', 'Bandolera de cuerina con bolsillo frontal con cierre y asa de hombro', 45000.00, 'img/carteras/bandolera_multipocket.webp', 'cartera', TRUE),
 (40, 'Tote cow lucky you', 'Tote bag mediana con estampa cow, forreria, vista y cierre', 23000.00, 'img/carteras/tote_cow.webp', 'cartera', TRUE);
-
-
