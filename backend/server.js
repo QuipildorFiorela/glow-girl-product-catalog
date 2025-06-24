@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
     res.json({ title: "Home Page" });
 });*/
 import { getAllProducts } from "./src/controllers/productController.js";
-app.get("/", getAllProducts);
+app.get("/products", getAllProducts);
 app.use("/api/products", productRoute);
 
 
