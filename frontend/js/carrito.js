@@ -151,7 +151,7 @@ function mostrarModalConfirmacion() {
         window.location.href = "./ticket.html";
         /* const venta = { //PENDIENTE: FALTA CONECTAR BIEN EL BACK PARA ESTA PARTE DEL TICKET
         usuario,
-        productos: carrito,
+        productos: carrito, //PIDE FECHA NO PRODUCTOS, ESO PARA LA OTRA TABLA
         total
         };
 
