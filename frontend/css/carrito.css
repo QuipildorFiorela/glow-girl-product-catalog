@@ -249,6 +249,107 @@ img.delete-button:hover {
     background-color: #b58db6;
 }
 
+/* -------------------- Ajustes para Tablets (≤ 768px) -------------------- */
+@media (max-width: 768px) {
+    .navbar {
+        gap: 10px;
+    }
+    .item-block {
+        gap: 0.5rem;
+        padding: 0.8rem 0;
+    }
+
+    .item-info h5 {
+        font-size: 1rem;
+    }
+
+    .item-info h6 {
+        font-size: 0.9rem;
+    }
+
+    .item-info h4 {
+        font-size: 1rem;
+    }
+
+    .cantidad-control button {
+        width: 22px;
+        height: 22px;
+        font-size: 14px;
+    }
+
+    .cantidad-control span {
+        width: 22px;
+    }
+
+    .subtotal-row {
+        font-size: 18px;
+    }
+
+    .finalizar-compra {
+        width: 80%;
+    }
+}
+
+
+/* -------------------- Ajustes para Celulares (≤ 480px) -------------------- */
+@media (max-width: 480px) {
+    .navbar {
+        gap: 5px;
+        padding: 0.5rem 1rem;
+    }
+    .modo-icono {
+        height: 40px;
+    }
+
+    .item-block {
+        gap: 0.5rem;
+        padding: 0.8rem 0;
+    }
+
+    .item-block img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .item-info h5 {
+        font-size: 0.95rem;
+    }
+
+    .item-info h6 {
+        font-size: 0.8rem;
+    }
+
+    .item-info h4 {
+        font-size: 0.95rem;
+    }
+
+    .cantidad-control button {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .cantidad-control span {
+        width: 20px;
+    }
+
+    img.delete-button {
+        width: 28px;
+        height: 28px;
+    }
+
+    .subtotal-row {
+        font-size: 16px;
+    }
+
+    .finalizar-compra {
+        width: 90%;
+        padding: 10px 16px;
+        font-size: 1rem;
+    }
+}
+
+
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 body.modo-oscuro {
     background-color: rgb(20, 20, 20);

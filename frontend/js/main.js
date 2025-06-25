@@ -1,6 +1,7 @@
 let productos = [];
 let carrito = [];
 let categoria = "";
+
 // Modo oscuro
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
@@ -57,11 +58,13 @@ async function cargarProductos() {
 function mostrarProductos(productos) {
     const contenedor = document.querySelector('.product-grid');
     contenedor.innerHTML = "";
+
     productos.forEach(producto => {
         if (!producto.activo) return; // si no está activo, no lo muestres
         if (categoria != "" && producto.categoria != categoria) { //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
             return; //continua con el siguiente y no muestra el producto cuya cat no coincide con la mostrada
         }
+
         const card = document.createElement("div");
         card.classList.add("product-card");
 
