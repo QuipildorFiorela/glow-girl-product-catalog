@@ -50,9 +50,9 @@ function funcionalidadCategorias() {
 
 
 async function cargarProductos() {
-    const respuesta = await fetch('./js/db.json');
+    const respuesta = await fetch('http://localhost:5000/api/products'); //CONEXIÓN A LA BDT EXITOSA
     const data = await respuesta.json();
-    productos = data.productos; //me traigo todos los productos en una misma lista
+    productos = data.payload; //me traigo todos los productos en una misma lista
 }
 
 function mostrarProductos(productos) {

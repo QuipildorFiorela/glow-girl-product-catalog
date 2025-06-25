@@ -3,6 +3,7 @@ import { join, __dirname } from "./src/utils/index.js";
 import productRoute from "./src/routes/productRoute.js";
 import sequelize from "./src/config/db-sequalize.js";
 import envs from "./src/config/envs.js";
+import cors from "cors";
 
 //settings
 const app = express();
@@ -24,9 +25,9 @@ const initializeConnection = async () => {
 app.use(express.json());
 app.use(express.static(join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
 //pool.getConnection();
-
-
 app.use("/api/products", productRoute);
 
 

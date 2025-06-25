@@ -39,31 +39,6 @@ header {
     gap: 16px;
     align-items: center;
 }
-
-/* Responsive para pantallas menores a 768px */
-@media (max-width: 768px) {
-    .navbar {
-        justify-content: space-between;
-        gap: 5px;
-    }
-}
-
-/* Responsive para pantallas MUY pequeñas (tipo móvil) */
-@media (max-width: 480px) {
-    .logo img {
-        height: 40px;
-    }
-
-    .icono {
-        width: 24px;
-        height: 24px;
-    }
-
-    .modo-icono {
-        height: 40px;
-    }
-}
-
 .icono {
     margin-top: 10px;
     width: 28px;
@@ -349,6 +324,86 @@ img.delete-button:hover {
     }
 }
 
+/*------------------------------------------------ Fondo del modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Caja del contenido */
+.modal-contenido {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 350px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease;
+    }
+
+/* Animación de aparición */
+@keyframes aparecer {
+    from {
+    opacity: 0;
+    transform: scale(0.8);
+    }
+    to {
+    opacity: 1;
+    transform: scale(1);
+    }
+}
+
+/* Texto */
+.modal-contenido p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Contenedor de botones */
+.modal-botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Botón Sí */
+.btn-confirmar {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirmar:hover {
+    background-color: #ff1493;
+}
+
+/* Botón No */
+.btn-cancelar {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancelar:hover {
+    background-color: #999;
+}
 
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 body.modo-oscuro {

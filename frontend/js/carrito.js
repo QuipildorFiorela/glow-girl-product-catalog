@@ -110,19 +110,12 @@ function mostrarModalConfirmacion() {
     if (document.getElementById("modal-confirmacion")) return;
 
     const modalHTML = `
-        <div class="modal fade show" id="modal-confirmacion" tabindex="-1" style="display: block; background-color: rgba(0,0,0,0.5);">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
-            <div class="modal-header">
-                <h5 class="modal-title w-100">Confirmar Compra</h5>
-            </div>
-            <div class="modal-body">
-                <p>¿Deseás confirmar tu compra?</p>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <button id="btn-confirmar" class="btn btn-primary">Sí</button>
-                <button id="btn-cancelar" class="btn btn-secondary">No</button>
-            </div>
+        <div id="modal-confirmacion" class="modal">
+        <div class="modal-contenido">
+            <p>¿Deseás confirmar tu compra?</p>
+            <div class="modal-botones">
+            <button id="btn-confirmar" class="btn-confirmar">Sí</button>
+            <button id="btn-cancelar" class="btn-cancelar">No</button>
             </div>
         </div>
         </div>
@@ -149,7 +142,8 @@ function mostrarModalConfirmacion() {
         const total = carrito.reduce((acc, p) => acc + p.precio, 0);
 
         window.location.href = "./ticket.html";
-        /* const venta = { //PENDIENTE: FALTA CONECTAR BIEN EL BACK PARA ESTA PARTE DEL TICKET
+        //PENDIENTE: FALTA CONECTAR BIEN EL BACK PARA ESTA PARTE DEL TICKET
+        /* const venta = {
         usuario,
         productos: carrito, //PIDE FECHA NO PRODUCTOS, ESO PARA LA OTRA TABLA
         total
