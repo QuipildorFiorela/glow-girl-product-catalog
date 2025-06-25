@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS products (
     img VARCHAR(255),
     categoria VARCHAR(50),
     activo BOOLEAN NOT NULL DEFAULT TRUE,
-	createdAt DATETIME,
-	updatedAt DATETIME
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 INSERT INTO products (id, nombre, descripcion, precio, img, categoria, activo) VALUES

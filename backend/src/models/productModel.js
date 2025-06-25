@@ -5,7 +5,6 @@ import sequelize from "../config/db-sequalize.js";
 const Product = sequelize.define("Product", {
     //columna id
     id: {
-        // FALTA USAR crypto.randomUUID() PARA EL ID!!!!!!!!!!!!!!!!!!!!;
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
