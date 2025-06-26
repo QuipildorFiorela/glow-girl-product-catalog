@@ -7,6 +7,7 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 
 .navbar {
@@ -41,16 +42,18 @@ body, html {
 }
 
 .fondo {
-  background-image: url('../img/acceso_pag.jpg'); /* asegurate de que la ruta sea correcta */
+  background-image: url('http://localhost:5000/img/acceso_pag.jpg'); /* asegurate de que la ruta sea correcta */
   background-size: cover;
   background-position: center;
   height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .formulario {
+  margin-bottom: 10%;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 16px;
@@ -94,6 +97,27 @@ input[type="text"] {
   background-color: #e37aa9;
 }
 
+.btn-admin {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #63364b;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000; /* para que quede por encima de otros elementos */
+}
+
+.btn-admin:hover {
+  background-color: #4e2b3b;
+}
+
+
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 
 body.modo-oscuro {
@@ -110,7 +134,7 @@ body.modo-oscuro .nombreAlumno p {
 }
 
 body.modo-oscuro .fondo {
-  background-image: url('../img/acceso_pag_dark.jpg');
+  background-image: url('http://localhost:5000/img/acceso_pag_dark.jpg');
 }
 
 body.modo-oscuro .formulario {

@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: rgb(234, 211, 221);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.logo img {
+    height: 60px;
+    cursor: pointer;
+}
+
+.nombreAlumno p {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.iconos {
+    display: flex;
+    gap: 16px;
+}
+
+.modo-icono {
+    height: 50px;
+    cursor: pointer;
+}
+
+.fondo {
+    background-image: url('http://localhost:5000/img/acceso_pag.jpg');
+    /* asegurate de que la ruta sea correcta */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario {
+    margin-bottom: 10%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    top: 15%;
+    font-size: 3rem;
+    color: #222;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+input[type="text"] {
+    padding: 12px;
+    font-size: 1rem;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-bottom: 16px;
+}
+
+.boton-ingresar {
+    background-color: #f09ac2;
+    color: white;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.boton-ingresar:hover {
+    background-color: #e37aa9;
+}
+
+.btn-admin {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #63364b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+    /* para que quede por encima de otros elementos */
+}
+
+.btn-admin:hover {
+    background-color: #4e2b3b;
+}
+
+
+/*----------------------------------------  Dark Mode  ----------------------------------------*/
+
+body.modo-oscuro {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.modo-oscuro .navbar {
+    background-color: #2e2e2e;
+}
+
+body.modo-oscuro .nombreAlumno p {
+    color: rgb(234, 211, 221);
+}
+
+body.modo-oscuro .fondo {
+    background-image: url('../img/acceso_pag_dark.jpg');
+}
+
+body.modo-oscuro .formulario {
+    background-color: rgba(40, 40, 40, 0.9);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+}
+
+body.modo-oscuro .titulo {
+    color: #f0f0f0;
+}
+
+body.modo-oscuro input[type="text"] {
+    background-color: #2b2b2b;
+    color: #f0f0f0;
+    border: 1px solid #888;
+}
+
+body.modo-oscuro input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+body.modo-oscuro .boton-ingresar {
+    background-color: #b45288;
+}
+
+body.modo-oscuro .boton-ingresar:hover {
+    background-color: #9f3e74;
+}
