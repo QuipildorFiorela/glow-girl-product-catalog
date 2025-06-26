@@ -4,6 +4,7 @@ import cors from "cors";
 import { join, __dirname } from "./src/utils/index.js";
 import productRouter from "./src/routes/productRoute.js";
 import saleRouter from "./src/routes/saleRoute.js";
+import adminRouter from "./src/routes/adminRoute.js";
 import envs from "./src/config/envs.js";
 
 
@@ -30,6 +31,7 @@ app.use(express.static(join(__dirname, "public")));
 app.use(cors());
 //pool.getConnection();
 app.use("/api/products", productRouter);
+app.use("/api/admin", adminRouter);
 app.use("/api/sales", saleRouter);
 
 //listeners

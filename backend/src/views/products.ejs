@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <title>Glow Girl - Productos</title>
-    <link rel="stylesheet" href="/products.css">
+    <link rel="stylesheet" href="/css/products.css">
 </head>
 
 <body>
     <header>
-        <nav class="navbar">
+        <a class="navbar">
             <div class="logo">
                 <img id="logo-tienda" src="/img/icons/logo_tienda_light_icon.png" alt="Logo Tienda">
             </div>
@@ -18,11 +18,15 @@
                 <p>Bianca Monteleone</p>
                 <p>Fiorela Quipildor</p>
             </div>
-
+            
             <div class="search-container">
                 <input type="text" placeholder="Buscar..." class="search-bar">
                 <img src="/img/icons/search_icon.png" alt="Buscar" class="icono-search">
             </div>
+
+            <a href="/api/admin/products/create">
+                <button>Crear producto</button>
+            </a>
 
             <div class="iconos">
                 <div class="usuario">
@@ -40,17 +44,17 @@
     <main>
         <section class="products-section">
             <div class="product-grid">
-                <% products.forEach(producto => { %>
+                <% products.forEach(product => { %>
                     <div class="product-card">
-                        <img src="/<%= producto.img %>" alt="<%= producto.nombre %>">
-                        <h3><%= producto.nombre %></h3>
-                        <p><%=producto.descripcion %></p>
-                        <strong>$<%= producto.precio.toLocaleString("es-AR") %></strong>
+                        <img src="/<%= product.img %>" alt="<%= product.name %>">
+                        <h3><%= product.name %></h3>
+                        <p><%=product.description %></p>
+                        <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
 
                         <div class="admin-buttons">
-                            <a href="/admin/edit/<%= producto.id %>" class="btn-editar">Editar</a>
-                            <button class="btn-desactivar" data-id="<%= producto.id %>" type="button">
-                                <%= producto.activo ? 'Desactivar' : 'Activar' %>
+                            <a href="/admin/edit/<%= product.id %>" class="btn-editar">Editar</a>
+                            <button class="btn-desactivar" data-id="<%= product.id %>" type="button">
+                                <%= product.active ? 'Desactivar' : 'Activar' %>
                             </button>
                         </div>
                     </div>
@@ -59,7 +63,7 @@
         </section>
     </main>
 
-    <script src="/products.js"></script>
+    <script src="/js/products.js"></script>
 </body>
 
 </html>

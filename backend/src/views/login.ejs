@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glow Girl - Inicio</title>
-    <link rel="stylesheet" href="/login.css" />
+    <link rel="stylesheet" href="/css/login.css" />
     <link rel="icon" type="image/png" href="/img/icons/logo_head_icon.png">
 </head>
 
@@ -33,16 +33,16 @@
                 <h1 class="titulo">¡Bienvenida!</h1>
                 <input type="text" id="email" placeholder="Ingrese su email..." required />
                 <input type="password" id="contraseña" placeholder="Ingrese su contraseña..." required />
-                <div class="boton-ingresar" id="btn-ingresar">Ingresar</div>
+                <button onclick="window.location.href='http://localhost:5000/api/admin/products'" class="boton-ingresar" id="btn-ingresar">Ingresar</button>
             </div>
 
             <a href="/api/products">
-                <button class="btn-admin" id="btn-ingreso-admin">ADMIN</button>
+                <button class="btn-admin" id="btn-ingreso-admin">CLIENTE</button>
             </a>
         </div>
     </main>
 
-    <script src="/login.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

@@ -24,7 +24,7 @@ function darkMode() {
 }
 
 
-function funcionalidadBtnIngresar(){
+/*function funcionalidadBtnIngresar(){
     document.addEventListener("DOMContentLoaded", () => {
     const btnIngresar = document.getElementById("btn-ingresar");
     const inputNombre = document.getElementById("nombre");
@@ -42,11 +42,11 @@ function funcionalidadBtnIngresar(){
         }
     });
     });
-}
+}*/
 
 async function init() {
     darkMode();
-    funcionalidadBtnIngresar();
+    //funcionalidadBtnIngresar();
 }
 
 init();
