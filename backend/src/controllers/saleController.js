@@ -32,33 +32,34 @@ export const getSalesWithProductsController = async (req, res) => {
 export const createSale = async (req, res) => {
     console.log("Intentando registrar la venta");
     try {
-        const {nombreComprador, productos} = req.body;
+        const {nombreComprador, productos: products} = req.body;
         
         // Verifico que los productos existan en la base de datos. PRIMERO VALIDAMOS Y DESPUES EJECUTAMOS
-        const productIds = productos.map(p => p.productId);
+        const productIds = products.map(p => p.productoId);
         const productsFound = await Product.findAll({ 
             where: { id: productIds } 
         });
-
-        if (productsFound.length !== productos.length) {
+        console.log(products);
+        
+        if (productsFound.length !== products.length) {
             return res.status(400).json({ 
                 message: "Uno o más productos no existen en la base de datos." 
             });
         }
         // Calculo el total de la venta en base al precio de los productos * la cantidad
-        const total = productos.reduce((acc, prod) => {
+        const total = products.reduce((acc, prod) => {
             const productoDB = productsFound.find(p => p.id === prod.productId);
             return acc + (productoDB.precio * prod.cantidad);
         }, 0);
 
         // Registrola venta en la tabla sales
         const newSale = await create({
-            nombre,
+            nombreComprador,
             total
         });
 
         // Registro los detalles de venta en la tabla sale-detail usando bulkCreate para insertar todos los productos de una vez
-        const saleDetails = productos.map(prod => ({
+        const saleDetails = products.map(prod => ({
             saleId: newSale.id,
             productId: prod.productId,
             cantidad: prod.cantidad

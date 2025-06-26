@@ -3,17 +3,17 @@ DROP TABLE products;
 
 CREATE TABLE IF NOT EXISTS products (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    descripcion TEXT,
-    precio DOUBLE NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    description TEXT,
+    price DOUBLE NOT NULL,
     img VARCHAR(100),
-    categoria TEXT,
-    activo BOOLEAN NOT NULL DEFAULT TRUE,
+    category TEXT,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO products (id, nombre, descripcion, precio, img, categoria, activo) VALUES
+INSERT INTO products (id, name, description, price, img, category, active) VALUES
 (1, 'Gorra bordada Hello Kitty', 'Gorra canvas con bordado de Hello Kitty y regulador metálico trasero.', 20000.00, 'img/accesorios/gorra_hello_kitty.webp', 'accesorio', TRUE),
 (2, 'Llavero y charm Hello Kitty', 'Llavero y charm metálico de Hello Kitty con moño de perlas y mosquetón en forma de corazón.', 15900.00, 'img/accesorios/charm_hello_kitty.webp', 'accesorio', TRUE),
 (3, 'Llavero y charm metálico de perrito', 'Llavero y charm metálico en forma de perrito, moño y frase, con mosquetón metálico para colgar.', 8900.00, 'img/accesorios/charm_perrito.webp', 'accesorio', TRUE),
