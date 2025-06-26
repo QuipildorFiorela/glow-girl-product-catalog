@@ -144,9 +144,11 @@ function mostrarModalConfirmacion() {
             buyerName: nombreUsuario,
             products: carrito.map(product => ({
                 productId: product.id,
-                count: product.count
+                count: product.cantidad
             }))
         };
+        console.log(sale);
+        
         const res = await fetch("http://localhost:5000/api/sales", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

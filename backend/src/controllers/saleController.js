@@ -47,14 +47,24 @@ export const createSale = async (req, res) => {
             });
         }
         // Calculo el total de la venta en base al precio de los productos * la cantidad
+        console.log("Productos recibidos:", products);
+        console.log("Productos encontrados en BD:", productsFound);
+
         const total = products.reduce((acc, prod) => {
             const productDB = productsFound.find(p => p.id === prod.productId);
+            if (!productDB) {
+                console.log(`Producto con ID ${prod.productId} no encontrado en la BD`);
+                return acc;
+            }
+
+            console.log(`Calculando: ${productDB.price} * ${prod.count}`);
+
             return acc + (productDB.price * prod.count);
         }, 0);
-
         // Registrola venta en la tabla sales
         const newSale = await create({
             buyerName,
+            date: "1/1/1",
             total
         });
 
@@ -72,6 +82,8 @@ export const createSale = async (req, res) => {
             payload: { venta: newSale, details: saleDetails } 
         });
     } catch (error) {
+        console.log(error.message);
+        
         res.status(500).json({ 
             message: "Error interno del servidor", 
             error: error.message 
