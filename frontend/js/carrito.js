@@ -138,11 +138,15 @@ function mostrarModalConfirmacion() {
         modal.remove();
         
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        const usuario = localStorage.getItem("nombreUsuario") || "Cliente";
+        const nombreUsuario = localStorage.getItem("nombreUsuario") || "Cliente";
         
         const venta = {
-        usuario,
-        productos: carrito
+        nombreComprador: nombreUsuario,
+        total,
+        productos: carrito.map(producto => ({
+            productoId: producto.id,
+            cantidad: producto.cantidad
+        }))
         };
         
         const res = await fetch("http://localhost:5000/api/sales", {

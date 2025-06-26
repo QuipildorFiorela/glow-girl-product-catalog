@@ -9,7 +9,7 @@ const Sale = sequelize.define("Sale", {
         primaryKey: true,
         allowNull: false,
     },
-    nombre: {
+    nombreComprador: {
         type: DataTypes.STRING,
         allowNull: false,
     },
