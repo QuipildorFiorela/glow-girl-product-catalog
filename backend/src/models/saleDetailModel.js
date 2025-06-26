@@ -17,7 +17,7 @@ const SaleDetail = sequelize.define("SaleDetail", {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    cantidad: {
+    count: {
         type: DataTypes.INTEGER,
         allowNull: false
     }

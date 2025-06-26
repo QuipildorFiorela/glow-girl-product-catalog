@@ -140,17 +140,17 @@ function mostrarModalConfirmacion() {
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
         const nombreUsuario = localStorage.getItem("nombreUsuario") || "Cliente";
         
-        const venta = {
-            nombreComprador: nombreUsuario,
-            productos: carrito.map(producto => ({
-                productoId: producto.id,
-                cantidad: producto.cantidad
+        const sale = {
+            buyerName: nombreUsuario,
+            products: carrito.map(product => ({
+                productId: product.id,
+                count: product.count
             }))
         };
         const res = await fetch("http://localhost:5000/api/sales", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(venta)
+        body: JSON.stringify(sale)
         })
         if (res.ok) {
             window.location.href = "./ticket.html";

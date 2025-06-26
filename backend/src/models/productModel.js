@@ -9,15 +9,15 @@ const Product = sequelize.define("Product", {
         primaryKey: true,
         allowNull: false,
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    descripcion: {
+    description: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    precio: {
+    price: {
         type: DataTypes.DOUBLE,
         allowNull: false,
     },
@@ -25,11 +25,11 @@ const Product = sequelize.define("Product", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    categoria: {
+    category: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    activo: {
+    active: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true

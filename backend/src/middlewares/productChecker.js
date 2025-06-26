@@ -7,15 +7,15 @@ import Product from "../models/productModel.js";
     - Que las cantidades sean mayores a 0
 */
 export const productChecker = async (req, res, next) => {
-    const { productos: products } = req.body;
+    const { products } = req.body;
 
     try {
         for (const item of products) {
-            if (!item.productId || !item.cantidad) {
+            if (!item.productId || !item.count) {
                 return res.status(400).json({ message: "Cada producto debe tener productId y cantidad" });
             }
 
-            if (item.cantidad <= 0) {
+            if (item.count <= 0) {
                 return res.status(400).json({ message: "La cantidad debe ser mayor a 0" });
             }
 

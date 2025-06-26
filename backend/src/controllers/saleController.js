@@ -32,10 +32,10 @@ export const getSalesWithProductsController = async (req, res) => {
 export const createSale = async (req, res) => {
     console.log("Intentando registrar la venta");
     try {
-        const {nombreComprador, productos: products} = req.body;
+        const {buyerName, products} = req.body;
         
         // Verifico que los productos existan en la base de datos. PRIMERO VALIDAMOS Y DESPUES EJECUTAMOS
-        const productIds = products.map(p => p.productoId);
+        const productIds = products.map(p => p.productId);
         const productsFound = await Product.findAll({ 
             where: { id: productIds } 
         });
@@ -48,13 +48,13 @@ export const createSale = async (req, res) => {
         }
         // Calculo el total de la venta en base al precio de los productos * la cantidad
         const total = products.reduce((acc, prod) => {
-            const productoDB = productsFound.find(p => p.id === prod.productId);
-            return acc + (productoDB.precio * prod.cantidad);
+            const productDB = productsFound.find(p => p.id === prod.productId);
+            return acc + (productDB.price * prod.count);
         }, 0);
 
         // Registrola venta en la tabla sales
         const newSale = await create({
-            nombreComprador,
+            buyerName,
             total
         });
 
@@ -62,14 +62,14 @@ export const createSale = async (req, res) => {
         const saleDetails = products.map(prod => ({
             saleId: newSale.id,
             productId: prod.productId,
-            cantidad: prod.cantidad
+            count: prod.count
         }));
 
         await SaleDetail.bulkCreate(saleDetails); //(sequelize method: permite crear multiples registros a la vez, con una sola consulta)
 
         res.status(201).json({ 
             message: "Venta registrada con éxito", 
-            payload: { venta: newSale, detalles: saleDetails } 
+            payload: { venta: newSale, details: saleDetails } 
         });
     } catch (error) {
         res.status(500).json({ 

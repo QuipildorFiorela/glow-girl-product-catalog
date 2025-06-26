@@ -14,7 +14,7 @@ export const getSalesWithProducts = async () => {
         include: [{ 
             model: Product, //Le dijo a Sequelize que además de las ventas, traiga los productos relacionados a cada venta, gracias a la relación belongsToMany configurada entre Sale y Product a través de la tabla intermedia SaleDetail.
             through: { //indico que tambien traiga los datos de la tabla intermedia y especifico el campo
-                attributes: ['cantidad']
+                attributes: ['count']
             }
         }] // estoy diciendo: “Traeme todas las ventas y cada una con sus productos asociados, incluyendo la cantidad desde la tabla intermedia.”
     });

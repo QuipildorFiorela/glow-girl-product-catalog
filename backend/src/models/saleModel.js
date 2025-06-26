@@ -9,11 +9,11 @@ const Sale = sequelize.define("Sale", {
         primaryKey: true,
         allowNull: false,
     },
-    nombreComprador: {
+    buyerName: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    fecha: {
+    date: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
         allowNull: false
