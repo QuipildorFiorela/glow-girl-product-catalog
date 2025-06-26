@@ -7,6 +7,7 @@ export const getSales = async () => {
 export const create = async (datosSale) => {
     return await Sale.create(datosSale);
 }; //para hacer el POST desde el front
+//ARREGLAR hay que mandar los datos a un middleware, hay que hacer la venta, los detalles etc, producto checker, venta checker,.......?
 
 export const getSalesWithProducts = async () => {
     const sales = await Sale.findAll({ //Uso Sequelize para buscar todas las filas de la tabla Sale

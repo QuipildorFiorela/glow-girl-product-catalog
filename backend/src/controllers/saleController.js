@@ -10,12 +10,15 @@ export const getAllSales = async (req, res) => {
 };
 
 export const createSale = async (req, res) => {
+    console.log("llegamos");
     try {
-        const {id, nombre, fecha, total} = req.body;
-        if(!id || !nombre || !fecha || !total){
+        const {usuario, productos} = req.body;
+        if(!usuario || !productos){
             return res.status(400).json({message: "No se puede registrar la venta porque faltan campos"});
-        }
-        const newSale = await create({id, nombre, fecha, total});
+        } else {
+            return res.status(200).json({message: "Venta registrada con éxito" })
+        }//AREGLAR PORQUIE LA VENTA NNO SE REGISTRA EN LA BD
+        const newSale = await create({usuario, productos});
         res.status(201).json({ message: "Venta registrada con éxito", payload: newSale });
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });

@@ -134,37 +134,27 @@ function mostrarModalConfirmacion() {
         modal.remove();
     });
 
-    btnConfirmar.addEventListener("click", () => {
+    btnConfirmar.addEventListener("click", async () => {
         modal.remove();
         
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
         const usuario = localStorage.getItem("nombreUsuario") || "Cliente";
-        const total = carrito.reduce((acc, p) => acc + p.precio, 0);
-
-        window.location.href = "./ticket.html";
-        //PENDIENTE: FALTA CONECTAR BIEN EL BACK PARA ESTA PARTE DEL TICKET
-        /* const venta = {
+        
+        const venta = {
         usuario,
-        productos: carrito, //PIDE FECHA NO PRODUCTOS, ESO PARA LA OTRA TABLA
-        total
+        productos: carrito
         };
-
-        fetch("/api/ventas", {
+        
+        const res = await fetch("http://localhost:5000/api/sales", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(venta)
         })
-        .then(res => {
-            if (res.ok) {
+        if (res.ok) {
             window.location.href = "./ticket.html";
-            } else {
-            alert("Error al registrar la venta");
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Error al contactar al servidor");
-        }); */
+        } else {
+        alert("Error al registrar la venta");
+        }
     });
 }
 

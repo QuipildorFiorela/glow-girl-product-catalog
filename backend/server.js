@@ -1,6 +1,6 @@
 import express from "express";
 import { join, __dirname } from "./src/utils/index.js";
-import productRoute from "./src/routes/productRoute.js";
+import productRouter from "./src/routes/productRoute.js";
 import saleRouter from "./src/routes/saleRoute.js";
 import sequelize from "./src/config/db-sequalize.js";
 import envs from "./src/config/envs.js";
@@ -28,7 +28,7 @@ app.use(express.static(join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 //pool.getConnection();
-app.use("/api/products", productRoute);
+app.use("/api/products", productRouter);
 app.use("/api/sales", saleRouter);
 
 //listeners
