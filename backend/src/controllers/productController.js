@@ -60,7 +60,7 @@ export const updateProduct = async (req, res) => {
     }
 };
 
-//MODIFICAR PARA QUE EL DELETE SEA DAR DE BAJA UN PRODUCTO
+//MODIFICAR PARA QUE EL DELETE SEA DAR DE BAJA UN PRODUCTO O ELIMINAR DIRECTAMENTE PQ NO SE NECESITA
 export const deleteProduct = async (req, res) => {
     try {
         const { id } = req.params;

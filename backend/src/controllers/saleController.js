@@ -1,6 +1,6 @@
 import {getSales, create, getSalesWithProducts} from "../services/sale.service.js";
 
-export const getSales = async (req, res) => {
+export const getAllSales = async (req, res) => {
     try {
         const sales = await getSales();
         res.status(200).json({ message: "Ventas encontradas", payload: sales });
@@ -21,8 +21,6 @@ export const createSale = async (req, res) => {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
 }
-
-import { getSalesWithProducts } from "../services/saleService.js";
 
 export const getSalesWithProductsController = async (req, res) => {
     try {

@@ -11,14 +11,10 @@ const SaleDetail = sequelize.define("SaleDetail", {
     },
     saleId: {
         type: DateTypes.INTEGER,
-        autoIncrement: true,
-        foreignKey: true,
         allowNull: false,
     },
     productId: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
-        foreignKey: true,
         allowNull: false,
     },
     cantidad: {
@@ -27,7 +23,7 @@ const SaleDetail = sequelize.define("SaleDetail", {
     }
 });
 
-// Asociaciones
+// Asociaciones de sequelize: Las claves foráneas se definen con las asociaciones (belongsToMany o belongsTo).
 Sale.belongsToMany(Product, { through: SaleDetail, foreignKey: 'saleId' });
 Product.belongsToMany(Sale, { through: SaleDetail, foreignKey: 'productId' });
 
