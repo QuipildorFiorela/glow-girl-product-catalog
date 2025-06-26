@@ -3,39 +3,32 @@ import sequelize from "../config/db-sequalize.js";
 
 //Tabla SQL
 const Product = sequelize.define("Product", {
-    //columna id
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
     },
-    //columna firsName
     nombre: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    //columna lastName
     descripcion: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    //columna email
     precio: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
         allowNull: false,
     },
-    //columna img
     img: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    //categoria
     categoria: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    //activo
     activo: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
