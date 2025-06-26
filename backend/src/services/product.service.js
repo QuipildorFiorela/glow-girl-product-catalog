@@ -15,7 +15,3 @@ export const create = async (product) => {
 export const update = async (id, product) => {
     return Product.update(product, { where: { id } });
 }
-
-export const remove = async (id) => {
-    return await Product.destroy({ where: { id } })
-}

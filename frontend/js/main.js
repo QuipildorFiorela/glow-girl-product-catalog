@@ -10,16 +10,16 @@ function darkMode() {
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("modo") === "oscuro") {
         document.body.classList.add("modo-oscuro");
-        btnMode.src = "./img/icons/dark_mode_icon.png";
-        logoTienda.src = "./img/icons/logo_tienda_dark_icon.png";
+        btnMode.src = "http://localhost:5000/img/icons/dark_mode_icon.png";
+        logoTienda.src = "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
     }
 
     btnMode.addEventListener("click", () => {
         const modoActivo = document.body.classList.toggle("modo-oscuro");
 
         // Cambiar ícono
-        btnMode.src = modoActivo ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
-        logoTienda.src = modoActivo ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
+        btnMode.src = modoActivo ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
+        logoTienda.src = modoActivo ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
 
         // Guardar en localStorage
         localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
@@ -50,8 +50,8 @@ function funcionalidadCategorias() {
 
 
 async function cargarProductos() {
-    const respuesta = await fetch('http://localhost:5000/api/products'); //CONEXIÓN A LA BDT EXITOSA
-    const data = await respuesta.json();
+    const respuesta = await fetch('http://localhost:5000/api/products/json'); //CONEXIÓN A LA BDT EXITOSA
+    const data = await respuesta.json(); // fetch espera que el servidor mande un JSON
     productos = data.payload; //me traigo todos los productos en una misma lista
 }
 
@@ -66,10 +66,10 @@ function mostrarProductos(productos) {
         }
 
         const card = document.createElement("div");
-        card.classList.add("product-card");
+        card.classList.add("product-card"); 
 
         card.innerHTML = `
-            <img src="${producto.img}" alt="${producto.nombre}">
+            <img src="http://localhost:5000/${producto.img}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
             <p>$${producto.precio.toLocaleString('es-AR')}</p>
         `;

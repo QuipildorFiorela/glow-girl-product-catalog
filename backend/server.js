@@ -1,22 +1,23 @@
 import express from "express";
+import sequelize from "./src/config/db-sequalize.js";
+import cors from "cors";
 import { join, __dirname } from "./src/utils/index.js";
 import productRouter from "./src/routes/productRoute.js";
 import saleRouter from "./src/routes/saleRoute.js";
-import sequelize from "./src/config/db-sequalize.js";
 import envs from "./src/config/envs.js";
-import cors from "cors";
+
 
 //settings
 const app = express();
-app.set("views", join(__dirname, "views"));      // Carpeta donde están las vistas
-app.set("view engine", "ejs");                // Motor de vistas a usar
-
 app.set("PORT", envs.port || 3000);
+
+app.set("view engine", "ejs");                // Motor de vistas a usar
+app.set("views", join(__dirname, "views"));      // Carpeta donde están las vistas
+
 const initializeConnection = async () => {
     try {
         await sequelize.sync();
         console.log("Database sincronizada");
-
     } catch (error) {
         console.log(error);
     }
@@ -24,8 +25,8 @@ const initializeConnection = async () => {
 
 // middlewares
 app.use(express.json());
-app.use(express.static(join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(join(__dirname, "public")));
 app.use(cors());
 //pool.getConnection();
 app.use("/api/products", productRouter);

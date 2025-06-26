@@ -1,13 +1,25 @@
-import {getProducts, findPk, create, update, remove} from "../services/product.service.js";
+import {getProducts, findPk, create, update} from "../services/product.service.js";
 
+// PARA EL ADMIN
 export const getAllProducts = async (req, res) => {
     try {
         const products = await getProducts();
-        res.status(200).json({ message: "Productos encontrados", payload: products });
+        res.render("products", { products }); // ("products.ejs", { lista de productos })
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
 };
+
+// PARA EL CATALOGO
+export const getAllProductsJSON = async (req, res) => {
+    try {
+        const products = await getProducts();
+        res.status(200).json({ message: "Productos encontrados", payload: products }); // Devuelve solo los datos en formato JSON
+    } catch (error) {
+        res.status(500).json({ message: "Error interno del servidor", error: error.message });
+    }
+};
+
 
 export const createProduct = async (req, res) => {
     try {
@@ -60,17 +72,24 @@ export const updateProduct = async (req, res) => {
     }
 };
 
-//MODIFICAR PARA QUE EL DELETE SEA DAR DE BAJA UN PRODUCTO O ELIMINAR DIRECTAMENTE PQ NO SE NECESITA
-export const deleteProduct = async (req, res) => {
+export const changeStatus = async (req, res) => {
     try {
-        const { id } = req.params;
-        const productFound = await findPk(id)
-        if(!productFound){
-            return res.status(404).json({message: "Producto no encontrado"});
-        }
-        await remove(id);
-        res.status(200).json({ message: "Producto eliminado con éxito"});
-    } catch (error) {
-        res.status(500).json({ message: "Error interno del servidor", error: error.message });
+            const { id } = req.params;
+            const productFound = await findPk(id);
+
+            if (!productFound) {
+                return res.status(404).json({ message: "Producto no encontrado" });
+            }
+
+            const nuevoEstado = !productFound.activo;
+
+            await productFound.update({ activo: nuevoEstado });
+
+            res.status(200).json({
+                message: `Producto ${nuevoEstado ? "activado" : "desactivado"} con éxito`,
+                payload: productFound
+            });
+        } catch (error) {
+            res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
 }

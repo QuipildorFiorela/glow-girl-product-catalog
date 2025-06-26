@@ -14,16 +14,16 @@ function darkMode() {
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("modo") === "oscuro") {
         document.body.classList.add("modo-oscuro");
-        btnMode.src = "./img/icons/dark_mode_icon.png";
-        logoTienda.src= "./img/icons/logo_tienda_dark_icon.png";
+        btnMode.src = "http://localhost:5000/img/icons/dark_mode_icon.png";
+        logoTienda.src= "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
     }
 
     btnMode.addEventListener("click", () => {
         const modoActivo = document.body.classList.toggle("modo-oscuro");
         
         // Cambiar ícono
-        btnMode.src = modoActivo ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
-        logoTienda.src = modoActivo ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
+        btnMode.src = modoActivo ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
+        logoTienda.src = modoActivo ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
 
         // Guardar en localStorage
         localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
@@ -66,7 +66,7 @@ function renderizarCarrito(contenedor) {
         const divProducto = document.createElement("div");
         divProducto.classList.add("item-block");
         divProducto.innerHTML = `
-                <img src="${producto.img}" class="modo-icono">
+                <img src="http://localhost:5000/${producto.img}" class="modo-icono">
                 <div class="item-info">
                     <h5>${producto.nombre}</h5> 
                     <h6>Cantidad: ${producto.cantidad}</h6>
@@ -77,7 +77,7 @@ function renderizarCarrito(contenedor) {
                     <span>${producto.cantidad}</span>
                     <button class="incrementar">+</button>
                 </div>
-                <img class="delete-button" src= "./img/icons/trash_icon.png" alt="Eliminar">
+                <img class="delete-button" src= "http://localhost:5000/img/icons/trash_icon.png" alt="Eliminar">
                 `;
         divProducto.dataset.index = indice; // Para identificar el producto luego
         contenedor.appendChild(divProducto);
