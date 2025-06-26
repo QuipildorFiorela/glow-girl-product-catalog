@@ -10,7 +10,7 @@ const SaleDetail = sequelize.define("SaleDetail", {
         primaryKey: true
     },
     saleId: {
-        type: DateTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     productId: {
