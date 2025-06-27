@@ -195,7 +195,7 @@ function ventanaUsuario() {
     cerrarSesionBtn.addEventListener("click", () => {
         localStorage.removeItem("nombreUsuario");
         localStorage.removeItem("cart");
-        window.location.href = "./acceso.html";
+        window.location.href = "./login.html";
     });
 
     // Cerrar la ventana si se hace clic fuera
