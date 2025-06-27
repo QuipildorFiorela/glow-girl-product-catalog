@@ -55,25 +55,26 @@ export const createSale = async (req, res) => {
 
             return acc + (productDB.price * prod.count);
         }, 0);
+        const date = new Date()
         // Registrola venta en la tabla sales
         const newSale = await create({
             buyerName,
-            date: "1/1/1",
+            date,
             total
         });
 
         // Registro los detalles de venta en la tabla sale-detail usando bulkCreate para insertar todos los productos de una vez
-        const salesDetail = products.map(prod => ({
+        const saleDetailsTable = products.map(prod => ({
             saleId: newSale.id,
             productId: prod.productId,
             count: prod.count
         }));
 
-        await SaleDetail.bulkCreate(salesDetail); //(sequelize method: permite crear multiples registros a la vez, con una sola consulta)
+        await SaleDetail.bulkCreate(saleDetailsTable); //(sequelize method: permite crear multiples registros a la vez, con una sola consulta)
 
         res.status(201).json({ 
             message: "Venta registrada con éxito", 
-            payload: { venta: newSale, details: salesDetail } 
+            payload: { venta: newSale, details: saleDetailsTable } 
         });
     } catch (error) {
         console.log(error.message);

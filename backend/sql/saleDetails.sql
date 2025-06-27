@@ -1,7 +1,7 @@
 USE tienda_accesorios;
-DROP TABLE sales_detail;
+DROP TABLE saleDetails;
 
-CREATE TABLE sales_detail (
+CREATE TABLE IF NOT EXISTS saleDetails (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     sale_id INT NOT NULL,
     product_id INT NOT NULL,
