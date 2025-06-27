@@ -3,7 +3,7 @@ import sequelize from "../config/db-sequalize.js";
 import Sale from "./saleModel.js";
 import Product from "./productModel.js";
 
-const SaleDetail = sequelize.define("SaleDetail", {
+const SalesDetail = sequelize.define("SalesDetail", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -24,7 +24,7 @@ const SaleDetail = sequelize.define("SaleDetail", {
 });
 
 // Asociaciones de sequelize: Las claves foráneas se definen con las asociaciones (belongsToMany o belongsTo).
-Sale.belongsToMany(Product, { through: SaleDetail, foreignKey: 'saleId' });
-Product.belongsToMany(Sale, { through: SaleDetail, foreignKey: 'productId' });
+Sale.belongsToMany(Product, { through: SalesDetail, foreignKey: 'saleId' });
+Product.belongsToMany(Sale, { through: SalesDetail, foreignKey: 'productId' });
 
-export default SaleDetail;
+export default SalesDetail;

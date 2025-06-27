@@ -1,5 +1,5 @@
 import {getSales, create, getSalesWProducts} from "../services/sale.service.js";
-import SaleDetail from "../models/saleDetailModel.js";
+import SalesDetail from "../models/salesdetailModel.js";
 import Product from "../models/productModel.js";
 
 // GET simple: Trae solo las ventas
@@ -31,56 +31,73 @@ export const getSalesWProductsController = async (req, res) => {
 
 export const createSale = async (req, res) => {
     console.log("Intentando registrar la venta");
+
     try {
-        const {buyerName, products} = req.body;
-        
-        // Verifico que los productos existan en la base de datos. PRIMERO VALIDAMOS Y DESPUES EJECUTAMOS
+        const { buyerName, products } = req.body;
+
+        // Validación de datos de entrada
+        if (!buyerName) {
+            return res.status(400).json({ message: "El nombre del comprador es obligatorio." });
+        }
+
+        if (!products || !Array.isArray(products) || products.length === 0) {
+            return res.status(400).json({ message: "Debe incluir al menos un producto en la venta." });
+        }
+        console.log("Productos recibidos:", products);
+
+        // Verificar si los productos existen
         const productIds = products.map(p => p.productId);
         const productsFound = await Product.findAll({ 
             where: { id: productIds } 
         });
+
         if (productsFound.length !== products.length) {
             return res.status(400).json({ 
                 message: "Uno o más productos no existen en la base de datos." 
             });
         }
+        console.log("Productos encontrados en la BD:", productsFound);
+        
         // Calculo el total de la venta en base al precio de los productos * la cantidad
         const total = products.reduce((acc, prod) => {
             const productDB = productsFound.find(p => p.id === prod.productId);
+
             if (!productDB) {
-                console.log(`Producto con ID ${prod.productId} no encontrado en la BD`);
+                console.log(`⚠️ Producto con ID ${prod.productId} no encontrado en la BD`);
                 return acc;
             }
-            console.log(`Calculando: ${productDB.price} * ${prod.count}`);
 
-            return acc + (productDB.price * prod.count);
+            const subtotal = productDB.price * prod.count;
+            console.log(`Calculando: ${productDB.price} * ${prod.count} = ${subtotal}`);
+
+            return acc + subtotal;
         }, 0);
-        const date = new Date()
-        // Registrola venta en la tabla sales
-        const newSale = await create({
-            buyerName,
-            date,
-            total
-        });
 
-        // Registro los detalles de venta en la tabla sale-detail usando bulkCreate para insertar todos los productos de una vez
-        const saleDetailsTable = products.map(prod => ({
+        console.log(`Total calculado: ${total}`);
+
+        const date = new Date();
+
+        // Registrar la venta
+        const newSale = await create({ buyerName, date, total });
+
+        // // Registro los detalles de venta en la tabla salesdetails usando bulkCreate para insertar todos los productos de una vez
+        const salesDetailsColumns = products.map(prod => ({
             saleId: newSale.id,
             productId: prod.productId,
             count: prod.count
         }));
 
-        await SaleDetail.bulkCreate(saleDetailsTable); //(sequelize method: permite crear multiples registros a la vez, con una sola consulta)
+        await SalesDetail.bulkCreate(salesDetailsColumns); //(sequelize method: permite crear multiples registros a la vez, con una sola consulta)
 
         res.status(201).json({ 
             message: "Venta registrada con éxito", 
-            payload: { venta: newSale, details: saleDetailsTable } 
+            payload: { sale: newSale, details: salesDetailsColumns } 
         });
+
     } catch (error) {
-        console.log(error.message);
-        
+        console.error("❌ Error al registrar la venta:", error.message);
         res.status(500).json({ 
-            message: "Error interno del servidor", 
+            message: "Error interno del servidor. Revisá consola para más info.", 
             error: error.message 
         });
     }
