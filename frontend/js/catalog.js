@@ -60,7 +60,8 @@ function mostrarProductos(products) {
     contenedor.innerHTML = "";
 
     products.forEach(product => {
-        if (!product.activo) return; // si no está activo, no lo muestres
+        
+        if (!product.active) return; // si no está activo, no lo muestres
         if (category != "" && product.category != category) { //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
             return; //continua con el siguiente y no muestra el producto cuya cat no coincide con la mostrada
         }
