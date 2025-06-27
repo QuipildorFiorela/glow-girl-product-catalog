@@ -2,9 +2,13 @@ import express from "express";
 import sequelize from "./src/config/db-sequalize.js";
 import cors from "cors";
 import { join, __dirname } from "./src/utils/index.js";
+
 import productRouter from "./src/routes/productRoute.js";
 import saleRouter from "./src/routes/saleRoute.js";
 import adminRouter from "./src/routes/adminRoute.js";
+import userRouter from "./src/routes/userRoute.js";
+import authRouter from "./src/routes/authRoute.js";
+
 import envs from "./src/config/envs.js";
 
 
@@ -33,6 +37,10 @@ app.use(cors());
 app.use("/api/products", productRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/sales", saleRouter);
+app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
+
+
 
 //listeners
 initializeConnection();

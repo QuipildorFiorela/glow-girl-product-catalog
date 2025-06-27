@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Biancu12/tp_grupal_prograIII_div132#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
