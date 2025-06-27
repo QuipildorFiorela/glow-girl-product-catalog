@@ -3,7 +3,7 @@ let cart = [];
 function btnLogo(){
     const btnVolverInicio = document.getElementById("logo-tienda");
     btnVolverInicio.addEventListener("click", () => {
-        window.location.href = "./inicio.html"
+        window.location.href = "./catalog.html"
     })
 }
 
@@ -209,7 +209,7 @@ function ventanaUsuario() {
     cerrarSesionBtn.addEventListener("click", () => {
         localStorage.removeItem("nombreUsuario");
         localStorage.removeItem("cart");
-        window.location.href = "./acceso.html"; // Cambiar a la ruta de tu inicio
+        window.location.href = "./login.html"; // Cambiar a la ruta de tu inicio
     });
 
     // Cerrar la ventana si se hace clic fuera
