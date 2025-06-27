@@ -21,11 +21,11 @@ function darkMode() {
     });
 }
 
-function returnToLogin() {
-  const btnReturn = document.querySelector(".btnVolver");
-  btnReturn.addEventListener("click", () => {
-    window.location.href = "/api/admin/products"; // Ruta para volver al listado
-  })
+function returnToProducts() {
+    const btnReturn = document.querySelector(".btnVolver");
+    btnReturn.addEventListener("click", () => {
+        window.location.href = "/api/admin/products"; // Ruta para volver al listado
+    })
 }
 
 function showUserWindow() {
@@ -42,8 +42,6 @@ function showUserWindow() {
     });
 
     logOutBtn.addEventListener("click", () => {
-        localStorage.removeItem("nombreUsuario");
-        localStorage.removeItem("carrito");
         window.location.href = 'http://localhost:5000/api/admin/login';
     });
 
@@ -55,10 +53,10 @@ function showUserWindow() {
     });
 }
 
-function init(){
-  darkMode();
-  returnToLogin();
-  showUserWindow();
+function init() {
+    darkMode();
+    returnToProducts();
+    showUserWindow();
 }
 
 init();

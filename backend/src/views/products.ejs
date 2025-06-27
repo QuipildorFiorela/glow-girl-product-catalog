@@ -26,7 +26,7 @@
             </div>
 
             <a href="/api/admin/products/create">
-                    <button>Crear producto</button>
+                <button class="btn-gris">Crear producto</button>
             </a>
 
             <div class="iconos">
@@ -53,8 +53,10 @@
                         <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
 
                         <div class="admin-buttons">
-                            <a href="/admin/edit/<%= product.id %>" class="btn-editar">Editar</a>
-                            <button class="btn-desactivar" data-id="<%= product.id %>" type="button">
+                            <a href="/admin/edit/<%= product.id %>">
+                                <button class="btn-gris">Editar</button>
+                            </a>
+                            <button class="btn-rojo" data-id="<%= product.id %>" type="button">
                                 <%= product.active ? 'Desactivar' : 'Activar' %>
                             </button>
                         </div>

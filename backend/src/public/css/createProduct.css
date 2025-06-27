@@ -9,7 +9,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 2;
-    /*nivel de la caja*/
 }
 
 .navbar {
@@ -34,54 +33,23 @@ header {
     text-align: center;
 }
 
-.search-container {
-    flex: 1 1 300px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 10px 0;
-    justify-content: center;
-}
-
-.search-bar {
-    width: 100%;
-    max-width: 300px;
-    padding: 6px 10px;
-    border-radius: 20px;
-    border: 1px solid #f0a6ca;
-    outline: none;
-}
-
-.icono-search {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.iconos {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-
-/* Responsive para pantallas menores a 768px */
+/*---  Responsive para pantallas menores a 768px  ---*/
 @media (max-width: 768px) {
     .nombreAlumno {
         display: none;
         /* Ocultamos los nombres */
     }
 
-    .search-container {
-        order: 3;
-        /* Bajamos la barra de búsqueda debajo del logo e iconos */
-        flex: 1 1 100%;
-        justify-content: center;
-    }
-
     .navbar {
         justify-content: space-between;
         gap: 5px;
     }
+}
+
+.iconos {
+    display: flex;
+    gap: 16px;
+    align-items: center;
 }
 
 .icono {
@@ -102,6 +70,7 @@ header {
     cursor: pointer;
 }
 
+/*---------------  Ventana usuario  ---------------*/
 .ventana-usuario {
     position: absolute;
     top: 40px;
@@ -134,11 +103,18 @@ header {
     cursor: pointer;
 }
 
-/*main----------------*/
+/*----------------------------  Main  ----------------------------*/
+h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #b58db6;
+    margin-top: 2rem;
+}
 
 .form-container {
     max-width: 500px;
     margin: auto;
+    margin-top: 30px;
     background: white;
     padding: 30px;
     border-radius: 10px;
@@ -155,9 +131,7 @@ label {
     font-weight: bold;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -168,7 +142,7 @@ button {
     margin-top: 20px;
     padding: 12px;
     border: none;
-    background-color: #e75480;
+    background-color: #eb8da9;
     color: white;
     font-weight: bold;
     border-radius: 5px;
@@ -177,5 +151,41 @@ button {
 }
 
 button:hover {
-    background-color: #c9406c;
+    background-color: #d87290;
+}
+
+/*----------------------------------------  Dark Mode  ----------------------------------------*/
+body.modo-oscuro {
+    background-color: rgb(27, 27, 27);
+    color: #eaeaea;
+}
+
+body.modo-oscuro .navbar {
+    background-color: #2e2e2e;
+}
+
+body.modo-oscuro .ventana-usuario {
+    background-color: #141414;
+    border: 1px solid #999999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+body.modo-oscuro h2 {
+    color: #caa4dd;
+}
+
+body.modo-oscuro .form-container {
+    box-shadow: 0 0 12px rgba(185, 185, 185, 0.417);
+}
+
+body.modo-oscuro label {
+    color: black;
+}
+
+body.modo-oscuro .product-card {
+    background-color: #1f1f1f;
+}
+
+body.modo-oscuro .product-card p {
+    color: #eaeaea;
 }

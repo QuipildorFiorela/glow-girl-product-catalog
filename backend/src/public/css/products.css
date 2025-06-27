@@ -9,11 +9,10 @@ header {
     position: sticky;
     top: 0;
     z-index: 2;
-    /*nivel de la caja*/
 }
 
 .navbar {
-    background-color: rgb(100, 60, 78);
+    background-color: rgb(147, 112, 161);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -64,16 +63,16 @@ header {
     align-items: center;
 }
 
-/* Responsive para pantallas menores a 768px */
+/*---  Responsive para pantallas menores a 768px  ---*/
 @media (max-width: 768px) {
     .nombreAlumno {
         display: none;
         /* Ocultamos los nombres */
     }
 
+    /* Bajamos la barra de búsqueda debajo del logo e iconos */
     .search-container {
         order: 3;
-        /* Bajamos la barra de búsqueda debajo del logo e iconos */
         flex: 1 1 100%;
         justify-content: center;
     }
@@ -102,6 +101,7 @@ header {
     cursor: pointer;
 }
 
+/*---------------  Ventana usuario  ---------------*/
 .ventana-usuario {
     position: absolute;
     top: 40px;
@@ -134,7 +134,7 @@ header {
     cursor: pointer;
 }
 
-/* Main--------------------------------------------- */
+/*----------------------------  Main  ----------------------------*/
 main {
     padding: 1rem;
 }
@@ -173,15 +173,14 @@ main {
     filter: brightness(0.85);
 }
 
-/* Productos--------------------------------------------- */
+/*---------------  Productos  ---------------*/
 .products-section {
     margin-top: 1rem;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* 2 columnas siempre, hasta que el media query cambie */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas siempre, hasta que el media query cambie */
     gap: 1.5rem;
     padding: 1rem;
 }
@@ -225,7 +224,7 @@ main {
     text-align: center;
 }
 
-.product-card button {
+button {
     margin-top: 0.5rem;
     padding: 8px 16px;
     border: none;
@@ -236,46 +235,25 @@ main {
     cursor: pointer;
 }
 
-.add-to-cart {
-    background-color: #f0a6ca;
+.btn-gris {
+    background-color: #6c757d;
     color: white;
 }
 
-.add-to-cart:hover {
-    background-color: #b58db6;
+.btn-gris:hover {
+    background-color: #5a6268;
 }
 
-.show-details {
-    background-color: transparent;
-    border: 1px solid #b58db6;
-    color: #b58db6;
-}
-
-.show-details:hover {
-    background-color: #b58db6;
+.btn-rojo {
+    background-color: #dc3545;
     color: white;
 }
 
-h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #b58db6;
-    margin-top: 2rem;
+.btn-rojo:hover {
+    background-color: #c82333;
 }
 
-.incrementar,
-.decrementar {
-    background-color: #f0a6ca;
-    color: white
-}
-
-.incrementar:hover,
-.decrementar:hover {
-    background-color: #b58db6;
-}
-
-/* SCREEN SIZES */
-
+/*---------------  Screen sizes  ---------------*/
 @media (min-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -315,7 +293,7 @@ h2 {
     }
 }
 
-/*------------------------------------------------ Fondo del modal */
+/*---------------  Fondo del modal  ---------------*/
 .modal {
     position: fixed;
     top: 0;
@@ -329,7 +307,6 @@ h2 {
     z-index: 1000;
 }
 
-/* Caja del contenido */
 .modal-contenido {
     background-color: #fff;
     padding: 2rem;
@@ -341,7 +318,6 @@ h2 {
     animation: aparecer 0.3s ease;
     }
 
-/* Animación de aparición */
 @keyframes aparecer {
     from {
     opacity: 0;
@@ -353,20 +329,17 @@ h2 {
     }
 }
 
-/* Texto */
 .modal-contenido p {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
 
-/* Contenedor de botones */
 .modal-botones {
     display: flex;
     gap: 1rem;
     justify-content: center;
 }
 
-/* Botón Sí */
 .btn-confirmar {
     background-color: #ff69b4;
     color: white;
@@ -381,7 +354,6 @@ h2 {
     background-color: #ff1493;
 }
 
-/* Botón No */
 .btn-cancelar {
     background-color: #ccc;
     color: #333;
@@ -395,6 +367,7 @@ h2 {
 .btn-cancelar:hover {
     background-color: #999;
 }
+
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 body.modo-oscuro {
     background-color: black;
@@ -424,29 +397,6 @@ body.modo-oscuro .product-card p {
     color: #eaeaea;
 }
 
-body.modo-oscuro .add-to-cart {
-    background-color: #a54d78;
-    color: white;
-}
-
-body.modo-oscuro .add-to-cart:hover {
-    background-color: #a580b6;
-}
-
-body.modo-oscuro .show-details {
-    border: 1px solid #caa4dd;
-    color: #caa4dd;
-}
-
-body.modo-oscuro .show-details:hover {
-    background-color: #caa4dd;
-    color: #1e1e1e;
-}
-
-body.modo-oscuro h2 {
-    color: #caa4dd;
-}
-
 body.modo-oscuro .botones-categorias button {
     background-color: #593f4f;
     color: #eaeaea;
@@ -455,46 +405,4 @@ body.modo-oscuro .botones-categorias button {
 body.modo-oscuro .botones-categorias button:hover {
     background-color: #a54d78;
     color: white;
-}
-
-body.modo-oscuro .incrementar,
-body.modo-oscuro .decrementar {
-    background-color: #a54d78;
-    color: white
-}
-
-body.modo-oscuro .incrementar:hover,
-body.modo-oscuro .decrementar:hover {
-    background-color: #a580b6;
-}
-
-
-.btn-editar,
-.btn-desactivar {
-    padding: 6px 12px;
-    margin: 4px;
-    font-size: 0.9rem;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-editar {
-    background-color: #6c757d;
-    color: white;
-}
-
-.btn-editar:hover {
-    background-color: #5a6268;
-}
-
-.btn-desactivar {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-desactivar:hover {
-    background-color: #c82333;
 }

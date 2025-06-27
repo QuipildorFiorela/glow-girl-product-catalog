@@ -24,11 +24,12 @@ export const getAllProductsJSON = async (req, res) => {
 export const createProduct = async (req, res) => {
     try {
         const {name, description, price, img, category, active} = req.body;
-        if(!name || !description || !price || !img || !category || !active){
+        if(!name || !description || !price || !img || !category){
             return res.status(400).json({message: "Completa todos los campos"});
         }
-        const newProduct = await create({name, description, price, img, category, active});
-        res.status(201).json({ message: "Producto creado con éxito", payload: newProduct });
+        const newProduct = await create({name, description, price, img, category, active:true});    
+        res.redirect("/api/admin/products");
+        //res.status(201).json({ message: "Producto creado con éxito", payload: newProduct });
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
