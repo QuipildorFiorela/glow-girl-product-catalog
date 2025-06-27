@@ -102,7 +102,7 @@ function mostrarProductos(products) {
             countControl.className = "cantidad-control"
             countControl.innerHTML = `
                 <button class="decrementar">-</button>
-                <span>${productInCart.cantidad}</span>
+                <span>${productInCart.count}</span>
                 <button class="incrementar">+</button>
             `;
             card.appendChild(countControl);

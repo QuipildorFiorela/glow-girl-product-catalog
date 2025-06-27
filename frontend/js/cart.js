@@ -72,7 +72,7 @@ function renderizarCarrito(contenedor) {
                     <h6>Cantidad: ${product.count}</h6>
                     <h4>$${(product.price * product.count).toLocaleString('es-AR')}</h4>
                 </div>
-                <div class="count-control">
+                <div class="cantidad-control">
                     <button class="decrementar">-</button>
                     <span>${product.count}</span>
                     <button class="incrementar">+</button>
@@ -185,11 +185,11 @@ function actualizarCarrito() {
 }
 
 function actualizarTotal() {
-    let precioTotal = 0;
-    cart.forEach(producto => {
-        precioTotal += (producto.precio * producto.count);
+    let totalPrice = 0;
+    cart.forEach(product => {
+        totalPrice += (product.price * product.count);
     });
-    document.getElementById("subtotal-precio").textContent = `$${precioTotal.toLocaleString('es-AR')}`;
+    document.getElementById("subtotal-precio").textContent = `$${totalPrice.toLocaleString('es-AR')}`;
 }
 
 function ventanaUsuario() {

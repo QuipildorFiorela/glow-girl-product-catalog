@@ -1,7 +1,7 @@
 import { getProducts } from "../services/product.service.js";
 
 const renderLogin = (req, res) => {
-    res.render("login"); // login.ejs
+    res.render("adminLogin"); // login.ejs
 };
 
 const renderProductList = async (req, res) => {
