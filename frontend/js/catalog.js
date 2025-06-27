@@ -135,17 +135,17 @@ function mostrarProductos(products) {
     })
 };
 
-function filtro() {
+function filter() {
     const searchBar = document.querySelector(".search-bar");
     searchBar.addEventListener("keyup", () => {
-        const texto = quitarTildes(searchBar.value.toLowerCase());
-        const filtrados = products.filter(product => quitarTildes(product.nombre.toLowerCase()).includes(texto));
+        const texto = removeAccents(searchBar.value.toLowerCase());
+        const filtrados = products.filter(product => removeAccents(product.nombre.toLowerCase()).includes(texto));
         document.querySelector('.product-grid').innerHTML = '';
         mostrarProductos(filtrados);
     });
 }
 
-function quitarTildes(texto) {
+function removeAccents(texto) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
@@ -211,7 +211,7 @@ async function init() {
     darkMode();
     cargarCarrito();
     mostrarProductos(products);
-    filtro();
+    filter();
     abrirCarrito();
     funcionalidadCategorias();
     ventanaUsuario();

@@ -105,7 +105,7 @@ function agregarFuncionalidadCarrito() {
     });
 }
 
-function mostrarModalConfirmacion() {
+function modalConfirmation() {
     // Evita duplicados
     if (document.getElementById("modal-confirmacion")) return;
 
@@ -168,7 +168,7 @@ function agregarBotonFinalizarCompra(contenedorBoton) {
     contenedorBoton.appendChild(btnFinalizarCompra);
 
     btnFinalizarCompra.addEventListener("click", () => {
-        mostrarModalConfirmacion();
+        modalConfirmation();
     });
 }
 

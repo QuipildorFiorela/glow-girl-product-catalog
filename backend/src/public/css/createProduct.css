@@ -1,8 +1,140 @@
 body {
-    font-family: sans-serif;
-    background-color: #fff0f5;
-    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+    color: #333;
 }
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    /*nivel de la caja*/
+}
+
+.navbar {
+    background-color: rgb(100, 60, 78);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.logo img {
+    height: 60px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.nombreAlumno p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.search-container {
+    flex: 1 1 300px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 300px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #f0a6ca;
+    outline: none;
+}
+
+.icono-search {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.iconos {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Responsive para pantallas menores a 768px */
+@media (max-width: 768px) {
+    .nombreAlumno {
+        display: none;
+        /* Ocultamos los nombres */
+    }
+
+    .search-container {
+        order: 3;
+        /* Bajamos la barra de búsqueda debajo del logo e iconos */
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+
+    .navbar {
+        justify-content: space-between;
+        gap: 5px;
+    }
+}
+
+.icono {
+    margin-top: 10px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.usuario {
+    position: relative;
+    display: inline-block;
+}
+
+.usuario img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.ventana-usuario {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-width: 160px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.ventana-usuario button {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.oculto {
+    display: none;
+}
+
+.modo-icono {
+    height: 40px;
+    cursor: pointer;
+}
+
+/*main----------------*/
 
 .form-container {
     max-width: 500px;
