@@ -18,4 +18,15 @@ const renderCreateProduct = (req, res) => {
     res.render("createProduct");
 };
 
-export default { renderLogin, renderProductList, renderCreateProduct };
+const renderUploadProduct = async (req, res) => {
+    const { id } = req.params;
+    const product = await findPk(id); // función que ya tenés en el servicio
+
+    if (!product) {
+        return res.status(404).send("Producto no encontrado");
+    }
+
+    res.render("uploadProduct", { product }); // Carga el formulario con los datos del producto
+}
+
+export default { renderLogin, renderProductList, renderCreateProduct, renderUploadProduct };
