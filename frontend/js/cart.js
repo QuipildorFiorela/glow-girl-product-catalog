@@ -210,8 +210,6 @@ function ventanaUsuario() {
         localStorage.removeItem("nombreUsuario");
         localStorage.removeItem("cart");
         window.location.href = "./login.html"; // Cambiar a la ruta de tu inicio
-<<<<<<< Updated upstream
-=======
     });
 
     // Cerrar la ventana si se hace clic fuera
@@ -238,8 +236,7 @@ function ventanaUsuario() {
     cerrarSesionBtn.addEventListener("click", () => {
         localStorage.removeItem("nombreUsuario");
         localStorage.removeItem("cart");
-        window.location.href = "./acceso.html";
->>>>>>> Stashed changes
+        window.location.href = "./login.html";
     });
 
     // Cerrar la ventana si se hace clic fuera
