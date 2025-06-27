@@ -210,6 +210,36 @@ function ventanaUsuario() {
         localStorage.removeItem("nombreUsuario");
         localStorage.removeItem("cart");
         window.location.href = "./login.html"; // Cambiar a la ruta de tu inicio
+<<<<<<< Updated upstream
+=======
+    });
+
+    // Cerrar la ventana si se hace clic fuera
+    document.addEventListener("click", (e) => {
+        if (!document.querySelector(".usuario").contains(e.target)) {
+            ventana.classList.add("oculto");
+        }
+    });
+}
+
+function ventanaUsuario() {
+    const iconoUsuario = document.getElementById("icono-usuario");
+    const ventana = document.getElementById("ventana-usuario");
+    const nombreUsuario = document.getElementById("nombre-usuario");
+    const cerrarSesionBtn = document.getElementById("cerrar-sesion");
+
+    const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
+    nombreUsuario.textContent = nombreGuardado;
+
+    iconoUsuario.addEventListener("click", () => {
+        ventana.classList.toggle("oculto");
+    });
+
+    cerrarSesionBtn.addEventListener("click", () => {
+        localStorage.removeItem("nombreUsuario");
+        localStorage.removeItem("cart");
+        window.location.href = "./acceso.html";
+>>>>>>> Stashed changes
     });
 
     // Cerrar la ventana si se hace clic fuera
