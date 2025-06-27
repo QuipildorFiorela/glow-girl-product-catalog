@@ -28,24 +28,55 @@ function activarBotonesCambioEstado() {
     botones.forEach(boton => {
         boton.addEventListener("click", async () => {
             const id = boton.dataset.id;
+            // Evita duplicados
+            if (document.getElementById("modal-confirmacion")) return;
 
-            try {
-                const response = await fetch(`/api/products/changeStatus/${id}`, {
-                    method: "PUT"
-                });
+            btnTextContent = boton.textContent;
 
-                if (!response.ok) {
-                    throw new Error("Error en la solicitud");
+            const modalHTML = `
+            <div id="modal-confirmacion" class="modal">
+            <div class="modal-contenido">
+                <p>¿Seguro que quiere ${btnTextContent} el producto?</p>
+                <div class="modal-botones">
+                <button id="btn-confirmar" class="btn-confirmar">Sí</button>
+                <button id="btn-cancelar" class="btn-cancelar">No</button>
+                </div>
+            </div>
+            </div>
+            `;
+
+            const contenedor = document.createElement("div");
+            contenedor.innerHTML = modalHTML;
+            document.body.appendChild(contenedor);
+
+            // Eventos
+            const modal = document.getElementById("modal-confirmacion");
+            const btnConfirmar = document.getElementById("btn-confirmar");
+            const btnCancelar = document.getElementById("btn-cancelar");
+
+            btnCancelar.addEventListener("click", () => {
+                modal.remove();
+            });
+
+            btnConfirmar.addEventListener("click", async () => {
+                try {
+                    const response = await fetch(`/api/products/changeStatus/${id}`, {
+                        method: "PUT"
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Error en la solicitud");
+                    }
+
+                    const data = await response.json();
+                    console.log(data.message);
+                    location.reload(); // recargar para ver el cambio reflejado
+
+                } catch (error) {
+                    console.error("Error al cambiar el estado:", error);
+                    alert("No se pudo cambiar el estado del producto.");
                 }
-
-                const data = await response.json();
-                console.log(data.message);
-                location.reload(); // recargar para ver el cambio reflejado
-
-            } catch (error) {
-                console.error("Error al cambiar el estado:", error);
-                alert("No se pudo cambiar el estado del producto.");
-            }
+            });
         });
     });
 }
@@ -95,6 +126,61 @@ function ventanaUsuario() {
     document.addEventListener("click", (e) => {
         if (!document.querySelector(".usuario").contains(e.target)) {
             ventana.classList.add("oculto");
+        }
+    });
+}
+
+function mostrarModalConfirmacion() {
+    // Evita duplicados
+    if (document.getElementById("modal-confirmacion")) return;
+
+    const modalHTML = `
+        <div id="modal-confirmacion" class="modal">
+        <div class="modal-contenido">
+            <p>¿Seguro que quiere desactivar el producto?</p>
+            <div class="modal-botones">
+            <button id="btn-confirmar" class="btn-confirmar">Sí</button>
+            <button id="btn-cancelar" class="btn-cancelar">No</button>
+            </div>
+        </div>
+        </div>
+    `;
+
+    const contenedor = document.createElement("div");
+    contenedor.innerHTML = modalHTML;
+    document.body.appendChild(contenedor);
+
+    // Eventos
+    const modal = document.getElementById("modal-confirmacion");
+    const btnConfirmar = document.getElementById("btn-confirmar");
+    const btnCancelar = document.getElementById("btn-cancelar");
+
+    btnCancelar.addEventListener("click", () => {
+        modal.remove();
+    });
+
+    btnConfirmar.addEventListener("click", async () => {
+        modal.remove();
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const nombreUsuario = localStorage.getItem("nombreUsuario") || "Cliente";
+
+        const sale = {
+            buyerName: nombreUsuario,
+            products: cart.map(product => ({
+                productId: product.id,
+                count: product.count
+            }))
+        };
+        const res = await fetch("http://localhost:5000/api/sales", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(sale)
+        })
+        if (res.ok) {
+            window.location.href = "./ticket.html";
+        } else {
+            alert("Error al registrar la venta");
         }
     });
 }
