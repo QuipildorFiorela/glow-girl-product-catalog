@@ -26,7 +26,7 @@
             </div>
 
             <a href="/api/admin/products/create">
-                <button class="btn-gris">Crear producto</button>
+                <button id="btn-gris">Crear producto</button>
             </a>
 
             <div class="iconos">
@@ -54,9 +54,9 @@
 
                         <div class="admin-buttons">
                             <a href="/admin/edit/<%= product.id %>">
-                                <button class="btn-gris">Editar</button>
+                                <button id="btn-gris">Editar</button>
                             </a>
-                            <button class="btn-rojo" data-id="<%= product.id %>" type="button">
+                            <button class="btn-desactivar" id="btn-rojo" data-id="<%= product.id %>" type="button">
                                 <%= product.active ? 'Desactivar' : 'Activar' %>
                             </button>
                         </div>
