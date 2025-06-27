@@ -88,7 +88,7 @@ function ventanaUsuario() {
     cerrarSesionBtn.addEventListener("click", () => {
         localStorage.removeItem("nombreUsuario");
         localStorage.removeItem("carrito");
-        window.location.href = "./acceso.html";
+        window.location.href = 'http://localhost:5000/api/admin/login';
     });
 
     // Cerrar la ventana si se hace clic fuera
