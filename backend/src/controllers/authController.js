@@ -1,12 +1,16 @@
-import {findByEmail} from "../services/user.service";
-import { comparePassword } from "../helpers/authHelper";
+import {findByEmail} from "../services/user.service.js";
+import { comparePassword } from "../helpers/authHelper.js";
 
 const login = async (req,res)=>{
     const {email, password} = req.body
-    //validar los ingresos falta
+    if (!email || !password) {
+        return res.status(400).json({ message: "Email y contraseña son requeridos" });
+    }
     try {
-        const user = userService.findByEmail(email)
-        //valido si hay usuarios o no
+        const user = await userService.findByEmail(email)
+        if (!user) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
 
         const match = await comparePassword(password, user.password)
         if(!match){
@@ -17,3 +21,5 @@ const login = async (req,res)=>{
         res.status(500).json({message:"Error iterno ", error:error.message});
     }
 }
+
+export default login

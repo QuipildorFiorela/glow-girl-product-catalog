@@ -1,4 +1,4 @@
-import { getUsers, getUserWithQuery, create, findPk, update, remove } from "../services/user.service.js";
+import { getUsers, create, findPk, findByEmail, update} from "../services/user.service.js";
 import {hashPassword} from "../helpers/authHelper.js"
 
 export const getAllUsers = async (req, res) => {
