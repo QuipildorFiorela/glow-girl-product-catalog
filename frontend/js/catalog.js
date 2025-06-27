@@ -1,6 +1,6 @@
-let productos = [];
-let carrito = [];
-let categoria = "";
+let products = [];
+let cart = [];
+let category = "";
 
 // Modo oscuro
 function darkMode() {
@@ -30,12 +30,12 @@ function funcionalidadCategorias() {
     const botonesCat = document.getElementsByClassName("btn-categoria")
     for (let boton of botonesCat) { //recorro los botones de botonesCat, let SIEMPRE, para manejar el boton como una instancia y no como un puntero/referencia
         boton.addEventListener("click", () => {
-            if (categoria == boton.dataset.value) { //si ya estoy en la categoria y vuelvo a hacer click en la misma, salgo
-                categoria = ""
+            if (category == boton.dataset.value) { //si ya estoy en la categoria y vuelvo a hacer click en la misma, salgo
+                category = ""
             } else {
-                categoria = boton.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
+                category = boton.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
             }
-            mostrarProductos(productos) //muestro los productos que coincidan con la categoria que estoy queriendo mostrar
+            mostrarProductos(products) //muestro los productos que coincidan con la categoria que estoy queriendo mostrar
         })
     }
 }
@@ -52,16 +52,16 @@ function funcionalidadCategorias() {
 async function cargarProductos() {
     const respuesta = await fetch('http://localhost:5000/api/products/json'); //CONEXIÓN A LA BDT EXITOSA
     const data = await respuesta.json(); // fetch espera que el servidor mande un JSON
-    productos = data.payload; //me traigo todos los productos en una misma lista
+    products = data.payload; //me traigo todos los productos en una misma lista
 }
 
-function mostrarProductos(productos) {
+function mostrarProductos(products) {
     const contenedor = document.querySelector('.product-grid');
     contenedor.innerHTML = "";
 
-    productos.forEach(producto => {
-        if (!producto.activo) return; // si no está activo, no lo muestres
-        if (categoria != "" && producto.categoria != categoria) { //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
+    products.forEach(product => {
+        if (!product.activo) return; // si no está activo, no lo muestres
+        if (category != "" && product.category != category) { //si categoria es dif de vacío y la cat del producto no coincide con la que estoy queriendo mostrar
             return; //continua con el siguiente y no muestra el producto cuya cat no coincide con la mostrada
         }
 
@@ -69,56 +69,56 @@ function mostrarProductos(productos) {
         card.classList.add("product-card"); 
 
         card.innerHTML = `
-            <img src="http://localhost:5000/${producto.img}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>$${producto.precio.toLocaleString('es-AR')}</p>
+            <img src="http://localhost:5000/${product.img}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>$${product.price.toLocaleString('es-AR')}</p>
         `;
         contenedor.appendChild(card);
 
         // Botón Detalles
         const botonDetalles = document.createElement('button');
         botonDetalles.className = "show-details";
-        botonDetalles.textContent = producto.descripcionIsOpen ? 'Ocultar detalles' : 'Mostrar detalles';
+        botonDetalles.textContent = product.descriptionIsOpen ? 'Ocultar detalles' : 'Mostrar detalles';
         botonDetalles.addEventListener('click', () => {
-            producto.descripcionIsOpen = !producto.descripcionIsOpen;
-            mostrarProductos(productos);
+            product.descriptionIsOpen = !product.descriptionIsOpen;
+            mostrarProductos(products);
         });
         card.appendChild(botonDetalles);
 
         // Si los detalles están abiertos, mostrar más info
-        if (producto.descripcionIsOpen) {
-            const descripcion = document.createElement("p");
-            descripcion.innerHTML = `<strong>Descripción:</strong> ${producto.descripcion}`;
-            card.appendChild(descripcion);
+        if (product.descriptionIsOpen) {
+            const description = document.createElement("p");
+            description.innerHTML = `<strong>Descripción:</strong> ${product.description}`;
+            card.appendChild(description);
 
         };
         
         // Botón agregar
-        const productoEnCarrito = carrito.find(item => item.nombre === producto.nombre); //Busca el producto en el carrito
+        const productInCart = cart.find(item => item.name === product.name); //Busca el producto en el carrito
         
-        if (productoEnCarrito) { //Si está en el carrito, crea los botones para incrementar y descrementar
-            const cantidadControl = document.createElement("div");
-            cantidadControl.className = "cantidad-control"
-            cantidadControl.innerHTML = `
+        if (productInCart) { //Si está en el carrito, crea los botones para incrementar y descrementar
+            const countControl = document.createElement("div");
+            countControl.className = "cantidad-control"
+            countControl.innerHTML = `
                 <button class="decrementar">-</button>
-                <span>${productoEnCarrito.cantidad}</span>
+                <span>${productInCart.cantidad}</span>
                 <button class="incrementar">+</button>
             `;
-            card.appendChild(cantidadControl);
+            card.appendChild(countControl);
 
-            cantidadControl.querySelector(".incrementar").addEventListener('click', () => { //Si toco +, aumento la cantidad
-                productoEnCarrito.cantidad++;
+            countControl.querySelector(".incrementar").addEventListener('click', () => { //Si toco +, aumento la cantidad
+                productInCart.count++;
                 guardarCarrito();
-                mostrarProductos(productos);
+                mostrarProductos(products);
             });
 
-            cantidadControl.querySelector(".decrementar").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
-                productoEnCarrito.cantidad--;
-                if (productoEnCarrito.cantidad <= 0) {
-                    carrito = carrito.filter(item => item.nombre !== producto.nombre);
+            countControl.querySelector(".decrementar").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
+                productInCart.count--;
+                if (productInCart.count <= 0) {
+                    cart = cart.filter(item => item.name !== product.name);
                 }
                 guardarCarrito();
-                mostrarProductos(productos);
+                mostrarProductos(products);
             });
 
         } else { //Si no está en el carrito, crea el botón de agregar
@@ -127,8 +127,8 @@ function mostrarProductos(productos) {
             botonAgregar.innerHTML = `Agregar`;
             card.appendChild(botonAgregar);
             botonAgregar.addEventListener("click", () => {
-                agregarAlCarrito(producto);
-                mostrarProductos(productos);
+                agregarAlCarrito(product);
+                mostrarProductos(products);
             });
         }
     })
@@ -138,7 +138,7 @@ function filtro() {
     const searchBar = document.querySelector(".search-bar");
     searchBar.addEventListener("keyup", () => {
         const texto = quitarTildes(searchBar.value.toLowerCase());
-        const filtrados = productos.filter(producto => quitarTildes(producto.nombre.toLowerCase()).includes(texto));
+        const filtrados = products.filter(product => quitarTildes(product.nombre.toLowerCase()).includes(texto));
         document.querySelector('.product-grid').innerHTML = '';
         mostrarProductos(filtrados);
     });
@@ -149,33 +149,33 @@ function quitarTildes(texto) {
 }
 
 function guardarCarrito() {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+    localStorage.setItem('carrito', JSON.stringify(cart));
 }
 
 function cargarCarrito() {
-    const carritoGuardado = localStorage.getItem("carrito");
-    if (carritoGuardado) {
-        carrito = JSON.parse(carritoGuardado);
+    const cartSaved = localStorage.getItem("cart");
+    if (cartSaved) {
+        cart = JSON.parse(cartSaved);
     }
 }
 
 function abrirCarrito() {
     const carritoIcono = document.getElementById("cart-icon");
     carritoIcono.addEventListener('click', () => {
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        window.location.href = "./carrito.html";
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.location.href = "./cart.html";
     })
 }
 
-function agregarAlCarrito(producto) {
-    const productoExistente = carrito.find(item => item.nombre === producto.nombre);
-    if (productoExistente) {
-        productoExistente.cantidad++;
+function agregarAlCarrito(product) {
+    const availbleProduct = cart.find(item => item.name === product.nombre);
+    if (availbleProduct) {
+        availbleProduct.count++;
     } else {
-        carrito.push({ ...producto, cantidad: 1 });
+        cart.push({ ...product, count: 1 });
     }
     guardarCarrito();
-    mostrarProductos(productos);
+    mostrarProductos(products);
 }
 
 function ventanaUsuario() {
@@ -193,7 +193,7 @@ function ventanaUsuario() {
 
     cerrarSesionBtn.addEventListener("click", () => {
         localStorage.removeItem("nombreUsuario");
-        localStorage.removeItem("carrito");
+        localStorage.removeItem("cart");
         window.location.href = "./acceso.html";
     });
 
@@ -205,39 +205,11 @@ function ventanaUsuario() {
     });
 }
 
-//POSIBLE SLIDEBAR
-
-// CREACIÓN
-/*document.getElementById("carrito-icono").addEventListener("click", () => {
-    const sidebar = document.getElementById("carrito-sidebar");
-    sidebar.classList.remove("oculto"); // sacamos la clase oculto
-    sidebar.classList.add("visible");   // mostramos el sidebar
-});
-
-document.getElementById("btn-cerrar-carrito").addEventListener("click", () => {
-    const sidebar = document.getElementById("carrito-sidebar");
-    sidebar.classList.remove("visible");
-    sidebar.classList.add("oculto");
-});*/
-
-// AL APRETAR EL ÍCONO
-/*const carritoSidebar = document.getElementById('carrito-sidebar');
-const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
-
-carritoIcono.addEventListener('click', () => {
-    carritoSidebar.classList.add('mostrar');
-})
-
-btnCerrarCarrito.addEventListener("click", () => {
-    carritoSidebar.classList.remove("mostrar")
-})*/
-
-
 async function init() {
     await cargarProductos();
     darkMode();
     cargarCarrito();
-    mostrarProductos(productos);
+    mostrarProductos(products);
     filtro();
     abrirCarrito();
     funcionalidadCategorias();

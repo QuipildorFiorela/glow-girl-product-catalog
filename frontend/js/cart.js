@@ -1,4 +1,4 @@
-let carrito = [];
+let cart = [];
 
 function btnLogo(){
     const btnVolverInicio = document.getElementById("logo-tienda");
@@ -32,26 +32,26 @@ function darkMode() {
 
 
 function cargarCarrito() {
-    const carritoGuardado = localStorage.getItem("carrito");
-    if (carritoGuardado) {
-        carrito = JSON.parse(carritoGuardado);
+    const cartGuardado = localStorage.getItem("cart");
+    if (cartGuardado) {
+        cart = JSON.parse(cartGuardado);
         actualizarTotal();
     }
 }
 
 function guardarCarrito() {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 function mostrarCarrito() {
-    const contenedor = document.querySelector(".carrito-items");
+    const contenedor = document.querySelector(".cart-items");
     const contenedorBoton = document.querySelector(".btn-container");
     contenedor.innerHTML = "";
     contenedorBoton.innerHTML = "";
 
-    if (carrito.length === 0) {
+    if (cart.length === 0) {
         const mensaje = document.createElement("p");
-        mensaje.textContent = "No hay elementos en el carrito.";
+        mensaje.textContent = "No hay elementos en el cart.";
         contenedor.appendChild(mensaje);
         return;
     }
@@ -62,43 +62,43 @@ function mostrarCarrito() {
 }
 
 function renderizarCarrito(contenedor) {
-    carrito.forEach((producto, indice) => {
+    cart.forEach((product, index) => {
         const divProducto = document.createElement("div");
         divProducto.classList.add("item-block");
         divProducto.innerHTML = `
-                <img src="http://localhost:5000/${producto.img}" class="modo-icono">
+                <img src="http://localhost:5000/${product.img}" class="modo-icono">
                 <div class="item-info">
-                    <h5>${producto.nombre}</h5> 
-                    <h6>Cantidad: ${producto.cantidad}</h6>
-                    <h4>$${(producto.precio * producto.cantidad).toLocaleString('es-AR')}</h4>
+                    <h5>${product.name}</h5> 
+                    <h6>Cantidad: ${product.count}</h6>
+                    <h4>$${(product.price * product.count).toLocaleString('es-AR')}</h4>
                 </div>
-                <div class="cantidad-control">
+                <div class="count-control">
                     <button class="decrementar">-</button>
-                    <span>${producto.cantidad}</span>
+                    <span>${product.count}</span>
                     <button class="incrementar">+</button>
                 </div>
                 <img class="delete-button" src= "http://localhost:5000/img/icons/trash_icon.png" alt="Eliminar">
                 `;
-        divProducto.dataset.index = indice; // Para identificar el producto luego
+        divProducto.dataset.index = index; // Para identificar el producto luego
         contenedor.appendChild(divProducto);
     });
 }
 
 function agregarFuncionalidadCarrito() {
     document.querySelectorAll(".item-block").forEach(divProducto => {
-        const indice = parseInt(divProducto.dataset.index);
-        const producto = carrito[indice];
+        const index = parseInt(divProducto.dataset.index);
+        const product = cart[index];
 
-        divProducto.querySelector(".delete-button").addEventListener('click', () => eliminarDelCarrito(indice));
+        divProducto.querySelector(".delete-button").addEventListener('click', () => eliminarDelCarrito(index));
         divProducto.querySelector(".incrementar").addEventListener('click', () => {
-            producto.cantidad++;
+            product.count++;
             actualizarCarrito();
         });
         divProducto.querySelector(".decrementar").addEventListener('click', () => {
-            if (producto.cantidad > 1) {
-                producto.cantidad--;
+            if (product.count > 1) {
+                product.count--;
             } else {
-                carrito.splice(indice, 1);
+                cart.splice(index, 1);
             }
             actualizarCarrito();
         });
@@ -137,18 +137,16 @@ function mostrarModalConfirmacion() {
     btnConfirmar.addEventListener("click", async () => {
         modal.remove();
         
-        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const nombreUsuario = localStorage.getItem("nombreUsuario") || "Cliente";
         
         const sale = {
             buyerName: nombreUsuario,
-            products: carrito.map(product => ({
+            products: cart.map(product => ({
                 productId: product.id,
-                count: product.cantidad
+                count: product.count
             }))
         };
-        console.log(sale);
-        
         const res = await fetch("http://localhost:5000/api/sales", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -176,7 +174,7 @@ function agregarBotonFinalizarCompra(contenedorBoton) {
 
 
 function eliminarDelCarrito(indice) {
-    carrito.splice(indice, 1);
+    cart.splice(indice, 1);
     actualizarCarrito();
 }
 
@@ -188,8 +186,8 @@ function actualizarCarrito() {
 
 function actualizarTotal() {
     let precioTotal = 0;
-    carrito.forEach(producto => {
-        precioTotal += (producto.precio * producto.cantidad);
+    cart.forEach(producto => {
+        precioTotal += (producto.precio * producto.count);
     });
     document.getElementById("subtotal-precio").textContent = `$${precioTotal.toLocaleString('es-AR')}`;
 }
@@ -210,7 +208,7 @@ function ventanaUsuario() {
 
     cerrarSesionBtn.addEventListener("click", () => {
         localStorage.removeItem("nombreUsuario");
-        localStorage.removeItem("carrito");
+        localStorage.removeItem("cart");
         window.location.href = "./acceso.html"; // Cambiar a la ruta de tu inicio
     });
 

@@ -39,24 +39,18 @@ export const createSale = async (req, res) => {
         const productsFound = await Product.findAll({ 
             where: { id: productIds } 
         });
-        console.log(products);
-        
         if (productsFound.length !== products.length) {
             return res.status(400).json({ 
                 message: "Uno o más productos no existen en la base de datos." 
             });
         }
         // Calculo el total de la venta en base al precio de los productos * la cantidad
-        console.log("Productos recibidos:", products);
-        console.log("Productos encontrados en BD:", productsFound);
-
         const total = products.reduce((acc, prod) => {
             const productDB = productsFound.find(p => p.id === prod.productId);
             if (!productDB) {
                 console.log(`Producto con ID ${prod.productId} no encontrado en la BD`);
                 return acc;
             }
-
             console.log(`Calculando: ${productDB.price} * ${prod.count}`);
 
             return acc + (productDB.price * prod.count);
