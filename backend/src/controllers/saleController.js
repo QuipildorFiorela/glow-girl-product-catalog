@@ -1,4 +1,4 @@
-import {getSales, create, getSalesWithProducts} from "../services/sale.service.js";
+import {getSales, create, getSalesWProducts} from "../services/sale.service.js";
 import SaleDetail from "../models/saleDetailModel.js";
 import Product from "../models/productModel.js";
 
@@ -14,12 +14,12 @@ export const getAllSales = async (req, res) => {
 };
 
 // GET con productos: Trae ventas y productos asociados
-export const getSalesWithProductsController = async (req, res) => {
+export const getSalesWProductsController = async (req, res) => {
     try {
-        const salesWithProducts = await getSalesWithProducts();
+        const salesWProducts = await getSalesWProducts();
         res.status(200).json({ 
             message: "Ventas con productos encontradas", 
-            payload: salesWithProducts 
+            payload: salesWProducts 
         });
     } catch (error) {
         res.status(500).json({ 
@@ -63,17 +63,17 @@ export const createSale = async (req, res) => {
         });
 
         // Registro los detalles de venta en la tabla sale-detail usando bulkCreate para insertar todos los productos de una vez
-        const saleDetails = products.map(prod => ({
+        const salesDetail = products.map(prod => ({
             saleId: newSale.id,
             productId: prod.productId,
             count: prod.count
         }));
 
-        await SaleDetail.bulkCreate(saleDetails); //(sequelize method: permite crear multiples registros a la vez, con una sola consulta)
+        await SaleDetail.bulkCreate(salesDetail); //(sequelize method: permite crear multiples registros a la vez, con una sola consulta)
 
         res.status(201).json({ 
             message: "Venta registrada con éxito", 
-            payload: { venta: newSale, details: saleDetails } 
+            payload: { venta: newSale, details: salesDetail } 
         });
     } catch (error) {
         console.log(error.message);

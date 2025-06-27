@@ -21,34 +21,34 @@ function darkMode() {
     });
 }
 
-function obtenerNombreUsuario() {
+function getUserName() {
     return localStorage.getItem("nombreUsuario") || "Usuario";
 }
 
-function obtenerCarrito() {
-    return JSON.parse(localStorage.getItem("carrito")) || [];
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
 function generarID() {
     return Math.floor(100000000 + Math.random() * 900000000);
 }
 
-function obtenerFecha() {
+function getDate() {
     const hoy = new Date();
     return hoy.toLocaleDateString('es-AR');
 }
 
-function renderizarProductos(carrito) {
+function renderizarProductos(cart) {
     const tabla = document.getElementById("tabla-productos");
     let total = 0;
 
-    carrito.forEach(producto => {
-        const subtotal = producto.precio * producto.cantidad;
+    cart.forEach(product => {
+        const subtotal = product.price * product.count;
         total += subtotal;
 
         const fila = document.createElement("tr");
         fila.innerHTML = `
-        <td>${producto.nombre} x${producto.cantidad}</td>
+        <td>${product.name} x${product.count}</td>
         <td class="text-end">$${subtotal.toLocaleString('es-AR')}</td>
         `;
         tabla.appendChild(fila);
@@ -62,7 +62,7 @@ function mostrarDatosGenerales(nombreUsuario) {
     document.getElementById("facturado-a").textContent = nombreUsuario;
     document.getElementById("id-compra").textContent = generarID();
     document.getElementById("id-pedido").textContent = generarID();
-    document.getElementById("fecha-pedido").textContent = obtenerFecha();
+    document.getElementById("fecha-pedido").textContent = getDate();
 }
 
 function imprimirTicket() {
@@ -84,11 +84,11 @@ function asignarEventos() {
 
 
 function init() {
-    const nombreUsuario = obtenerNombreUsuario();
-    const carrito = obtenerCarrito();
+    const nombreUsuario = getUserName();
+    const cart = getCart();
 
     mostrarDatosGenerales(nombreUsuario);
-    renderizarProductos(carrito);
+    renderizarProductos(cart);
     asignarEventos();
 }
 
