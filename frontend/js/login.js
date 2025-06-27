@@ -36,7 +36,7 @@ function funcionalidadBtnIngresar(){
         //guardamos el nombre para usarlo en otra página
         localStorage.setItem("nombreUsuario", nombre);
         //redirigimos a la página principal
-        window.location.href = "inicio.html";
+        window.location.href = "catalog.html";
         } else {
         alert("Por favor ingresá tu nombre.");
         }

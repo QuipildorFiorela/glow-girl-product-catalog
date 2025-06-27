@@ -71,7 +71,7 @@ function imprimirTicket() {
 
 function salirDelTicket() {
     localStorage.clear();
-    window.location.href = "./acceso.html";
+    window.location.href = "./login.html";
 }
 
 function asignarEventos() {
