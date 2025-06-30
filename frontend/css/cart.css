@@ -443,3 +443,36 @@ body.modo-oscuro .finalizar-compra {
 body.modo-oscuro .finalizar-compra:hover {
     background-color: #aa6084;
 }
+
+body.modo-oscuro .modal{
+    background-color: #00000056;
+}
+
+body.modo-oscuro .modal-contenido {
+    background-color: #181a1b;
+    box-shadow: 0 0 15px  rgba(41, 41, 41, 0.417);
+    }
+
+.modal-botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-confirmar {
+    background-color: #70142f;
+    color: white;
+}
+
+.btn-confirmar:hover {
+    background-color: #570f25;
+}
+
+.btn-cancelar {
+    background-color: #35393b;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background-color: #282c2d;
+}
