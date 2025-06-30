@@ -13,8 +13,7 @@ export const getAllProducts = async (req, res) => {
             message: "Productos encontrados",
             payload: data.products,
             totalItems: data.totalItems,
-            totalPages: data.totalPages,
-            currentPage: data.currentPage
+            totalPages: data.totalPages
         });
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
