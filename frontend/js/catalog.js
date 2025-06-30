@@ -28,18 +28,31 @@ function darkMode() {
 
 
 function funcionalidadCategorias() {
-    const buttonsCat = document.getElementsByClassName("btn-categoria")
-    for (let btn of buttonsCat) { //recorro los botones de botonesCat, let SIEMPRE, para manejar el boton como una instancia y no como un puntero/referencia
+    const buttonsCat = document.getElementsByClassName("btn-categoria");
+    for (let btn of buttonsCat) {
         btn.addEventListener("click", () => {
-            if (category == btn.dataset.value) { //si ya estoy en la categoria y vuelvo a hacer click en la misma, salgo
-                category = ""
+            const contenedor = btn.parentElement;
+
+            if (category == btn.dataset.value) {
+                category = "";
+                contenedor.classList.remove("seleccionada");
             } else {
-                category = btn.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
+                // Quito la clase de todas las categorías
+                const todasLasCategorias = document.getElementsByClassName("categoria");
+                for (let cat of todasLasCategorias) {
+                    cat.classList.remove("seleccionada");
+                }
+                // Asigno la nueva
+                category = btn.dataset.value;
+                contenedor.classList.add("seleccionada");
             }
-            loadAndShow(1); // Vuelvo a cargar desde la página 1 con la categoría seleccionada
-        })
+            loadAndShow(1);
+        });
     }
 }
+
+
+
 // window.addEventListener("scroll", () => {
 // const navbar = document.querySelector(".navbar");
 // if (window.scrollY > 100) {
@@ -74,7 +87,7 @@ function showProducts(products) {
     contenedor.innerHTML = "";
 
     products.forEach(product => {
-        
+
         const card = document.createElement("div");
         card.classList.add("product-card"); 
 
