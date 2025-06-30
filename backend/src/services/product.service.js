@@ -5,7 +5,7 @@ export const getProducts = async (page = 1, limit = 8, category = '', search = '
     const offset = (page -1) * limit; //desde donde empezar a mostrar
 
     const whereClause = { //objeto where dinámico
-        active : true //filtra solo los activos
+        //active : true //filtra solo los activos
     };
 
     if (category) {

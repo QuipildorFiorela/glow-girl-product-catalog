@@ -140,7 +140,7 @@ input, textarea, select {
     border-radius: 5px;
 }
 
-button {
+.form-container button {
     margin-top: 20px;
     padding: 12px;
     border: none;
@@ -233,7 +233,7 @@ button:hover {
 
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 body.modo-oscuro {
-    background-color: rgb(27, 27, 27);
+    background-color: #1e2021;
     color: #eaeaea;
 }
 
@@ -252,7 +252,8 @@ body.modo-oscuro h2 {
 }
 
 body.modo-oscuro .form-container {
-    box-shadow: 0 0 12px rgba(185, 185, 185, 0.417);
+    background-color: #181a1b;
+    box-shadow: 0 0 12px rgba(41, 41, 41, 0.417);
 }
 
 body.modo-oscuro label {
@@ -265,4 +266,51 @@ body.modo-oscuro .product-card {
 
 body.modo-oscuro .product-card p {
     color: #eaeaea;
+}
+
+body.modo-oscuro input, body.modo-oscuro textarea, body.modo-oscuro select{
+    border: 1px solid #1a1a1a;
+    background-color: #3b3b3b;
+    color: white;
+}
+
+body.modo-oscuro label{
+    color: white;
+}
+
+body.modo-oscuro .form-container button{
+    background-color: #70142f;
+}
+
+body.modo-oscuro .modal{
+    background-color: #00000056;
+}
+
+body.modo-oscuro .modal-contenido {
+    background-color: #181a1b;
+    box-shadow: 0 0 15px  rgba(41, 41, 41, 0.417);
+    }
+
+.modal-botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-confirmar {
+    background-color: #70142f;
+    color: white;
+}
+
+.btn-confirmar:hover {
+    background-color: #570f25;
+}
+
+.btn-cancelar {
+    background-color: #35393b;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background-color: #282c2d;
 }
