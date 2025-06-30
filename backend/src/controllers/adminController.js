@@ -4,12 +4,21 @@ const renderLogin = (req, res) => {
     res.render("adminLogin"); // login.ejs
 };
 
-const renderProductList = async (req, res) => {
+export const renderProducts = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 8;
+    const category  = req.query.category || '';
+    const search = req.query.search || '';
+
     try {
-        const products = await getProducts();
-        res.render("products", { products });
+        const data = await getProducts(page, limit, category, search);
+
+        res.render("products", {
+            products: data.products,
+            totalPages: data.totalPages,
+            currentPage: data.currentPage
+        });
     } catch (error) {
-        console.error("Error al obtener productos:", error);
         res.status(500).send("Error al cargar los productos");
     }
 };
@@ -27,4 +36,4 @@ const renderUpdateProduct = async (req, res) => {
     res.render("updateProduct", { product }); // Carga el formulario con los datos del producto
 }
 
-export default { renderLogin, renderProductList, renderCreateProduct, renderUpdateProduct };
+export default { renderLogin, renderProducts, renderCreateProduct, renderUpdateProduct };

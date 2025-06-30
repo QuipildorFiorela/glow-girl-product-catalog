@@ -36,10 +36,9 @@ function verifyPassword() {
                 },
                 body: JSON.stringify({ mail, password })
             });
-
             const result = await response.json();
-
             if (response.ok) {
+                localStorage.setItem("usuario", JSON.stringify(result.payload));
                 window.location.href = "/api/admin/products";
             } else {
                 alert(result.message);
@@ -51,30 +50,9 @@ function verifyPassword() {
     });
 }
 
-/*function funcionalidadBtnIngresar(){
-    document.addEventListener("DOMContentLoaded", () => {
-    const btnIngresar = document.getElementById("btn-ingresar");
-    const inputNombre = document.getElementById("nombre");
-
-    btnIngresar.addEventListener("click", () => {
-        const nombre = inputNombre.value.trim();
-
-        if (nombre) {
-        //guardamos el nombre para usarlo en otra página
-        localStorage.setItem("nombreUsuario", nombre);
-        //redirigimos a la página principal
-        window.location.href = "inicio.html";
-        } else {
-        alert("Por favor ingresá tu nombre.");
-        }
-    });
-    });
-}*/
-
 async function init() {
     darkMode();
     verifyPassword();
-    //funcionalidadBtnIngresar();
 }
 
 init();

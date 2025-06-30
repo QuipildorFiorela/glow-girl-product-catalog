@@ -20,6 +20,7 @@
                 <p>Fiorela Quipildor</p>
             </div>
 
+            <!-- FALTA ARREGLAR EL FILTRO -->
             <div class="search-container"> 
                 <input type="text" placeholder="Buscar..." class="search-bar"> 
                 <img src="http://localhost:5000/img/icons/search_icon.png" alt="Buscar" class="icono-search"> 
@@ -64,6 +65,30 @@
                 <% }) %>
             </div>
         </section>
+        <div class="pagination">
+            <% if (currentPage > 1) { %>
+                <form method="GET" action=""> <!-- Get envia los datos por la URL -->
+                    <input type="hidden" name="page" value="<%= currentPage - 1 %>">
+                    <button type="submit">Anterior</button>
+                </form>
+            <% } %>
+
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <form method="GET" action=""> 
+                    <input type="hidden" name="page" value="<%= i %>">
+                    <button type="submit" class="<%= currentPage === i ? 'pagina-actual' : '' %>" <%= currentPage === i ? 'disabled' : '' %>>
+                        <%= i %>
+                    </button>
+                </form>
+            <% } %>
+
+            <% if (currentPage < totalPages) { %>
+                <form method="GET" action="">
+                    <input type="hidden" name="page" value="<%= currentPage + 1 %>">
+                    <button type="submit">Siguiente</button>
+                </form>
+            <% } %>
+        </div>
     </main>
 
     <script src="/js/products.js"></script>
