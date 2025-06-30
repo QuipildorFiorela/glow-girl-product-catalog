@@ -33,7 +33,7 @@
             </div>
         </nav>
     </header>
-    <h2>*ੈ✩‧₊˚Crea un nuevo producto*ੈ✩‧₊˚</h2>
+    <h2>*ੈ✩‧₊˚Edita el producto*ੈ✩‧₊˚</h2>
     <main class="form-container">
         <form id="form-editar-producto">
             <input type="hidden" id="product-id" value="<%= product.id %>">
@@ -57,10 +57,11 @@
             </select>
 
             <button type="submit">Actualizar Producto</button>
+            <button class="btnCancel" type="button">Cancelar</button>
         </form>
     </main>
 
-    <script src="/js/uploadProduct.js"></script>
+    <script src="/js/updateProduct.js"></script>
 </body>
 
 </html>

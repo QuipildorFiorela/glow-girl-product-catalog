@@ -1,33 +1,27 @@
-
 import { DataTypes } from "sequelize"
 import sequelize from "../config/db-sequalize.js"
 
 //Tabla SQL
 const User = sequelize.define("User", {
-    //columna id
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
+    mail: {
+        type: DataTypes.STRING(100),
         allowNull: false,
-    },
-    //columna firsName
-    firstName:{
-        type:DataTypes.STRING,
-        allowNull: true,
-    },
-    //columna email
-    email: {
-        type: DataTypes.STRING,
-        validate:{
-            isEmail: true,
-        },
         unique: true,
+        primaryKey: true,
+        validate: {
+            isEmail: true
+        }
     },
-    password: { type: DataTypes.STRING },
-    status:{
-        type:DataTypes.BOOLEAN,
-        defaultValue: false
+    name: {
+        type: DataTypes.STRING(10),
+        allowNull: false  
+    },
+    password: {
+        type: DataTypes.TEXT('tiny'),
+        allowNull: false
     }
-})
+}, {
+    tableName: "users",
+    timestamps: false
+});
 export default User;

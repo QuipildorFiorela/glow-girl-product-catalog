@@ -1,4 +1,3 @@
-// services
 import User from "../models/userModel.js";
 
 export const getUsers = async () => {
@@ -13,8 +12,8 @@ export const findPk = async (id) => {
     return await User.findByPk(id);
 };
 
-export const findByEmail = async (email) => {
-    return await User.findOne({where: {email: email}});
+export const findByMail = async (mail) => {
+    return await User.findOne({where: {mail}});
 };
 
 export const update = async (user, id) => {

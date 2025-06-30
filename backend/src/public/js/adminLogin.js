@@ -21,6 +21,37 @@ function darkMode() {
     });
 }
 
+function verifyPassword() {
+    document.getElementById("form-login").addEventListener("submit", async (e) => {
+        e.preventDefault(); // Esto evita que la página se recargue
+
+        const mail = document.getElementById("mail").value;
+        const password = document.getElementById("contraseña").value;
+
+        try {
+            const response = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ mail, password })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert("¡Sesión iniciada!");
+                window.location.href = "/api/admin/products";
+            } else {
+                alert(result.message);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error al intentar iniciar sesión");
+        }
+    });
+}
+
 /*function funcionalidadBtnIngresar(){
     document.addEventListener("DOMContentLoaded", () => {
     const btnIngresar = document.getElementById("btn-ingresar");
@@ -43,6 +74,7 @@ function darkMode() {
 
 async function init() {
     darkMode();
+    verifyPassword();
     //funcionalidadBtnIngresar();
 }
 

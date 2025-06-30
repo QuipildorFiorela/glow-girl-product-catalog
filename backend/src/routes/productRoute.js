@@ -3,6 +3,8 @@ import { getAllProducts, getAllProductsJSON, findProductById, createProduct, upd
 
 const router = Router();
 
+console.log("estoy en productRoute");
+
 router.get("/", getAllProducts);
 router.get("/json", getAllProductsJSON);
 router.get("/:id", findProductById);
