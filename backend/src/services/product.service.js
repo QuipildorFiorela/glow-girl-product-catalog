@@ -25,8 +25,7 @@ export const getProducts = async (page = 1, limit = 8, category = '', search = '
     return {
         products: rows,
         totalItems: count,
-        totalPages: (Math.ceil(count / limit)),
-        currentPage: page
+        totalPages: (Math.ceil(count / limit))
     }
 };
 
