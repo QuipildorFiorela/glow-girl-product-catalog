@@ -1,25 +1,25 @@
 import {getProducts, findPk, create, update} from "../services/product.service.js";
 
-// PARA EL ADMIN
 export const getAllProducts = async (req, res) => {
+    const page = parseInt(req.query.page) || 1; // si no pasa de page, usa la 1
+    const limit = 8; //cant productos por pag
+    const category  = req.query.category || '';
+    const search = req.query.search || '';
+
     try {
-        const products = await getProducts();
-        res.render("products", { products }); // ("products.ejs", { lista de productos })
+        const data = await getProducts(page, limit, category, search);
+
+        res.status(200).json({
+            message: "Productos encontrados",
+            payload: data.products,
+            totalItems: data.totalItems,
+            totalPages: data.totalPages,
+            currentPage: data.currentPage
+        });
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
 };
-
-// PARA EL CATALOGO
-export const getAllProductsJSON = async (req, res) => {
-    try {
-        const products = await getProducts();
-        res.status(200).json({ message: "Productos encontrados", payload: products }); // Devuelve solo los datos en formato JSON
-    } catch (error) {
-        res.status(500).json({ message: "Error interno del servidor", error: error.message });
-    }
-};
-
 
 export const createProduct = async (req, res) => {
     try {

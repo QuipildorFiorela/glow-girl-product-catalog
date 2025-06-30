@@ -27,15 +27,15 @@ function darkMode() {
 }
 
 function funcionalidadCategorias() {
-    const botonesCat = document.getElementsByClassName("btn-categoria")
-    for (let boton of botonesCat) { //recorro los botones de botonesCat, let SIEMPRE, para manejar el boton como una instancia y no como un puntero/referencia
-        boton.addEventListener("click", () => {
-            if (category == boton.dataset.value) { //si ya estoy en la categoria y vuelvo a hacer click en la misma, salgo
+    const buttonsCat = document.getElementsByClassName("btn-categoria")
+    for (let btn of buttonsCat) { //recorro los botones de botonesCat, let SIEMPRE, para manejar el boton como una instancia y no como un puntero/referencia
+        btn.addEventListener("click", () => {
+            if (category == btn.dataset.value) { //si ya estoy en la categoria y vuelvo a hacer click en la misma, salgo
                 category = ""
             } else {
-                category = boton.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
+                category = btn.dataset.value //si la categoria no es la que estoy seleccionando, abro esa
             }
-            mostrarProductos(products) //muestro los productos que coincidan con la categoria que estoy queriendo mostrar
+            cargarYMostrar(1); // Vuelvo a cargar desde la página 1 con la categoría seleccionada
         })
     }
 }
@@ -49,10 +49,21 @@ function funcionalidadCategorias() {
 // });
 
 
-async function cargarProductos() {
-    const respuesta = await fetch('http://localhost:5000/api/products/json'); //CONEXIÓN A LA BDT EXITOSA
-    const data = await respuesta.json(); // fetch espera que el servidor mande un JSON
-    products = data.payload; //me traigo todos los productos en una misma lista
+async function cargarProductos(page = 1) {
+    const searchText = document.querySelector(".search-bar").value.trim();
+
+    const url = new URL('http://localhost:5000/api/products'); //conexión a la DB
+    url.searchParams.append('page', page);
+    if (category) url.searchParams.append('category', category);
+    if (searchText) url.searchParams.append('search', searchText);
+
+    const respuesta = await fetch(url);
+    const data = await respuesta.json();
+    products = data.payload;
+    return {
+        totalPages: data.totalPages,
+        currentPage: data.currentPage
+    };
 }
 
 function mostrarProductos(products) {
@@ -135,13 +146,49 @@ function mostrarProductos(products) {
     })
 };
 
+function renderPagination(totalPages, currentPage) {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = '';
+
+    // Botón anterior
+    if (currentPage > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.textContent = 'Anterior';
+        prevButton.addEventListener('click', () => cargarYMostrar(currentPage - 1));
+        paginationContainer.appendChild(prevButton);
+    }
+
+    // Numeritos de página
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        if (i === currentPage) {
+            pageButton.disabled = true;
+            pageButton.classList.add('pagina-actual');
+        }
+        pageButton.addEventListener('click', () => cargarYMostrar(i));
+        paginationContainer.appendChild(pageButton);
+    }
+
+    // Botón siguiente
+    if (currentPage < totalPages) {
+        const nextButton = document.createElement('button');
+        nextButton.textContent = 'Siguiente';
+        nextButton.addEventListener('click', () => cargarYMostrar(currentPage + 1));
+        paginationContainer.appendChild(nextButton);
+    }
+}
+
+async function cargarYMostrar(page = 1) {
+    const { totalPages, currentPage } = await cargarProductos(page);
+    mostrarProductos(products);
+    renderPagination(totalPages, currentPage);
+}
+
 function filter() {
     const searchBar = document.querySelector(".search-bar");
     searchBar.addEventListener("keyup", () => {
-        const texto = removeAccents(searchBar.value.toLowerCase());
-        const filtrados = products.filter(product => removeAccents(product.nombre.toLowerCase()).includes(texto));
-        document.querySelector('.product-grid').innerHTML = '';
-        mostrarProductos(filtrados);
+        cargarYMostrar(1); // Cada vez que escribo, vuelve a cargar desde la página 1
     });
 }
 
@@ -207,10 +254,9 @@ function ventanaUsuario() {
 }
 
 async function init() {
-    await cargarProductos();
+    await cargarYMostrar(1);
     darkMode();
     cargarCarrito();
-    mostrarProductos(products);
     filter();
     abrirCarrito();
     funcionalidadCategorias();
