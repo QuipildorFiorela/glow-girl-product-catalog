@@ -3,8 +3,6 @@ import { getAllProducts, findProductById, createProduct, updateProduct, changeSt
 
 const router = Router();
 
-console.log("estoy en productRoute");
-
 router.get("/", getAllProducts);
 router.get("/:id", findProductById);
 router.post("/", createProduct);

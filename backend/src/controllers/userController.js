@@ -24,9 +24,11 @@ export const createUser = async (req, res) => {
         const passHash = await hashPassword(password)
         console.log(passHash);
 
-        const newUser = await create({name, mail, password});
+        const newUser = await create({name, mail, password: passHash});
         res.status(201).json({ message: "Usuario creado con éxito", payload: newUser });
     } catch (error) {
+        console.log(error);
+        
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
 }

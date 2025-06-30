@@ -40,7 +40,6 @@ function verifyPassword() {
             const result = await response.json();
 
             if (response.ok) {
-                alert("¡Sesión iniciada!");
                 window.location.href = "/api/admin/products";
             } else {
                 alert(result.message);
