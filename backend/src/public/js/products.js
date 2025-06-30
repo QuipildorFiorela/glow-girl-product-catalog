@@ -80,22 +80,12 @@ function btnChangeState() {
     });
 }
 
-function filter() {
+/*function filter() {
     const searchBar = document.querySelector(".search-bar");
     searchBar.addEventListener("keyup", () => {
-        const text = removeAccents(searchBar.value.toLowerCase());
-        const cards = document.querySelectorAll(".product-card");
-
-        cards.forEach(card => {
-            const name = removeAccents(card.querySelector("h3").textContent.toLowerCase());
-            if (name.includes(text)) {
-                card.style.display = ""; // Muestra ese elemento con su display original si estaba oculto.
-            } else {
-                card.style.display = "none"; // Oculta ese elemento completamente.
-            }
-        });
+        cargarYMostrar(1); // Cada vez que escribo, vuelve a cargar desde la página 1
     });
-}
+}*/
 
 function removeAccents(text) {
     return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -107,7 +97,7 @@ function userWindow() {
     const userName = document.getElementById("nombre-usuario");
     const logOutBtn = document.getElementById("cerrar-sesion");
 
-    const savedName = localStorage.getItem("nombreUsuario") || "Invitado";
+    const savedName = JSON.parse(localStorage.getItem("usuario")) || "Invitado";
     userName.textContent = savedName;
 
     userIcon.addEventListener("click", () => {
@@ -115,8 +105,7 @@ function userWindow() {
     });
 
     logOutBtn.addEventListener("click", () => {
-        localStorage.removeItem("nombreUsuario");
-        localStorage.removeItem("carrito");
+        localStorage.removeItem("usuario");
         window.location.href = 'http://localhost:5000/api/admin/login';
     });
 
@@ -130,7 +119,7 @@ function userWindow() {
 
 async function init() {
     darkMode();
-    filter();
+    /*filter();*/
     btnChangeState();
     userWindow();
 }
