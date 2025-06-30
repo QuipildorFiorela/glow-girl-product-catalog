@@ -1,13 +1,14 @@
 import Product from "../models/productModel.js"
 import {Op} from "sequelize"; //permite hacer busquedas con comodines (LIKE) para el filtro por busqueda
 
-export const getProducts = async (page = 1, limit = 8, category = '', search = '') => {
+export const getProducts = async (page = 1, limit = 8, category = '', search = '', showOnlyActive = false) => {
     const offset = (page -1) * limit; //desde donde empezar a mostrar
+    const whereClause = {} //objeto where dinámico
 
-    const whereClause = { //objeto where dinámico
-        active : true //filtra solo los activos
-    };
-
+    if (showOnlyActive) {
+        whereClause.active = true;
+    }
+    
     if (category) {
         whereClause.category = category;
     }

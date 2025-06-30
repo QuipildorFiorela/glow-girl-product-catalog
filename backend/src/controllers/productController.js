@@ -1,13 +1,15 @@
 import {getProducts, findPk, create, update} from "../services/product.service.js";
 
+
 export const getAllProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1; // si no pasa de page, usa la 1
     const limit = 8; //cant productos por pag
     const category  = req.query.category || '';
     const search = req.query.search || '';
+    const showOnlyActive = req.query.active === 'true';
 
     try {
-        const data = await getProducts(page, limit, category, search);
+        const data = await getProducts(page, limit, category, search, showOnlyActive);
 
         res.status(200).json({
             message: "Productos encontrados",
@@ -23,12 +25,13 @@ export const getAllProducts = async (req, res) => {
 export const createProduct = async (req, res) => {
     try {
         const {name, description, price, img, category, active} = req.body;
-        if(!name || !description || !price || !img || !category){
+        if(!name || !description || !price || !img || !category || active === undefined){
             return res.status(400).json({message: "Completa todos los campos"});
         }
-        await create({name, description, price, img, category, active:true});    
+        await create({name, description, price, img, category, active});    
         res.redirect("/api/admin/products");
-        //res.status(201).json({ message: "Producto creado con éxito", payload: newProduct });
+
+    console.log(req.body);
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }

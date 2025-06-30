@@ -53,10 +53,12 @@ function funcionalidadCategorias() {
 async function loadProducts(page = 1) {
     const searchText = document.querySelector(".search-bar").value.trim();
 
-    const url = new URL('http://localhost:5000/api/products'); //conexión a la DB
+    const url = new URL('http://localhost:5000/api/products');
     url.searchParams.append('page', page);
+    url.searchParams.append('active', 'true'); // <-- esto filtra activos
     if (category) url.searchParams.append('category', category);
     if (searchText) url.searchParams.append('search', searchText);
+
 
     const respuesta = await fetch(url);
     const data = await respuesta.json();
@@ -72,8 +74,6 @@ function showProducts(products) {
     contenedor.innerHTML = "";
 
     products.forEach(product => {
-        
-        if (!product.active) return; // si no está activo, no lo muestres
         
         const card = document.createElement("div");
         card.classList.add("product-card"); 
