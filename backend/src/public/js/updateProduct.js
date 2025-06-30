@@ -21,6 +21,68 @@ function darkMode() {
     });
 }
 
+function uploadProduct() {
+    document.getElementById("form-editar-producto").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const idProducto = document.getElementById("product-id").value;
+
+        const formData = {
+            name: document.getElementById("name").value,
+            description: document.getElementById("description").value,
+            price: document.getElementById("price").value,
+            img: document.getElementById("img").value,
+            category: document.getElementById("category").value,
+            active: true
+        };
+        // Evita duplicados
+        if (document.getElementById("modal-confirmacion")) return;
+
+        const modalHTML = `
+        <div id="modal-confirmacion" class="modal">
+        <div class="modal-contenido">
+            <p>¿Seguro que quiere actualizar el producto?</p>
+            <div class="modal-botones">
+            <button id="btn-confirmar" class="btn-confirmar">Sí</button>
+            <button id="btn-cancelar" class="btn-cancelar">No</button>
+            </div>
+        </div>
+        </div>
+        `;
+
+        const container = document.createElement("div");
+        container.innerHTML = modalHTML;
+        document.body.appendChild(container);
+
+        // Eventos
+        const modal = document.getElementById("modal-confirmacion");
+        const btnConfirm = document.getElementById("btn-confirmar");
+        const btnCancel = document.getElementById("btn-cancelar");
+
+        btnCancel.addEventListener("click", () => {
+            modal.remove();
+        });
+
+        btnConfirm.addEventListener("click", async () => {
+            try {
+                const response = await fetch(`/api/products/${idProducto}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+                if (!response.ok) throw new Error("Error al actualizar");
+                // Redirigir a la vista de admin o mostrar mensaje
+                window.location.href = "/api/admin/products";
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Hubo un problema al actualizar el producto");
+            }
+        });
+    });
+}
+
 function btnCancel() {
     const btnReturn = document.querySelector(".btnCancel");
     btnReturn.addEventListener("click", () => {
@@ -58,7 +120,7 @@ function btnCancel() {
     })
 }
 
-function showUserWindow() {
+function userWindow() {
     const userIcon = document.getElementById("icono-usuario");
     const userWindow = document.getElementById("ventana-usuario");
     const userName = document.getElementById("nombre-usuario");
@@ -72,6 +134,8 @@ function showUserWindow() {
     });
 
     logOutBtn.addEventListener("click", () => {
+        localStorage.removeItem("nombreUsuario");
+        localStorage.removeItem("carrito");
         window.location.href = 'http://localhost:5000/api/admin/login';
     });
 
@@ -83,10 +147,11 @@ function showUserWindow() {
     });
 }
 
-function init() {
+async function init() {
     darkMode();
+    uploadProduct();
     btnCancel();
-    showUserWindow();
+    userWindow();
 }
 
 init();

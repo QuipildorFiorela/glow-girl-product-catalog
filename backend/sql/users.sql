@@ -2,8 +2,8 @@ USE tienda_accesorios;
 DROP TABLE users;
 
 CREATE TABLE IF NOT EXISTS users (
-    id CHAR(36) NOT NULL PRIMARY KEY DEFAULT (UUID()),
-    name TEXT NOT NULL,
-    mail VARCHAR(100) NOT NULL,
+	mail VARCHAR(100) NOT NULL UNIQUE PRIMARY KEY,
+    name VARCHAR(10) NOT NULL,
     password TEXT(100) NOT NULL
 );
+

@@ -12,7 +12,7 @@ header {
 }
 
 .navbar {
-    background-color: rgb(100, 60, 78);
+    background-color: rgb(147, 112, 161);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,6 +33,12 @@ header {
     text-align: center;
 }
 
+.iconos {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
 /*---  Responsive para pantallas menores a 768px  ---*/
 @media (max-width: 768px) {
     .nombreAlumno {
@@ -40,16 +46,12 @@ header {
         /* Ocultamos los nombres */
     }
 
+    /* Bajamos la barra de búsqueda debajo del logo e iconos */
+
     .navbar {
         justify-content: space-between;
         gap: 5px;
     }
-}
-
-.iconos {
-    display: flex;
-    gap: 16px;
-    align-items: center;
 }
 
 .icono {

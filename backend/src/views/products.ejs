@@ -53,7 +53,7 @@
                         <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
 
                         <div class="admin-buttons">
-                            <a href="/admin/edit/<%= product.id %>">
+                            <a href="/api/admin/products/update/<%= product.id %>">
                                 <button id="btn-gris">Editar</button>
                             </a>
                             <button class="btn-desactivar" id="btn-rojo" data-id="<%= product.id %>" type="button">

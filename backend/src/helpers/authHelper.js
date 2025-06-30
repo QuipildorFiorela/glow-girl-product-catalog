@@ -6,6 +6,7 @@ const salRounds = 10; //la cant de veces que retuerce la contraseña para que se
 export const hashPassword = async (password) =>{
     try {
         const hashedPassword = await bcrypt.hash(password, salRounds)
+        return hashedPassword;
     } catch (error) {
         console.error("Error al hashear el pass", error.message);
     }
