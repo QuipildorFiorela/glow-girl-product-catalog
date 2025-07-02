@@ -72,7 +72,7 @@ body, html {
   margin-bottom: 16px;
 }
 
-input[type="text"] {
+input {
   padding: 12px;
   font-size: 1rem;
   width: 250px;
@@ -146,13 +146,13 @@ body.modo-oscuro .titulo {
   color: #f0f0f0;
 }
 
-body.modo-oscuro input[type="text"] {
+body.modo-oscuro input {
   background-color: #2b2b2b;
   color: #f0f0f0;
   border: 1px solid #888;
 }
 
-body.modo-oscuro input[type="text"]::placeholder {
+body.modo-oscuro input::placeholder {
   color: #aaa;
 }
 
