@@ -29,18 +29,18 @@
 
     <main>
         <div class="fondo">
-            <div class="formulario">
+            <form class="formulario">
                 <h1 class="titulo">¡Bienvenida,<br>administradora!</h1>
-                <form id="form-login">
-                    <input type="text" id="mail" placeholder="Ingrese su mail..." required />
-                    <input type="password" id="contraseña" placeholder="Ingrese su contraseña..." required />
-                    <button type="submit" class="boton-ingresar" id="btn-ingresar">Ingresar</button>
-                </form>
-            </div>
+                <input type="text" id="mail" placeholder="Ingrese su mail..." required />
+                <input type="password" id="contraseña" placeholder="Ingrese su contraseña..." required />
+                <button class="boton-ingresar" id="btn-autocompletar">Autocompletar</button>
+                <button type="submit" class="boton-ingresar" id="btn-ingresar">Ingresar</button>
+            </form>
+        </div>
 
-            <a href="http://127.0.0.1:5500/frontend/login.html">
-                <button class="btn-admin" id="btn-ingreso-admin">CLIENTE</button>
-            </a>
+        <a href="http://127.0.0.1:5500/frontend/login.html">
+            <button class="btn-admin" id="btn-ingreso-admin">CLIENTE</button>
+        </a>
         </div>
     </main>
 

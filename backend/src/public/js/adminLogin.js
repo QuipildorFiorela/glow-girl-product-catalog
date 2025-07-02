@@ -22,9 +22,8 @@ function darkMode() {
 }
 
 function verifyPassword() {
-    document.getElementById("form-login").addEventListener("submit", async (e) => {
+    document.getElementById("btn-ingresar").addEventListener("click", async (e) => {
         e.preventDefault(); // Esto evita que la página se recargue
-
         const mail = document.getElementById("mail").value;
         const password = document.getElementById("contraseña").value;
 
@@ -47,12 +46,22 @@ function verifyPassword() {
             console.error("Error:", error);
             alert("Error al intentar iniciar sesión");
         }
-    });
+    })
+};
+
+
+function autocompletar() {
+    document.getElementById("btn-autocompletar").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("mail").value = "bianca@gmail.com";
+        document.getElementById("contraseña").value = "1234";
+    })
 }
 
 async function init() {
     darkMode();
     verifyPassword();
+    autocompletar();
 }
 
 init();
