@@ -198,7 +198,7 @@ function showUserWindow() {
     const userName = document.getElementById("nombre-usuario");
     const logOutBtn = document.getElementById("cerrar-sesion");
 
-    const savedName = localStorage.getItem("nombreUsuario") || "Invitado";
+    const savedName = sessionStorage.getItem("nombreUsuario");
     userName.textContent = savedName;
 
     userIcon.addEventListener("click", () => {

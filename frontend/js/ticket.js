@@ -1,4 +1,8 @@
 import {protectRoute} from "../middlewares/authClient.js"
+const nombreUsuario = getUserName();
+console.log(nombreUsuario);
+
+const cart = getCart();
 
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
@@ -24,11 +28,11 @@ function darkMode() {
 }
 
 function getUserName() {
-    return localStorage.getItem("nombreUsuario") || "Usuario";
+    return sessionStorage.getItem("nombreUsuario");
 }
 
 function getCart() {
-    return JSON.parse(localStorage.getItem("cart")) || [];
+    return JSON.parse(sessionStorage.getItem("cart")) || [];
 }
 
 function generarID() {
@@ -72,7 +76,7 @@ function imprimirTicket() {
 }
 
 function salirDelTicket() {
-    localStorage.clear();
+    sessionStorage.clear();
     window.location.href = "./login.html";
 }
 
@@ -87,12 +91,10 @@ function asignarEventos() {
 
 function init() {
     protectRoute();
-    const nombreUsuario = getUserName();
-    const cart = getCart();
-
-    mostrarDatosGenerales(nombreUsuario);
+    darkMode();
     renderizarProductos(cart);
+    mostrarDatosGenerales(nombreUsuario);
     asignarEventos();
 }
 
-document.addEventListener("DOMContentLoaded", init);
+init();
