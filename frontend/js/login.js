@@ -1,4 +1,4 @@
-import {redirigirSiYaInicioSesion} from "../middlewares/authClient.js"
+import {redirectIfAlreadyLogged} from "../middlewares/authClient.js"
 
 // Modo oscuro
 function darkMode() {
@@ -46,7 +46,7 @@ function funcionalidadBtnIngresar(){
 }
 
 async function init() {
-    redirigirSiYaInicioSesion();
+    redirectIfAlreadyLogged();
     darkMode();
     funcionalidadBtnIngresar();
 }

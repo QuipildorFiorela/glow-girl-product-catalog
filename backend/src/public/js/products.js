@@ -28,6 +28,8 @@ function btnChangeState() {
         button.addEventListener("click", async () => {
             const id = button.dataset.id;
             // Evita duplicados
+
+            // separar el modal en otra funcion
             if (document.getElementById("modal-confirmacion")) return;
 
             btnTextContent = button.textContent;

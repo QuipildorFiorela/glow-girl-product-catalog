@@ -1,73 +1,73 @@
-import {protegerRuta} from "../middlewares/authClient.js"
+import {protectRoute} from "../middlewares/authClient.js"
 
 let cart = [];
 
 function btnLogo(){
-    const btnVolverInicio = document.getElementById("logo-tienda");
-    btnVolverInicio.addEventListener("click", () => {
+    const btnBackToCatalog = document.getElementById("logo-tienda");
+    btnBackToCatalog.addEventListener("click", () => {
         window.location.href = "./catalog.html"
     })
 }
 
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
-    const logoTienda = document.getElementById("logo-tienda");
+    const storeLogo = document.getElementById("logo-tienda");
 
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("modo") === "oscuro") {
         document.body.classList.add("modo-oscuro");
         btnMode.src = "http://localhost:5000/img/icons/dark_mode_icon.png";
-        logoTienda.src= "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
+        storeLogo.src= "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
     }
 
     btnMode.addEventListener("click", () => {
-        const modoActivo = document.body.classList.toggle("modo-oscuro");
+        const activeMode = document.body.classList.toggle("modo-oscuro");
         
         // Cambiar ícono
-        btnMode.src = modoActivo ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
-        logoTienda.src = modoActivo ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
+        btnMode.src = activeMode ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
+        storeLogo.src = activeMode ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
 
         // Guardar en sessionStorage
-        localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
+        localStorage.setItem("modo", activeMode ? "oscuro" : "claro");
     });
 }
 
 
-function cargarCarrito() {
-    const cartGuardado = sessionStorage.getItem("cart");
-    if (cartGuardado) {
-        cart = JSON.parse(cartGuardado);
-        actualizarTotal();
+function loadCart() {
+    const cartSaved = sessionStorage.getItem("cart");
+    if (cartSaved) {
+        cart = JSON.parse(cartSaved);
+        updateTotal();
     }
 }
 
-function guardarCarrito() {
+function saveCart() {
     sessionStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function mostrarCarrito() {
-    const contenedor = document.querySelector(".cart-items");
-    const contenedorBoton = document.querySelector(".btn-container");
-    contenedor.innerHTML = "";
-    contenedorBoton.innerHTML = "";
+function showCart() {
+    const container = document.querySelector(".cart-items");
+    const btnContainer = document.querySelector(".btn-container");
+    container.innerHTML = "";
+    btnContainer.innerHTML = "";
 
     if (cart.length === 0) {
-        const mensaje = document.createElement("p");
-        mensaje.textContent = "No hay elementos en el cart.";
-        contenedor.appendChild(mensaje);
+        const message = document.createElement("p");
+        message.textContent = "No hay elementos en el cart.";
+        container.appendChild(message);
         return;
     }
 
-    renderizarCarrito(contenedor);
-    agregarFuncionalidadCarrito();
-    agregarBotonFinalizarCompra(contenedorBoton);
+    renderCart(container);
+    addCartFunctionality();
+    addBtnFinishBuying(btnContainer);
 }
 
-function renderizarCarrito(contenedor) {
+function renderCart(container) {
     cart.forEach((product, index) => {
-        const divProducto = document.createElement("div");
-        divProducto.classList.add("item-block");
-        divProducto.innerHTML = `
+        const divProduct = document.createElement("div");
+        divProduct.classList.add("item-block");
+        divProduct.innerHTML = `
                 <img src="http://localhost:5000/${product.img}" class="modo-icono">
                 <div class="item-info">
                     <h5>${product.name}</h5> 
@@ -81,33 +81,33 @@ function renderizarCarrito(contenedor) {
                 </div>
                 <img class="delete-button" src= "http://localhost:5000/img/icons/trash_icon.png" alt="Eliminar">
                 `;
-        divProducto.dataset.index = index; // Para identificar el producto luego
-        contenedor.appendChild(divProducto);
+        divProduct.dataset.index = index; // Para identificar el producto luego
+        container.appendChild(divProduct);
     });
 }
 
-function agregarFuncionalidadCarrito() {
-    document.querySelectorAll(".item-block").forEach(divProducto => {
-        const index = parseInt(divProducto.dataset.index);
+function addCartFunctionality() {
+    document.querySelectorAll(".item-block").forEach(divProduct => {
+        const index = parseInt(divProduct.dataset.index);
         const product = cart[index];
 
-        divProducto.querySelector(".delete-button").addEventListener('click', () => eliminarDelCarrito(index));
-        divProducto.querySelector(".incrementar").addEventListener('click', () => {
+        divProduct.querySelector(".delete-button").addEventListener('click', () => deleteFromCart(index));
+        divProduct.querySelector(".incrementar").addEventListener('click', () => {
             product.count++;
-            actualizarCarrito();
+            updateCart();
         });
-        divProducto.querySelector(".decrementar").addEventListener('click', () => {
+        divProduct.querySelector(".decrementar").addEventListener('click', () => {
             if (product.count > 1) {
                 product.count--;
             } else {
                 cart.splice(index, 1);
             }
-            actualizarCarrito();
+            updateCart();
         });
     });
 }
 
-function modalConfirmation() {
+function confirmationModal() {
     // Evita duplicados
     if (document.getElementById("modal-confirmacion")) return;
 
@@ -123,27 +123,27 @@ function modalConfirmation() {
         </div>
     `;
 
-    const contenedor = document.createElement("div");
-    contenedor.innerHTML = modalHTML;
-    document.body.appendChild(contenedor);
+    const container = document.createElement("div");
+    container.innerHTML = modalHTML;
+    document.body.appendChild(container);
 
     // Eventos
     const modal = document.getElementById("modal-confirmacion");
-    const btnConfirmar = document.getElementById("btn-confirmar");
-    const btnCancelar = document.getElementById("btn-cancelar");
+    const btnConfirm = document.getElementById("btn-confirmar");
+    const btnCancel = document.getElementById("btn-cancelar");
 
-    btnCancelar.addEventListener("click", () => {
+    btnCancel.addEventListener("click", () => {
         modal.remove();
     });
 
-    btnConfirmar.addEventListener("click", async () => {
+    btnConfirm.addEventListener("click", async () => {
         modal.remove();
         
         const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-        const nombreUsuario = sessionStorage.getItem("nombreUsuario") || "Cliente";
+        const userName = sessionStorage.getItem("nombreUsuario");
         
         const sale = {
-            buyerName: nombreUsuario,
+            buyerName: userName,
             products: cart.map(product => ({
                 productId: product.id,
                 count: product.count
@@ -162,31 +162,29 @@ function modalConfirmation() {
     });
 }
 
-
-function agregarBotonFinalizarCompra(contenedorBoton) {
+function addBtnFinishBuying(contenedorBoton) {
     const btnFinalizarCompra = document.createElement("button");
     btnFinalizarCompra.classList = "finalizar-compra";
     btnFinalizarCompra.textContent = "Finalizar Compra";
     contenedorBoton.appendChild(btnFinalizarCompra);
 
     btnFinalizarCompra.addEventListener("click", () => {
-        modalConfirmation();
+        confirmationModal();
     });
 }
 
-
-function eliminarDelCarrito(indice) {
+function deleteFromCart(indice) {
     cart.splice(indice, 1);
-    actualizarCarrito();
+    updateCart();
 }
 
-function actualizarCarrito() {
-    actualizarTotal();
-    guardarCarrito();
-    mostrarCarrito();
+function updateCart() {
+    updateTotal();
+    saveCart();
+    showCart();
 }
 
-function actualizarTotal() {
+function updateTotal() {
     let totalPrice = 0;
     cart.forEach(product => {
         totalPrice += (product.price * product.count);
@@ -194,41 +192,38 @@ function actualizarTotal() {
     document.getElementById("subtotal-precio").textContent = `$${totalPrice.toLocaleString('es-AR')}`;
 }
 
-function ventanaUsuario() {
-    const iconoUsuario = document.getElementById("icono-usuario");
-    const ventana = document.getElementById("ventana-usuario");
-    const nombreUsuario = document.getElementById("nombre-usuario");
-    const cerrarSesionBtn = document.getElementById("cerrar-sesion");
+function showUserWindow() {
+    const userIcon = document.getElementById("icono-usuario");
+    const userWindow = document.getElementById("ventana-usuario");
+    const userName = document.getElementById("nombre-usuario");
+    const logOutBtn = document.getElementById("cerrar-sesion");
 
-    // Supongamos que guardaste el nombre en sessionStorage con la clave "nombreUsuario"
-    const nombreGuardado = sessionStorage.getItem("nombreUsuario") || "Invitado";
-    nombreUsuario.textContent = nombreGuardado;
+    const savedName = localStorage.getItem("nombreUsuario") || "Invitado";
+    userName.textContent = savedName;
 
-    iconoUsuario.addEventListener("click", () => {
-        ventana.classList.toggle("oculto");
+    userIcon.addEventListener("click", () => {
+        userWindow.classList.toggle("oculto");
     });
 
-    cerrarSesionBtn.addEventListener("click", () => {
-        sessionStorage.removeItem("nombreUsuario");
-        sessionStorage.removeItem("cart");
-        window.location.href = "./login.html"; // Cambiar a la ruta de tu inicio
+    logOutBtn.addEventListener("click", () => {
+        window.location.href = 'http://localhost:5000/api/admin/login';
     });
 
     // Cerrar la ventana si se hace clic fuera
     document.addEventListener("click", (e) => {
         if (!document.querySelector(".usuario").contains(e.target)) {
-            ventana.classList.add("oculto");
+            userWindow.classList.add("oculto");
         }
     });
 }
 
 function init() {
-    protegerRuta();
+    protectRoute();
     btnLogo();
     darkMode();
-    cargarCarrito();
-    mostrarCarrito();
-    ventanaUsuario();
+    loadCart();
+    showCart();
+    showUserWindow();
 }
 
 init();

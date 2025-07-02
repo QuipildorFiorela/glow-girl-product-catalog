@@ -1,7 +1,8 @@
-import {protegerRuta} from "../middlewares/authClient.js"
+import {protectRoute} from "../middlewares/authClient.js"
 let products = [];
 let cart = [];
 let category = "";
+const savedPage = getSavedPage();
 
 // Modo oscuro
 function darkMode() {
@@ -27,32 +28,29 @@ function darkMode() {
     });
 }
 
-
-function funcionalidadCategorias() {
-    const buttonsCat = document.getElementsByClassName("btn-categoria");
-    for (let btn of buttonsCat) {
+function btnCategories() {
+    const btnsCat = document.getElementsByClassName("btn-categoria");
+    for (let btn of btnsCat) {
         btn.addEventListener("click", () => {
-            const contenedor = btn.parentElement;
+            const container = btn.parentElement;
 
             if (category == btn.dataset.value) {
                 category = "";
-                contenedor.classList.remove("seleccionada");
+                container.classList.remove("seleccionada");
             } else {
                 // Quito la clase de todas las categorías
-                const todasLasCategorias = document.getElementsByClassName("categoria");
-                for (let cat of todasLasCategorias) {
+                const categories = document.getElementsByClassName("categoria");
+                for (let cat of categories) {
                     cat.classList.remove("seleccionada");
                 }
                 // Asigno la nueva
                 category = btn.dataset.value;
-                contenedor.classList.add("seleccionada");
+                container.classList.add("seleccionada");
             }
             loadAndShow(1);
         });
     }
 }
-
-
 
 // window.addEventListener("scroll", () => {
 // const navbar = document.querySelector(".navbar");
@@ -62,7 +60,6 @@ function funcionalidadCategorias() {
 // navbar.classList.remove("shrink");
 // }
 // });
-
 
 async function loadProducts(page = 1) {
     const searchText = document.querySelector(".search-bar").value.trim();
@@ -151,7 +148,7 @@ function showProducts(products) {
             botonAgregar.innerHTML = `Agregar`;
             card.appendChild(botonAgregar);
             botonAgregar.addEventListener("click", () => {
-                agregarAlCarrito(product);
+                addToCart(product);
                 showProducts(products);
             });
         }
@@ -200,10 +197,6 @@ function getSavedPage() {
     return parseInt(sessionStorage.getItem('actualPage')) || 1;
 }
 
-function resetPage() {
-    sessionStorage.setItem('actualPage', 1);
-}
-
 async function loadAndShow(page) {
     savePage(page);  //Guarda la página cada vez que cambia
     const data = await loadProducts(page);
@@ -211,16 +204,11 @@ async function loadAndShow(page) {
     renderPagination(data.totalPages);
 }
 
-
 function filter() {
     const searchBar = document.querySelector(".search-bar");
     searchBar.addEventListener("keyup", () => {
         loadAndShow(1); // Cada vez que escribo, vuelve a cargar desde la página 1
     });
-}
-
-function removeAccents(texto) {
-    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function saveCart() {
@@ -242,7 +230,7 @@ function openCart() {
     })
 }
 
-function agregarAlCarrito(product) {
+function addToCart(product) {
     const availbleProduct = cart.find(item => item.name === product.nombre);
     if (availbleProduct) {
         availbleProduct.count++;
@@ -253,44 +241,40 @@ function agregarAlCarrito(product) {
     showProducts(products);
 }
 
-function ventanaUsuario() {
-    const iconoUsuario = document.getElementById("icono-usuario");
-    const ventana = document.getElementById("ventana-usuario");
-    const nombreUsuario = document.getElementById("nombre-usuario");
-    const cerrarSesionBtn = document.getElementById("cerrar-sesion");
+function showUserWindow() {
+    const userIcon = document.getElementById("icono-usuario");
+    const userWindow = document.getElementById("ventana-usuario");
+    const userName = document.getElementById("nombre-usuario");
+    const logOutBtn = document.getElementById("cerrar-sesion");
 
-    const nombreGuardado = sessionStorage.getItem("nombreUsuario");
-    nombreUsuario.textContent = nombreGuardado;
+    const savedName = localStorage.getItem("nombreUsuario") || "Invitado";
+    userName.textContent = savedName;
 
-    iconoUsuario.addEventListener("click", () => {
-        ventana.classList.toggle("oculto");
+    userIcon.addEventListener("click", () => {
+        userWindow.classList.toggle("oculto");
     });
 
-    cerrarSesionBtn.addEventListener("click", () => {
-        sessionStorage.removeItem("nombreUsuario");
-        sessionStorage.removeItem("cart");
-        sessionStorage.removeItem("actualPage");
-        window.location.href = "./login.html";
+    logOutBtn.addEventListener("click", () => {
+        window.location.href = 'http://localhost:5000/api/admin/login';
     });
 
     // Cerrar la ventana si se hace clic fuera
     document.addEventListener("click", (e) => {
         if (!document.querySelector(".usuario").contains(e.target)) {
-            ventana.classList.add("oculto");
+            userWindow.classList.add("oculto");
         }
     });
 }
 
 async function init() {
-    protegerRuta();
+    protectRoute();
     loadCart();
-    const savedPage = getSavedPage();
     await loadAndShow(savedPage);
     darkMode();
     filter();
     openCart();
-    funcionalidadCategorias();
-    ventanaUsuario();
+    btnCategories();
+    showUserWindow();
 }
 
 init();
