@@ -1,3 +1,4 @@
+import {redirigirSiYaInicioSesion} from "../middlewares/authClient.js"
 
 // Modo oscuro
 function darkMode() {
@@ -34,7 +35,7 @@ function funcionalidadBtnIngresar(){
 
         if (nombre) {
         //guardamos el nombre para usarlo en otra página
-        localStorage.setItem("nombreUsuario", nombre);
+        sessionStorage.setItem("nombreUsuario", nombre);
         //redirigimos a la página principal
         window.location.href = "catalog.html";
         } else {
@@ -45,6 +46,7 @@ function funcionalidadBtnIngresar(){
 }
 
 async function init() {
+    redirigirSiYaInicioSesion();
     darkMode();
     funcionalidadBtnIngresar();
 }

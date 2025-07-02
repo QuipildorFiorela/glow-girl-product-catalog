@@ -1,3 +1,5 @@
+import {protegerRuta} from "../middlewares/authClient.js"
+
 function darkMode() {
     const btnMode = document.getElementById("btn-mode");
     const logoTienda = document.getElementById("logo-tienda");
@@ -84,6 +86,7 @@ function asignarEventos() {
 
 
 function init() {
+    protegerRuta();
     const nombreUsuario = getUserName();
     const cart = getCart();
 

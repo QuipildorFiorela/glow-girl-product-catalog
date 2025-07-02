@@ -1,3 +1,4 @@
+import {protegerRuta} from "../middlewares/authClient.js"
 let products = [];
 let cart = [];
 let category = "";
@@ -21,7 +22,7 @@ function darkMode() {
         btnMode.src = modoActivo ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
         logoTienda.src = modoActivo ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
 
-        // Guardar en localStorage
+        // Guardar en sessionStorage
         localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
     });
 }
@@ -192,15 +193,15 @@ function renderPagination(totalPages) {
 }
 
 function savePage(page) {
-    localStorage.setItem('actualPage', page);
+    sessionStorage.setItem('actualPage', page);
 }
 
 function getSavedPage() {
-    return parseInt(localStorage.getItem('actualPage')) || 1;
+    return parseInt(sessionStorage.getItem('actualPage')) || 1;
 }
 
 function resetPage() {
-    localStorage.setItem('actualPage', 1);
+    sessionStorage.setItem('actualPage', 1);
 }
 
 async function loadAndShow(page) {
@@ -223,11 +224,11 @@ function removeAccents(texto) {
 }
 
 function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
 }
 
 function loadCart() {
-    const cartSaved = localStorage.getItem("cart");
+    const cartSaved = sessionStorage.getItem("cart");
     if (cartSaved) {
         cart = JSON.parse(cartSaved);
     }
@@ -236,7 +237,7 @@ function loadCart() {
 function openCart() {
     const cartIcon = document.getElementById("cart-icon");
     cartIcon.addEventListener('click', () => {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        sessionStorage.setItem('cart', JSON.stringify(cart));
         window.location.href = "./cart.html";
     })
 }
@@ -258,10 +259,7 @@ function ventanaUsuario() {
     const nombreUsuario = document.getElementById("nombre-usuario");
     const cerrarSesionBtn = document.getElementById("cerrar-sesion");
 
-    const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
-    if(nombreGuardado === "Invitado"){
-        window.location.href = 'http://127.0.0.1:5500/frontend/login.html'
-    }
+    const nombreGuardado = sessionStorage.getItem("nombreUsuario");
     nombreUsuario.textContent = nombreGuardado;
 
     iconoUsuario.addEventListener("click", () => {
@@ -269,9 +267,9 @@ function ventanaUsuario() {
     });
 
     cerrarSesionBtn.addEventListener("click", () => {
-        localStorage.removeItem("nombreUsuario");
-        localStorage.removeItem("cart");
-        localStorage.removeItem("actualPage");
+        sessionStorage.removeItem("nombreUsuario");
+        sessionStorage.removeItem("cart");
+        sessionStorage.removeItem("actualPage");
         window.location.href = "./login.html";
     });
 
@@ -284,10 +282,11 @@ function ventanaUsuario() {
 }
 
 async function init() {
+    protegerRuta();
+    loadCart();
     const savedPage = getSavedPage();
     await loadAndShow(savedPage);
     darkMode();
-    loadCart();
     filter();
     openCart();
     funcionalidadCategorias();

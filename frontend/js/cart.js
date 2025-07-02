@@ -1,3 +1,5 @@
+import {protegerRuta} from "../middlewares/authClient.js"
+
 let cart = [];
 
 function btnLogo(){
@@ -25,14 +27,14 @@ function darkMode() {
         btnMode.src = modoActivo ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
         logoTienda.src = modoActivo ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
 
-        // Guardar en localStorage
+        // Guardar en sessionStorage
         localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
     });
 }
 
 
 function cargarCarrito() {
-    const cartGuardado = localStorage.getItem("cart");
+    const cartGuardado = sessionStorage.getItem("cart");
     if (cartGuardado) {
         cart = JSON.parse(cartGuardado);
         actualizarTotal();
@@ -40,7 +42,7 @@ function cargarCarrito() {
 }
 
 function guardarCarrito() {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
 }
 
 function mostrarCarrito() {
@@ -137,8 +139,8 @@ function modalConfirmation() {
     btnConfirmar.addEventListener("click", async () => {
         modal.remove();
         
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const nombreUsuario = localStorage.getItem("nombreUsuario") || "Cliente";
+        const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        const nombreUsuario = sessionStorage.getItem("nombreUsuario") || "Cliente";
         
         const sale = {
             buyerName: nombreUsuario,
@@ -198,8 +200,8 @@ function ventanaUsuario() {
     const nombreUsuario = document.getElementById("nombre-usuario");
     const cerrarSesionBtn = document.getElementById("cerrar-sesion");
 
-    // Supongamos que guardaste el nombre en localStorage con la clave "nombreUsuario"
-    const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
+    // Supongamos que guardaste el nombre en sessionStorage con la clave "nombreUsuario"
+    const nombreGuardado = sessionStorage.getItem("nombreUsuario") || "Invitado";
     nombreUsuario.textContent = nombreGuardado;
 
     iconoUsuario.addEventListener("click", () => {
@@ -207,8 +209,8 @@ function ventanaUsuario() {
     });
 
     cerrarSesionBtn.addEventListener("click", () => {
-        localStorage.removeItem("nombreUsuario");
-        localStorage.removeItem("cart");
+        sessionStorage.removeItem("nombreUsuario");
+        sessionStorage.removeItem("cart");
         window.location.href = "./login.html"; // Cambiar a la ruta de tu inicio
     });
 
@@ -220,35 +222,8 @@ function ventanaUsuario() {
     });
 }
 
-function ventanaUsuario() {
-    const iconoUsuario = document.getElementById("icono-usuario");
-    const ventana = document.getElementById("ventana-usuario");
-    const nombreUsuario = document.getElementById("nombre-usuario");
-    const cerrarSesionBtn = document.getElementById("cerrar-sesion");
-
-    const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
-    nombreUsuario.textContent = nombreGuardado;
-
-    iconoUsuario.addEventListener("click", () => {
-        ventana.classList.toggle("oculto");
-    });
-
-    cerrarSesionBtn.addEventListener("click", () => {
-        localStorage.removeItem("nombreUsuario");
-        localStorage.removeItem("cart");
-        localStorage.removeItem("actualPage");
-        window.location.href = "./login.html";
-    });
-
-    // Cerrar la ventana si se hace clic fuera
-    document.addEventListener("click", (e) => {
-        if (!document.querySelector(".usuario").contains(e.target)) {
-            ventana.classList.add("oculto");
-        }
-    });
-}
-
 function init() {
+    protegerRuta();
     btnLogo();
     darkMode();
     cargarCarrito();
