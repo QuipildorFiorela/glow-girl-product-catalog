@@ -259,6 +259,9 @@ function ventanaUsuario() {
     const cerrarSesionBtn = document.getElementById("cerrar-sesion");
 
     const nombreGuardado = localStorage.getItem("nombreUsuario") || "Invitado";
+    if(nombreGuardado === "Invitado"){
+        window.location.href = 'http://127.0.0.1:5500/frontend/login.html'
+    }
     nombreUsuario.textContent = nombreGuardado;
 
     iconoUsuario.addEventListener("click", () => {
