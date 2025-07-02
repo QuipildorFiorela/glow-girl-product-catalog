@@ -1,4 +1,5 @@
-import Sale from "../models/saleModel.js"
+import { Sale, Product, SalesDetail } from "../models/associations.js"; // <-- Importo ya con las relaciones hechas
+
 
 export const getSales = async () => {
     return await Sale.findAll();
@@ -10,13 +11,13 @@ export const create = async (datosSale) => {
 //ARREGLAR hay que mandar los datos a un middleware, hay que hacer la venta, los detalles etc, producto checker, venta checker,.......?
 
 export const getSalesWProducts = async () => {
-    const sales = await Sale.findAll({ //Uso Sequelize para buscar todas las filas de la tabla Sale
-        include: [{ 
-            model: Product, //Le dijo a Sequelize que además de las ventas, traiga los productos relacionados a cada venta, gracias a la relación belongsToMany configurada entre Sale y Product a través de la tabla intermedia SaleDetail.
-            through: { //indico que tambien traiga los datos de la tabla intermedia y especifico el campo
-                attributes: ['count']
+    const sales = await Sale.findAll({ 
+        include: [{ //"Traeme las ventas, pero además, traeme todos los productos que están relacionados a cada venta", gracias a la relación belongsToMany configurada entre Sale y Product a través de la tabla intermedia SaleDetail
+            model: Product,
+            through: { 
+                attributes: ['count'] 
             }
-        }] // estoy diciendo: “Traeme todas las ventas y cada una con sus productos asociados, incluyendo la cantidad desde la tabla intermedia.”
+        }] // “Traeme todas las ventas y cada una con sus productos asociados, incluyendo la cantidad desde la tabla intermedia.”
     });
     return sales; //Devuelve un array de objetos. Cada objeto representa una venta con un array de productos dentro.
 };
