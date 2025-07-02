@@ -4,8 +4,7 @@
     box-sizing: border-box;
 }
 
-body,
-html {
+body, html {
     height: 100%;
     font-family: 'Segoe UI', sans-serif;
     overflow: hidden;
@@ -93,6 +92,7 @@ input {
     cursor: pointer;
     transition: background-color 0.3s ease;
     user-select: none;
+    border: none;
 }
 
 .boton-ingresar:hover {
@@ -155,7 +155,7 @@ body.modo-oscuro input {
     border: 1px solid #888;
 }
 
-body.modo-oscuro input[type="text"]::placeholder {
+body.modo-oscuro input::placeholder {
     color: #aaa;
 }
 

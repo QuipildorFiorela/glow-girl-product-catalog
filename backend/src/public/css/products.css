@@ -444,26 +444,17 @@ body.modo-oscuro .modal-contenido {
     box-shadow: 0 0 15px  rgba(41, 41, 41, 0.417);
     }
 
-.modal-botones {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+body.modo-oscuro .pagination button {
+    background-color: #a7a9ab;
 }
 
-.btn-confirmar {
-    background-color: #70142f;
+body.modo-oscuro .pagination button:hover {
+    background-color: #949596;
+}
+
+/*Todavia no funciona*/
+/*.pagination button:disabled,
+.pagination .pagina-actual {
+    background-color: #333;
     color: white;
-}
-
-.btn-confirmar:hover {
-    background-color: #570f25;
-}
-
-.btn-cancelar {
-    background-color: #35393b;
-    color: white;
-}
-
-.btn-cancelar:hover {
-    background-color: #282c2d;
-}
+}*/
