@@ -12,10 +12,14 @@ export const findPk = async (id) => {
     return await User.findByPk(id);
 };
 
-export const findByMail = async (mail) => {
-    return await User.findOne({where: {mail}});
+export const findMail = async (mail) => {
+    return await User.findOne({ where: { mail } });
 };
 
-export const update = async (user, id) => {
-    return await User.update(user, { where: { id: id } });
+export const update = async (id, user) => {
+    return await User.update(user, { where: { id } });
 };
+
+export const remove = async (id) => {
+    return await User.destroy({ where: { id } })
+}
