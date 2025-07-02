@@ -3,11 +3,16 @@ import sequelize from "../config/db-sequalize.js"
 
 //Tabla SQL
 const User = sequelize.define("User", {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false,
+    },
     mail: {
         type: DataTypes.STRING(100),
         allowNull: false,
         unique: true,
-        primaryKey: true,
         validate: {
             isEmail: true
         }

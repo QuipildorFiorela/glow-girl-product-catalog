@@ -1,4 +1,4 @@
-import { findByMail } from "../services/user.service.js";
+import { findMail } from "../services/user.service.js";
 import { comparePassword } from "../helpers/authHelper.js";
 
 export const login = async (req, res) => {
@@ -8,7 +8,7 @@ export const login = async (req, res) => {
         return res.status(400).json({ message: "Email y contraseña son requeridos" });
     }
     try {
-        const user = await findByMail(mail);
+        const user = await findMail(mail);
         console.log(user);
         
         if (!user) {

@@ -247,7 +247,7 @@ function showUserWindow() {
     const userName = document.getElementById("nombre-usuario");
     const logOutBtn = document.getElementById("cerrar-sesion");
 
-    const savedName = localStorage.getItem("nombreUsuario") || "Invitado";
+    const savedName = sessionStorage.getItem("nombreUsuario");
     userName.textContent = savedName;
 
     userIcon.addEventListener("click", () => {
@@ -255,7 +255,10 @@ function showUserWindow() {
     });
 
     logOutBtn.addEventListener("click", () => {
-        window.location.href = 'http://localhost:5000/api/admin/login';
+        sessionStorage.removeItem("nombreUsuario");
+        sessionStorage.removeItem("cart");
+        sessionStorage.removeItem("actualPage");
+        window.location.href = "./login.html";
     });
 
     // Cerrar la ventana si se hace clic fuera
