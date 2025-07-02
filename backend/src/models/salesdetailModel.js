@@ -23,8 +23,4 @@ const SalesDetail = sequelize.define("SalesDetail", {
     }
 });
 
-// Asociaciones de sequelize: Las claves foráneas se definen con las asociaciones (belongsToMany o belongsTo).
-Sale.belongsToMany(Product, { through: SalesDetail, foreignKey: 'saleId' });
-Product.belongsToMany(Sale, { through: SalesDetail, foreignKey: 'productId' });
-
 export default SalesDetail;
