@@ -117,7 +117,31 @@ input {
   background-color: #4e2b3b;
 }
 
+/*----------------------------------- Footer -------------------------------------------*/
 
+footer {
+    background-color:rgb(234, 211, 221);
+    color: #4d334a; 
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    border-top: 2px solid #e5d4e9;
+    margin-top: 3rem;
+}
+
+footer h5 {
+    margin: 0.5rem 0 0.2rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #432943;
+}
 /*----------------------------------------  Dark Mode  ----------------------------------------*/
 
 body.modo-oscuro {
@@ -162,4 +186,22 @@ body.modo-oscuro .boton-ingresar {
 
 body.modo-oscuro .boton-ingresar:hover {
   background-color: #9f3e74;
+}
+
+body.modo-oscuro footer {
+    background-color:#2e2e2e;
+    color: #a580b6; 
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    border-top: 2px solid #e5d4e9;
+    margin-top: 3rem;
+}
+
+body.modo-oscuro footer p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #a580b6;
 }

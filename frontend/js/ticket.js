@@ -67,7 +67,6 @@ function mostrarDatosGenerales(nombreUsuario) {
     document.getElementById("nombre-usuario").textContent = nombreUsuario;
     document.getElementById("facturado-a").textContent = nombreUsuario;
     document.getElementById("id-compra").textContent = generarID();
-    document.getElementById("id-pedido").textContent = generarID();
     document.getElementById("fecha-pedido").textContent = getDate();
 }
 
@@ -76,7 +75,9 @@ function imprimirTicket() {
 }
 
 function salirDelTicket() {
-    sessionStorage.clear();
+    sessionStorage.removeItem("nombreUsuario");
+    sessionStorage.removeItem("cart");
+    sessionStorage.removeItem("actualPage");
     window.location.href = "./login.html";
 }
 
