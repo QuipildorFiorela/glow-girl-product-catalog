@@ -54,7 +54,7 @@
                         <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
 
                         <div class="admin-buttons">
-                            <a href="/api/admin/products/update/<%= product.id %>">
+                            <a href="/api/admin/products/update/<%=product.id%>">
                                 <button id="btn-gris">Editar</button>
                             </a>
                             <button class="btn-desactivar" id="btn-rojo" data-id="<%= product.id %>" type="button">
@@ -90,6 +90,8 @@
             <% } %>
         </div>
     </main>
+
+    <%- include('../partial/footer.ejs') %>
 
     <script src="/js/products.js"></script>
 </body>
