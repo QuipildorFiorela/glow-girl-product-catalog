@@ -266,7 +266,9 @@ function ventanaUsuario() {
     });
 
     cerrarSesionBtn.addEventListener("click", () => {
-        localStorage.clear();
+        localStorage.removeItem("nombreUsuario");
+        localStorage.removeItem("cart");
+        localStorage.removeItem("actualPage");
         window.location.href = "./login.html";
     });
 
