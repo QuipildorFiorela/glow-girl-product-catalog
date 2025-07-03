@@ -1,31 +1,7 @@
 import {protectRoute} from "../middlewares/authClient.js"
+import { darkMode} from "../js/utils.js"
 const nombreUsuario = getUserName();
-console.log(nombreUsuario);
-
 const cart = getCart();
-
-function darkMode() {
-    const btnMode = document.getElementById("btn-mode");
-    const logoTienda = document.getElementById("logo-tienda");
-
-    // Verificar si ya había un modo guardado
-    if (localStorage.getItem("modo") === "oscuro") {
-        document.body.classList.add("modo-oscuro");
-        btnMode.src = "./img/icons/dark_mode_icon.png";
-        logoTienda.src = "./img/icons/logo_tienda_dark_icon.png";
-    }
-
-    btnMode.addEventListener("click", () => {
-        const modoActivo = document.body.classList.toggle("modo-oscuro");
-
-        // Cambiar ícono
-        btnMode.src = modoActivo ? "./img/icons/dark_mode_icon.png" : "./img/icons/light_mode_icon.png";
-        logoTienda.src = modoActivo ? "./img/icons/logo_tienda_dark_icon.png" : "./img/icons/logo_tienda_light_icon.png";
-
-        // Guardar en localStorage
-        localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
-    });
-}
 
 function getUserName() {
     return sessionStorage.getItem("nombreUsuario");
@@ -47,7 +23,6 @@ function getDate() {
 function renderizarProductos(cart) {
     const tabla = document.getElementById("tabla-productos");
     let total = 0;
-
     cart.forEach(product => {
         const subtotal = product.price * product.count;
         total += subtotal;
@@ -59,7 +34,6 @@ function renderizarProductos(cart) {
         `;
         tabla.appendChild(fila);
     });
-
     document.getElementById("total-final").textContent = `$${total.toLocaleString('es-AR')}`;
 }
 
@@ -88,7 +62,6 @@ function asignarEventos() {
     if (btnImprimir) btnImprimir.addEventListener("click", imprimirTicket);
     if (btnSalir) btnSalir.addEventListener("click", salirDelTicket);
 }
-
 
 function init() {
     protectRoute();

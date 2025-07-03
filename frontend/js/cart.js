@@ -1,37 +1,6 @@
 import {protectRoute} from "../middlewares/authClient.js"
-
+import { darkMode, showUserWindow, btnLogo } from "../js/utils.js"
 let cart = [];
-
-function btnLogo(){
-    const btnBackToCatalog = document.getElementById("logo-tienda");
-    btnBackToCatalog.addEventListener("click", () => {
-        window.location.href = "./catalog.html"
-    })
-}
-
-function darkMode() {
-    const btnMode = document.getElementById("btn-mode");
-    const storeLogo = document.getElementById("logo-tienda");
-
-    // Verificar si ya había un modo guardado
-    if (localStorage.getItem("modo") === "oscuro") {
-        document.body.classList.add("modo-oscuro");
-        btnMode.src = "http://localhost:5000/img/icons/dark_mode_icon.png";
-        storeLogo.src= "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
-    }
-
-    btnMode.addEventListener("click", () => {
-        const activeMode = document.body.classList.toggle("modo-oscuro");
-        
-        // Cambiar ícono
-        btnMode.src = activeMode ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
-        storeLogo.src = activeMode ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
-
-        // Guardar en sessionStorage
-        localStorage.setItem("modo", activeMode ? "oscuro" : "claro");
-    });
-}
-
 
 function loadCart() {
     const cartSaved = sessionStorage.getItem("cart");
@@ -57,7 +26,6 @@ function showCart() {
         container.appendChild(message);
         return;
     }
-
     renderCart(container);
     addCartFunctionality();
     addBtnFinishBuying(btnContainer);
@@ -110,7 +78,6 @@ function addCartFunctionality() {
 function confirmationModal() {
     // Evita duplicados
     if (document.getElementById("modal-confirmacion")) return;
-
     const modalHTML = `
         <div id="modal-confirmacion" class="modal">
         <div class="modal-contenido">
@@ -122,7 +89,6 @@ function confirmationModal() {
         </div>
         </div>
     `;
-
     const container = document.createElement("div");
     container.innerHTML = modalHTML;
     document.body.appendChild(container);
@@ -138,10 +104,8 @@ function confirmationModal() {
 
     btnConfirm.addEventListener("click", async () => {
         modal.remove();
-        
         const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
         const userName = sessionStorage.getItem("nombreUsuario");
-        
         const sale = {
             buyerName: userName,
             products: cart.map(product => ({
@@ -190,31 +154,6 @@ function updateTotal() {
         totalPrice += (product.price * product.count);
     });
     document.getElementById("subtotal-precio").textContent = `$${totalPrice.toLocaleString('es-AR')}`;
-}
-
-function showUserWindow() {
-    const userIcon = document.getElementById("icono-usuario");
-    const userWindow = document.getElementById("ventana-usuario");
-    const userName = document.getElementById("nombre-usuario");
-    const logOutBtn = document.getElementById("cerrar-sesion");
-
-    const savedName = sessionStorage.getItem("nombreUsuario");
-    userName.textContent = savedName;
-
-    userIcon.addEventListener("click", () => {
-        userWindow.classList.toggle("oculto");
-    });
-
-    logOutBtn.addEventListener("click", () => {
-        window.location.href = 'http://localhost:5000/api/admin/login';
-    });
-
-    // Cerrar la ventana si se hace clic fuera
-    document.addEventListener("click", (e) => {
-        if (!document.querySelector(".usuario").contains(e.target)) {
-            userWindow.classList.add("oculto");
-        }
-    });
 }
 
 function init() {

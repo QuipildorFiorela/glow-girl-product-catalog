@@ -1,32 +1,9 @@
-import {protectRoute} from "../middlewares/authClient.js"
+import { protectRoute } from "../middlewares/authClient.js"
+import { darkMode, showUserWindow, btnLogo } from "../js/utils.js"
 let products = [];
 let cart = [];
 let category = "";
 const savedPage = getSavedPage();
-
-// Modo oscuro
-function darkMode() {
-    const btnMode = document.getElementById("btn-mode");
-    const logoTienda = document.getElementById("logo-tienda");
-
-    // Verificar si ya había un modo guardado
-    if (localStorage.getItem("modo") === "oscuro") {
-        document.body.classList.add("modo-oscuro");
-        btnMode.src = "http://localhost:5000/img/icons/dark_mode_icon.png";
-        logoTienda.src = "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
-    }
-
-    btnMode.addEventListener("click", () => {
-        const modoActivo = document.body.classList.toggle("modo-oscuro");
-
-        // Cambiar ícono
-        btnMode.src = modoActivo ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
-        logoTienda.src = modoActivo ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
-
-        // Guardar en sessionStorage
-        localStorage.setItem("modo", modoActivo ? "oscuro" : "claro");
-    });
-}
 
 function btnCategories() {
     const btnsCat = document.getElementsByClassName("btn-categoria");
@@ -83,11 +60,9 @@ async function loadProducts(page = 1) {
 function showProducts(products) {
     const contenedor = document.querySelector('.product-grid');
     contenedor.innerHTML = "";
-
     products.forEach(product => {
-
         const card = document.createElement("div");
-        card.classList.add("product-card"); 
+        card.classList.add("product-card");
 
         card.innerHTML = `
             <img src="http://localhost:5000/${product.img}" alt="${product.name}">
@@ -111,12 +86,11 @@ function showProducts(products) {
             const description = document.createElement("p");
             description.innerHTML = `<strong>Descripción:</strong> ${product.description}`;
             card.appendChild(description);
-
         };
-        
+
         // Botón agregar
         const productInCart = cart.find(item => item.name === product.name); //Busca el producto en el cart
-        
+
         if (productInCart) { //Si está en el cart, crea los botones para incrementar y descrementar
             const countControl = document.createElement("div");
             countControl.className = "cantidad-control"
@@ -141,7 +115,6 @@ function showProducts(products) {
                 saveCart();
                 showProducts(products);
             });
-
         } else { //Si no está en el cart, crea el botón de agregar
             const botonAgregar = document.createElement('button');
             botonAgregar.className = "add-to-cart";
@@ -241,34 +214,6 @@ function addToCart(product) {
     showProducts(products);
 }
 
-function showUserWindow() {
-    const userIcon = document.getElementById("icono-usuario");
-    const userWindow = document.getElementById("ventana-usuario");
-    const userName = document.getElementById("nombre-usuario");
-    const logOutBtn = document.getElementById("cerrar-sesion");
-
-    const savedName = sessionStorage.getItem("nombreUsuario");
-    userName.textContent = savedName;
-
-    userIcon.addEventListener("click", () => {
-        userWindow.classList.toggle("oculto");
-    });
-
-    logOutBtn.addEventListener("click", () => {
-        sessionStorage.removeItem("nombreUsuario");
-        sessionStorage.removeItem("cart");
-        sessionStorage.removeItem("actualPage");
-        window.location.href = "./login.html";
-    });
-
-    // Cerrar la ventana si se hace clic fuera
-    document.addEventListener("click", (e) => {
-        if (!document.querySelector(".usuario").contains(e.target)) {
-            userWindow.classList.add("oculto");
-        }
-    });
-}
-
 async function init() {
     protectRoute();
     loadCart();
@@ -277,6 +222,7 @@ async function init() {
     filter();
     openCart();
     btnCategories();
+    btnLogo();
     showUserWindow();
 }
 

@@ -1,38 +1,4 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  background-color: #f5f5f5;
-  color: #333;
-}
-
-header{
-  position: sticky;
-  top: 0;
-  z-index: 2; /*nivel de la caja*/
-}
-
-.navbar {
-  background-color: rgb(234, 211, 221);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.8rem 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.logo img {
-  height: 60px;
-  cursor: pointer;
-  margin-right: 50px;
-}
-
-.nombreAlumno p {
-  font-size: 14px;
-  text-align: center;
-}
-
+/*----------------------------- Navbar -----------------------------*/
 .search-container {
   flex: 1 1 300px;
   display: flex;
@@ -57,149 +23,74 @@ header{
   cursor: pointer;
 }
 
-.iconos {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-/* Responsive para pantallas menores a 768px */
-@media (max-width: 768px) {
-  .nombreAlumno {
-    display: none; /* Ocultamos los nombres */
-  }
-
-  .search-container {
-    order: 3; /* Bajamos la barra de búsqueda debajo del logo e iconos */
-    flex: 1 1 100%;
-    justify-content: center;
-  }
-  
-  .navbar {
-    justify-content: space-between;
-    gap: 5px;
-  }
-}
-
-.icono {
-  margin-top: 10px;
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-}
-
-.usuario {
-  position: relative;
-  display: inline-block;
-}
-
-.usuario img {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-.ventana-usuario {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  min-width: 160px;
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.ventana-usuario button {
-  background-color: #c62828;
-  color: white;
-  border: none;
-  padding: 5px;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 10px;
-}
-
-.oculto {
-  display: none;
-}
-
-.modo-icono {
-  height: 40px;
-  cursor: pointer;
-}
-
-/* Main--------------------------------------------- */
-main {
-  padding: 1rem;
-}
+/*------------------------------ Main ------------------------------*/
 .div-categorias {
-display: flex;
-justify-content: center;
-gap: 2rem;
-flex-wrap: wrap;
-margin: 2rem auto;
-max-width: 1200px;
-padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
 .categoria {
-position: relative;
-width: 100%;
-max-width: 500px;
-height: 250px; 
-cursor: pointer;
-overflow: hidden;
-border-radius: 12px;
-transition: transform 0.3s ease;
-flex: 1 1 300px;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 250px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  flex: 1 1 300px;
 }
 
 .categoria img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 0.3s ease, filter 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .categoria:hover img {
-transform: scale(1.05);
-filter: brightness(0.85);
+  transform: scale(1.05);
+  filter: brightness(0.85);
 }
 
 /* Efecto cuando está seleccionada */
 .categoria.seleccionada img {
   transform: scale(1.05);
   filter: brightness(0.7) contrast(1.05);
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   border: 3px solid #f0a6ca;
   transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Productos--------------------------------------------- */
+/*---------------------------- Productos ----------------------------*/
 .products-section {
   margin-top: 1rem;
 }
 
 .product-grid {
-display: grid;
-grid-template-columns: repeat(2, 1fr); /* 2 columnas siempre, hasta que el media query cambie */
-gap: 1.5rem;
-padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columnas siempre, hasta que el media query cambie */
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
 .product-card {
   background-color: white;
   border-radius: 20px;
   padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.2s ease;
-  z-index: 1;/*como este nivel es menor no se sobrepone con el header*/
+  z-index: 1;
+  /*como este nivel es menor no se sobrepone con el header*/
 }
 
 .product-card:hover {
@@ -207,12 +98,12 @@ padding: 1rem;
 }
 
 .product-card img {
-width: 100%;
-max-width: 180px;
-height: auto;
-object-fit: cover;
-border-radius: 10px;
-margin-bottom: 1rem;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .product-card h3 {
@@ -259,139 +150,93 @@ margin-bottom: 1rem;
   color: white;
 }
 
-h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #b58db6;
-  margin-top: 2rem;
-}
-
-.incrementar, .decrementar{
+.incrementar,
+.decrementar {
   background-color: #f0a6ca;
-  color:white
+  color: white
 }
 
-.incrementar:hover, .decrementar:hover{
+.incrementar:hover,
+.decrementar:hover {
   background-color: #b58db6;
 }
 
-
-
-/* PAGINACION----------------------------------------- */
+/*--------------------------- Paginacion ---------------------------*/
 .pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .pagination button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+  padding: 5px 10px;
+  border: none;
+  background-color: #dddddd;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .pagination button:hover {
-    background-color: #d6d6d6;
+  background-color: #cacaca;
 }
 
 .pagination button:disabled,
 .pagination .pagina-actual {
-    background-color: #333;
-    color: white;
-    cursor: default;
+  background-color: #4e4e4e;
+  color: white;
+  cursor: default;
 }
 
-/* SCREEN SIZES -----------------------------------------*/
-
+/*-------------------------- Screen Sizes --------------------------*/
 @media (min-width: 768px) {
-.product-grid {
-grid-template-columns: repeat(3, 1fr); /* En tablets y más, 3 por fila */
-}
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* En tablets y más, 3 por fila */
+  }
 }
 
 @media (min-width: 1024px) {
-.product-grid {
-grid-template-columns: repeat(4, 1fr); /* En pantallas grandes, 4 por fila */
-}
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    /* En pantallas grandes, 4 por fila */
+  }
 }
 
 /* Ajustes para pantallas pequeñas (≤ 480px) */
 @media (max-width: 480px) {
-.product-card h3 {
-font-size: 0.9rem;
+  .product-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .product-card p {
+    font-size: 0.8rem;
+  }
+
+  .product-card button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .add-to-cart,
+  .show-details {
+    border-radius: 12px;
+  }
+
+  .product-card img {
+    max-width: 140px;
+  }
 }
 
-.product-card p {
-font-size: 0.8rem;
-}
-
-.product-card button {
-padding: 6px 12px;
-font-size: 0.8rem;
-}
-
-.add-to-cart, .show-details {
-border-radius: 12px;
-}
-
-.product-card img {
-max-width: 140px;
-}
-}
-
-/*----------------------------------- Footer -------------------------------------------*/
-
-footer {
-    background-color:rgb(234, 211, 221);
-    color: #4d334a; 
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    border-top: 2px solid #e5d4e9;
-    margin-top: 3rem;
-}
-
-footer h5 {
-    margin: 0.5rem 0 0.2rem;
-    font-weight: 600;
-    font-size: 1.05rem;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #432943;
-}
-
-/*----------------------------------------  Dark Mode  ----------------------------------------*/
-body.modo-oscuro {
-  background-color: black;
-  color: #eaeaea;
-}
-
-body.modo-oscuro .navbar {
-  background-color: #2e2e2e;
-}
-
+/*---------------------------- Dark Mode ----------------------------*/
 body.modo-oscuro .search-bar {
   border: 1px solid #a54d78;
   background-color: #141414;
 }
 
-body.modo-oscuro .ventana-usuario {
-  background-color: #141414;
-  border: 1px solid #999999;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
 body.modo-oscuro .product-card {
-  background-color: #1f1f1f;
+  background-color: #181a1b;
 }
 
 body.modo-oscuro .product-card p {
@@ -417,26 +262,22 @@ body.modo-oscuro .show-details:hover {
   color: #1e1e1e;
 }
 
-body.modo-oscuro h2 {
-  color: #caa4dd;
-}
-
 body.modo-oscuro footer {
-    background-color:#2e2e2e;
-    color: #a580b6; 
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    border-top: 2px solid #e5d4e9;
-    margin-top: 3rem;
+  background-color: #2e2e2e;
+  color: #a580b6;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  border-top: 2px solid #e5d4e9;
+  margin-top: 3rem;
 }
 
 body.modo-oscuro footer p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #a580b6;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #a580b6;
 }
 
 body.modo-oscuro .botones-categorias button {
@@ -449,11 +290,28 @@ body.modo-oscuro .botones-categorias button:hover {
   color: white;
 }
 
-body.modo-oscuro .incrementar, body.modo-oscuro .decrementar{
+body.modo-oscuro .incrementar,
+body.modo-oscuro .decrementar {
   background-color: #a54d78;
-  color:white
+  color: white
 }
 
-body.modo-oscuro .incrementar:hover, body.modo-oscuro .decrementar:hover{
+body.modo-oscuro .incrementar:hover,
+body.modo-oscuro .decrementar:hover {
   background-color: #a580b6;
+}
+
+body.modo-oscuro .pagination button {
+  background-color: #2b2f31;
+  color: white;
+}
+
+body.modo-oscuro .pagination button:hover {
+  background-color: #232628;
+}
+
+body.modo-oscuro .pagination button:disabled,
+body.modo-oscuro .pagination .pagina-actual {
+  background-color: #464b4e;
+  color: white;
 }

@@ -1,101 +1,4 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    /*nivel de la caja*/
-}
-
-.navbar {
-    background-color: rgb(234, 211, 221);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.8rem 1.5rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.logo img {
-    height: 60px;
-    cursor: pointer;
-    margin-right: 50px;
-}
-
-.iconos {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-.icono {
-    margin-top: 10px;
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-}
-
-.usuario {
-    position: relative;
-    display: inline-block;
-}
-
-.usuario img {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-}
-
-.ventana-usuario {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    min-width: 160px;
-    z-index: 1000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.ventana-usuario button {
-    background-color: #c62828;
-    color: white;
-    border: none;
-    padding: 5px;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.oculto {
-    display: none;
-}
-
-.modo-icono {
-    height: 40px;
-    cursor: pointer;
-}
-
-/* Main--------------------------------------------- */
-main {
-    padding: 1rem;
-}
-
-h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #b58db6;
-    margin-top: 2rem;
-}
-
+/*------------------------------ Main ------------------------------*/
 .carrito-items {
     max-height: 80vh;
     overflow-y: auto;
@@ -219,11 +122,89 @@ img.delete-button:hover {
     background-color: #b58db6;
 }
 
-/* -------------------- Ajustes para Tablets (≤ 768px) -------------------- */
+/*------------------------------ Modal ------------------------------*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-contenido {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 350px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease;
+}
+
+/* Animación de aparición */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-contenido p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-confirmar {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirmar:hover {
+    background-color: #ff1493;
+}
+
+.btn-cancelar {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancelar:hover {
+    background-color: #999;
+}
+
+/*----------------- Ajustes para Tablets (≤ 768px) -----------------*/
 @media (max-width: 768px) {
     .navbar {
         gap: 10px;
     }
+
     .item-block {
         gap: 0.5rem;
         padding: 0.8rem 0;
@@ -260,13 +241,13 @@ img.delete-button:hover {
     }
 }
 
-
-/* -------------------- Ajustes para Celulares (≤ 480px) -------------------- */
+/*---------------- Ajustes para Celulares (≤ 480px) ----------------*/
 @media (max-width: 480px) {
     .navbar {
         gap: 5px;
         padding: 0.5rem 1rem;
     }
+
     .modo-icono {
         height: 40px;
     }
@@ -319,134 +300,9 @@ img.delete-button:hover {
     }
 }
 
-/*------------------------------------------------ Fondo del modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* Caja del contenido */
-.modal-contenido {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 20px;
-    max-width: 350px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    animation: aparecer 0.3s ease;
-    }
-
-/* Animación de aparición */
-@keyframes aparecer {
-    from {
-    opacity: 0;
-    transform: scale(0.8);
-    }
-    to {
-    opacity: 1;
-    transform: scale(1);
-    }
-}
-
-/* Texto */
-.modal-contenido p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Contenedor de botones */
-.modal-botones {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-/* Botón Sí */
-.btn-confirmar {
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-confirmar:hover {
-    background-color: #ff1493;
-}
-
-/* Botón No */
-.btn-cancelar {
-    background-color: #ccc;
-    color: #333;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-cancelar:hover {
-    background-color: #999;
-}
-/*----------------------------------- Footer -------------------------------------------*/
-
-footer {
-    background-color:rgb(234, 211, 221);
-    color: #4d334a; 
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    border-top: 2px solid #e5d4e9;
-    margin-top: 3rem;
-}
-
-footer h5 {
-    margin: 0.5rem 0 0.2rem;
-    font-weight: 600;
-    font-size: 1.05rem;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #432943;
-}
-
-/*----------------------------------------  Dark Mode  ----------------------------------------*/
-body.modo-oscuro {
-    background-color: rgb(20, 20, 20);
-    color: #eaeaea;
-}
-
-body.modo-oscuro .navbar {
-    background-color: #2e2e2e;
-}
-
-body.modo-oscuro .ventana-usuario {
-    background-color: #141414;
-    border: 1px solid #999999;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-body.modo-oscuro h2 {
-    color: #a580b6;
-}
-
+/*---------------------------- Dark Mode ----------------------------*/
 body.modo-oscuro .cantidad-control {
-    background-color: #0a0a0a;
+    background-color: #26292b;
 }
 
 body.modo-oscuro .incrementar,
@@ -462,56 +318,4 @@ body.modo-oscuro .finalizar-compra {
 
 body.modo-oscuro .finalizar-compra:hover {
     background-color: #aa6084;
-}
-
-body.modo-oscuro .modal{
-    background-color: #00000056;
-}
-
-body.modo-oscuro .modal-contenido {
-    background-color: #181a1b;
-    box-shadow: 0 0 15px  rgba(41, 41, 41, 0.417);
-    }
-
-
-body.modo-oscuro footer {
-    background-color:#2e2e2e;
-    color: #a580b6; 
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    border-top: 2px solid #e5d4e9;
-    margin-top: 3rem;
-}
-
-body.modo-oscuro footer p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #a580b6;
-}
-
-.modal-botones {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.btn-confirmar {
-    background-color: #70142f;
-    color: white;
-}
-
-.btn-confirmar:hover {
-    background-color: #570f25;
-}
-
-.btn-cancelar {
-    background-color: #35393b;
-    color: white;
-}
-
-.btn-cancelar:hover {
-    background-color: #282c2d;
 }

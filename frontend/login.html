@@ -5,16 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glow Girl - Inicio</title>
-    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/login.css">
     <link rel="icon" type="image/png" href="http://localhost:5000/img/icons/logo_head_icon.png">
 </head>
 
-<body>
+<body class="fondo">
     <header>
         <!-- Navbar -->
         <nav class="navbar">
             <div class="logo">
-                <img id="logo-tienda" src="http://localhost:5000/img/icons/logo_tienda_light_icon.png" alt="Logo Tienda" />
+                <img id="logo-tienda" src="http://localhost:5000/img/icons/logo_tienda_light_icon.png"
+                    alt="Logo Tienda" />
             </div>
 
             <div class="nombreAlumno">
@@ -22,21 +24,19 @@
                 <p>Fiorela Quipildor</p>
             </div>
             <div class="iconos">
-                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Cambiar modo" id="btn-mode" class="modo-icono">
+                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Cambiar modo" id="btn-mode"
+                    class="modo-icono">
             </div>
         </nav>
     </header>
-    <main>
-        <div class="fondo">
-            <div class="formulario">
-                <h1 class="titulo">¡Bienvenida!</h1>
-                <input type="text" id="nombre" placeholder="Ingrese su nombre..." required />
-                <div class="boton-ingresar" id="btn-ingresar">Ingresar</div>
-            </div>
-                <button onclick="window.location.href='http://localhost:5000/api/admin/login'" class="btn-admin" id="btn-ingreso-admin">ADMIN</button>
+    <main class="contenedor-form">
+        <div class="formulario">
+            <h1 class="titulo">¡Bienvenida!</h1>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre..." required />
+            <div class="boton-ingresar" id="btn-ingresar">Ingresar</div>
         </div>
     </main>
-    
+
     <footer>
         <h5>Bianca Monteleone & Fiorela Quipildor</h5>
         <p>© Todos los derechos reservados</p>
