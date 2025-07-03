@@ -31,25 +31,25 @@ header {
     margin-right: 50px;
 }
 
-.iconos {
+.icons {
     display: flex;
     gap: 16px;
     align-items: center;
 }
 
-.icono {
+.icon {
     margin-top: 10px;
     width: 28px;
     height: 28px;
     cursor: pointer;
 }
 
-.usuario {
+.user {
     position: relative;
     display: inline-block;
 }
 
-.usuario img {
+.user img {
     width: 32px;
     height: 32px;
     cursor: pointer;
@@ -64,7 +64,7 @@ header {
 }
 
 /*--------------------------- User window ---------------------------*/
-.ventana-usuario {
+.user-window {
     position: absolute;
     top: 40px;
     right: 0;
@@ -76,7 +76,7 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.ventana-usuario button {
+.user-window button {
     background-color: #c62828;
     color: white;
     border: none;
@@ -87,11 +87,11 @@ header {
     margin-top: 10px;
 }
 
-.oculto {
+.hidden {
     display: none;
 }
 
-.modo-icono {
+.icon-mode {
     height: 40px;
     cursor: pointer;
 }
@@ -134,59 +134,59 @@ footer p {
 }
 
 /*---------------------------- Dark Mode ----------------------------*/
-body.modo-oscuro {
+body.dark-mode {
     background-color: #1e2021;
     color: #eaeaea;
 }
 
-body.modo-oscuro .navbar {
+body.dark-mode .navbar {
     background-color: #181a1b;
 }
 
-body.modo-oscuro .ventana-usuario {
+body.dark-mode .user-window {
     background-color: #141414;
     border: 1px solid #999999;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-body.modo-oscuro h2 {
+body.dark-mode h2 {
     color: #a580b6;
 }
 
-body.modo-oscuro .modal {
+body.dark-mode .modal {
     background-color: #00000056;
 }
 
-body.modo-oscuro .modal-contenido {
+body.dark-mode .modal-content {
     background-color: #181a1b;
     box-shadow: 0 0 15px rgba(28, 28, 28, 0.417);
 }
 
-body.modo-oscuro .btn-confirmar {
+body.dark-mode .btn-confirm {
     background-color: #70142f;
     color: white;
 }
 
-body.modo-oscuro .btn-confirmar:hover {
+body.dark-mode .btn-confirm:hover {
     background-color: #570f25;
 }
 
-body.modo-oscuro .btn-cancelar {
+body.dark-mode .btn-cancel {
     background-color: #35393b;
     color: white;
 }
 
-body.modo-oscuro .btn-cancelar:hover {
+body.dark-mode .btn-cancel:hover {
     background-color: #282c2d;
 }
 
-body.modo-oscuro footer {
+body.dark-mode footer {
     background-color: #2e2e2e;
     color: #a580b6;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     border-top: 2px solid #e5d4e9;
 }
 
-body.modo-oscuro footer p {
+body.dark-mode footer p {
     color: #a580b6;
 }

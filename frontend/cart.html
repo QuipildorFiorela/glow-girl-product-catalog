@@ -15,20 +15,20 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <img id="logo-tienda" src="http://localhost:5000/img/icons/logo_tienda_light_icon.png" alt="Logo Tienda">
+                <img id="store-logo" src="http://localhost:5000/img/icons/logo_tienda_light_icon.png" alt="Store Logo">
             </div>
 
-            <a href="./catalog.html" class="btn-inicio">Catalogo</a>
+            <a href="./catalog.html" class="btn-catalog">Catalogo</a>
 
-            <div class="iconos">
-                <div class="usuario">
-                    <img src="http://localhost:5000/img/icons/user_icon.png" alt="Usuario" class="icono" id="icono-usuario">
-                    <div id="ventana-usuario" class="ventana-usuario oculto">
-                        <p id="nombre-usuario">Nombre</p>
-                        <button id="cerrar-sesion">Cerrar sesión</button>
+            <div class="icons">
+                <div class="user">
+                    <img src="http://localhost:5000/img/icons/user_icon.png" alt="User" class="icon" id="user-icon">
+                    <div id="user-window" class="user-window hidden">
+                        <p id="user-name">Nombre</p>
+                        <button id="log-out">Cerrar sesión</button>
                     </div>
                 </div>
-                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Cambiar modo" id="btn-mode" class="modo-icono">
+                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Change Mode" id="btn-mode" class="icon-mode">
             </div>
         </nav>
     </header>
@@ -39,9 +39,9 @@
 
         </div>
 
-        <div class="subtotal-row">
+        <div class="total-price-row">
             <span>Total</span>
-            <span id="subtotal-precio">$0</span>
+            <span id="total-price">$0</span>
         </div>
 
         <div class="btn-container">

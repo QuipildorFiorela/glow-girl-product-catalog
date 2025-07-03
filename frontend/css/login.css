@@ -1,5 +1,5 @@
 /*----------------------------- General -----------------------------*/
-body.fondo {
+body.background {
   background-image: url('http://localhost:5000/img/acceso_pag.jpg');
   background-size: cover;
   background-position: center;
@@ -10,7 +10,7 @@ body.fondo {
 }
 
 /*------------------------------ Main ------------------------------*/
-.contenedor-form {
+.form-container {
   flex: 1;
   display: flex;
   align-items: center;     /* Centrado vertical */
@@ -18,7 +18,7 @@ body.fondo {
   padding: 2rem 1rem;      /* Un poco de aire lateral si la pantalla es chica */
 }
 
-.formulario {
+.form {
   width: 20rem;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 30px;
@@ -30,7 +30,7 @@ body.fondo {
   align-items: center;
 }
 
-.titulo {
+.tittle {
   top: 15%;
   font-size: 3rem;
   color: #222;
@@ -48,7 +48,7 @@ input {
   margin-bottom: 16px;
 }
 
-.boton-ingresar {
+.btn-enter {
   background-color: #f09ac2;
   color: white;
   font-size: 1rem;
@@ -59,7 +59,7 @@ input {
   user-select: none;
 }
 
-.boton-ingresar:hover {
+.btn-enter:hover {
   background-color: #e37aa9;
 }
 
@@ -85,33 +85,33 @@ input {
 }
 
 /*---------------------------- Dark Mode ----------------------------*/
-body.fondo.modo-oscuro {
+body.background.dark-mode {
   background-image: url('http://localhost:5000/img/acceso_pag_dark.jpg');
 }
 
-body.modo-oscuro .formulario {
+body.dark-mode .form {
   background-color: rgba(40, 40, 40, 0.9);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
-body.modo-oscuro .titulo {
+body.dark-mode .tittle {
   color: #f0f0f0;
 }
 
-body.modo-oscuro input {
+body.dark-mode input {
   background-color: #2b2b2b;
   color: #f0f0f0;
   border: 1px solid #888;
 }
 
-body.modo-oscuro input::placeholder {
+body.dark-mode input::placeholder {
   color: #aaa;
 }
 
-body.modo-oscuro .boton-ingresar {
+body.dark-mode .btn-enter {
   background-color: #b45288;
 }
 
-body.modo-oscuro .boton-ingresar:hover {
+body.dark-mode .btn-enter:hover {
   background-color: #9f3e74;
 }

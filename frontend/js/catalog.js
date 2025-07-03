@@ -6,23 +6,23 @@ let category = "";
 const savedPage = getSavedPage();
 
 function btnCategories() {
-    const btnsCat = document.getElementsByClassName("btn-categoria");
+    const btnsCat = document.getElementsByClassName("btn-category");
     for (let btn of btnsCat) {
         btn.addEventListener("click", () => {
             const container = btn.parentElement;
 
             if (category == btn.dataset.value) {
                 category = "";
-                container.classList.remove("seleccionada");
+                container.classList.remove("selected");
             } else {
                 // Quito la clase de todas las categorías
-                const categories = document.getElementsByClassName("categoria");
+                const categories = document.getElementsByClassName("category");
                 for (let cat of categories) {
-                    cat.classList.remove("seleccionada");
+                    cat.classList.remove("selected");
                 }
                 // Asigno la nueva
                 category = btn.dataset.value;
-                container.classList.add("seleccionada");
+                container.classList.add("selected");
             }
             loadAndShow(1);
         });
@@ -93,21 +93,21 @@ function showProducts(products) {
 
         if (productInCart) { //Si está en el cart, crea los botones para incrementar y descrementar
             const countControl = document.createElement("div");
-            countControl.className = "cantidad-control"
+            countControl.className = "amount-control"
             countControl.innerHTML = `
-                <button class="decrementar">-</button>
+                <button class="decrease">-</button>
                 <span>${productInCart.count}</span>
-                <button class="incrementar">+</button>
+                <button class="increase">+</button>
             `;
             card.appendChild(countControl);
 
-            countControl.querySelector(".incrementar").addEventListener('click', () => { //Si toco +, aumento la cantidad
+            countControl.querySelector(".increase").addEventListener('click', () => { //Si toco +, aumento la cantidad
                 productInCart.count++;
                 saveCart();
                 showProducts(products);
             });
 
-            countControl.querySelector(".decrementar").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
+            countControl.querySelector(".decrease").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
                 productInCart.count--;
                 if (productInCart.count <= 0) {
                     cart = cart.filter(item => item.name !== product.name);
@@ -147,7 +147,7 @@ function renderPagination(totalPages) {
         pageButton.textContent = i;
         if (i === currentPage) {
             pageButton.disabled = true;
-            pageButton.classList.add('pagina-actual');
+            pageButton.classList.add('actual-page');
         }
         pageButton.addEventListener('click', () => loadAndShow(i));
         paginationContainer.appendChild(pageButton);
