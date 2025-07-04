@@ -1,118 +1,4 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-.navbar {
-    background-color: rgb(147, 112, 161);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.8rem 1.5rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.logo img {
-    height: 60px;
-    cursor: pointer;
-    margin-right: 50px;
-}
-
-.nombreAlumno p {
-    font-size: 14px;
-    text-align: center;
-}
-
-.iconos {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-
-/*---  Responsive para pantallas menores a 768px  ---*/
-@media (max-width: 768px) {
-    .nombreAlumno {
-        display: none;
-        /* Ocultamos los nombres */
-    }
-
-    /* Bajamos la barra de búsqueda debajo del logo e iconos */
-
-    .navbar {
-        justify-content: space-between;
-        gap: 5px;
-    }
-}
-
-.icono {
-    margin-top: 10px;
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-}
-
-.usuario {
-    position: relative;
-    display: inline-block;
-}
-
-.usuario img {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-}
-
-/*---------------  Ventana usuario  ---------------*/
-.ventana-usuario {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    min-width: 160px;
-    z-index: 1000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.ventana-usuario button {
-    background-color: #c62828;
-    color: white;
-    border: none;
-    padding: 5px;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.oculto {
-    display: none;
-}
-
-.modo-icono {
-    height: 40px;
-    cursor: pointer;
-}
-
 /*----------------------------  Main  ----------------------------*/
-h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #b58db6;
-    margin-top: 2rem;
-}
-
 .form-container {
     max-width: 500px;
     margin: auto;
@@ -156,9 +42,7 @@ button:hover {
     background-color: #d87290;
 }
 
-
-
-/*---------------  Fondo del modal  ---------------*/
+/*-----------------------------  Modal  -----------------------------*/
 .modal {
     position: fixed;
     top: 0;
@@ -172,7 +56,7 @@ button:hover {
     z-index: 1000;
 }
 
-.modal-contenido {
+.modal-content {
     background-color: #fff;
     padding: 2rem;
     border-radius: 20px;
@@ -180,10 +64,10 @@ button:hover {
     width: 90%;
     text-align: center;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    animation: aparecer 0.3s ease;
+    animation: appear 0.3s ease;
     }
 
-@keyframes aparecer {
+@keyframes appear {
     from {
     opacity: 0;
     transform: scale(0.8);
@@ -194,18 +78,18 @@ button:hover {
     }
 }
 
-.modal-contenido p {
+.modal-content p {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
 
-.modal-botones {
+.modal-btns {
     display: flex;
     gap: 1rem;
     justify-content: center;
 }
 
-.btn-confirmar {
+.btn-confirm {
     background-color: #ff69b4;
     color: white;
     border: none;
@@ -215,11 +99,11 @@ button:hover {
     transition: background-color 0.3s ease;
 }
 
-.btn-confirmar:hover {
+.btn-confirm:hover {
     background-color: #ff1493;
 }
 
-.btn-cancelar {
+.btn-cancel {
     background-color: #ccc;
     color: #333;
     border: none;
@@ -229,116 +113,71 @@ button:hover {
     transition: background-color 0.3s ease;
 }
 
-.btn-cancelar:hover {
+.btn-cancel:hover {
     background-color: #999;
 }
 
-/*----------------------------------- Footer -------------------------------------------*/
-
-footer {
-    background-color: #7c557c;
-    color: #eac6e6; 
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    border-top: 2px solid #e5d4e9;
-    margin-top: 3rem;
-}
-
-footer h5 {
-    margin: 0.5rem 0 0.2rem;
-    font-weight: 600;
-    font-size: 1.05rem;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #432943;
-}
-
-/*----------------------------------------  Dark Mode  ----------------------------------------*/
-body.modo-oscuro {
-    background-color: #1e2021;
-    color: #eaeaea;
-}
-
-body.modo-oscuro .navbar {
-    background-color: #2e2e2e;
-}
-
-body.modo-oscuro .ventana-usuario {
-    background-color: #141414;
-    border: 1px solid #999999;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-body.modo-oscuro h2 {
-    color: #caa4dd;
-}
-
-body.modo-oscuro .form-container {
+/*---------------------------- Dark Mode ----------------------------*/
+body.dark-mode .form-container {
     background-color: #181a1b;
     box-shadow: 0 0 12px rgba(41, 41, 41, 0.417);
 }
 
-body.modo-oscuro label {
+body.dark-mode label {
     color: black;
 }
 
-body.modo-oscuro .product-card {
+body.dark-mode .product-card {
     background-color: #1f1f1f;
 }
 
-body.modo-oscuro .product-card p {
+body.dark-mode .product-card p {
     color: #eaeaea;
 }
 
-body.modo-oscuro input, body.modo-oscuro textarea, body.modo-oscuro select{
+body.dark-mode input, body.dark-mode textarea, body.dark-mode select{
     border: 1px solid #1a1a1a;
     background-color: #3b3b3b;
     color: white;
 }
 
-body.modo-oscuro label{
+body.dark-mode label{
     color: white;
 }
 
-body.modo-oscuro .form-container button{
+body.dark-mode .form-container button{
     background-color: #70142f;
 }
 
-body.modo-oscuro .modal{
+body.dark-mode .modal{
     background-color: #00000056;
 }
 
-body.modo-oscuro .modal-contenido {
+body.dark-mode .modal-content {
     background-color: #181a1b;
     box-shadow: 0 0 15px  rgba(41, 41, 41, 0.417);
     }
 
-.modal-botones {
+.modal-btns {
     display: flex;
     gap: 1rem;
     justify-content: center;
 }
 
-.btn-confirmar {
+.btn-confirm {
     background-color: #70142f;
     color: white;
 }
 
-.btn-confirmar:hover {
+.btn-confirm:hover {
     background-color: #570f25;
 }
 
-.btn-cancelar {
+.btn-cancel {
     background-color: #35393b;
     color: white;
 }
 
-.btn-cancelar:hover {
+.btn-cancel:hover {
     background-color: #282c2d;
 }

@@ -16,7 +16,7 @@ function verifyPassword() {
             });
             const result = await response.json();
             if (response.ok) {
-                sessionStorage.setItem("userName", JSON.stringify(result.payload));
+                sessionStorage.setItem("userName", result.payload);
                 window.location.href = "/api/admin/products";
             } else {
                 alert(result.message);
