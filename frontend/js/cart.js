@@ -113,7 +113,7 @@ function confirmationModal() {
                 count: product.count
             }))
         };
-        const res = await fetch("http://localhost:5000/api/sales", {
+        const res = await fetch("http://localhost:5000/api/sales", { //REFACTORIZAR
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(sale)

@@ -1,18 +1,10 @@
-import {protectRoute} from "../middlewares/authClient.js"
-import { darkMode} from "../js/utils.js"
-const nombreUsuario = getUserName();
-const cart = getCart();
 
 function getUserName() {
-    return sessionStorage.getItem("nombreUsuario");
+    return sessionStorage.getItem("userName");
 }
 
 function getCart() {
     return JSON.parse(sessionStorage.getItem("cart")) || [];
-}
-
-function generarID() {
-    return Math.floor(100000000 + Math.random() * 900000000);
 }
 
 function getDate() {
@@ -37,10 +29,9 @@ function renderizarProductos(cart) {
     document.getElementById("total-final").textContent = `$${total.toLocaleString('es-AR')}`;
 }
 
-function mostrarDatosGenerales(nombreUsuario) {
-    document.getElementById("nombre-usuario").textContent = nombreUsuario;
-    document.getElementById("facturado-a").textContent = nombreUsuario;
-    document.getElementById("id-compra").textContent = generarID();
+function mostrarDatosGenerales(userName) {
+    document.getElementById("nombre-usuario").textContent = userName;
+    document.getElementById("facturado-a").textContent = userName;
     document.getElementById("fecha-pedido").textContent = getDate();
 }
 
@@ -49,7 +40,7 @@ function imprimirTicket() {
 }
 
 function salirDelTicket() {
-    sessionStorage.removeItem("nombreUsuario");
+    sessionStorage.removeItem("userName");
     sessionStorage.removeItem("cart");
     sessionStorage.removeItem("actualPage");
     window.location.href = "./login.html";
@@ -64,10 +55,11 @@ function asignarEventos() {
 }
 
 function init() {
-    protectRoute();
-    darkMode();
+    const userName = getUserName();
+    const cart = getCart();
+
+    mostrarDatosGenerales(userName);
     renderizarProductos(cart);
-    mostrarDatosGenerales(nombreUsuario);
     asignarEventos();
 }
 
