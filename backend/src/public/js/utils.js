@@ -38,7 +38,7 @@ export function showUserWindow() {
         sessionStorage.removeItem("userName");
         sessionStorage.removeItem("cart");
         sessionStorage.removeItem("actualPage");
-        window.location.href = "./login.html";
+        window.location.href='http://localhost:5000/api/admin/login';
     });
 
     // Cerrar la ventana si se hace clic fuera
@@ -47,11 +47,4 @@ export function showUserWindow() {
             userWindow.classList.add("hidden");
         }
     });
-}
-
-export function btnLogo(){
-    const btnBackToCatalog = document.getElementById("store-logo");
-    btnBackToCatalog.addEventListener("click", () => {
-        window.location.href = "./catalog.html"
-    })
 }

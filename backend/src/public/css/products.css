@@ -1,38 +1,4 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-.navbar {
-    background-color: rgb(147, 112, 161);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.8rem 1.5rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.logo img {
-    height: 60px;
-    cursor: pointer;
-    margin-right: 50px;
-}
-
-.nombreAlumno p {
-    font-size: 14px;
-    text-align: center;
-}
-
+/*----------------------------- Navbar -----------------------------*/
 .search-container {
     flex: 1 1 300px;
     display: flex;
@@ -51,24 +17,14 @@ header {
     outline: none;
 }
 
-.icono-search {
+.icon-search {
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
 
-.iconos {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-
-/*---  Responsive para pantallas menores a 768px  ---*/
+/* Responsive para pantallas menores a 768px  */
 @media (max-width: 768px) {
-    .nombreAlumno {
-        display: none;
-        /* Ocultamos los nombres */
-    }
 
     /* Bajamos la barra de búsqueda debajo del logo e iconos */
     .search-container {
@@ -76,32 +32,9 @@ header {
         flex: 1 1 100%;
         justify-content: center;
     }
-
-    .navbar {
-        justify-content: space-between;
-        gap: 5px;
-    }
 }
 
-.icono {
-    margin-top: 10px;
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-}
-
-.usuario {
-    position: relative;
-    display: inline-block;
-}
-
-.usuario img {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-}
-
-/*---------------  Paginación  ---------------*/
+/*--------------------------- Pagination ---------------------------*/
 .pagination {
     margin-top: 20px;
     display: flex;
@@ -123,51 +56,14 @@ header {
 }
 
 .pagination button:disabled,
-.pagination .pagina-actual {
+.pagination .actual-page {
     background-color: #333;
     color: white;
     cursor: default;
 }
 
-/*---------------  Ventana usuario  ---------------*/
-.ventana-usuario {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    min-width: 160px;
-    z-index: 1000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.ventana-usuario button {
-    background-color: #c62828;
-    color: white;
-    border: none;
-    padding: 5px;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.oculto {
-    display: none;
-}
-
-.modo-icono {
-    height: 40px;
-    cursor: pointer;
-}
-
-/*----------------------------  Main  ----------------------------*/
-main {
-    padding: 1rem;
-}
-
-.div-categorias {
+/*------------------------------ Main ------------------------------*/
+.div-categories {
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -177,7 +73,7 @@ main {
     padding: 0 1rem;
 }
 
-.categoria {
+.category {
     position: relative;
     width: 100%;
     max-width: 500px;
@@ -189,26 +85,27 @@ main {
     flex: 1 1 300px;
 }
 
-.categoria img {
+.category img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.categoria:hover img {
+.category:hover img {
     transform: scale(1.05);
     filter: brightness(0.85);
 }
 
-/*---------------  Productos  ---------------*/
+/*---------------------------  Productos  ---------------------------*/
 .products-section {
     margin-top: 1rem;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas siempre, hasta que el media query cambie */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columnas siempre, hasta que el media query cambie */
     gap: 1.5rem;
     padding: 1rem;
 }
@@ -263,25 +160,25 @@ button {
     cursor: pointer;
 }
 
-#btn-gris {
+#btn-grey {
     background-color: #6c757d;
     color: white;
 }
 
-#btn-gris:hover {
+#btn-grey:hover {
     background-color: #5a6268;
 }
 
-#btn-rojo {
+#btn-red {
     background-color: #dc3545;
     color: white;
 }
 
-#btn-rojo:hover {
+#btn-red:hover {
     background-color: #c82333;
 }
 
-/*---------------  Screen sizes  ---------------*/
+/*-------------------------  Screen Sizes  -------------------------*/
 @media (min-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -321,7 +218,7 @@ button {
     }
 }
 
-/*---------------  Fondo del modal  ---------------*/
+/*-----------------------------  Modal  -----------------------------*/
 .modal {
     position: fixed;
     top: 0;
@@ -335,7 +232,7 @@ button {
     z-index: 1000;
 }
 
-.modal-contenido {
+.modal-content {
     background-color: #fff;
     padding: 2rem;
     border-radius: 20px;
@@ -343,32 +240,33 @@ button {
     width: 90%;
     text-align: center;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    animation: aparecer 0.3s ease;
+    animation: appear 0.3s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
     }
 
-@keyframes aparecer {
-    from {
-    opacity: 0;
-    transform: scale(0.8);
-    }
     to {
-    opacity: 1;
-    transform: scale(1);
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
-.modal-contenido p {
+.modal-content p {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
 
-.modal-botones {
+.modal-btns {
     display: flex;
     gap: 1rem;
     justify-content: center;
 }
 
-.btn-confirmar {
+.btn-confirm {
     background-color: #ff69b4;
     color: white;
     border: none;
@@ -378,11 +276,11 @@ button {
     transition: background-color 0.3s ease;
 }
 
-.btn-confirmar:hover {
+.btn-confirm:hover {
     background-color: #ff1493;
 }
 
-.btn-cancelar {
+.btn-cancel {
     background-color: #ccc;
     color: #333;
     border: none;
@@ -392,90 +290,48 @@ button {
     transition: background-color 0.3s ease;
 }
 
-.btn-cancelar:hover {
+.btn-cancel:hover {
     background-color: #999;
 }
 
-
-/*----------------------------------- Footer -------------------------------------------*/
-
-footer {
-    background-color: #7c557c;
-    color: #eac6e6; 
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    border-top: 2px solid #e5d4e9;
-    margin-top: 3rem;
-}
-
-footer h5 {
-    margin: 0.5rem 0 0.2rem;
-    font-weight: 600;
-    font-size: 1.05rem;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #432943;
-}
-
-/*----------------------------------------  Dark Mode  ----------------------------------------*/
-body.modo-oscuro {
-    background-color: black;
-    color: #eaeaea;
-}
-
-body.modo-oscuro .navbar {
-    background-color: #2e2e2e;
-}
-
-body.modo-oscuro .search-bar {
+/*---------------------------- Dark Mode ----------------------------*/
+body.dark-mode .search-bar {
     border: 1px solid #a54d78;
     background-color: #141414;
 }
 
-body.modo-oscuro .ventana-usuario {
-    background-color: #141414;
-    border: 1px solid #999999;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+body.dark-mode .product-card {
+    background-color: #181a1b;
 }
 
-body.modo-oscuro .product-card {
-    background-color: #1f1f1f;
-}
-
-body.modo-oscuro .product-card p {
+body.dark-mode .product-card p {
     color: #eaeaea;
 }
 
-body.modo-oscuro .botones-categorias button {
+body.dark-mode .btn-categories button {
     background-color: #593f4f;
     color: #eaeaea;
 }
 
-body.modo-oscuro .botones-categorias button:hover {
+body.dark-mode .btn-categories button:hover {
     background-color: #a54d78;
     color: white;
 }
 
-body.modo-oscuro .modal{
+body.dark-mode .modal {
     background-color: #00000056;
 }
 
-body.modo-oscuro .modal-contenido {
+body.dark-mode .modal-content {
     background-color: #181a1b;
-    box-shadow: 0 0 15px  rgba(41, 41, 41, 0.417);
-    }
+    box-shadow: 0 0 15px rgba(41, 41, 41, 0.417);
+}
 
-body.modo-oscuro .pagination button {
+body.dark-mode .pagination button {
     background-color: #a7a9ab;
 }
 
-body.modo-oscuro .pagination button:hover {
+body.dark-mode .pagination button:hover {
     background-color: #949596;
 }
 

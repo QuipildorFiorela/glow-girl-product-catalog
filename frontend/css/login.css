@@ -10,7 +10,7 @@ body.background {
 }
 
 /*------------------------------ Main ------------------------------*/
-.form-container {
+main {
   flex: 1;
   display: flex;
   align-items: center;     /* Centrado vertical */
@@ -65,7 +65,7 @@ input {
 
 .btn-admin {
   position: fixed;
-  bottom: 20px;
+  bottom: 115px;
   left: 20px;
   background-color: #63364b;
   color: white;

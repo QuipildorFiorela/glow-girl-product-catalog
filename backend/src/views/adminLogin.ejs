@@ -5,49 +5,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glow Girl - Inicio</title>
+    <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/adminLogin.css" />
     <link rel="icon" type="image/png" href="/img/icons/logo_head_icon.png">
 </head>
 
-<body>
+<body class="background">
     <header>
         <!-- Navbar -->
         <nav class="navbar">
             <div class="logo">
-                <img id="logo-tienda" src="/img/icons/logo_tienda_light_icon.png" alt="Logo Tienda" />
+                <img id="store-logo" src="/img/icons/logo_tienda_light_icon.png" alt="Store Logo" />
             </div>
 
-            <div class="nombreAlumno">
-                <p>Bianca Monteleone</p>
-                <p>Fiorela Quipildor</p>
-            </div>
-            <div class="iconos">
-                <img src="/img/icons/light_mode_icon.png" alt="Cambiar modo" id="btn-mode" class="modo-icono">
+            <div class="icons">
+                <img src="/img/icons/light_mode_icon.png" alt="Change Mode" id="btn-mode" class="icon-mode">
             </div>
         </nav>
     </header>
 
     <main>
-        <div class="fondo">
-            <form class="formulario">
-                <h1 class="titulo">¡Bienvenida,<br>administradora!</h1>
+        <div class="form">
+            <h1 class="tittle">¡Bienvenida!</h1>
+            <div class="input-group">
                 <input type="text" id="mail" placeholder="Ingrese su mail..." required />
-                <input type="password" id="contraseña" placeholder="Ingrese su contraseña..." required />
-                <button class="boton-ingresar" id="btn-autocompletar">Autocompletar</button>
-                <button type="submit" class="boton-ingresar" id="btn-ingresar">Ingresar</button>
-            </form>
+                <input type="password" id="password" placeholder="Ingrese su contraseña..." required />
+            </div>
+            <div class="btn-group">
+                <button class="btn-enter" id="btn-autocomplete">Autocompletar</button>
+                <button class="btn-enter" id="btn-enter">Ingresar</button>
+            </div>
         </div>
 
         <a href="http://127.0.0.1:5500/frontend/login.html">
-            <button class="btn-admin" id="btn-ingreso-admin">CLIENTE</button>
+            <button class="btn-client" id="btn-client">CLIENTE</button>
         </a>
         </div>
     </main>
-
-    <%- include('../partial/footer.ejs') %>
-
-    <script src="/js/adminLogin.js"></script>
+    <%- include('partials/footer.ejs') %>
+    <script type="module" src="/js/adminLogin.js"></script>
 </body>
 
 </html>
-<!-- para el login de admins -->

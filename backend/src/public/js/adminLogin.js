@@ -1,31 +1,10 @@
-function darkMode() {
-    const btnMode = document.getElementById("btn-mode");
-    const storeLogo = document.getElementById("logo-tienda");
-
-    // Verificar si ya había un modo guardado
-    if (localStorage.getItem("modo") === "oscuro") {
-        document.body.classList.add("modo-oscuro");
-        btnMode.src = "http://localhost:5000/img/icons/dark_mode_icon.png";
-        storeLogo.src = "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
-    }
-
-    btnMode.addEventListener("click", () => {
-        const activeMode = document.body.classList.toggle("modo-oscuro");
-
-        // Cambiar ícono
-        btnMode.src = activeMode ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
-        storeLogo.src = activeMode ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
-
-        // Guardar en localStorage
-        localStorage.setItem("modo", activeMode ? "oscuro" : "claro");
-    });
-}
+import { darkMode } from "./utils.js"
 
 function verifyPassword() {
-    document.getElementById("btn-ingresar").addEventListener("click", async (e) => {
+    document.getElementById("btn-enter").addEventListener("click", async (e) => {
         e.preventDefault(); // Esto evita que la página se recargue
         const mail = document.getElementById("mail").value;
-        const password = document.getElementById("contraseña").value;
+        const password = document.getElementById("password").value;
 
         try {
             const response = await fetch("/api/auth/login", {
@@ -37,7 +16,7 @@ function verifyPassword() {
             });
             const result = await response.json();
             if (response.ok) {
-                localStorage.setItem("usuario", JSON.stringify(result.payload));
+                sessionStorage.setItem("userName", JSON.stringify(result.payload));
                 window.location.href = "/api/admin/products";
             } else {
                 alert(result.message);
@@ -49,12 +28,11 @@ function verifyPassword() {
     })
 };
 
-
 function autocompletar() {
-    document.getElementById("btn-autocompletar").addEventListener("click", (e) => {
+    document.getElementById("btn-autocomplete").addEventListener("click", (e) => {
         e.preventDefault();
         document.getElementById("mail").value = "bianca@gmail.com";
-        document.getElementById("contraseña").value = "1234";
+        document.getElementById("password").value = "1234";
     })
 }
 
