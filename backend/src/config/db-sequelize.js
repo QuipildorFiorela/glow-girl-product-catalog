@@ -5,6 +5,7 @@ const sequelize = new Sequelize(database, user, password, {
     host: host,
     dialect: "mysql",
     port: port,
+    logging: false,
 })
 
 try {

@@ -1,33 +1,15 @@
-import Product from "../models/productModel.js";
-
-/* productChecker se encarga de validar:
-    - Que la lista de productos exista
-    - Que cada producto contenga un productId y cantidad
-    - Que los productos realmente existan en la base de datos
-    - Que las cantidades sean mayores a 0
-*/
-export const productChecker = async (req, res, next) => {
-    const { products } = req.body;
-
-    try {
-        for (const item of products) {
-            if (!item.productId || !item.count) {
-                return res.status(400).json({ message: "Cada producto debe tener productId y cantidad" });
-            }
-
-            if (item.count <= 0) {
-                return res.status(400).json({ message: "La cantidad debe ser mayor a 0" });
-            }
-
-            const productFound = await Product.findByPk(item.productId);
-
-            if (!productFound) {
-                return res.status(404).json({ message: `Producto con ID ${item.productId} no existe` });
-            }
+export const productChecker = async (req, res, next) => {try {
+        const { name, description, price, category, active } = req.body;
+        if (!name || !description || !price || !req.file || !category || active === undefined) {
+            return res.status(400).json({ message: "Completa todos los campos" });
         }
-
+        if (price < 1) {
+            return res.status(400).json({ message: "El precio debe ser mayor que 0" });
+        }
         next();
     } catch (error) {
-        res.status(500).json({ message: "Error en la validación de productos", error: error.message });
+        res.status(500).json({ message: "Error al validar el producto", error: error.message });
+        console.log(error);
+        
     }
-};
+}

@@ -1,19 +1,8 @@
 import { darkMode, showUserWindow } from "./utils.js"
-
-const dropArea = document.getElementById('dropArea');
 const fileInput = document.getElementById('fileInput');
-//const uploadForm = document.getElementById('uploadForm');
-const filePreview = document.getElementById('filePreview');
-const fileName = document.getElementById('fileName');
-const progressFill = document.getElementById('progressFill');
 
-function uploadFile(){
-    fileInput.addEventListener('change', () => {
-        if (fileInput.files.length) {
-            showFile(fileInput.files[0]);
-        }
-    });
-    
+function changeStyleInputFile() {
+    const dropArea = document.getElementById('dropArea');
     ['dragenter', 'dragover'].forEach(eventName => { // dragenter: cuando el archivo entra al área, dragover: mientras está en el área
         dropArea.addEventListener(eventName, e => {
             e.preventDefault();
@@ -32,23 +21,54 @@ function uploadFile(){
         const files = e.dataTransfer.files;
         if (files.length) {
             fileInput.files = files;
-            showFile(files[0]);
         }
     });
 }
 
 function showFile(file) {
+    const filePreview = document.getElementById('filePreview');
+    const fileName = document.getElementById('fileName');
     filePreview.style.display = 'flex';
     fileName.textContent = `Archivo: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
 }
 
-function sendForm(){
+function fileChecker() {
+    fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        const maxSize = 5 * 1024 * 1024;
+        const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+
+        if (file.size > maxSize) {
+            alert("El archivo supera los 5MB.");
+            fileInput.value = ""; // Limpiar
+            return;
+        }
+        if (!validExtensions.includes(file.type)) {
+            alert("Tipo de archivo no permitido. Solo jpeg, jpg, png, webp.");
+            fileInput.value = "";
+            return;
+        }
+        showFile(file);
+    });
+}
+
+function priceChecker(){
+    const price = document.getElementById("price").value
+    if(price < 1){
+        alert("El precio debe ser mayor a 0");
+        return false
+    }
+    return true;
+}
+
+function sendForm() {
     document.getElementById("form-create-product").addEventListener("submit", async (e) => {
         e.preventDefault();
-    
+        if(!priceChecker()) return;
+
         const form = e.target;
         const data = new FormData(form);
-    
+
         try {
             const response = await fetch("/api/products", {
                 method: "POST",
@@ -62,7 +82,6 @@ function sendForm(){
             window.location.href = "/api/admin/products";
         } catch (error) {
             console.error("Error:", error.message);
-            console.log(error);
         }
     });
 }
@@ -106,7 +125,8 @@ function btnCancel() {
 
 function init() {
     darkMode();
-    uploadFile();
+    changeStyleInputFile();
+    fileChecker();
     sendForm();
     btnCancel();
     showUserWindow();

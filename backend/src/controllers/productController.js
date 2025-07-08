@@ -1,6 +1,4 @@
 import {getProducts, findPk, create, update} from "../services/product.service.js";
-import {createImage} from "../services/imageService.js"
-
 
 export const getAllProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1; // si no pasa de page, usa la 1
@@ -26,17 +24,7 @@ export const getAllProducts = async (req, res) => {
 export const createProduct = async (req, res) => {
     try {
         const {name, description, price, category, active} = req.body;
-        if (!req.file) {
-            return res.status(400).json({ message: "Falta la imagen" });
-        }
-        const img = await createImage(req.file);
-
-        if(!name || !description || !price || !img || !category || active === undefined){
-            return res.status(400).json({message: "Completa todos los campos"});
-        }
-        console.log("hasta acá joya");
-        
-        await create({name, description, price, img: img.url, category, active});    
+        await create({name, description, price, img: `img/products/${req.file.filename}`, category, active});    
         res.redirect("/api/admin/products");
 
     console.log(req.body);
