@@ -23,6 +23,8 @@
                 <img src="http://localhost:5000/img/icons/search_icon.png" alt="Buscar" class="icon-search"> 
             </div>
 
+            <a href="/api/admin/sales" class="btn">Ver ventas</a>
+
             <a href="/api/admin/products/create">
                 <button id="btn-grey">Crear producto</button>
             </a>
@@ -40,53 +42,43 @@
         </nav>
     </header>
 
-    <main>
-        <section class="products-section">
-            <div class="product-grid">
-                <% products.forEach(product => { %>
-                    <div class="product-card">
-                        <img src="/<%= product.img %>" alt="<%= product.name %>">
-                        <h3><%= product.name %></h3>
-                        <p><%=product.description %></p>
-                        <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
+    <main class="sales-container">
+    <h1>Lista de Ventas</h1>
 
-                        <div class="admin-buttons">
-                            <a href="/api/admin/products/update/<%=product.id%>">
-                                <button id="btn-grey">Editar</button>
-                            </a>
-                            <button class="btn-deactivate" id="btn-red" data-id="<%= product.id %>" type="button">
-                                <%= product.active ? 'Desactivar' : 'Activar' %>
-                            </button>
-                        </div>
-                    </div>
+    <table class="sales-table">
+        <thead>
+        <tr>
+            <th>ID Venta</th>
+            <th>Comprador</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% sales.forEach((sale, index) => { %>
+            <tr>
+            <td><%= sale.id %></td>
+            <td><%= sale.buyerName %></td>
+            <td><%= new Date(sale.date).toLocaleDateString("es-AR") %></td>
+            <td>$<%= sale.total.toLocaleString("es-AR") %></td>
+            <td>
+                <button class="toggle-details" data-index="<%= index %>">Mostrar detalles</button>
+            </td>
+            </tr>
+
+            <tr class="details-row" id="details-<%= index %>" style="display: none;">
+            <td colspan="5">
+                <% sale.Products.forEach(product => { %>
+                <p><%= product.name %> x<%= product.SalesDetail.count %> - $<%= (product.price * product.SalesDetail.count).toLocaleString("es-AR") %></p>
                 <% }) %>
-            </div>
-        </section>
-        <div class="pagination">
-            <% if (currentPage > 1) { %>
-                <form method="GET" action=""> <!-- Get envia los datos por la URL -->
-                    <input type="hidden" name="page" value="<%= currentPage - 1 %>">
-                    <button type="submit">Anterior</button>
-                </form>
-            <% } %>
-
-            <% for (let i = 1; i <= totalPages; i++) { %>
-                <form method="GET" action=""> 
-                    <input type="hidden" name="page" value="<%= i %>">
-                    <button type="submit" class="<%= currentPage === i ? 'pagina-actual' : '' %>" <%= currentPage === i ? 'disabled' : '' %>>
-                        <%= i %>
-                    </button>
-                </form>
-            <% } %>
-
-            <% if (currentPage < totalPages) { %>
-                <form method="GET" action="">
-                    <input type="hidden" name="page" value="<%= currentPage + 1 %>">
-                    <button type="submit">Siguiente</button>
-                </form>
-            <% } %>
-        </div>
+            </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
     </main>
+    
     <%- include('partials/footer.ejs') %>
     <script type="module" src="/js/products.js"></script>
 </body>

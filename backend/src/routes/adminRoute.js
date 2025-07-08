@@ -7,5 +7,6 @@ router.get("/login", adminController.renderLogin);
 router.get("/products", adminController.renderProducts);
 router.get("/products/create", adminController.renderCreateProduct);
 router.get("/products/update/:id", adminController.renderUpdateProduct);
+router.get("/sales", adminController.renderSalesWDetails);
 
 export default router;

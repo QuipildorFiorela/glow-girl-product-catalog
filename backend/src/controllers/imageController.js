@@ -1,4 +1,4 @@
-import { createImage } from "../services/imageService.js";
+import { createImage } from "../services/image.service.js";
 
 export const upload = async (req, res) => {
     try {

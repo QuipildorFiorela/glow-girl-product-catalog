@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas - Glow Girl Admin</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+
+    <main class="sales-container">
+        <h1>Lista de Ventas</h1>
+
+        <% if (sales.length === 0) { %>
+            <p>No hay ventas registradas.</p>
+        <% } else { %>
+            <table class="sales-table">
+                <thead>
+                    <tr>
+                        <th>ID Venta</th>
+                        <th>Comprador</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% sales.forEach(sale => { %>
+                        <tr>
+                            <td><%= sale.id %></td>
+                            <td><%= sale.buyerName %></td>
+                            <td><%= new Date(sale.date).toLocaleDateString('es-AR') %></td>
+                            <td>$<%= sale.total.toLocaleString('es-AR') %></td>
+                            <td>
+                                <button class="btn-details" data-id="<%= sale.id %>">Mostrar detalles</button>
+                            </td>
+                        </tr>
+                        <tr id="details-<%= sale.id %>" class="details-row hidden">
+                            <td colspan="5">
+                                <ul>
+                                    <% sale.Products.forEach(product => { %>
+                                        <li>
+                                            <strong><%= product.name %></strong> x<%= product.SalesDetail.count %> 
+                                            - $<%= (product.price * product.SalesDetail.count).toLocaleString('es-AR') %>
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </main>
+
+    <!-- Footer -->
+    <%- include("partials/footer") %>
+    <script type="module" src="/js/sales.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import { getProducts, findPk } from "../services/product.service.js";
+import {getSalesWProducts} from "../services/sale.service.js";
 
 const renderLogin = (req, res) => {
     res.render("adminLogin"); // login.ejs
@@ -36,4 +37,21 @@ const renderUpdateProduct = async (req, res) => {
     res.render("updateProduct", { product }); // Carga el formulario con los datos del producto
 }
 
-export default { renderLogin, renderProducts, renderCreateProduct, renderUpdateProduct };
+const renderSalesWDetails = async (req, res) => {
+    try {
+        const sales = await getSalesWProducts(); 
+        res.render("sales", {sales}); //renderiza sales.ejs
+    } catch (error) {
+        console.error("Error al cargar ventas: ", error.message);
+        res.status(500).send("Error al cargar ventas.");
+    }
+};
+
+
+export default {
+    renderLogin,
+    renderProducts,
+    renderCreateProduct,
+    renderUpdateProduct,
+    renderSalesWDetails
+};

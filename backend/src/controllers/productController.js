@@ -1,5 +1,5 @@
 import {getProducts, findPk, create, update} from "../services/product.service.js";
-import {createImage} from "../services/imageService.js"
+import {createImage} from "../services/image.service.js"
 
 
 export const getAllProducts = async (req, res) => {
@@ -34,7 +34,6 @@ export const createProduct = async (req, res) => {
         if(!name || !description || !price || !img || !category || active === undefined){
             return res.status(400).json({message: "Completa todos los campos"});
         }
-        console.log("hasta acá joya");
         
         await create({name, description, price, img: img.url, category, active});    
         res.redirect("/api/admin/products");
