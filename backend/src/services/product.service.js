@@ -3,7 +3,7 @@ import {Op} from "sequelize"; //permite hacer busquedas con comodines (LIKE) par
 
 export const getProducts = async (page = 1, limit = 8, category = '', search = '', showOnlyActive = false) => {
     const offset = (page -1) * limit; //desde donde empezar a mostrar
-    const whereClause = {} //objeto where dinámico
+    const whereClause = {} //objeto where dinámico, indico qué condiciones aplican en la búsqueda
 
     if (showOnlyActive) {
         whereClause.active = true;
@@ -14,13 +14,13 @@ export const getProducts = async (page = 1, limit = 8, category = '', search = '
     }
 
     if (search) {
-        whereClause.name = { [Op.like]: `%${search}%`} //las busquedas con like son insensible a mayus/minus, pero si a tildes/acentos
+        whereClause.name = { [Op.like]: `%${search}%`} // Op: operadores de sequialize (gt, like, etc)
     }
 
     const {rows, count} = await Product.findAndCountAll({
-        where: whereClause,
-        limit,
-        offset
+        where: whereClause, //category=bag
+        limit, //8
+        offset //16
     });
 
     return {

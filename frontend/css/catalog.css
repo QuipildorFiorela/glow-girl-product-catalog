@@ -233,6 +233,7 @@ increase:hover,
 body.dark-mode .search-bar {
   border: 1px solid #a54d78;
   background-color: #141414;
+  color: white;
 }
 
 body.dark-mode .product-card {

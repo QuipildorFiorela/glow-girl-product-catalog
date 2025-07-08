@@ -34,34 +34,6 @@
     }
 }
 
-/*--------------------------- Pagination ---------------------------*/
-.pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.pagination button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.pagination button:hover {
-    background-color: #d6d6d6;
-}
-
-.pagination button:disabled,
-.pagination .actual-page {
-    background-color: #333;
-    color: white;
-    cursor: default;
-}
-
 /*------------------------------ Main ------------------------------*/
 .div-categories {
     display: flex;
@@ -176,6 +148,34 @@ button {
 
 #btn-red:hover {
     background-color: #c82333;
+}
+
+/*--------------------------- Pagination ---------------------------*/
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: #cacaca;
+}
+
+.pagination button:disabled,
+.pagination .actual-page {
+    background-color: #4e4e4e;
+    color: white;
+    cursor: default;
 }
 
 /*-------------------------  Screen Sizes  -------------------------*/
@@ -298,6 +298,7 @@ button {
 body.dark-mode .search-bar {
     border: 1px solid #a54d78;
     background-color: #141414;
+    color: white;
 }
 
 body.dark-mode .product-card {
@@ -328,16 +329,16 @@ body.dark-mode .modal-content {
 }
 
 body.dark-mode .pagination button {
-    background-color: #a7a9ab;
+    background-color: #2b2f31;
+    color: white;
 }
 
 body.dark-mode .pagination button:hover {
-    background-color: #949596;
+    background-color: #232628;
 }
 
-/*Todavia no funciona*/
-/*.pagination button:disabled,
-.pagination .pagina-actual {
-    background-color: #333;
+body.dark-mode .pagination button:disabled,
+body.dark-mode .pagination .actual-page {
+    background-color: #464b4e;
     color: white;
-}*/
+}

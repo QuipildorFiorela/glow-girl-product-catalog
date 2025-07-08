@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/db-sequalize.js";
+import sequelize from "../config/db-sequelize.js";
 
 // Tabla SQL ventas
 const Sale = sequelize.define("Sale", {

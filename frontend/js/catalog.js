@@ -48,7 +48,7 @@ async function loadProducts(page = 1) {
     if (searchText) url.searchParams.append('search', searchText);
 
 
-    const respuesta = await fetch(url);
+    const respuesta = await fetch(url); // GET /api/products?page=1&active=true&category=...&search=...
     const data = await respuesta.json();
     products = data.payload;
     return {
