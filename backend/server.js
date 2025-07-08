@@ -8,7 +8,6 @@ import saleRouter from "./src/routes/saleRoute.js";
 import adminRouter from "./src/routes/adminRoute.js";
 import userRouter from "./src/routes/userRoute.js";
 import authRouter from "./src/routes/authRoute.js";
-import imageRouter from "./src/routes/imageRoute.js";
 
 import envs from "./src/config/envs.js";
 
@@ -40,7 +39,6 @@ app.use("/api/admin", adminRouter);
 app.use("/api/sales", saleRouter);
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/images", imageRouter);
 
 
 
