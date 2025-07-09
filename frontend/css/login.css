@@ -48,42 +48,6 @@ input {
   margin-bottom: 16px;
 }
 
-.btn-enter {
-  background-color: #f09ac2;
-  color: white;
-  font-size: 1rem;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  user-select: none;
-}
-
-.btn-enter:hover {
-  background-color: #e37aa9;
-}
-
-.btn-admin {
-  position: fixed;
-  bottom: 115px;
-  left: 20px;
-  background-color: #63364b;
-  color: white;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-  /* para que quede por encima de otros elementos */
-}
-
-.btn-admin:hover {
-  background-color: #4e2b3b;
-}
-
 /*---------------------------- Dark Mode ----------------------------*/
 body.background.dark-mode {
   background-image: url('http://localhost:5000/img/acceso_pag_dark.jpg');

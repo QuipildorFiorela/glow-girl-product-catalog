@@ -1,6 +1,6 @@
 export function darkMode() {
-    const btnMode = document.getElementById("btn-mode");
-    const storeLogo = document.getElementById("store-logo");
+    const btnMode = document.getElementById("btnMode");
+    const storeLogo = document.getElementById("storeLogo");
 
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("mode") === "dark") {
@@ -22,10 +22,10 @@ export function darkMode() {
 }
 
 export function showUserWindow() {
-    const userIcon = document.getElementById("user-icon");
-    const userWindow = document.getElementById("user-window");
-    const userName = document.getElementById("user-name");
-    const logOutBtn = document.getElementById("log-out");
+    const userIcon = document.getElementById("userIcon");
+    const userWindow = document.getElementById("userWindow");
+    const userName = document.getElementById("userName");
+    const logOutBtn = document.getElementById("logOut");
 
     const savedName = sessionStorage.getItem("userName");
     userName.textContent = savedName;
@@ -47,4 +47,67 @@ export function showUserWindow() {
             userWindow.classList.add("hidden");
         }
     });
+}
+
+export function changeStyleInputFile() {
+    const fileInput = document.getElementById('fileInput');
+    const dropArea = document.getElementById('dropArea');
+    ['dragenter', 'dragover'].forEach(eventName => { // dragenter: cuando el archivo entra al área, dragover: mientras está en el área
+        dropArea.addEventListener(eventName, e => {
+            e.preventDefault();
+            dropArea.classList.add('dragover');
+        });
+    });
+    
+    ['dragleave', 'drop'].forEach(eventName => { // dragleave: cuando el archivo sale del área, drop: cuando el archivo se suelta en el área
+        dropArea.addEventListener(eventName, e => {
+            e.preventDefault();
+            dropArea.classList.remove('dragover');
+        });
+    });
+    
+    dropArea.addEventListener('drop', e => {
+        const files = e.dataTransfer.files;
+        if (files.length) {
+            fileInput.files = files;
+            showFile(files[0]);
+        }
+    });
+}
+
+export function showFile(file) {
+    const filePreview = document.getElementById('filePreview');
+    const fileName = document.getElementById('fileName');
+    filePreview.style.display = 'flex';
+    fileName.textContent = `Archivo: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+}
+
+export function fileChecker() {
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        const maxSize = 5 * 1024 * 1024;
+        const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+
+        if (file.size > maxSize) {
+            alert("El archivo supera los 5MB.");
+            fileInput.value = ""; // Limpiar
+            return;
+        }
+        if (!validExtensions.includes(file.type)) {
+            alert("Tipo de archivo no permitido. Solo jpeg, jpg, png, webp.");
+            fileInput.value = "";
+            return;
+        }
+        showFile(file);
+    });
+}
+
+export function priceChecker(){
+    const price = document.getElementById("price").value
+    if(price < 1){
+        alert("El precio debe ser mayor a 0");
+        return false
+    }
+    return true;
 }

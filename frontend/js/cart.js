@@ -77,14 +77,14 @@ function addCartFunctionality() {
 
 function confirmationModal() {
     // Evita duplicados
-    if (document.getElementById("confirmation-modal")) return;
+    if (document.getElementById("confirmationModal")) return;
     const modalHTML = `
-        <div id="confirmation-modal" class="modal">
+        <div id="confirmationModal" class="modal">
         <div class="modal-content">
             <p>¿Deseás confirmar tu compra?</p>
             <div class="modal-btns">
-            <button id="btn-confirm" class="btn-confirm">Sí</button>
-            <button id="btn-cancel" class="btn-cancel">No</button>
+            <button id="btnConfirmModal" class="btn-confirm">Sí</button>
+            <button id="btnCancelModal" class="btn-cancel">No</button>
             </div>
         </div>
         </div>
@@ -94,9 +94,9 @@ function confirmationModal() {
     document.body.appendChild(container);
 
     // Eventos
-    const modal = document.getElementById("confirmation-modal");
-    const btnConfirm = document.getElementById("btn-confirm");
-    const btnCancel = document.getElementById("btn-cancel");
+    const modal = document.getElementById("confirmationModal");
+    const btnConfirm = document.getElementById("btnConfirmModal");
+    const btnCancel = document.getElementById("btnCancelModal");
 
     btnCancel.addEventListener("click", () => {
         modal.remove();
@@ -113,7 +113,7 @@ function confirmationModal() {
                 count: product.count
             }))
         };
-        const res = await fetch("http://localhost:5000/api/sales", { //REFACTORIZAR
+        const res = await fetch("http://localhost:5000/api/admin/sales", { //REFACTORIZAR
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(sale)
@@ -153,7 +153,7 @@ function updateTotal() {
     cart.forEach(product => {
         totalPrice += (product.price * product.count);
     });
-    document.getElementById("total-price").textContent = `$${totalPrice.toLocaleString('es-AR')}`;
+    document.getElementById("totalPrice").textContent = `$${totalPrice.toLocaleString('es-AR')}`;
 }
 
 function init() {

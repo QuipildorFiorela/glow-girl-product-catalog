@@ -38,9 +38,7 @@ export const createProduct = async (req, res) => {
     try {
         const {name, description, price, category, active} = req.body;
         await create({name, description, price, img: `img/products/${req.file.filename}`, category, active});    
-        res.redirect("/api/admin/products");
-
-    console.log(req.body);
+        res.status(201).json({ message: "Producto creado con éxito"});
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
@@ -48,17 +46,11 @@ export const createProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
     try {
-        const { id } = req.params;
-        const productFound = await findPk(id);
-        if (!productFound) {
-            return res.status(404).json({ message: "Producto no encontrado" });
-        }
-        const { name, description, price, img, category, active } = req.body;
-        if (!name || !description || !price || !img || !category || active === undefined) {
-            return res.status(400).json({ message: "Completa todos los campos" });
-        }
-        await update(id, { name, description, price, img, category, active }); //un arreglo con el número de filas afectadas
-        res.status(200).json({ message: "Producto actualizado con éxito" });
+        const { name, description, price, category, active, existingImg } = req.body;
+        const img = req.file ? `img/products/${req.file.filename}` : existingImg;
+
+        await update(req.params.id, { name, description, price, img, category, active });
+        res.status(201).json({ message: "Producto actualizado con éxito"});
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }

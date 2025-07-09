@@ -3,7 +3,7 @@ import { darkMode } from "../js/utils.js"
 
 function btnEnter() {
     document.addEventListener("DOMContentLoaded", () => {
-        const btnEnter = document.getElementById("btn-enter");
+        const btnEnter = document.getElementById("btnEnter");
         const inputName = document.getElementById("name");
 
         btnEnter.addEventListener("click", () => {

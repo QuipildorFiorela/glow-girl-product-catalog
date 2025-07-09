@@ -1,7 +1,7 @@
 import { darkMode } from "./utils.js"
 
 function verifyPassword() {
-    document.getElementById("btn-enter").addEventListener("click", async (e) => {
+    document.getElementById("btnEnter").addEventListener("click", async (e) => {
         e.preventDefault(); // Esto evita que la página se recargue
         const mail = document.getElementById("mail").value;
         const password = document.getElementById("password").value;
@@ -29,7 +29,7 @@ function verifyPassword() {
 };
 
 function autocompletar() {
-    document.getElementById("btn-autocomplete").addEventListener("click", (e) => {
+    document.getElementById("btnAutocomplete").addEventListener("click", (e) => {
         e.preventDefault();
         document.getElementById("mail").value = "bianca@gmail.com";
         document.getElementById("password").value = "1234";

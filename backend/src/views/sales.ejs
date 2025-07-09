@@ -11,22 +11,22 @@
         <!-- Navbar -->
         <nav class="navbar">
             <div class="logo">
-                <img id="store-logo" src="http://localhost:5000/img/icons/logo_tienda_light_icon.png">
+                <img class="store-logo" id="storeLogo" src="/img/icons/logo_tienda_light_icon.png">
             </div>
 
             <a href="/api/admin/catalog">
-                <button id="btn-gold">Volver a productos</button>
+                <button class="btn-gold" id="btnGoBack">Volver a productos</button>
             </a>
 
             <div class="icons">
                 <div class="user">
-                    <img src="http://localhost:5000/img/icons/user_icon.png" alt="User" class="icon" id="user-icon">
-                    <div id="user-window" class="user-window hidden">
-                        <p id="user-name">Nombre</p>
-                        <button id="log-out">Cerrar sesión</button>
+                    <img src="http://localhost:5000/img/icons/user_icon.png" alt="User" class="icon" id="userIcon">
+                    <div id="userWindow" class="user-window hidden">
+                        <p id="userName">Nombre</p>
+                        <button class="btn-red" id="logOut">Cerrar sesión</button>
                     </div>
                 </div>
-                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Change Mode" id="btn-mode" class="icon-mode">
+                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Change Mode" class="icon-mode" id="btnMode">
             </div>
         </nav>
     </header>
@@ -54,7 +54,7 @@
                             <td><%= new Date(sale.date).toLocaleDateString('es-AR') %></td>
                             <td>$<%= sale.total.toLocaleString('es-AR') %></td>
                             <td>
-                                <button class="btn-details" data-id="<%= sale.id %>">Mostrar detalles</button>
+                                <button class="btn-pink" id="btnDetails" data-id="<%= sale.id %>">Mostrar detalles</button>
                             </td>
                         </tr>
                         <tr id="details-<%= sale.id %>" class="details-row hidden">

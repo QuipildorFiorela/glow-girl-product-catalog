@@ -1,7 +1,7 @@
 import { darkMode, showUserWindow } from "./utils.js"
 
 function btnChangeState() {
-    const buttons = document.querySelectorAll(".btn-deactivate");
+    const buttons = document.querySelectorAll(".btn-red");
 
     buttons.forEach(button => {
         button.addEventListener("click", async () => {
@@ -9,19 +9,19 @@ function btnChangeState() {
             // Evita duplicados
 
             // separar el modal en otra funcion
-            if (document.getElementById("modal-confirmation")) return;
+            if (document.getElementById("modalConfirmation")) return;
 
             const btnTextContent = button.textContent;
 
             const modalHTML = `
-            <div id="modal-confirmation" class="modal">
-            <div class="modal-content">
-                <p>¿Seguro que quiere ${btnTextContent} el producto?</p>
-                <div class="modal-btns">
-                <button id="btn-confirm" class="btn-confirm">Sí</button>
-                <button id="btn-cancel" class="btn-cancel">No</button>
+            <div class="modal" id="modalConfirmation">
+                <div class="modal-content">
+                    <p>¿Seguro que quiere ${btnTextContent} el producto?</p>
+                    <div class="modal-botns">
+                        <button id="btnConfirmModal" class="btn-pink">Sí</button>
+                        <button id="btnCancelModal" class="btn-grey">No</button>
+                    </div>
                 </div>
-            </div>
             </div>
             `;
 
@@ -30,9 +30,9 @@ function btnChangeState() {
             document.body.appendChild(container);
 
             // Eventos
-            const modal = document.getElementById("modal-confirmation");
-            const btnConfirm = document.getElementById("btn-confirm");
-            const btnCancel = document.getElementById("btn-cancel");
+            const modal = document.getElementById("modalConfirmation");
+            const btnConfirm = document.getElementById("btnConfirmModal");
+            const btnCancel = document.getElementById("btnCancelModal");
 
             btnCancel.addEventListener("click", () => {
                 modal.remove();

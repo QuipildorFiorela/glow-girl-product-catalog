@@ -1,6 +1,6 @@
 export function darkMode() {
-    const btnMode = document.getElementById("btn-mode");
-    const storeLogo = document.getElementById("store-logo");
+    const btnMode = document.getElementById("btnMode");
+    const storeLogo = document.getElementById("storeLogo");
 
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("mode") === "dark") {
@@ -22,10 +22,10 @@ export function darkMode() {
 }
 
 export function showUserWindow() {
-    const userIcon = document.getElementById("user-icon");
-    const userWindow = document.getElementById("user-window");
-    const userName = document.getElementById("user-name");
-    const logOutBtn = document.getElementById("log-out");
+    const userIcon = document.getElementById("userIcon");
+    const userWindow = document.getElementById("userWindow");
+    const userName = document.getElementById("userName");
+    const logOutBtn = document.getElementById("logOut");
 
     const savedName = sessionStorage.getItem("userName");
     userName.textContent = savedName;
@@ -38,7 +38,7 @@ export function showUserWindow() {
         sessionStorage.removeItem("userName");
         sessionStorage.removeItem("cart");
         sessionStorage.removeItem("actualPage");
-        window.location.href = "./login.html";
+        window.location.href="./login.html";
     });
 
     // Cerrar la ventana si se hace clic fuera
@@ -50,7 +50,7 @@ export function showUserWindow() {
 }
 
 export function btnLogo(){
-    const btnBackToCatalog = document.getElementById("store-logo");
+    const btnBackToCatalog = document.getElementById("storeLogo");
     btnBackToCatalog.addEventListener("click", () => {
         window.location.href = "./catalog.html"
     })

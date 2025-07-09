@@ -1,73 +1,13 @@
-import { darkMode, showUserWindow } from "./utils.js"
-const fileInput = document.getElementById('fileInput');
-
-function changeStyleInputFile() {
-    const dropArea = document.getElementById('dropArea');
-    ['dragenter', 'dragover'].forEach(eventName => { // dragenter: cuando el archivo entra al área, dragover: mientras está en el área
-        dropArea.addEventListener(eventName, e => {
-            e.preventDefault();
-            dropArea.classList.add('dragover');
-        });
-    });
-    
-    ['dragleave', 'drop'].forEach(eventName => { // dragleave: cuando el archivo sale del área, drop: cuando el archivo se suelta en el área
-        dropArea.addEventListener(eventName, e => {
-            e.preventDefault();
-            dropArea.classList.remove('dragover');
-        });
-    });
-    
-    dropArea.addEventListener('drop', e => {
-        const files = e.dataTransfer.files;
-        if (files.length) {
-            fileInput.files = files;
-        }
-    });
-}
-
-function showFile(file) {
-    const filePreview = document.getElementById('filePreview');
-    const fileName = document.getElementById('fileName');
-    filePreview.style.display = 'flex';
-    fileName.textContent = `Archivo: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-}
-
-function fileChecker() {
-    fileInput.addEventListener("change", () => {
-        const file = fileInput.files[0];
-        const maxSize = 5 * 1024 * 1024;
-        const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-
-        if (file.size > maxSize) {
-            alert("El archivo supera los 5MB.");
-            fileInput.value = ""; // Limpiar
-            return;
-        }
-        if (!validExtensions.includes(file.type)) {
-            alert("Tipo de archivo no permitido. Solo jpeg, jpg, png, webp.");
-            fileInput.value = "";
-            return;
-        }
-        showFile(file);
-    });
-}
-
-function priceChecker(){
-    const price = document.getElementById("price").value
-    if(price < 1){
-        alert("El precio debe ser mayor a 0");
-        return false
-    }
-    return true;
-}
+import { darkMode, showUserWindow, changeStyleInputFile, fileChecker, priceChecker } from "./utils.js"
 
 function sendForm() {
-    document.getElementById("form-create-product").addEventListener("submit", async (e) => {
+    document.getElementById("formCreateProduct").addEventListener("submit", async (e) => {
         e.preventDefault();
-        if(!priceChecker()) return;
+        if (!priceChecker()) return;
 
         const form = e.target;
         const data = new FormData(form);
+        console.log(data);
 
         try {
             const response = await fetch("/api/products", {
@@ -79,7 +19,7 @@ function sendForm() {
                 console.log(errorData);
                 return;
             }
-            window.location.href = "/api/admin/products";
+            window.location.href = "/api/admin/catalog";
         } catch (error) {
             console.error("Error:", error.message);
         }
@@ -87,18 +27,18 @@ function sendForm() {
 }
 
 function btnCancel() {
-    const btnReturn = document.querySelector(".btnCancel");
+    const btnReturn = document.getElementById("btnCancel");
     btnReturn.addEventListener("click", () => {
         // Evita duplicados
-        if (document.getElementById("modal-confirmacion")) return;
+        if (document.getElementById("modalConfirmation")) return;
 
         const modalHTML = `
-        <div id="modal-confirmacion" class="modal">
-        <div class="modal-contenido">
+        <div class="modal" id="modalConfirmation">
+        <div class="modal-content">
             <p>¿Seguro que quiere volver?</p>
-            <div class="modal-botones">
-            <button id="btn-confirmar" class="btn-confirmar">Sí</button>
-            <button id="btn-cancelar" class="btn-cancelar">No</button>
+            <div class="modal-botns">
+                <button id="btnConfirmModal" class="btn-pink">Sí</button>
+                <button id="btnCancelModal" class="btn-grey">No</button>
             </div>
         </div>
         </div>
@@ -109,16 +49,16 @@ function btnCancel() {
         document.body.appendChild(container);
 
         // Eventos
-        const modal = document.getElementById("modal-confirmacion");
-        const btnConfirm = document.getElementById("btn-confirmar");
-        const btnCancel = document.getElementById("btn-cancelar");
+        const modal = document.getElementById("modalConfirmation");
+        const btnConfirm = document.getElementById("btnConfirmModal");
+        const btnCancel = document.getElementById("btnCancelModal");
 
         btnCancel.addEventListener("click", () => {
             modal.remove();
         });
 
         btnConfirm.addEventListener("click", async () => {
-            window.location.href = "/api/admin/products"; // Ruta para volver al listado
+            window.location.href = "/api/admin/catalog"; // Ruta para volver al listado
         });
     })
 }

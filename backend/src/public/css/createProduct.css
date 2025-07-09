@@ -19,9 +19,7 @@ label {
     font-weight: bold;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -44,83 +42,7 @@ button:hover {
     background-color: #d87290;
 }
 
-/*-----------------------------  Modal  -----------------------------*/
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 20px;
-    max-width: 350px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    animation: appear 0.3s ease;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.modal-content p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.modal-btns {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.btn-confirm {
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-confirm:hover {
-    background-color: #ff1493;
-}
-
-.btn-cancel {
-    background-color: #ccc;
-    color: #333;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-cancel:hover {
-    background-color: #999;
-}
-
-.drop-zone {
+.drop-area {
     display: block;
     background-color: #ffffff;
     border: 2px dashed #94a3b8;
@@ -131,26 +53,20 @@ button:hover {
     cursor: pointer;
 }
 
-.drop-zone.dragover {
+.drop-area.dragover,
+.drop-area:hover {
     transform: scale(1.01);
     border-color: #ffadd6;
-    background-color: #fef2f8;
 }
 
-.drop-zone:hover{
-    transform: scale(1.01);
-    border-color: #ffadd6;
-    background-color: #f6fbff;
-}
-
-.drop-zone .upload-icon {
+.drop-area .upload-icon {
     width: 64px;
     height: auto;
     fill: #2563eb;
     margin-bottom: 1rem;
 }
 
-.drop-zone p {
+.drop-area p {
     margin: 0.25rem 0;
 }
 
@@ -213,43 +129,40 @@ body.dark-mode select {
     color: white;
 }
 
+body.dark-mode .drop-area{
+    background-color: #3b3b3b;
+    border: 2px dashed white;
+    color: white
+}
+
+body.dark-mode .drop-area.dragover,
+body.dark-mode .drop-area:hover {
+    transform: scale(1.01);
+    border-color: #ffadd6;
+}
+
+body.dark-mode .drop-text {
+    color: #c2d5f2;
+}
+
+body.dark-mode .drop-text span {
+    color: #2563eb;
+}
+
+body.dark-mode .drop-subtext {
+    color: #939fb2;
+}
+
+body.dark-mode .file-preview {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    color: #1f2937;
+}
+
 body.dark-mode label {
     color: white;
 }
 
 body.dark-mode .form-container button {
     background-color: #70142f;
-}
-
-body.dark-mode .modal {
-    background-color: #00000056;
-}
-
-body.dark-mode .modal-content {
-    background-color: #181a1b;
-    box-shadow: 0 0 15px rgba(41, 41, 41, 0.417);
-}
-
-.modal-btns {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.btn-confirm {
-    background-color: #70142f;
-    color: white;
-}
-
-.btn-confirm:hover {
-    background-color: #570f25;
-}
-
-.btn-cancel {
-    background-color: #35393b;
-    color: white;
-}
-
-.btn-cancel:hover {
-    background-color: #282c2d;
 }

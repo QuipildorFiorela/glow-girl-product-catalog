@@ -39,7 +39,7 @@ function btnCategories() {
 // });
 
 async function loadProducts(page = 1) {
-    const searchText = document.querySelector(".search-bar").value.trim();
+    const searchText = document.getElementById("searchBar").value.trim();
 
     const url = new URL('http://localhost:5000/api/products');
     url.searchParams.append('page', page);
@@ -58,7 +58,7 @@ async function loadProducts(page = 1) {
 }
 
 function showProducts(products) {
-    const contenedor = document.querySelector('.product-grid');
+    const contenedor = document.getElementById('productGrid');
     contenedor.innerHTML = "";
     products.forEach(product => {
         const card = document.createElement("div");
@@ -73,7 +73,7 @@ function showProducts(products) {
 
         // Botón Detalles
         const botonDetalles = document.createElement('button');
-        botonDetalles.className = "show-details";
+        botonDetalles.className = "btn-purple";
         botonDetalles.textContent = product.descriptionIsOpen ? 'Ocultar detalles' : 'Mostrar detalles';
         botonDetalles.addEventListener('click', () => {
             product.descriptionIsOpen = !product.descriptionIsOpen;
@@ -117,7 +117,7 @@ function showProducts(products) {
             });
         } else { //Si no está en el cart, crea el botón de agregar
             const botonAgregar = document.createElement('button');
-            botonAgregar.className = "add-to-cart";
+            botonAgregar.className = "btn-pink";
             botonAgregar.innerHTML = `Agregar`;
             card.appendChild(botonAgregar);
             botonAgregar.addEventListener("click", () => {
@@ -178,7 +178,7 @@ async function loadAndShow(page) {
 }
 
 function filter() {
-    const searchBar = document.querySelector(".search-bar");
+    const searchBar = document.getElementById("searchBar");
     searchBar.addEventListener("keyup", () => {
         loadAndShow(1); // Cada vez que escribo, vuelve a cargar desde la página 1
     });
@@ -196,7 +196,7 @@ function loadCart() {
 }
 
 function openCart() {
-    const cartIcon = document.getElementById("cart-icon");
+    const cartIcon = document.getElementById("cartIcon");
     cartIcon.addEventListener('click', () => {
         sessionStorage.setItem('cart', JSON.stringify(cart));
         window.location.href = "./cart.html";

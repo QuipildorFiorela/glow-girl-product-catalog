@@ -61,6 +61,42 @@ header {
         justify-content: space-between;
         gap: 5px;
     }
+
+    /* Bajamos la barra de búsqueda debajo del logo e iconos */
+    .search-container {
+        order: 3;
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+}
+
+.search-container {
+    flex: 1 1 300px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 300px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #f0a6ca;
+    outline: none;
+}
+
+.icon-search {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.icon-mode {
+    height: 40px;
+    cursor: pointer;
 }
 
 /*--------------------------- User window ---------------------------*/
@@ -74,26 +110,61 @@ header {
     min-width: 160px;
     z-index: 1000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.user-window button {
-    background-color: #c62828;
-    color: white;
-    border: none;
-    padding: 5px;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hidden {
     display: none;
 }
 
-.icon-mode {
-    height: 40px;
-    cursor: pointer;
+/*-----------------------------  Modal  -----------------------------*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 350px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: appear 0.3s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
 /*------------------------------ Main ------------------------------*/
@@ -108,6 +179,7 @@ h2 {
     margin-top: 2rem;
 }
 
+/*----------------------------- Buttons -----------------------------*/
 button {
     margin-top: 0.5rem;
     padding: 8px 16px;
@@ -119,13 +191,61 @@ button {
     cursor: pointer;
 }
 
-#btn-gold {
+.btn-gold {
     background-color: #c38e4d;
     color: white;
 }
 
-#btn-gold:hover {
+.btn-gold:hover {
     background-color: #b58346;
+}
+
+.btn-pink {
+    background-color: #f0a6ca;
+    color: white;
+}
+
+.btn-pink:hover {
+    background-color: #b58db6;
+}
+
+.btn-wine {
+    position: fixed;
+    bottom: 115px;
+    left: 20px;
+    background-color: #63364b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+    /* para que quede por encima de otros elementos */
+}
+
+.btn-wine:hover {
+    background-color: #4e2b3b;
+}
+
+.btn-grey {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-grey:hover {
+    background-color: #5a6268;
+}
+
+.btn-red {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-red:hover {
+    background-color: #c82333;
 }
 
 /*----------------------------- Footer -----------------------------*/
@@ -163,6 +283,12 @@ body.dark-mode .navbar {
     background-color: #181a1b;
 }
 
+body.dark-mode .search-bar {
+    border: 1px solid #a54d78;
+    background-color: #141414;
+    color: white;
+}
+
 body.dark-mode .user-window {
     background-color: #141414;
     border: 1px solid #999999;
@@ -182,22 +308,12 @@ body.dark-mode .modal-content {
     box-shadow: 0 0 15px rgba(28, 28, 28, 0.417);
 }
 
-body.dark-mode .btn-confirm {
-    background-color: #70142f;
-    color: white;
+body.dark-mode .btn-pink {
+    background-color: #b45288;
 }
 
-body.dark-mode .btn-confirm:hover {
-    background-color: #570f25;
-}
-
-body.dark-mode .btn-cancel {
-    background-color: #35393b;
-    color: white;
-}
-
-body.dark-mode .btn-cancel:hover {
-    background-color: #282c2d;
+body.dark-mode .btn-pink:hover {
+    background-color: #9f3e74;
 }
 
 body.dark-mode footer {
