@@ -37,7 +37,7 @@ export const findProductById = async (req, res) => {
 export const createProduct = async (req, res) => {
     try {
         const {name, description, price, category, active} = req.body;
-        await create({name, description, price, img: `img/products/${req.file.filename}`, category, active});    
+        await create({name, description, price, img: `${req.file.filename}`, category, active});    
         res.status(201).json({ message: "Producto creado con éxito"});
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });

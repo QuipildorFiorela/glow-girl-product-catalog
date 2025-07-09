@@ -36,7 +36,7 @@ function renderCart(container) {
         const divProduct = document.createElement("div");
         divProduct.classList.add("item-block");
         divProduct.innerHTML = `
-                <img src="http://localhost:5000/${product.img}" class="icon-mode">
+                <img src="http://localhost:5000/img/products/${product.img}" class="icon-mode">
                 <div class="item-info">
                     <h5>${product.name}</h5> 
                     <h6>Cantidad: ${product.count}</h6>

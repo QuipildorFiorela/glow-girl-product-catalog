@@ -65,7 +65,7 @@ function showProducts(products) {
         card.classList.add("product-card");
 
         card.innerHTML = `
-            <img src="http://localhost:5000/${product.img}" alt="${product.name}">
+            <img src="http://localhost:5000/img/products/${product.img}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p>$${product.price.toLocaleString('es-AR')}</p>
         `;

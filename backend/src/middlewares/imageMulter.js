@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, next) => {
         const ext = path.extname(file.originalname); // Extrae la extensión del archivo (png, jpg, etc)
-        const uniqueFilename = `${Date.now()}-${ext}`;
+        const uniqueFilename = `${Date.now()}${ext}`;
         next(null, uniqueFilename);
     },
 });

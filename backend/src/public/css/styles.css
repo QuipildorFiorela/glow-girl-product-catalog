@@ -15,7 +15,6 @@ header {
 
 /*----------------------------- Navbar -----------------------------*/
 .navbar {
-    background-color: rgb(216, 170, 228);
     display: flex;
     align-items: center;
     justify-content: space-between;

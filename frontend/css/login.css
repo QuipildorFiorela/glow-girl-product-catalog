@@ -9,6 +9,11 @@ body.background {
   flex-direction: column;
 }
 
+/*----------------------------- Navbar -----------------------------*/
+.navbar {
+    background-color: rgb(249, 219, 244);
+}
+
 /*------------------------------ Main ------------------------------*/
 main {
   flex: 1;

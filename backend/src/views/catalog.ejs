@@ -48,7 +48,7 @@
             <div class="product-grid">
                 <% products.forEach(product => { %>
                     <div class="product-card">
-                        <img src="/<%= product.img %>" alt="<%= product.name %>">
+                        <img src="/img/products/<%= product.img %>" alt="<%= product.name %>">
                         <h3><%= product.name %></h3>
                         <p><%=product.description %></p>
                         <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
