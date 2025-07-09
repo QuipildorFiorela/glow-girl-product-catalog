@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ticket de Compra</title>
-    <link href="./css/ticket.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticket de Compra</title>
+  <link rel="stylesheet" href="http://localhost:5000/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
+
 <body>
-    <div class="ticket-container">
-        <h1 class="titulo-gracias">¡GRACIAS!</h1>
-        <p class="subtitulo">
-  Hola <span id="nombre-usuario">______</span><br>
-  ¡Gracias por tu compra!
-</p>
-<p class="id-compra">ID de la compra:<br><span class="fw-bold" id="id-compra"></span></p>
+  <div class="ticket-container">
+    <h1 class="titulo-gracias">¡GRACIAS!</h1>
+    <p class="subtitulo">
+      Hola <span id="nombre-usuario">______</span><br>
+      ¡Gracias por tu compra!
+    </p>
+    <p class="id-compra">ID de la compra:<br><span class="fw-bold" id="id-compra"></span></p>
 
-<!-- Datos del pedido -->
-<div class="row mb-3">
-  <div class="col-6">
-    <p><strong>Facturado a:</strong><br><span id="facturado-a"></span></p>
-  </div>
-  <div class="col-6">
-    <p><strong>Fecha del pedido:</strong><br><span id="fecha-pedido"></span></p>
-  </div>
-  <div class="col-6">
-    <p><strong>Por:</strong><br>Glow Girl</p>
-  </div>
-</div>
+    <!-- Datos del pedido -->
+    <div class="row mb-3">
+      <div class="col-6">
+        <p><strong>Facturado a:</strong><br><span id="facturado-a"></span></p>
+      </div>
+      <div class="col-6">
+        <p><strong>Fecha del pedido:</strong><br><span id="fecha-pedido"></span></p>
+      </div>
+      <div class="col-6">
+        <p><strong>Por:</strong><br>Glow Girl</p>
+      </div>
+    </div>
 
-<!-- Tabla de productos -->
-<table class="table item-table">
-  <thead>
-    <tr>
-      <th>Descripción:</th>
-      <th class="text-end">Precio:</th>
-    </tr>
-  </thead>
-  <tbody id="tabla-productos"></tbody>
-</table>
+    <!-- Tabla de productos -->
+    <table class="table item-table">
+      <thead>
+        <tr>
+          <th>Descripción:</th>
+          <th class="text-end">Precio:</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-productos"></tbody>
+    </table>
 
-<div class="total-line"></div>
-<div class="d-flex justify-content-end">
-  <p class="fw-bold me-2">TOTAL:</p>
-  <p id="total-final"></p>
-</div>
+    <div class="total-line"></div>
+    <div class="d-flex justify-content-end">
+      <p class="fw-bold me-2">TOTAL:</p>
+      <p id="total-final"></p>
+    </div>
 
-<div class="d-flex justify-content-center gap-3 mt-4">
-    <button class="btn btn-warning mt-3" id="btn-descargar" onclick="window.print()">Descargar PDF</button>
-    <button class="btn btn-danger" id="btn-salir">Salir</button>
-</div>
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <button class="btn btn-warning mt-3" id="btn-descargar" onclick="window.print()">Descargar PDF</button>
+      <button class="btn btn-danger" id="btn-salir">Salir</button>
+    </div>
 
-<!-- Scripts al final del body -->
-<script type="module" src="./js/ticket.js"></script>
+    <!-- Scripts al final del body -->
+    <script type="module" src="./js/ticket.js"></script>
 
 </body>
-</html>
 
+</html>

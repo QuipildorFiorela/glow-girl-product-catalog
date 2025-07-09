@@ -1,4 +1,4 @@
-import {getProducts, findPk, create, update} from "../services/product.service.js";
+import {getProducts, findPk, create, update, remove} from "../services/product.service.js";
 
 export const getAllProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1; // si no pasa de page, usa la 1
@@ -21,18 +21,6 @@ export const getAllProducts = async (req, res) => {
     }
 };
 
-export const createProduct = async (req, res) => {
-    try {
-        const {name, description, price, category, active} = req.body;
-        await create({name, description, price, img: `img/products/${req.file.filename}`, category, active});    
-        res.redirect("/api/admin/products");
-
-    console.log(req.body);
-    } catch (error) {
-        res.status(500).json({ message: "Error interno del servidor", error: error.message });
-    }
-}
-
 export const findProductById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -41,6 +29,18 @@ export const findProductById = async (req, res) => {
             return res.status(404).json({message: "Producto no encontrado"});
         }
         res.status(201).json({ message: "Producto encontrado con éxito", payload: productFound });
+    } catch (error) {
+        res.status(500).json({ message: "Error interno del servidor", error: error.message });
+    }
+}
+
+export const createProduct = async (req, res) => {
+    try {
+        const {name, description, price, category, active} = req.body;
+        await create({name, description, price, img: `img/products/${req.file.filename}`, category, active});    
+        res.redirect("/api/admin/products");
+
+    console.log(req.body);
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }
@@ -81,6 +81,20 @@ export const changeStatus = async (req, res) => {
             message: `Producto ${newState ? "activado" : "desactivado"} con éxito`,
             payload: productFound
         });
+    } catch (error) {
+        res.status(500).json({ message: "Error interno del servidor", error: error.message });
+    }
+}
+
+export const deleteProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const productFound = await findPk(id)
+        if(!productFound){
+            return res.status(404).json({message: "Producto no encontrado"});
+        }
+        await remove(id);
+        res.status(200).json({ message: "Producto eliminado con éxito"});
     } catch (error) {
         res.status(500).json({ message: "Error interno del servidor", error: error.message });
     }

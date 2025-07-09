@@ -1,4 +1,4 @@
-import {getSales, create, getSalesWProducts} from "../services/sale.service.js";
+import {getSales, create, getWithProducts} from "../services/sale.service.js";
 import SalesDetail from "../models/salesdetailModel.js";
 import Product from "../models/productModel.js";
 
@@ -14,9 +14,9 @@ export const getAllSales = async (req, res) => {
 };
 
 // GET con productos: Trae ventas y productos asociados
-export const getSalesWProductsController = async (req, res) => {
+export const getSalesWithProducts = async (req, res) => {
     try {
-        const salesWProducts = await getSalesWProducts();
+        const salesWProducts = await getWithProducts();
         res.status(200).json({ 
             message: "Ventas con productos encontradas", 
             payload: salesWProducts 

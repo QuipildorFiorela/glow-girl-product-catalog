@@ -1,7 +1,7 @@
 import { getProducts, findPk } from "../services/product.service.js";
-import {getSalesWProducts} from "../services/sale.service.js";
+import {getWithProducts} from "../services/sale.service.js";
 
-const renderLogin = (req, res) => {
+export const renderLogin = (req, res) => {
     res.render("adminLogin"); // login.ejs
 };
 
@@ -14,7 +14,7 @@ export const renderProducts = async (req, res) => {
     try {
         const data = await getProducts(page, limit, category, search);
 
-        res.render("products", {
+        res.render("catalog", {
             products: data.products,
             totalPages: data.totalPages,
             currentPage: data.currentPage
@@ -24,11 +24,11 @@ export const renderProducts = async (req, res) => {
     }
 };
 
-const renderCreateProduct = (req, res) => {
+export const renderCreateProduct = (req, res) => {
     res.render("createProduct");
 };
 
-const renderUpdateProduct = async (req, res) => {
+export const renderUpdateProduct = async (req, res) => {
     const { id } = req.params;
     const product = await findPk(id); // función que ya tenés en el servicio
     if (!product) {
@@ -37,21 +37,12 @@ const renderUpdateProduct = async (req, res) => {
     res.render("updateProduct", { product }); // Carga el formulario con los datos del producto
 }
 
-const renderSalesWDetails = async (req, res) => {
+export const renderSalesWDetails = async (req, res) => {
     try {
-        const sales = await getSalesWProducts(); 
+        const sales = await getWithProducts(); 
         res.render("sales", {sales}); //renderiza sales.ejs
     } catch (error) {
         console.error("Error al cargar ventas: ", error.message);
         res.status(500).send("Error al cargar ventas.");
     }
-};
-
-
-export default {
-    renderLogin,
-    renderProducts,
-    renderCreateProduct,
-    renderUpdateProduct,
-    renderSalesWDetails
 };

@@ -108,6 +108,26 @@ h2 {
     margin-top: 2rem;
 }
 
+button {
+    margin-top: 0.5rem;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 18px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#btn-gold {
+    background-color: #c38e4d;
+    color: white;
+}
+
+#btn-gold:hover {
+    background-color: #b58346;
+}
+
 /*----------------------------- Footer -----------------------------*/
 footer {
     background-color: rgb(234, 211, 221);

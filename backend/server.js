@@ -36,7 +36,7 @@ app.use(cors());
 //pool.getConnection();
 app.use("/api/products", productRouter);
 app.use("/api/admin", adminRouter);
-app.use("/api/sales", saleRouter);
+app.use("/api/admin/sales", saleRouter);
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 

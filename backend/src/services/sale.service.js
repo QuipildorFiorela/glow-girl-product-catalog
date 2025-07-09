@@ -10,7 +10,7 @@ export const create = async (datosSale) => {
 }; //para hacer el POST desde el front
 //ARREGLAR hay que mandar los datos a un middleware, hay que hacer la venta, los detalles etc, producto checker, venta checker,.......?
 
-export const getSalesWProducts = async () => {
+export const getWithProducts = async () => {
     const sales = await Sale.findAll({ 
         include: [{ //"Traeme las ventas, pero además, traeme todos los productos que están relacionados a cada venta", gracias a la relación belongsToMany configurada entre Sale y Product a través de la tabla intermedia SaleDetail
             model: Product,
