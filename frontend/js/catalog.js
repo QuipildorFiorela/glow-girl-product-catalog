@@ -5,30 +5,6 @@ let cart = [];
 let category = "";
 const savedPage = getSavedPage();
 
-function btnCategories() {
-    const btnsCat = document.getElementsByClassName("btn-category");
-    for (let btn of btnsCat) {
-        btn.addEventListener("click", () => {
-            const container = btn.parentElement;
-
-            if (category == btn.dataset.value) {
-                category = "";
-                container.classList.remove("selected");
-            } else {
-                // Quito la clase de todas las categorías
-                const categories = document.getElementsByClassName("category");
-                for (let cat of categories) {
-                    cat.classList.remove("selected");
-                }
-                // Asigno la nueva
-                category = btn.dataset.value;
-                container.classList.add("selected");
-            }
-            loadAndShow(1);
-        });
-    }
-}
-
 // window.addEventListener("scroll", () => {
 // const navbar = document.querySelector(".navbar");
 // if (window.scrollY > 100) {
@@ -58,8 +34,8 @@ async function loadProducts(page = 1) {
 }
 
 function showProducts(products) {
-    const contenedor = document.getElementById('productGrid');
-    contenedor.innerHTML = "";
+    const container = document.getElementById('productGrid');
+    container.innerHTML = "";
     products.forEach(product => {
         const card = document.createElement("div");
         card.classList.add("product-card");
@@ -69,18 +45,20 @@ function showProducts(products) {
             <h3>${product.name}</h3>
             <p>$${product.price.toLocaleString('es-AR')}</p>
         `;
-        contenedor.appendChild(card);
+        container.appendChild(card);
 
         // Botón Detalles
-        const botonDetalles = document.createElement('button');
-        botonDetalles.className = "btn-purple";
-        botonDetalles.textContent = product.descriptionIsOpen ? 'Ocultar detalles' : 'Mostrar detalles';
-        botonDetalles.addEventListener('click', () => {
+        const btnDetails = document.createElement('button');
+        btnDetails.className = "btn-purple";
+        btnDetails.textContent = product.descriptionIsOpen ? 'Ocultar detalles' : 'Mostrar detalles';
+        btnDetails.addEventListener('click', () => {
             product.descriptionIsOpen = !product.descriptionIsOpen;
             showProducts(products);
         });
-        card.appendChild(botonDetalles);
 
+        const btnContainer = document.createElement("div");
+        btnContainer.className = "btn-container"
+        btnContainer.appendChild(btnDetails);
         // Si los detalles están abiertos, mostrar más info
         if (product.descriptionIsOpen) {
             const description = document.createElement("p");
@@ -99,7 +77,7 @@ function showProducts(products) {
                 <span>${productInCart.count}</span>
                 <button class="increase">+</button>
             `;
-            card.appendChild(countControl);
+            btnContainer.appendChild(countControl);
 
             countControl.querySelector(".increase").addEventListener('click', () => { //Si toco +, aumento la cantidad
                 productInCart.count++;
@@ -116,15 +94,16 @@ function showProducts(products) {
                 showProducts(products);
             });
         } else { //Si no está en el cart, crea el botón de agregar
-            const botonAgregar = document.createElement('button');
-            botonAgregar.className = "btn-pink";
-            botonAgregar.innerHTML = `Agregar`;
-            card.appendChild(botonAgregar);
-            botonAgregar.addEventListener("click", () => {
+            const btnAdd = document.createElement('button');
+            btnAdd.className = "btn-pink";
+            btnAdd.innerHTML = `Agregar`;
+            btnContainer.appendChild(btnAdd);
+            btnAdd.addEventListener("click", () => {
                 addToCart(product);
                 showProducts(products);
             });
         }
+        card.appendChild(btnContainer);
     })
 };
 

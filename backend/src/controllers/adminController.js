@@ -1,5 +1,5 @@
 import { getProducts, findPk } from "../services/product.service.js";
-import {getWithProducts} from "../services/sale.service.js";
+import { getWithProducts } from "../services/sale.service.js";
 
 export const renderLogin = (req, res) => {
     res.render("adminLogin"); // login.ejs
@@ -8,19 +8,21 @@ export const renderLogin = (req, res) => {
 export const renderProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 8;
-    const category  = req.query.category || '';
+    const category = req.query.category || '';
     const search = req.query.search || '';
+    const showOnlyActive = false; // o true si querés filtrar solo activos
 
     try {
-        const data = await getProducts(page, limit, category, search);
+        const { products, totalPages } = await getProducts(page, limit, category, search, showOnlyActive);
 
         res.render("catalog", {
-            products: data.products,
-            totalPages: data.totalPages,
-            currentPage: data.currentPage
+            products,
+            totalPages,
+            currentPage: page,
+            category
         });
     } catch (error) {
-        res.status(500).send("Error al cargar los productos");
+        res.status(500).send("Error al cargar productos");
     }
 };
 
@@ -39,8 +41,8 @@ export const renderUpdateProduct = async (req, res) => {
 
 export const renderSalesWDetails = async (req, res) => {
     try {
-        const sales = await getWithProducts(); 
-        res.render("sales", {sales}); //renderiza sales.ejs
+        const sales = await getWithProducts();
+        res.render("sales", { sales }); //renderiza sales.ejs
     } catch (error) {
         console.error("Error al cargar ventas: ", error.message);
         res.status(500).send("Error al cargar ventas.");
