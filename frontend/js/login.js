@@ -1,4 +1,4 @@
-import { redirectIfNotLogged } from "./utils.js"
+import { redirectIfAlreadyLogged } from "./utils.js"
 import { darkMode } from "../js/utils.js"
 
 function btnEnter() {
@@ -22,7 +22,7 @@ function btnEnter() {
 }
 
 async function init() {
-    redirectIfNotLogged();
+    redirectIfAlreadyLogged();
     darkMode();
     btnEnter();
 }
