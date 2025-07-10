@@ -40,7 +40,7 @@ INSERT INTO products (id, name, description, price, img, category, active) VALUE
 (22, 'Bandolera Rosa Floreada', 'Bandolera de cuerina con bolsillo frontal con cierre. Correa regulable. Cierre superior y puller de material principal. Tag de metal', 35000.00, 'bandolera_flores.webp', 'bag', TRUE),
 (23, 'Cartera bowling white', 'Cartera bowling de doble asa corta con bolsillos frontales y moño decorativo con charm colgante', 45000.00, 'cartera_bowling_white.webp', 'bag', TRUE),
 (24, 'Cartera bowling brown con arandelas', 'Cartera bowling de cuerina con doble asa corta de mano, cierre superior, asa larga regulable y desmontable', 39000.00, 'cartera_bowling_brown.webp', 'bag', TRUE),
-(25, 'Tote Bag Red Croissant', 'Bolsa reutilizable 38x43 estampa croissant', 18000.00, 'img/products/tote_croissant.webp', 'bag', TRUE),
+(25, 'Tote Bag Red Croissant', 'Bolsa reutilizable 38x43 estampa croissant', 18000.00, 'tote_croissant.webp', 'bag', TRUE),
 (26, 'Bandolera Y2K white', 'Cartera baguette de cuerina con hebilla. Correa regulable. Cierre superior. Hebilla frontal con broche con botón para cerrado', 45000.00, 'bandolera_y2k.webp', 'bag', TRUE),
 (27, 'Mini bag baby blue', 'Bandolera tipo baguette con charm decorativo y doble asa corta de mano', 35000.00, 'mini_bag_blue.webp', 'bag', TRUE),
 (28, 'Cartera Bowling Aqua', 'Cartera bowling de cuerina. Correa regulable desmontable. Manijas superiores. Doble cierre superior y pullers de material principal. Tag de metal', 39000.00, 'cartera_bowling_aqua.webp', 'bag', TRUE),
