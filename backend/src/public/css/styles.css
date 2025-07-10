@@ -190,13 +190,13 @@ button {
     cursor: pointer;
 }
 
-.btn-gold {
-    background-color: #c38e4d;
+.btn-darkPink {
+    background-color: #b460a8;
     color: white;
 }
 
-.btn-gold:hover {
-    background-color: #b58346;
+.btn-darkPink:hover {
+    background-color: #8c4b82;
 }
 
 .btn-pink {
@@ -294,6 +294,9 @@ body.dark-mode .user-window {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+body.dark-mode h1 {
+    color: #ffffff;
+}
 body.dark-mode h2 {
     color: #a580b6;
 }
