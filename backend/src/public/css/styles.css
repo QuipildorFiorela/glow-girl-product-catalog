@@ -191,12 +191,12 @@ button {
 }
 
 .btn-darkPink {
-    background-color: #b460a8;
+    background-color: #da7daa;
     color: white;
 }
 
 .btn-darkPink:hover {
-    background-color: #8c4b82;
+    background-color: #bc6e94;
 }
 
 .btn-pink {
@@ -274,12 +274,12 @@ footer p {
 
 /*---------------------------- Dark Mode ----------------------------*/
 body.dark-mode {
-    background-color: #1e2021;
+    background-color: #242526;
     color: #eaeaea;
 }
 
 body.dark-mode .navbar {
-    background-color: #181a1b;
+    background-color: #2e2e2e;
 }
 
 body.dark-mode .search-bar {
@@ -310,6 +310,13 @@ body.dark-mode .modal-content {
     box-shadow: 0 0 15px rgba(28, 28, 28, 0.417);
 }
 
+body.dark-mode .btn-darkPink {
+    background-color: #884695;
+}
+
+body.dark-mode .btn-darkPink:hover {
+    background-color: #6e3978;
+}
 body.dark-mode .btn-pink {
     background-color: #b45288;
 }
