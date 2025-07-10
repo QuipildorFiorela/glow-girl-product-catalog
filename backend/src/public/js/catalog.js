@@ -1,4 +1,4 @@
-import { darkMode, showUserWindow } from "./utils.js"
+import { darkMode, showUserWindow, redirectIfNotLogged } from "./utils.js"
 
 function btnChangeState() {
     const buttons = document.querySelectorAll(".btn-red");
@@ -71,6 +71,7 @@ function btnChangeState() {
 async function init() {
     darkMode();
     /*filter();*/
+    redirectIfNotLogged();
     btnChangeState();
     showUserWindow();
 }

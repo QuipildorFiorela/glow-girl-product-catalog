@@ -1,5 +1,5 @@
-import { protectRoute } from "../middlewares/authClient.js"
-import { darkMode, showUserWindow, btnLogo } from "../js/utils.js"
+import { redirectIfNotLogged } from "./utils.js"
+import { darkMode, showUserWindow } from "../js/utils.js"
 let cart = [];
 
 function loadCart() {
@@ -157,8 +157,7 @@ function updateTotal() {
 }
 
 function init() {
-    protectRoute();
-    btnLogo();
+    redirectIfNotLogged();
     darkMode();
     loadCart();
     showCart();

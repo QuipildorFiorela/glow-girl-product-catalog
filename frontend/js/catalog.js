@@ -1,5 +1,5 @@
-import { protectRoute } from "../middlewares/authClient.js"
-import { darkMode, showUserWindow, btnLogo } from "../js/utils.js"
+import { redirectIfNotLogged } from "./utils.js"
+import { darkMode, showUserWindow } from "../js/utils.js"
 let products = [];
 let cart = [];
 let category = "";
@@ -215,14 +215,13 @@ function addToCart(product) {
 }
 
 async function init() {
-    protectRoute();
+    redirectIfNotLogged();
     loadCart();
     await loadAndShow(savedPage);
     darkMode();
     filter();
     openCart();
     btnCategories();
-    btnLogo();
     showUserWindow();
 }
 

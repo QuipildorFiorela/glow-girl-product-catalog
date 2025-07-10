@@ -1,4 +1,4 @@
-import { redirectIfAlreadyLogged } from "../middlewares/authClient.js"
+import { redirectIfAlreadyLogged } from "./utils.js"
 import { darkMode } from "../js/utils.js"
 
 function btnEnter() {

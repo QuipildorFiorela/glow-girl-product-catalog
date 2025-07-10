@@ -1,3 +1,4 @@
+import { protectRoute } from "./utils.js"
 
 function getUserName() {
     return sessionStorage.getItem("userName");
@@ -57,7 +58,7 @@ function asignarEventos() {
 function init() {
     const userName = getUserName();
     const cart = getCart();
-
+    protectRoute();
     mostrarDatosGenerales(userName);
     renderizarProductos(cart);
     asignarEventos();

@@ -54,9 +54,20 @@ export function showUserWindow() {
     });
 }
 
-export function btnLogo(){
-    const btnBackToCatalog = document.getElementById("storeLogo");
-    btnBackToCatalog.addEventListener("click", () => {
-        window.location.href = "./catalog.html"
-    })
+// Este se usa en páginas protegidas como el catálogo
+export function redirectIfNotLogged() {
+    const name = sessionStorage.getItem("userName");
+    if (!name) {
+        alert("Inicia sesión para ingresar a la tienda.");
+        window.location.href = "./login.html";
+    }
+}
+
+// Este se usa en el login para evitar que vuelva si ya inició sesión
+export function redirectIfAlreadyLogged() {
+    const name = sessionStorage.getItem("userName");
+    if (name) {
+        alert("Cierra sesión para volver al login.");
+        window.location.href = "./catalog.html";
+    }
 }

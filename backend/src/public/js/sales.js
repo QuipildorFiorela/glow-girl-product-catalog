@@ -1,4 +1,4 @@
-import { darkMode, showUserWindow } from "./utils.js"
+import { darkMode, showUserWindow, redirectIfNotLogged } from "./utils.js"
 
 function showDetails() {
     const detailsBtns = document.querySelectorAll('.btn-pink');
@@ -18,6 +18,7 @@ function showDetails() {
 
 function init() {
     darkMode();
+    redirectIfNotLogged();
     showUserWindow();
     showDetails();
 }
