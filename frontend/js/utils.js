@@ -2,19 +2,24 @@ export function darkMode() {
     const btnMode = document.getElementById("btnMode");
     const storeLogo = document.getElementById("storeLogo");
 
+    const darkModeIcon = "http://localhost:5000/img/icons/dark_mode_icon.png";
+    const lightModeIcon = "http://localhost:5000/img/icons/light_mode_icon.png";
+    const logoTiendaDarkMode = "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
+    const logoTiendaLightIcon = "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
+
     // Verificar si ya había un modo guardado
     if (localStorage.getItem("mode") === "dark") {
         document.body.classList.add("dark-mode");
-        btnMode.src = "http://localhost:5000/img/icons/dark_mode_icon.png";
-        storeLogo.src = "http://localhost:5000/img/icons/logo_tienda_dark_icon.png";
+        btnMode.src = darkModeIcon;
+        storeLogo.src = logoTiendaDarkMode;
     }
 
     btnMode.addEventListener("click", () => {
         const activeMode = document.body.classList.toggle("dark-mode");
 
         // Cambiar ícono
-        btnMode.src = activeMode ? "http://localhost:5000/img/icons/dark_mode_icon.png" : "http://localhost:5000/img/icons/light_mode_icon.png";
-        storeLogo.src = activeMode ? "http://localhost:5000/img/icons/logo_tienda_dark_icon.png" : "http://localhost:5000/img/icons/logo_tienda_light_icon.png";
+        btnMode.src = activeMode ? darkModeIcon : lightModeIcon;
+        storeLogo.src = activeMode ? logoTiendaDarkMode : logoTiendaLightIcon;
 
         // Guardar en sessionStorage
         localStorage.setItem("mode", activeMode ? "dark" : "light");

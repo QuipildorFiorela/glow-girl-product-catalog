@@ -1,9 +1,20 @@
 /*----------------------------- General -----------------------------*/
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     font-family: 'Segoe UI', sans-serif;
-    margin: 0;
     background-color: #f5f5f5;
     color: #333;
+}
+
+/* para que el footer quede abajo si hay poco contenido */
+main {
+    flex: 1;
 }
 
 header {
@@ -22,6 +33,7 @@ header {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
     gap: 2rem;
+    background-color: rgb(234, 211, 221);
 }
 
 .logo img {
@@ -258,6 +270,7 @@ footer {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     border-top: 2px solid #e5d4e9;
     margin-top: 3rem;
+    position: static;
 }
 
 footer h5 {
@@ -330,6 +343,7 @@ body.dark-mode footer {
     color: #a580b6;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     border-top: 2px solid #e5d4e9;
+    position:static;
 }
 
 body.dark-mode footer p {
