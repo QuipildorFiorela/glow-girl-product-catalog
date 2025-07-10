@@ -1,4 +1,4 @@
-import { redirectIfAlreadyLogged } from "../middlewares/authClient.js"
+import { redirectIfNotLogged } from "./utils.js"
 import { darkMode } from "../js/utils.js"
 
 function btnEnter() {
@@ -22,7 +22,7 @@ function btnEnter() {
 }
 
 async function init() {
-    redirectIfAlreadyLogged();
+    redirectIfNotLogged();
     darkMode();
     btnEnter();
 }

@@ -1,4 +1,5 @@
 import { darkMode } from "./utils.js"
+import { redirectIfAlreadyLogged } from "./utils.js";
 
 function verifyPassword() {
     document.getElementById("btnEnter").addEventListener("click", async (e) => {
@@ -38,6 +39,7 @@ function autocompletar() {
 
 async function init() {
     darkMode();
+    redirectIfAlreadyLogged();
     verifyPassword();
     autocompletar();
 }

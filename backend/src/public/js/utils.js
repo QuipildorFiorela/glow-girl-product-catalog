@@ -125,3 +125,19 @@ export function validateFields() {
     }
     return true;
 }
+
+export function redirectIfNotLogged() {
+    const name = sessionStorage.getItem("userName");
+    if (!name) {
+        alert("Inicia sesión para ingresar a la tienda.");
+        window.location.href = "/api/admin/login"; 
+    } 
+}
+
+export function redirectIfAlreadyLogged() {
+    const name = sessionStorage.getItem("userName");
+    if (name) {
+        alert("Cierra sesión para volver al login.");
+        window.location.href = "/api/admin/catalog";
+    }
+}
