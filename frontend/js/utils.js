@@ -48,10 +48,3 @@ export function showUserWindow() {
         }
     });
 }
-
-export function btnLogo(){
-    const btnBackToCatalog = document.getElementById("storeLogo");
-    btnBackToCatalog.addEventListener("click", () => {
-        window.location.href = "./catalog.html"
-    })
-}

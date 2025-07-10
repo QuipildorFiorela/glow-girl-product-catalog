@@ -1,5 +1,5 @@
 import { protectRoute } from "../middlewares/authClient.js"
-import { darkMode, showUserWindow, btnLogo } from "../js/utils.js"
+import { darkMode, showUserWindow } from "../js/utils.js"
 let products = [];
 let cart = [];
 let category = "";
@@ -222,7 +222,6 @@ async function init() {
     filter();
     openCart();
     btnCategories();
-    btnLogo();
     showUserWindow();
 }
 
