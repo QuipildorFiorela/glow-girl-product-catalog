@@ -1,9 +1,9 @@
-import { darkMode, showUserWindow, changeStyleInputFile, fileChecker, priceChecker } from "./utils.js"
+import { darkMode, showUserWindow, changeStyleInputFile, fileAlerter, validateFields } from "./utils.js"
 
 function sendForm() {
     document.getElementById("formCreateProduct").addEventListener("submit", async (e) => {
         e.preventDefault();
-        if (!priceChecker()) return;
+        if (!validateFields()) return;
 
         const form = e.target;
         const data = new FormData(form);
@@ -66,7 +66,7 @@ function btnCancel() {
 function init() {
     darkMode();
     changeStyleInputFile();
-    fileChecker();
+    fileAlerter();
     sendForm();
     btnCancel();
     showUserWindow();

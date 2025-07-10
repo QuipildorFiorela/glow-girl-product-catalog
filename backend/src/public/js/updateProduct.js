@@ -1,9 +1,9 @@
-import { darkMode, showUserWindow, changeStyleInputFile, fileChecker, priceChecker } from "./utils.js"
+import { darkMode, showUserWindow, changeStyleInputFile, fileAlerter, validateFields} from "./utils.js"
 
 function uploadProduct() {
     document.getElementById("formUpdateProduct").addEventListener("submit", async (e) => {
         e.preventDefault();
-        if (!priceChecker()) return;
+        if (!validateFields()) return; //POR SI QUIEREN QUITAR EL REQUIRED ESTÁ TMB VALIDADO ACÁ
 
         const idProducto = document.getElementById("id").value;
         const form = e.target;
@@ -69,7 +69,7 @@ function btnCancel() {
 async function init() {
     darkMode();
     changeStyleInputFile();
-    fileChecker();
+    fileAlerter();
     uploadProduct();
     btnCancel();
     showUserWindow();

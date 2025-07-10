@@ -82,7 +82,7 @@ export function showFile(file) {
     fileName.textContent = `Archivo: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
 }
 
-export function fileChecker() {
+export function fileAlerter() {
     const fileInput = document.getElementById('fileInput');
     fileInput.addEventListener("change", () => {
         const file = fileInput.files[0];
@@ -103,11 +103,25 @@ export function fileChecker() {
     });
 }
 
-export function priceChecker(){
+export function validateFields() {
+    const name = document.getElementById("name").value.trim();
+    const description = document.getElementById("description").value.trim();
     const price = document.getElementById("price").value
+
+    let message = "";
+
+    if (name === "") {
+        message += "El nombre no puede estar vacío.\n";
+    }
+    if (description === "") {
+        message += "La descripción no puede estar vacía.\n";
+    }
     if(price < 1){
-        alert("El precio debe ser mayor a 0");
-        return false
+        message += "El precio debe ser mayor a 0.\n";
+    }
+    if (message) {
+        alert(message);
+        return false;
     }
     return true;
 }
