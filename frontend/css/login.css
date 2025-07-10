@@ -1,6 +1,6 @@
 /*----------------------------- General -----------------------------*/
 body.background {
-  background-image: url('http://localhost:5000/img/acceso_pag.jpg');
+  background-image: url('http://localhost:5000/img/others/acceso_pag.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@ input {
 
 /*---------------------------- Dark Mode ----------------------------*/
 body.background.dark-mode {
-  background-image: url('http://localhost:5000/img/acceso_pag_dark.jpg');
+  background-image: url('http://localhost:5000/img/others/acceso_pag_dark.jpg');
 }
 
 body.dark-mode .form {
