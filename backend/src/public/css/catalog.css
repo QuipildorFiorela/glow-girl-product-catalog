@@ -4,48 +4,65 @@
 }
 
 /*------------------------------ Main ------------------------------*/
+/* Estilo base para categorías en botones */
 .div-categories {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin: 2rem auto;
-    max-width: 1200px;
-    padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 100%;
+  margin: 2rem auto;
 }
 
 .category {
-    all: unset;
-    display: block;
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    height: 250px;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-    flex: 1 1 300px;
-}
-
-.category.selected img {
-    transform: scale(1.05);
-    filter: brightness(0.7) contrast(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    border: 3px solid #f0a6ca;
-}
-
-.category:hover img {
-    transform: scale(1.05);
-    filter: brightness(0.85);
+  flex: 1 1 calc(50% - 1rem); /* 2 por fila */
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .category img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease, filter 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+.category:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.85);
+}
+
+/* Texto encima */
+.category-label {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+  pointer-events: none;
+}
+
+/* Seleccionada */
+.category.selected img {
+  transform: scale(1.05);
+  filter: brightness(0.7) contrast(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border: 3px solid #f0a6ca;
+  border-radius: 20px;
+}
+
 
 /*---------------------------  Productos  ---------------------------*/
 .products-section {
@@ -157,28 +174,25 @@ a {
 
 /* Ajustes para pantallas pequeñas (≤ 480px) */
 @media (max-width: 480px) {
-    .product-card h3 {
-        font-size: 0.9rem;
-    }
+  .div-categories {
+    display: flex;
+    flex-wrap: nowrap; /* Esto evita que se apilen */
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
 
-    .product-card p {
-        font-size: 0.8rem;
-    }
+  .category {
+    flex: 1 1 50%;
+    height: 220px;
+    border-radius: 12px;
+  }
 
-    .product-card button {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
-
-    .add-to-cart,
-    .show-details {
-        border-radius: 12px;
-    }
-
-    .product-card img {
-        max-width: 140px;
-    }
-
+  .category img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 /*---------------------------- Dark Mode ----------------------------*/

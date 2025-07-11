@@ -1,8 +1,8 @@
 /*------------------------------ Main ------------------------------*/
 .div-categories {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between; /* o center */
+  gap: 1rem;
   flex-wrap: wrap;
   margin: 2rem auto;
   max-width: 1200px;
@@ -10,15 +10,13 @@
 }
 
 .category {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  height: 250px;
-  cursor: pointer;
-  overflow: hidden;
+  flex: 1 1 calc(50% - 1rem); /* 2 por fila con espacio entre medio */
+  height: 300px; /* podés ajustar la altura si querés */
   border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
   transition: transform 0.3s ease;
-  flex: 1 1 300px;
 }
 
 .category img {
@@ -164,45 +162,43 @@
 
 /*-------------------------- Screen Sizes --------------------------*/
 @media (min-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-    /* En tablets y más, 3 por fila */
-  }
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* En tablets y más, 3 por fila */
+    }
 }
 
 @media (min-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(4, 1fr);
-    /* En pantallas grandes, 4 por fila */
-  }
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+        /* En pantallas grandes, 4 por fila */
+    }
 }
 
 /* Ajustes para pantallas pequeñas (≤ 480px) */
 @media (max-width: 480px) {
-  .product-card h3 {
-    font-size: 0.9rem;
-  }
+    .product-card h3 {
+        font-size: 0.9rem;
+    }
 
-  .product-card p {
-    font-size: 0.8rem;
-  }
+    .product-card p {
+        font-size: 0.8rem;
+    }
 
-  .product-card button {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
+    .product-card button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
 
-  .add-to-cart,
-  .show-details {
-    border-radius: 12px;
-  }
+    .add-to-cart,
+    .show-details {
+        border-radius: 12px;
+    }
 
-  .product-card img {
-    max-width: 140px;
-  }
-
+    .product-card img {
+        max-width: 140px;
+    }
 }
-
 /*---------------------------- Dark Mode ----------------------------*/
 body.dark-mode .search-bar {
   border: 1px solid #a54d78;
