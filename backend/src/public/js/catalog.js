@@ -61,19 +61,11 @@ function btnChangeState() {
     });
 }
 
-/*function filter() {
-    const searchBar = document.querySelector(".search-bar");
-    searchBar.addEventListener("keyup", () => {
-        cargarYMostrar(1); // Cada vez que escribo, vuelve a cargar desde la página 1
-    });
-}*/
-
 async function init() {
     darkMode();
-    /*filter();*/
+    showUserWindow();
     redirectIfNotLogged();
     btnChangeState();
-    showUserWindow();
 }
 
 init();

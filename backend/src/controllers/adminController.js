@@ -8,19 +8,21 @@ export const renderLogin = (req, res) => {
 export const renderProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 8;
-    const category  = req.query.category || '';
+    const category = req.query.category || '';
     const search = req.query.search || '';
+    const showOnlyActive = false; // o true si querés filtrar solo activos
 
     try {
-        const data = await getProducts(page, limit, category, search);
+        const { products, totalPages } = await getProducts(page, limit, category, search, showOnlyActive);
 
         res.render("catalog", {
-            products: data.products,
-            totalPages: data.totalPages,
-            currentPage: data.currentPage
+            products,
+            totalPages,
+            currentPage: page,
+            category
         });
     } catch (error) {
-        res.status(500).send("Error al cargar los productos");
+        res.status(500).send("Error al cargar productos");
     }
 };
 

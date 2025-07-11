@@ -43,8 +43,6 @@ export function showUserWindow() {
 
     logOutBtn.addEventListener("click", () => {
         sessionStorage.removeItem("userName");
-        sessionStorage.removeItem("cart");
-        sessionStorage.removeItem("actualPage");
         window.location.href='/api/admin/login';
     });
 

@@ -19,78 +19,126 @@
             </div>
 
             <!-- FALTA ARREGLAR EL FILTRO -->
-
-            <a href="/api/admin/products/create">
-                <button class="btn-darkPink" id="btnCrearProducto">Crear producto</button>
-            </a>
-            <a href="/api/admin/sales">
-                <button class="btn-darkPink" id="btnVentas">Ver ventas</button>
-            </a>
+            <div class="btn-container">
+                <a href="/api/admin/products/create">
+                    <button class="btn-darkPink" id="btnCrearProducto">Crear producto</button>
+                </a>
+                <a href="/api/admin/sales">
+                    <button class="btn-darkPink" id="btnVentas">Ver ventas</button>
+                </a>
+            </div>
 
             <div class="icons">
                 <div class="user">
                     <img src="http://localhost:5000/img/icons/user_icon.png" alt="User" class="icon" id="userIcon">
                     <div id="userWindow" class="user-window hidden">
                         <p id="userName">Nombre</p>
-                        <button class="btn-red" id="logOut">Cerrar sesión</button>
+                        <button class="btn-grey" id="logOut">Cerrar sesión</button>
                     </div>
                 </div>
-                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Change Mode" id="btnMode" class="icon-mode">
+                <img src="http://localhost:5000/img/icons/light_mode_icon.png" alt="Change Mode" id="btnMode"
+                    class="icon-mode">
             </div>
         </nav>
     </header>
 
     <main>
+        <h2>✩ CATEGORÍAS ✩</h2>
+        <div class="div-categories">
+            <form method="GET" action="">
+                <% if (category==='bag' ) { %>
+                    <!-- Si ya está seleccionada, enviá sin category -->
+                    <button type="submit" class="category selected">
+                        <img src="/img/others/acceso_carteras.jpg" alt="Bags" class="btn-category">
+                    </button>
+                    <% } else { %>
+                        <!-- Si no está seleccionada, aplicá el filtro -->
+                        <input type="hidden" name="category" value="bag">
+                        <button type="submit" class="category">
+                            <img src="/img/others/acceso_carteras.jpg" alt="Bags" class="btn-category">
+                        </button>
+                        <% } %>
+            </form>
+
+            <form method="GET" action="">
+                <% if (category==='accessory' ) { %>
+                    <button type="submit" class="category selected">
+                        <img src="/img/others/acceso_accesorios.jpg" alt="Accessories" class="btn-category">
+                    </button>
+                    <% } else { %>
+                        <input type="hidden" name="category" value="accessory">
+                        <button type="submit" class="category">
+                            <img src="/img/others/acceso_accesorios.jpg" alt="Accessories" class="btn-category">
+                        </button>
+                        <% } %>
+            </form>
+        </div>
         <section class="products-section">
+            <h2>*ੈ✩‧₊˚NUESTROS PRODUCTOS*ੈ✩‧₊˚</h2>
             <div class="product-grid">
-                <% products.forEach(product => { %>
+                <% products.forEach(product=> { %>
                     <div class="product-card">
                         <img src="/img/products/<%= product.img %>" alt="<%= product.name %>">
-                        <h3><%= product.name %></h3>
-                        <p><%=product.description %></p>
-                        <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
-
-                        <div class="admin-buttons">
-                            <a href="/api/admin/products/update/<%=product.id%>">
-                                <button class="btn-grey" id="btnEdit">Editar</button>
-                            </a>
-                            <button class="btn-red" id="btnDeactivate" data-id="<%= product.id %>" type="button">
-                                <%= product.active ? 'Desactivar' : 'Activar' %>
-                            </button>
+                        <h3>
+                            <%= product.name %>
+                        </h3>
+                        <p>
+                            <%=product.description %>
+                        </p>
+                        <div class="bottom-container">
+                            <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
+                            <div class="btn-container">
+                                <a href="/api/admin/products/update/<%=product.id%>">
+                                    <button class="btn-grey" id="btnEdit">Editar</button>
+                                </a>
+                                <button class="btn-red" id="btnDeactivate" data-id="<%= product.id %>" type="button">
+                                    <%= product.active ? 'Desactivar' : 'Activar' %>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                <% }) %>
+                    <% }) %>
             </div>
         </section>
         <div class="pagination">
-            <% if (currentPage > 1) { %>
-                <form method="GET" action=""> <!-- Get envia los datos por la URL -->
-                    <input type="hidden" name="page" value="<%= currentPage - 1 %>">
-                    <button type="submit">Anterior</button>
-                </form>
-            <% } %>
-
-            <% for (let i = 1; i <= totalPages; i++) { %>
-                <form method="GET" action=""> 
-                    <input type="hidden" name="page" value="<%= i %>">
-                    <button type="submit" class="<%= currentPage === i ? 'pagina-actual' : '' %>" <%= currentPage === i ? 'disabled' : '' %>>
-                        <%= i %>
-                    </button>
-                </form>
-            <% } %>
-
-            <% if (currentPage < totalPages) { %>
+            <% if (currentPage> 1) { %>
                 <form method="GET" action="">
-                    <input type="hidden" name="page" value="<%= currentPage + 1 %>">
-                    <button type="submit">Siguiente</button>
+                    <input type="hidden" name="page" value="<%= currentPage - 1 %>">
+                    <% if (category) { %>
+                        <input type="hidden" name="category" value="<%= category %>">
+                        <% } %>
+                            <button type="submit">Anterior</button>
                 </form>
-            <% } %>
+                <% } %>
+
+                    <% for (let i=1; i <=totalPages; i++) { %>
+                        <form method="GET" action="">
+                            <input type="hidden" name="page" value="<%= i %>">
+                            <% if (category) { %>
+                                <input type="hidden" name="category" value="<%= category %>">
+                                <% } %>
+                                    <button type="submit" class="<%= currentPage === i ? 'pagina-actual' : '' %>"
+                                        <%=currentPage===i ? 'disabled' : '' %>>
+                                        <%= i %>
+                                    </button>
+                        </form>
+                        <% } %>
+
+                            <% if (currentPage < totalPages) { %>
+                                <form method="GET" action="">
+                                    <input type="hidden" name="page" value="<%= currentPage + 1 %>">
+                                    <% if (category) { %>
+                                        <input type="hidden" name="category" value="<%= category %>">
+                                        <% } %>
+                                            <button type="submit">Siguiente</button>
+                                </form>
+                                <% } %>
         </div>
     </main>
 
     <%- include('partials/footer.ejs') %>
 
-    <script type="module" src="/js/catalog.js"></script>
+        <script type="module" src="/js/catalog.js"></script>
 </body>
 
 </html>
