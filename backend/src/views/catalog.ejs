@@ -15,7 +15,9 @@
         <!-- Navbar -->
         <nav class="navbar">
             <div class="logo">
-                <img class="store-logo" id="storeLogo" src="http://localhost:5000/img/icons/logo_tienda_light_icon.png">
+                <a href = "/api/admin/catalog">
+                    <img id="storeLogo" src="http://localhost:5000/img/icons/logo_tienda_light_icon.png" alt="Store Logo">
+                </a>
             </div>
 
             <!-- FALTA ARREGLAR EL FILTRO -->
@@ -87,14 +89,12 @@
                         </p>
                         <div class="bottom-container">
                             <strong>$<%= product.price.toLocaleString("es-AR") %></strong>
-                            <div class="btn-container">
-                                <a href="/api/admin/products/update/<%=product.id%>">
-                                    <button class="btn-grey" id="btnEdit">Editar</button>
-                                </a>
-                                <button class="btn-red" id="btnDeactivate" data-id="<%= product.id %>" type="button">
-                                    <%= product.active ? 'Desactivar' : 'Activar' %>
-                                </button>
-                            </div>
+                            <a href="/api/admin/products/update/<%=product.id%>">
+                                <button class="btn-grey" id="btnEdit">Editar</button>
+                            </a>
+                            <button class="btn-red" id="btnDeactivate" data-id="<%= product.id %>" type="button">
+                                <%= product.active ? 'Desactivar' : 'Activar' %>
+                            </button>
                         </div>
                     </div>
                     <% }) %>
