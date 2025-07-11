@@ -19,7 +19,7 @@ function uploadProduct() {
                 console.log(errorData);
                 return;
             };
-            showPopUp("Producto creado con éxito.");
+            showPopUp("Producto editado con éxito.");
             setTimeout(() => {
             window.location.href = "/api/admin/catalog";
             }, 2000); // Le doy 1.5 segundos para mostrar el mensaje

@@ -19,7 +19,7 @@ function sendForm() {
                 console.log(errorData);
                 return;
             }
-            showPopUp("Producto editado con éxito.");
+            showPopUp("Producto creado con éxito.");
             setTimeout(() => {
             window.location.href = "/api/admin/catalog";
             }, 2000);
