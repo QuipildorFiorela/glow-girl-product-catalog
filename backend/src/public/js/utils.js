@@ -26,7 +26,6 @@ export function darkMode() {
     });
 }
 
-
 export function showUserWindow() {
     const userIcon = document.getElementById("userIcon");
     const userWindow = document.getElementById("userWindow");
@@ -42,8 +41,6 @@ export function showUserWindow() {
 
     logOutBtn.addEventListener("click", () => {
         sessionStorage.removeItem("userName");
-        sessionStorage.removeItem("cart");
-        sessionStorage.removeItem("actualPage");
         window.location.href='/api/admin/login';
     });
 

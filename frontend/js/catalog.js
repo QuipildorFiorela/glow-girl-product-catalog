@@ -5,6 +5,30 @@ let cart = [];
 let category = "";
 const savedPage = getSavedPage();
 
+function btnCategories() {
+    const btnsCat = document.getElementsByClassName("btn-category");
+    for (let btn of btnsCat) {
+        btn.addEventListener("click", () => {
+            const container = btn.parentElement;
+
+            if (category == btn.dataset.value) {
+                category = "";
+                container.classList.remove("selected");
+            } else {
+                // Quito la clase de todas las categorías
+                const categories = document.getElementsByClassName("category");
+                for (let cat of categories) {
+                    cat.classList.remove("selected");
+                }
+                // Asigno la nueva
+                category = btn.dataset.value;
+                container.classList.add("selected");
+            }
+            loadAndShow(1);
+        });
+    }
+}
+
 // window.addEventListener("scroll", () => {
 // const navbar = document.querySelector(".navbar");
 // if (window.scrollY > 100) {

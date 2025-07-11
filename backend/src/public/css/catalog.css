@@ -73,6 +73,15 @@
     /*como este nivel es menor no se sobrepone con el header*/
 }
 
+.bottom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    /* 👈 empuja el bloque hacia el fondo */
+}
+
 .product-card:hover {
     transform: translateY(-5px);
 }
