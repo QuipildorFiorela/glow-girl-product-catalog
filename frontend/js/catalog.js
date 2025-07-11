@@ -42,11 +42,10 @@ async function loadProducts(page = 1) {
     const searchText = document.getElementById("searchBar").value.trim();
 
     const url = new URL('http://localhost:5000/api/products');
-    url.searchParams.append('page', page);
+    url.searchParams.append('page', page); //cada vez que busco productos, le indico la pág como parámetro, ej: "/api/productos?page=2"
     url.searchParams.append('active', 'true'); // <-- esto filtra activos
     if (category) url.searchParams.append('category', category);
     if (searchText) url.searchParams.append('search', searchText);
-
 
     const respuesta = await fetch(url); // GET /api/products?page=1&active=true&category=...&search=...
     const data = await respuesta.json();
@@ -131,6 +130,7 @@ function showProducts(products) {
     })
 };
 
+//Función para crear los botones de paginación "anterior", nums y "siguiente"
 function renderPagination(totalPages) {
     const currentPage = getSavedPage();
     const paginationContainer = document.getElementById('pagination');
@@ -165,6 +165,7 @@ function renderPagination(totalPages) {
     }
 }
 
+//Función para guardar la última página vista en sessionStorage, para que se mentenga al recargar la página
 function savePage(page) {
     sessionStorage.setItem('actualPage', page);
 }
@@ -173,10 +174,11 @@ function getSavedPage() {
     return parseInt(sessionStorage.getItem('actualPage')) || 1;
 }
 
+//Función IMPORTANTE! Guarda, carga, muestra productos y renderiza la paginación!
 async function loadAndShow(page) {
     savePage(page);  //Guarda la página cada vez que cambia
-    const data = await loadProducts(page);
-    showProducts(products);
+    const data = await loadProducts(page); //carga los prod de la pág 
+    showProducts(products); //renderiza los productos
     renderPagination(data.totalPages);
 }
 

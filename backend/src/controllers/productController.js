@@ -8,8 +8,10 @@ export const getAllProducts = async (req, res) => {
     const showOnlyActive = req.query.active === 'true';
 
     try {
+        //Llamo al servicio, paso los filtros y recibo los datos paginados
         const data = await getProducts(page, limit, category, search, showOnlyActive);
 
+        //Retorno los productos y tmb la cant total de págs, que el frontend utiliza para renderizar lo botones
         res.status(200).json({
             message: "Productos encontrados",
             payload: data.products,
