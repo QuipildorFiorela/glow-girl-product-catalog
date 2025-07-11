@@ -1,5 +1,4 @@
-import { redirectIfNotLogged } from "./utils.js"
-import { darkMode, showUserWindow } from "../js/utils.js"
+import { darkMode, showUserWindow, redirectIfNotLogged, showPopUp} from "./utils.js"
 let cart = [];
 
 function loadCart() {
@@ -127,8 +126,10 @@ function confirmationModal() {
             const data = await res.json();
 
             if (res.ok) {
-                alert("Compra realizada con éxito!");
+                showPopUp("Compra realizada con éxito!");
+                setTimeout(() => {
                 window.location.href = `./ticket.html?saleId=${data.payload.sale.id}`;
+                }, 2000);
             } else {
                 alert(`Error al registrar la venta: ${data.message}`);
             }

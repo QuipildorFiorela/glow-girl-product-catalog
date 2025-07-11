@@ -1,4 +1,4 @@
-import { darkMode, showUserWindow, changeStyleInputFile, validateFields, redirectIfNotLogged} from "./utils.js"
+import { darkMode, showUserWindow, changeStyleInputFile, validateFields, redirectIfNotLogged, showPopUp} from "./utils.js"
 
 function uploadProduct() {
     document.getElementById("formUpdateProduct").addEventListener("submit", async (e) => {
@@ -20,8 +20,11 @@ function uploadProduct() {
                 console.log(errorData);
                 return;
             };
-            alert("Producto editado con éxito જ⁀➴ ♡")
+            showPopUp("Producto creado con éxito.");
+            setTimeout(() => {
             window.location.href = "/api/admin/catalog";
+            }, 2000); // Le doy 1.5 segundos para mostrar el mensaje
+
         } catch (error) {
             console.error("Error:", error);
         }

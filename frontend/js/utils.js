@@ -71,3 +71,26 @@ export function redirectIfAlreadyLogged() {
         window.location.href = "./catalog.html";
     }
 }
+
+export function showPopUp(msj) {
+    const contenedor = document.getElementById("alert-container");
+
+    // Limpio alertas previas si hay
+    contenedor.innerHTML = "";
+
+    const alerta = document.createElement("div");
+    alerta.className = "alert alert-success alert-dismissible fade-in";
+    alerta.role = "alert";
+    alerta.innerHTML = `
+        <strong>ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧</strong> ${msj}
+    `;
+
+    contenedor.appendChild(alerta);
+
+    setTimeout(() => {
+        alerta.classList.remove("fade-in");
+        alerta.classList.add("fade-out");
+
+        setTimeout(() => alerta.remove(), 500); 
+    }, 1000);
+}

@@ -1,4 +1,4 @@
-import { darkMode, showUserWindow, changeStyleInputFile, validateImage, validateFields, redirectIfNotLogged } from "./utils.js"
+import { darkMode, showUserWindow, changeStyleInputFile, validateImage, validateFields, redirectIfNotLogged, showPopUp} from "./utils.js"
 
 function sendForm() {
     document.getElementById("formCreateProduct").addEventListener("submit", async (e) => {
@@ -19,8 +19,10 @@ function sendForm() {
                 console.log(errorData);
                 return;
             }
-            alert("Producto creado con éxito ₊˚⊹ᰔ")
+            showPopUp("Producto editado con éxito.");
+            setTimeout(() => {
             window.location.href = "/api/admin/catalog";
+            }, 2000);
         } catch (error) {
             console.error("Error:", error.message);
         }

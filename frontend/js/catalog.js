@@ -1,5 +1,4 @@
-import { redirectIfNotLogged } from "./utils.js"
-import { darkMode, showUserWindow } from "../js/utils.js"
+import { darkMode, showUserWindow, redirectIfNotLogged, showPopUp} from "./utils.js"
 let products = [];
 let cart = [];
 let category = "";
@@ -106,6 +105,7 @@ function showProducts(products) {
                 productInCart.count++;
                 saveCart();
                 showProducts(products);
+                showPopUp("Producto añadido al carrito.")
             });
 
             countControl.querySelector(".decrease").addEventListener('click', () => { //Si toco -, dismuniye la cantidad
@@ -123,7 +123,6 @@ function showProducts(products) {
             btnContainer.appendChild(btnAdd);
             btnAdd.addEventListener("click", () => {
                 addToCart(product);
-                showProducts(products);
             });
         }
         card.appendChild(btnContainer);
@@ -209,7 +208,7 @@ function openCart() {
 }
 
 function addToCart(product) {
-    const availbleProduct = cart.find(item => item.name === product.nombre);
+    const availbleProduct = cart.find(item => item.name === product.name);
     if (availbleProduct) {
         availbleProduct.count++;
     } else {
@@ -217,6 +216,7 @@ function addToCart(product) {
     }
     saveCart();
     showProducts(products);
+    showPopUp("Producto añadido al carrito.")
 }
 
 async function init() {
