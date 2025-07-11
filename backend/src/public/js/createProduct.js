@@ -1,9 +1,10 @@
-import { darkMode, showUserWindow, changeStyleInputFile, validateFields, redirectIfNotLogged } from "./utils.js"
+import { darkMode, showUserWindow, changeStyleInputFile, validateImage, validateFields, redirectIfNotLogged } from "./utils.js"
 
 function sendForm() {
     document.getElementById("formCreateProduct").addEventListener("submit", async (e) => {
         e.preventDefault();
-        if (!validateFields()) return;
+        if(!validateImage()) return;
+        if(!validateFields()) return;
 
         const form = e.target;
         const data = new FormData(form);
@@ -18,6 +19,7 @@ function sendForm() {
                 console.log(errorData);
                 return;
             }
+            alert("Producto creado con éxito ₊˚⊹ᰔ")
             window.location.href = "/api/admin/catalog";
         } catch (error) {
             console.error("Error:", error.message);

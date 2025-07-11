@@ -89,27 +89,14 @@ export function showFile(file) {
 }
 
 //-------------------------------VALIDACION DE CAMPOS AL CREAR-------------------------------
-export function validateFields() {
-    const name = document.getElementById("name").value.trim();
-    const description = document.getElementById("description").value.trim();
-    const price = parseFloat(document.getElementById("price").value);
+export function validateImage() {
     const fileInput = document.getElementById('fileInput');
     const file = fileInput?.files[0];
 
-    const maxSize = 5 * 1024 * 1024;
+    const maxSize = 5 * 1024 * 1024; // 5MB
     const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
     let message = "";
-
-    if (name === "") {
-        message += "El nombre no puede estar vacío.\n";
-    }
-    if (description === "") {
-        message += "La descripción no puede estar vacía.\n";
-    }
-    if (isNaN(price) || price < 1) {
-        message += "El precio debe ser mayor a 0.\n";
-    }
 
     if (file) {
         if (file.size > maxSize) {
@@ -121,7 +108,30 @@ export function validateFields() {
     } else {
         message += "Debe seleccionar una imagen.\n";
     }
+    if (message) {
+        alert(message);
+        return false;
+    }
+    return true;
+}
 
+//-------------------------------VALIDACION DE CAMPOS AL EDITAR-------------------------------
+export function validateFields() {
+    const name = document.getElementById("name").value.trim();
+    const description = document.getElementById("description").value.trim();
+    const price = parseFloat(document.getElementById("price").value);
+    
+    let message = "";
+
+    if (name === "") {
+        message += "El nombre no puede estar vacío.\n";
+    }
+    if (description === "") {
+        message += "La descripción no puede estar vacía.\n";
+    }
+    if (isNaN(price) || price < 1) {
+        message += "El precio debe ser mayor a 0.\n";
+    }
     if (message) {
         alert(message);
         return false;

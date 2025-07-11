@@ -20,6 +20,7 @@ function uploadProduct() {
                 console.log(errorData);
                 return;
             };
+            alert("Producto editado con éxito જ⁀➴ ♡")
             window.location.href = "/api/admin/catalog";
         } catch (error) {
             console.error("Error:", error);
