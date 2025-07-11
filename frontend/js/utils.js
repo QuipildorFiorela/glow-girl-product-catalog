@@ -58,7 +58,6 @@ export function showUserWindow() {
 export function redirectIfNotLogged() {
     const name = sessionStorage.getItem("userName");
     if (!name) {
-        alert("Inicia sesión para ingresar a la tienda.");
         window.location.href = "./login.html";
     }
 }
@@ -67,7 +66,6 @@ export function redirectIfNotLogged() {
 export function redirectIfAlreadyLogged() {
     const name = sessionStorage.getItem("userName");
     if (name) {
-        alert("Cierra sesión para volver al login.");
         window.location.href = "./catalog.html";
     }
 }
