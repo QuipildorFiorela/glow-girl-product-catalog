@@ -183,9 +183,14 @@ async function loadAndShow(page) {
 function filter() {
     const searchBar = document.getElementById("searchBar");
     searchBar.addEventListener("keyup", () => {
-        loadAndShow(1); // Cada vez que escribo, vuelve a cargar desde la página 1
+        const text = searchBar.value.trim();
+
+        if (text.length >= 3 || text.length === 0) {
+            loadAndShow(1); // Solo llama a la API si hay 3 o más letras, o si se borra todo (para mostrar todo de nuevo)
+        }
     });
 }
+
 
 function saveCart() {
     sessionStorage.setItem('cart', JSON.stringify(cart));
