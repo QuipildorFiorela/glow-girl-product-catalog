@@ -50,8 +50,7 @@ async function loadProducts(page = 1) {
     const data = await respuesta.json();
     products = data.payload;
     return {
-        totalPages: data.totalPages,
-        currentPage: data.currentPage
+        totalPages: data.totalPages
     };
 }
 

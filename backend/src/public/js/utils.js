@@ -172,7 +172,7 @@ export function showPopUp(msj) {
     contenedor.innerHTML = "";
 
     const alerta = document.createElement("div");
-    alerta.className = "alert alert-success alert-dismissible fade-in";
+    alerta.className = "alert fade-in";
     alerta.role = "alert";
     alerta.innerHTML = `
         <strong>ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧</strong> ${msj}
