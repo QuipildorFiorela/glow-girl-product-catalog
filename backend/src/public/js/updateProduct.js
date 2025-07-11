@@ -8,7 +8,6 @@ function uploadProduct() {
         const idProducto = document.getElementById("id").value;
         const form = e.target;
         const data = new FormData(form)
-        console.log(data);
 
         try {
             const response = await fetch(`/api/products/${idProducto}`, {

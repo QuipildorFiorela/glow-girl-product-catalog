@@ -19,9 +19,6 @@ export const newProductChecker = async (req, res, next) => {try {
 export const productUpdateChecker = async (req, res, next) => {
     try {
         const { name, description, price, category, active } = req.body;
-        /*if (!name || !description || !price || !category || !active) {
-            return res.status(400).json({ message: "Completa todos los campos" });
-        }*/
         if(!name){
             return res.status(400).json({ message: "No hay name" });
         }

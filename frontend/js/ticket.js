@@ -36,28 +36,18 @@ async function renderTicketFromDB() {
     document.getElementById("total-final").textContent = `$${total.toLocaleString("es-AR")}`;
 }
 
-function printTicket() {
-    window.print();
-}
-
 function getOutOfTicket() {
-    sessionStorage.removeItem("userName");
-    sessionStorage.removeItem("cart");
-    sessionStorage.removeItem("actualPage");
-    window.location.href = "./login.html";
-}
-
-function assignEvents() {
-    const btnPrint = document.getElementById("btn-download");
-    const btnLogOut = document.getElementById("btn-logOut");
-
-    if (btnPrint) btnPrint.addEventListener("click", printTicket);
-    if (btnLogOut) btnLogOut.addEventListener("click", getOutOfTicket);
+    document.getElementById("btn-logOut").addEventListener("click", () => {
+        sessionStorage.removeItem("userName");
+        sessionStorage.removeItem("cart");
+        sessionStorage.removeItem("actualPage");
+        window.location.href = "./login.html";
+    });
 }
 
 function init() {
     renderTicketFromDB();
-    assignEvents();
+    getOutOfTicket();
 }
 
 init();

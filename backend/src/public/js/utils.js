@@ -78,6 +78,13 @@ export function changeStyleInputFile() {
             showFile(files[0]);
         }
     });
+
+    fileInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        showFile(file);
+    }
+});
 }
 
 //-------------------------------SHOW FILE NAME AL SUBIR UNA FOTO-------------------------------
