@@ -2,6 +2,7 @@
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
 }
@@ -15,6 +16,8 @@ body {
 /* para que el footer quede abajo si hay poco contenido */
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
