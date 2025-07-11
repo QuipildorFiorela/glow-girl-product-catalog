@@ -1,67 +1,63 @@
-import { protectRoute } from "./utils.js"
+async function renderTicketFromDB() {
+    const saleId = new URLSearchParams(window.location.search).get("saleId");
+    if (!saleId) {
+        alert("Venta no encontrada");
+        return window.location.href = "/login.html";
+    }
 
-function getUserName() {
-    return sessionStorage.getItem("userName");
-}
+    const response = await fetch((`http://localhost:5000/api/sales/${saleId}`));
+    if (!response.ok) {
+        alert("Esta venta no existe");
+        return window.location.href = "/login.html";
+    }
 
-function getCart() {
-    return JSON.parse(sessionStorage.getItem("cart")) || [];
-}
+    const { payload } = await response.json();
 
-function getDate() {
-    const hoy = new Date();
-    return hoy.toLocaleDateString('es-AR');
-}
+    document.getElementById("id-sale").textContent = `Factura N° ${saleId}`;
+    document.getElementById("user-name").textContent = payload.buyerName;
+    document.getElementById("billed-to").textContent = payload.buyerName;
+    document.getElementById("order-date").textContent = new Date(payload.date).toLocaleDateString("es-AR");
 
-function renderizarProductos(cart) {
-    const tabla = document.getElementById("tabla-productos");
+    const table = document.getElementById("products-table");
     let total = 0;
-    cart.forEach(product => {
-        const subtotal = product.price * product.count;
+
+    payload.products.forEach(product => {
+        const { name, count, subtotal } = product;
         total += subtotal;
 
         const fila = document.createElement("tr");
         fila.innerHTML = `
-        <td>${product.name} x${product.count}</td>
-        <td class="text-end">$${subtotal.toLocaleString('es-AR')}</td>
+            <td>${name} x${count}</td>
+            <td class="text-end">$${subtotal.toLocaleString("es-AR")}</td>
         `;
-        tabla.appendChild(fila);
+        table.appendChild(fila);
     });
-    document.getElementById("total-final").textContent = `$${total.toLocaleString('es-AR')}`;
+
+    document.getElementById("total-final").textContent = `$${total.toLocaleString("es-AR")}`;
 }
 
-function mostrarDatosGenerales(userName) {
-    document.getElementById("nombre-usuario").textContent = userName;
-    document.getElementById("facturado-a").textContent = userName;
-    document.getElementById("fecha-pedido").textContent = getDate();
-}
-
-function imprimirTicket() {
+function printTicket() {
     window.print();
 }
 
-function salirDelTicket() {
+function getOutOfTicket() {
     sessionStorage.removeItem("userName");
     sessionStorage.removeItem("cart");
     sessionStorage.removeItem("actualPage");
     window.location.href = "./login.html";
 }
 
-function asignarEventos() {
-    const btnImprimir = document.getElementById("btn-descargar");
-    const btnSalir = document.getElementById("btn-salir");
+function assignEvents() {
+    const btnPrint = document.getElementById("btn-download");
+    const btnLogOut = document.getElementById("btn-logOut");
 
-    if (btnImprimir) btnImprimir.addEventListener("click", imprimirTicket);
-    if (btnSalir) btnSalir.addEventListener("click", salirDelTicket);
+    if (btnPrint) btnPrint.addEventListener("click", printTicket);
+    if (btnLogOut) btnLogOut.addEventListener("click", getOutOfTicket);
 }
 
 function init() {
-    const userName = getUserName();
-    const cart = getCart();
-    protectRoute();
-    mostrarDatosGenerales(userName);
-    renderizarProductos(cart);
-    asignarEventos();
+    renderTicketFromDB();
+    assignEvents();
 }
 
 init();

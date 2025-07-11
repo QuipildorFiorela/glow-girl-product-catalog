@@ -11,18 +11,19 @@
 
 <body>
   <div class="ticket-container">
-    <h1 class="titulo-gracias">¡GRACIAS!</h1>
-    <p class="subtitulo">
-      Hola <span id="nombre-usuario">______</span><br>
+    <h1 class="title-gracias">¡GRACIAS!</h1>
+    <p class="subtitle">
+      Hola <span id="user-name">______</span><br>
       ¡Gracias por tu compra!
     </p>
+    <p class="id-sale"><span class="fw-bold" id="id-sale"></span></p>
     <!-- Datos del pedido -->
     <div class="row mb-3">
       <div class="col-6">
-        <p><strong>Facturado a:</strong><br><span id="facturado-a"></span></p>
+        <p><strong>Facturado a:</strong><br><span id="billed-to"></span></p>
       </div>
       <div class="col-6">
-        <p><strong>Fecha del pedido:</strong><br><span id="fecha-pedido"></span></p>
+        <p><strong>Fecha del pedido:</strong><br><span id="order-date"></span></p>
       </div>
       <div class="col-6">
         <p><strong>Por:</strong><br>Glow Girl</p>
@@ -37,7 +38,7 @@
           <th class="text-end">Precio:</th>
         </tr>
       </thead>
-      <tbody id="tabla-productos"></tbody>
+      <tbody id="products-table"></tbody>
     </table>
 
     <div class="total-line"></div>
@@ -47,8 +48,8 @@
     </div>
 
     <div class="d-flex justify-content-center gap-3 mt-4">
-      <button class="btn btn-warning mt-3" id="btn-descargar" onclick="window.print()">Descargar PDF</button>
-      <button class="btn btn-danger" id="btn-salir">Salir</button>
+      <button class="btn btn-warning mt-3" id="btn-download" onclick="window.print()">Descargar PDF</button>
+      <button class="btn btn-danger" id="btn-logOut">Salir</button>
     </div>
 
     <!-- Scripts al final del body -->

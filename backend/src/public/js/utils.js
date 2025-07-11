@@ -1,3 +1,4 @@
+//-------------------------------DARK MODE-------------------------------
 export function darkMode() {
     const btnMode = document.getElementById("btnMode");
     const storeLogo = document.getElementById("storeLogo");
@@ -26,7 +27,7 @@ export function darkMode() {
     });
 }
 
-
+//-------------------------------USER WINDOW-------------------------------
 export function showUserWindow() {
     const userIcon = document.getElementById("userIcon");
     const userWindow = document.getElementById("userWindow");
@@ -54,7 +55,7 @@ export function showUserWindow() {
         }
     });
 }
-
+//-------------------------------PARA CUANDO ARRASTRO UN PRODUCT EN EL INPUT FILE-------------------------------
 export function changeStyleInputFile() {
     const fileInput = document.getElementById('fileInput');
     const dropArea = document.getElementById('dropArea');
@@ -81,6 +82,7 @@ export function changeStyleInputFile() {
     });
 }
 
+//-------------------------------SHOW FILE NAME AL SUBIR UNA FOTO-------------------------------
 export function showFile(file) {
     const filePreview = document.getElementById('filePreview');
     const fileName = document.getElementById('fileName');
@@ -88,31 +90,16 @@ export function showFile(file) {
     fileName.textContent = `Archivo: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
 }
 
-export function fileAlerter() {
-    const fileInput = document.getElementById('fileInput');
-    fileInput.addEventListener("change", () => {
-        const file = fileInput.files[0];
-        const maxSize = 5 * 1024 * 1024;
-        const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-
-        if (file.size > maxSize) {
-            alert("El archivo supera los 5MB.");
-            fileInput.value = ""; // Limpiar
-            return;
-        }
-        if (!validExtensions.includes(file.type)) {
-            alert("Tipo de archivo no permitido. Solo jpeg, jpg, png, webp.");
-            fileInput.value = "";
-            return;
-        }
-        showFile(file);
-    });
-}
-
+//-------------------------------VALIDACION DE CAMPOS AL CREAR-------------------------------
 export function validateFields() {
     const name = document.getElementById("name").value.trim();
     const description = document.getElementById("description").value.trim();
-    const price = document.getElementById("price").value
+    const price = parseFloat(document.getElementById("price").value);
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput?.files[0];
+
+    const maxSize = 5 * 1024 * 1024;
+    const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
     let message = "";
 
@@ -122,9 +109,21 @@ export function validateFields() {
     if (description === "") {
         message += "La descripción no puede estar vacía.\n";
     }
-    if(price < 1){
+    if (isNaN(price) || price < 1) {
         message += "El precio debe ser mayor a 0.\n";
     }
+
+    if (file) {
+        if (file.size > maxSize) {
+            message += "El archivo supera los 5MB.\n";
+        }
+        if (!validExtensions.includes(file.type)) {
+            message += "Tipo de archivo no permitido. Solo jpeg, jpg, png o webp.\n";
+        }
+    } else {
+        message += "Debe seleccionar una imagen.\n";
+    }
+
     if (message) {
         alert(message);
         return false;
@@ -132,6 +131,7 @@ export function validateFields() {
     return true;
 }
 
+//-------------------------------REDIRECCIONAR SI NO ESTA LOGEADO-------------------------------
 export function redirectIfNotLogged() {
     const name = sessionStorage.getItem("userName");
     if (!name) {
@@ -140,6 +140,7 @@ export function redirectIfNotLogged() {
     } 
 }
 
+//-------------------------------REDIRECCIONAR SI YA ESTA LOGEADO-------------------------------
 export function redirectIfAlreadyLogged() {
     const name = sessionStorage.getItem("userName");
     if (name) {

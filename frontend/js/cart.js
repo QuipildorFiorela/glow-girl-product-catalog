@@ -78,6 +78,7 @@ function addCartFunctionality() {
 function confirmationModal() {
     // Evita duplicados
     if (document.getElementById("confirmationModal")) return;
+
     const modalHTML = `
         <div id="confirmationModal" class="modal">
         <div class="modal-content">
@@ -106,25 +107,39 @@ function confirmationModal() {
         modal.remove();
         const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
         const userName = sessionStorage.getItem("userName");
+
         const sale = {
             buyerName: userName,
             products: cart.map(product => ({
                 productId: product.id,
-                count: product.count
+                count: product.count,
+                price: product.price
             }))
         };
-        const res = await fetch("http://localhost:5000/api/admin/sales", { //REFACTORIZAR
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(sale)
-        })
-        if (res.ok) {
-            window.location.href = "./ticket.html";
-        } else {
-            alert("Error al registrar la venta");
+
+        try {
+            const res = await fetch("http://localhost:5000/api/sales", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(sale)
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert("Compra realizada con éxito!");
+                window.location.href = `./ticket.html?saleId=${data.payload.sale.id}`;
+            } else {
+                alert(`Error al registrar la venta: ${data.message}`);
+            }
+
+        } catch (error) {
+            alert("Error inesperado al realizar la compra.");
+            console.error(error);
         }
     });
 }
+
 
 function addBtnFinishBuying(contenedorBoton) {
     const btnFinalizarCompra = document.createElement("button");

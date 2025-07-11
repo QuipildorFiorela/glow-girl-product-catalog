@@ -1,5 +1,5 @@
 import { getProducts, findPk } from "../services/product.service.js";
-import {getWithProducts} from "../services/sale.service.js";
+import {getWithDetails} from "../services/sale.service.js";
 
 export const renderLogin = (req, res) => {
     res.render("adminLogin"); // login.ejs
@@ -39,7 +39,7 @@ export const renderUpdateProduct = async (req, res) => {
 
 export const renderSalesWDetails = async (req, res) => {
     try {
-        const sales = await getWithProducts(); 
+        const sales = await getWithDetails(); 
         res.render("sales", {sales}); //renderiza sales.ejs
     } catch (error) {
         console.error("Error al cargar ventas: ", error.message);

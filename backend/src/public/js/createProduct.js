@@ -1,4 +1,4 @@
-import { darkMode, showUserWindow, changeStyleInputFile, fileAlerter, validateFields, redirectIfNotLogged } from "./utils.js"
+import { darkMode, showUserWindow, changeStyleInputFile, validateFields, redirectIfNotLogged } from "./utils.js"
 
 function sendForm() {
     document.getElementById("formCreateProduct").addEventListener("submit", async (e) => {
@@ -67,7 +67,6 @@ function init() {
     darkMode();
     redirectIfNotLogged();
     changeStyleInputFile();
-    fileAlerter();
     sendForm();
     btnCancel();
     showUserWindow();
