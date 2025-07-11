@@ -5,8 +5,17 @@
 
 /* ------------------ Sales Page Specific ------------------ */
 
+main.sales-container {
+    flex: 1;
+    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .sales-container {
+    flex: 1; /* <<--- Esto es clave para que el footer baje */
     max-width: 1000px;
+    width: 100%;
     margin: 2rem auto;
     padding: 1.5rem;
     background-color: #fff;
@@ -75,6 +84,30 @@
     margin: 4px 0;
     font-size: 0.9rem;
 }
+
+/* PANTALLA PEQUEÑAS */
+@media (max-width: 768px) {
+    .sales-container {
+        padding: 1rem;
+    }
+
+    .sales-table {
+        font-size: 0.8rem;
+    }
+
+    .sales-table th,
+    .sales-table td {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+    }
+
+    .btn-pink {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 10px;
+    }
+}
+
 
 /* ------------------ Dark Mode ------------------ */
 body.dark-mode .sales-container {
