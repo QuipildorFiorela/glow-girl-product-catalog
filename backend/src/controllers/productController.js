@@ -47,7 +47,7 @@ export const createProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
     try {
         const { name, description, price, category, active, existingImg } = req.body;
-        const img = req.file ? `img/products/${req.file.filename}` : existingImg;
+        const img = req.file ? `${req.file.filename}` : existingImg;
 
         await update(req.params.id, { name, description, price, img, category, active });
         res.status(201).json({ message: "Producto actualizado con éxito"});
