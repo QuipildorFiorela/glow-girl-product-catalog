@@ -7,7 +7,6 @@ function sendForm() {
 
         const form = e.target;
         const data = new FormData(form);
-        console.log(data);
 
         try {
             const response = await fetch("/api/products", {

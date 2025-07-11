@@ -1,4 +1,4 @@
-import { darkMode, showUserWindow, changeStyleInputFile, fileAlerter, validateFields, redirectIfNotLogged} from "./utils.js"
+import { darkMode, showUserWindow, changeStyleInputFile, validateFields, redirectIfNotLogged} from "./utils.js"
 
 function uploadProduct() {
     document.getElementById("formUpdateProduct").addEventListener("submit", async (e) => {
@@ -70,7 +70,6 @@ async function init() {
     darkMode();
     redirectIfNotLogged();
     changeStyleInputFile();
-    fileAlerter();
     uploadProduct();
     btnCancel();
     showUserWindow();
