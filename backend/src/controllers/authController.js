@@ -12,11 +12,11 @@ export const login = async (req, res) => {
         console.log(user);
         
         if (!user) {
-            return res.status(404).json({ message: "Usuario no encontrado" });
+            return res.status(404).json({ message: "Credenciales incorrectas." });
         }
         const match = await comparePassword(password, user.password)
         if (!match) {
-            return res.status(401).json({ message: "Constraseña incorrecta" });
+            return res.status(401).json({ message: "Credenciales incorrectas." });
         }
         res.status(200).json({ message: "Inicio de sesión exitoso", payload: user.name})
     } catch (error) {
