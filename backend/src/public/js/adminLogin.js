@@ -29,14 +29,6 @@ function verifyPassword() {
     })
 };
 
-function autocompletar() {
-    document.getElementById("btnAutocomplete").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.getElementById("mail").value = "bianca@gmail.com";
-        document.getElementById("password").value = "1234";
-    })
-}
-
 async function init() {
     darkMode();
     redirectIfAlreadyLogged();
