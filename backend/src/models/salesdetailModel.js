@@ -21,6 +21,9 @@ const SalesDetail = sequelize.define("SalesDetail", {
         type: DataTypes.INTEGER,
         allowNull: false
     }
+}, {
+    tableName: "salesdetails",
+    timestamps: true
 });
 
 export default SalesDetail;

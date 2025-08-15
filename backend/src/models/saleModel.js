@@ -21,6 +21,9 @@ const Sale = sequelize.define("Sale", {
     total: {
         type: DataTypes.DOUBLE,
         allowNull: false }
+}, {
+    tableName: "sales",
+    timestamps: true
 });
 
 export default Sale;
