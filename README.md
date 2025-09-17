@@ -1,5 +1,5 @@
 <h1>Glow Girl - Admin and Product Catalog</h1>
-<h3>In collaboration with <a href="https://github.com/QuipildorFiorela">@QuipildorFiorella</a></h3>
+<h3>In collaboration with <a href="https://github.com/QuipildorFiorela">@BiancaMonteleone</a></h3>
 Glow Girl is a product catalog and management project, developed with Node.js, Express, Sequelize and EJS, that allows you to buy and manage products.
 
 <h2>🖼️ Screenshots</h2>
